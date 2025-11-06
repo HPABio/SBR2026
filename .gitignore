@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+
+#V0 template files
+/V0-Templates/*
+package.json.backup
+package.json.temp

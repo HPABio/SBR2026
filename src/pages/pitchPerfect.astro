@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+import { PitchForm } from '../components/pitch-form';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Pitch Perfect - SynBio Reactor Summit 2026</title>
+	</head>
+
+	<body class="min-h-screen bg-background">
+		<div class="container mx-auto px-4 py-12 max-w-4xl">
+			<div class="space-y-8">
+				<div class="text-center space-y-4">
+					<h1 class="text-4xl font-bold tracking-tight">Pitch Perfect</h1>
+					<p class="text-lg text-muted-foreground">
+						Showcase your synthetic biology innovation at SynBio Reactor Summit 2026
+					</p>
+				</div>
+				
+				<PitchForm client:load />
+			</div>
+		</div>
+	</body>
+</html>
+
