@@ -1,6 +1,15 @@
 ---
 import '../styles/global.css';
+import { Navigation } from '../components/navigation';
 import { PitchForm } from '../components/pitch-form';
+import {
+  HeroSection,
+  StatsSection,
+  BenefitsSection,
+  JudgesSection,
+  CTASection,
+  Footer,
+} from '../components/pitch-perfect-sections';
 ---
 
 <html lang="en">
@@ -10,21 +19,34 @@ import { PitchForm } from '../components/pitch-form';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Pitch Perfect - SynBio Reactor Summit 2026</title>
+		<meta name="description" content="Pitch your synthetic biology startup at Berlin's premier StartUp x Investor Summit" />
 	</head>
 
 	<body class="min-h-screen bg-background">
-		<div class="container mx-auto px-4 py-12 max-w-4xl">
-			<div class="space-y-8">
-				<div class="text-center space-y-4">
-					<h1 class="text-4xl font-bold tracking-tight">Pitch Perfect</h1>
-					<p class="text-lg text-muted-foreground">
-						Showcase your synthetic biology innovation at SynBio Reactor Summit 2026
+		<Navigation client:load />
+		
+		<HeroSection client:load />
+		<StatsSection client:load />
+		<BenefitsSection client:load />
+		<JudgesSection client:load />
+
+		{/* Application Form Section */}
+		<section class="py-20 px-4 lg:px-8">
+			<div class="container mx-auto max-w-3xl">
+				<div class="text-center space-y-4 mb-12">
+					<h2 class="text-4xl md:text-5xl font-bold text-balance">
+						Ready to <span class="text-primary">Take the Stage?</span>
+					</h2>
+					<p class="text-xl text-muted-foreground text-balance">
+						Applications close December 15, 2025. Limited spots available.
 					</p>
 				</div>
-				
+
 				<PitchForm client:load />
 			</div>
-		</div>
+		</section>
+
+		<CTASection client:load />
+		<Footer client:load />
 	</body>
 </html>
-
