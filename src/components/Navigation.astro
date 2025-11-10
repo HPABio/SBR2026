@@ -1,37 +1,53 @@
 ---
 // Navigation component for SynBio Reactor Summit
+const currentPath = Astro.url.pathname;
+
+const isActive = (path: string) => {
+  if (path === '/') {
+    return currentPath === '/';
+  }
+  return currentPath.startsWith(path);
+};
+
+const getLinkClasses = (path: string) => {
+  return isActive(path)
+    ? 'text-sm text-[#ff8800] font-medium'
+    : 'text-sm text-muted-foreground hover:text-foreground transition-colors';
+};
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border">
   <div class="container mx-auto px-4 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="/" class="flex items-center gap-2">
-        <div class="w-10 h-10 rounded-full bg-card border-2 border-primary flex items-center justify-center">
-          <div class="w-6 h-6 rounded-full bg-primary" />
-        </div>
+        <img 
+          src="/Assets/Home - SynBioReactor Summit 2026_files/Favicon@2x-300x300.png" 
+          alt="SynBio Reactor Logo" 
+          class="w-10 h-10"
+        />
         <span class="font-bold text-lg">SynBio Reactor</span>
       </a>
 
       <div class="hidden md:flex items-center gap-6">
-        <a href="/" class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <a href="/" class={getLinkClasses('/')}>
           Home
         </a>
-        <a href="/about" class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <a href="/about" class={getLinkClasses('/about')}>
           About
         </a>
-        <a href="/gasb" class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <a href="/gasb" class={getLinkClasses('/gasb')}>
           GASB
         </a>
-        <a href="/pitchPerfect" class="text-sm text-foreground font-medium">
+        <a href="/pitchPerfect" class={getLinkClasses('/pitchPerfect')}>
           Pitching
         </a>
         <a
           href="/partner-program"
-          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          class={getLinkClasses('/partner-program')}
         >
           Partner Program
         </a>
-        <a href="/sponsoring" class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <a href="/sponsoring" class={getLinkClasses('/sponsoring')}>
           Sponsoring
         </a>
       </div>

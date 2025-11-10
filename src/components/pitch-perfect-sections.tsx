@@ -1,18 +1,30 @@
 import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Lightbulb, Users, TrendingUp, Award, Microscope, Rocket } from "lucide-react"
+import { Lightbulb, Users, TrendingUp, Award, Microscope, Rocket, MapPin, Calendar } from "lucide-react"
 
 export function HeroSection() {
   return (
-    <section className="pt-32 pb-20 px-4 lg:px-8">
-      <div className="container mx-auto max-w-6xl">
+    <section 
+      className="pt-32 pb-20 px-4 lg:px-8 relative bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: "url('/Assets/Home - SynBioReactor Summit 2026_files/Betonhalle-Welcome-SBR2026-AI-Nano-Banana.jpeg')",
+      }}
+    >
+      {/* Gradient overlay from bottom (black) to top (transparent) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/90" />
+      <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center space-y-6">
           <div className="inline-block">
             <span className="text-sm font-mono text-primary uppercase tracking-wider">StartUp x Investor Summit</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold text-balance leading-tight">
-            <span className="text-primary">PITCH</span> YOUR
+            <span
+              className="font-black bg-gradient-to-tl from-[#dd5404] to-[#ff8800] bg-clip-text text-transparent inline-block"
+            >
+              PITCH
+            </span>{" "}
+            YOUR
             <br />
             <span className="text-foreground">SYNBIO STARTUP</span>
           </h1>
@@ -37,11 +49,11 @@ export function HeroSection() {
           </div>
           <div className="flex items-center justify-center gap-8 pt-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary" />
+              <MapPin className="w-4 h-4 text-primary" />
               <span>Berlin, Germany</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary" />
+              <Calendar className="w-4 h-4 text-primary" />
               <span>Jan 19-20, 2026</span>
             </div>
           </div>

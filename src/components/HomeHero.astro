@@ -1,0 +1,59 @@
+---
+// Home Hero Section Component
+// Similar structure to pitch-perfect hero but with logo and images
+---
+
+<section 
+	class="pt-32 pb-20 px-4 lg:px-8 relative bg-cover bg-bottom bg-no-repeat min-h-screen flex items-center"
+	style={{
+		backgroundImage: "url('/Assets/Home - SynBioReactor Summit 2026_files/Betonhalle-Welcome-SBR2026-AI-Nano-Banana.jpeg')",
+	}}
+>
+	{/* Gradient overlay from bottom (black) to top (transparent) */}
+	<div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black" />
+	<div class="container mx-auto max-w-6xl relative z-10">
+		<div class="text-center space-y-3 flex flex-col items-center">
+			{/* SBR2025 Logo */}
+			<div class="flex flex-col items-center w-full -mt-44">
+				<img 
+					src="/Assets/Home - SynBioReactor Summit 2026_files/SBR2025-Logo.png" 
+					alt="SynBio Reactor Summit 2025 Logo" 
+					class="max-w-[40%] h-auto"
+				/>
+				<p class="text-white max-w-[50%] text-center tracking-widest -mt-2" style="font-family: 'DM Sans', sans-serif; font-size: 24pt;">
+					StartUp x Investor Summit
+				</p>
+			</div>
+			
+			{/* Orange Ticket Button */}
+			<div class="py-2">
+				<button 
+					class="inline-flex items-center justify-center whitespace-nowrap px-8 py-4 transition-all"
+					style="
+						background-color: #D4642F00;
+						font-family: 'Tahoma', sans-serif;
+						font-size: 20px;
+						font-weight: 900;
+						text-transform: uppercase;
+						line-height: 11px;
+						color: #F9AC4C;
+						border: 2px solid #F9AC4C;
+						border-radius: 8px;
+					"
+				>
+					TICKETS
+				</button>
+			</div>
+			
+			{/* Bottom Image */}
+			<div class="flex justify-center pt-2">
+				<img 
+					src="/Assets/Home - SynBioReactor Summit 2026_files/1-e1752687196622.png" 
+					alt="SynBio Reactor Summit" 
+					class="max-w-[80%] h-auto"
+				/>
+			</div>
+		</div>
+	</div>
+</section>
+
