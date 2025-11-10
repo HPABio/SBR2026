@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { Navigation } from '../components/navigation';
+import Navigation from '../components/Navigation.astro';
 import { PitchForm } from '../components/pitch-form';
 import {
   HeroSection,
@@ -23,7 +23,7 @@ import {
 	</head>
 
 	<body class="min-h-screen bg-background">
-		<Navigation client:load />
+		<Navigation />
 		
 		<HeroSection client:load />
 		<StatsSection client:load />

@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Partner Program - SynBio Reactor Summit 2026</title>
+		<meta name="description" content="Join our partner program and become part of the SynBio Reactor Summit ecosystem" />
+	</head>
+
+	<body class="min-h-screen bg-background">
+		<Navigation />
+		
+		<main class="pt-16">
+			<section class="py-20 px-4 lg:px-8">
+				<div class="container mx-auto max-w-4xl">
+					<div class="text-center space-y-4 mb-12">
+						<h1 class="text-4xl md:text-5xl font-bold text-balance">
+							<span class="text-primary">Partner</span> Program
+						</h1>
+						<p class="text-xl text-muted-foreground text-balance">
+							Join our ecosystem of leading organizations in synthetic biology
+						</p>
+					</div>
+
+					<div class="prose prose-invert max-w-none space-y-6">
+						<p class="text-lg text-muted-foreground">
+							The SynBio Reactor Summit Partner Program brings together organizations that share 
+							our vision of advancing synthetic biology innovation. As a partner, you'll gain 
+							exclusive access to our network and opportunities to showcase your organization.
+						</p>
+						
+						<h2 class="text-2xl font-bold mt-8 mb-4">Partnership Benefits</h2>
+						<ul class="list-disc list-inside space-y-2 text-muted-foreground">
+							<li>Brand visibility at the summit and in our marketing materials</li>
+							<li>Networking opportunities with startups, investors, and industry leaders</li>
+							<li>Access to exclusive partner events and workshops</li>
+							<li>Opportunity to host sessions or workshops</li>
+							<li>Early access to startup pitches and investment opportunities</li>
+							<li>Recognition as a key supporter of the synthetic biology ecosystem</li>
+						</ul>
+
+						<h2 class="text-2xl font-bold mt-8 mb-4">Who Can Partner</h2>
+						<p class="text-muted-foreground">
+							We welcome partnerships with:
+						</p>
+						<ul class="list-disc list-inside space-y-2 text-muted-foreground">
+							<li>Venture capital firms and investors</li>
+							<li>Research institutions and universities</li>
+							<li>Industry leaders in biotechnology and synthetic biology</li>
+							<li>Accelerators and incubators</li>
+							<li>Professional service providers</li>
+							<li>Government and non-profit organizations</li>
+						</ul>
+
+						<h2 class="text-2xl font-bold mt-8 mb-4">Get Started</h2>
+						<p class="text-muted-foreground">
+							Interested in becoming a partner? Contact us to learn more about partnership 
+							opportunities and how we can work together to advance synthetic biology innovation.
+						</p>
+
+						<div class="mt-8">
+							<a 
+								href="mailto:partners@synbioreactor.com" 
+								class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary font-semibold px-6 py-3"
+							>
+								Contact Us
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
+

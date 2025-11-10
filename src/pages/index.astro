@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 // Component Imports
+import Navigation from '../components/Navigation.astro';
 import Button from '../components/Button.astro';
 
 // Full Astro Component Syntax:
@@ -13,13 +14,17 @@ import Button from '../components/Button.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
+		<title>SynBio Reactor Summit 2026</title>
+		<meta name="description" content="Berlin's premier synthetic biology startup and investor summit" />
 	</head>
 
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-		</div>
+	<body class="min-h-screen bg-background">
+		<Navigation />
+		<main class="pt-16">
+			<div class="grid place-items-center h-screen content-center">
+				<Button>Tailwind Button in Astro!</Button>
+				<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
+			</div>
+		</main>
 	</body>
 </html>

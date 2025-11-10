@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>GASB - SynBio Reactor Summit 2026</title>
+		<meta name="description" content="Learn about GASB - German Association for Synthetic Biology" />
+	</head>
+
+	<body class="min-h-screen bg-background">
+		<Navigation />
+		
+		<main class="pt-16">
+			<section class="py-20 px-4 lg:px-8">
+				<div class="container mx-auto max-w-4xl">
+					<div class="text-center space-y-4 mb-12">
+						<h1 class="text-4xl md:text-5xl font-bold text-balance">
+							<span class="text-primary">GASB</span>
+						</h1>
+						<p class="text-xl text-muted-foreground text-balance">
+							German Association for Synthetic Biology
+						</p>
+					</div>
+
+					<div class="prose prose-invert max-w-none space-y-6">
+						<p class="text-lg text-muted-foreground">
+							The German Association for Synthetic Biology (GASB) is a leading organization 
+							dedicated to advancing synthetic biology research, innovation, and collaboration 
+							throughout Germany and beyond.
+						</p>
+						
+						<h2 class="text-2xl font-bold mt-8 mb-4">Our Vision</h2>
+						<p class="text-muted-foreground">
+							To foster a vibrant synthetic biology ecosystem in Germany by connecting researchers, 
+							startups, investors, and industry partners to drive innovation and accelerate the 
+							translation of synthetic biology research into real-world applications.
+						</p>
+
+						<h2 class="text-2xl font-bold mt-8 mb-4">What We Do</h2>
+						<ul class="list-disc list-inside space-y-2 text-muted-foreground">
+							<li>Organize conferences and networking events</li>
+							<li>Support synthetic biology startups and entrepreneurs</li>
+							<li>Facilitate collaboration between academia and industry</li>
+							<li>Advocate for synthetic biology research and innovation</li>
+							<li>Provide resources and mentorship for the synthetic biology community</li>
+						</ul>
+
+						<h2 class="text-2xl font-bold mt-8 mb-4">Get Involved</h2>
+						<p class="text-muted-foreground">
+							Join us at the SynBio Reactor Summit 2026 to connect with the GASB community and 
+							learn more about how we're shaping the future of synthetic biology in Germany.
+						</p>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
+
