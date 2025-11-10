@@ -5,14 +5,17 @@ import { Lightbulb, Users, TrendingUp, Award, Microscope, Rocket, MapPin, Calend
 
 export function HeroSection() {
   return (
-    <section 
-      className="pt-32 pb-20 px-4 lg:px-8 relative bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: "url('/Assets/Home - SynBioReactor Summit 2026_files/Betonhalle-Welcome-SBR2026-AI-Nano-Banana.jpeg')",
-      }}
-    >
+    <section className="pt-32 pb-20 px-4 lg:px-8 relative">
+      {/* Absolute inset image for background */}
+      <img
+        src="/Assets/Home - SynBioReactor Summit 2026_files/Betonhalle-Welcome-SBR2026-AI-Nano-Banana.jpeg"
+        alt=""
+        className="absolute w-full h-full object-cover no-repeat -z-10 scale-[1.75]"
+        aria-hidden="true"
+        draggable="false"
+      />
       {/* Gradient overlay from bottom (black) to top (transparent) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/90" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black pointer-events-none" />
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center space-y-6">
           <div className="inline-block">
@@ -65,7 +68,7 @@ export function HeroSection() {
 
 export function StatsSection() {
   return (
-    <section className="py-16 px-4 lg:px-8 bg-card/50">
+    <section className="py-16 px-4 lg:px-8 bg-black">
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="text-center space-y-2">
@@ -91,7 +94,7 @@ export function StatsSection() {
 
 export function BenefitsSection() {
   return (
-    <section className="py-20 px-4 lg:px-8">
+    <section className="py-20 px-4 lg:px-8 bg-background">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-balance">
