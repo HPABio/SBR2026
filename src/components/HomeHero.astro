@@ -12,19 +12,33 @@
 	{/* Gradient overlay from bottom (black) to top (transparent) */}
 	<div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black" />
 	<div class="container mx-auto max-w-6xl relative z-10">
-		<div class="text-center space-y-3 flex flex-col items-center">
+		<div class="text-center space-y-3 flex flex-col items-center -mt-44">
+
+			{/* Bottom Image */}
+		<div class="flex justify-center pt-2">
+			<img 
+				src="/Assets/Home - SynBioReactor Summit 2026_files/1-e1752687196622.png" 
+				alt="SynBio Reactor Summit" 
+				class="max-w-[70%] h-auto"
+			/>
+		</div>
 			{/* SBR2025 Logo */}
-			<div class="flex flex-col items-center w-full -mt-44">
+			<div class="flex flex-col items-center w-full">
 				<img 
 					src="/Assets/Home - SynBioReactor Summit 2026_files/SBR2025-Logo.png" 
 					alt="SynBio Reactor Summit 2025 Logo" 
-					class="max-w-[40%] h-auto"
+					class="max-w-[60%] sm:max-w-[50%] md:max-w-[40%] h-auto"
 				/>
-				<p class="text-white max-w-[50%] text-center tracking-widest -mt-2" style="font-family: 'DM Sans', sans-serif; font-size: 24pt;">
-					StartUp x Investor Summit
-				</p>
-			</div>
-			
+				<p 
+					class="text-white max-w-[60%] md:max-w-[40%] xl:max-w-[50%] text-center tracking-widest -mt-2 font-sans"
+					style="font-size:clamp(1.1rem, 2.6vw, 2.25rem); font-family: 'DM Sans', sans-serif;"
+				>
+				StartUp x Investor Summit
+			</p>
+		</div>
+
+		
+		
 			{/* Orange Ticket Button */}
 			<div class="py-2">
 				<button 
@@ -45,14 +59,6 @@
 				</button>
 			</div>
 			
-			{/* Bottom Image */}
-			<div class="flex justify-center pt-2">
-				<img 
-					src="/Assets/Home - SynBioReactor Summit 2026_files/1-e1752687196622.png" 
-					alt="SynBio Reactor Summit" 
-					class="max-w-[80%] h-auto"
-				/>
-			</div>
 		</div>
 	</div>
 </section>
