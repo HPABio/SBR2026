@@ -123,7 +123,7 @@ export function PartnersAndSupportersPage() {
                 <CardContent className="pt-6 pb-6">
                   <div className="flex items-center justify-center h-24">
                     <img
-                      src={sponsor.logo || "/Assets/V0 Templates/PartnerPageSBR26/public/placeholder.svg"}
+                      src={sponsor.logo || "/Assets/partners-logos/placeholder.svg"}
                       alt={sponsor.name}
                       className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity"
                     />
