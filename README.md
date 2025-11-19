@@ -1,4 +1,14 @@
-# Astro with Tailwind
+# SBR2026
+
+An Astro project with Tailwind CSS for the SBR2026 initiative.
+
+## 📢 Important Notice
+
+**Default Branch Migration**: This repository is transitioning from `V0-Pitching-Page` to `main` as the default branch. 
+
+For detailed instructions on how to complete this migration, please see [SWITCH_DEFAULT_BRANCH.md](./SWITCH_DEFAULT_BRANCH.md).
+
+## 🚀 Getting Started
 
 ```sh
 bun create astro@latest -- --template with-tailwindcss
