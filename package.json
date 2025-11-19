@@ -10,8 +10,8 @@
     "v0:install": "bun ../scripts/merge-v0-install.ts"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.9",
-    "@astrojs/react": "^4.4.1",
+    "@astrojs/mdx": "4.3.11",
+    "@astrojs/react": "4.4.2",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "1.2.2",
     "@radix-ui/react-alert-dialog": "1.1.4",
@@ -45,7 +45,7 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vercel/analytics": "^1.5.0",
-    "astro": "^5.15.3",
+    "astro": "5.15.9",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
