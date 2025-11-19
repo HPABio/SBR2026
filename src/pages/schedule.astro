@@ -1,0 +1,24 @@
+---
+import '../styles/global.css';
+// Component Imports
+import Navigation from '@/components/Navigation.astro';
+import ScheduleComponent from '@/components/ScheduleV1.tsx';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>SynBio Reactor Summit 2026</title>
+		<meta name="description" content="Berlin's premier synthetic biology startup and investor summit" />
+	</head>
+
+	<body class="min-h-screen bg-background">
+		<Navigation />
+		<main class="pt-16">
+			<ScheduleComponent client:load />
+		</main>
+	</body>
+</html>
