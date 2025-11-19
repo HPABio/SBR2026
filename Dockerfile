@@ -16,10 +16,10 @@ COPY . .
 RUN bun run build
 
 # Production stage
-#FROM nginx:alpine
+FROM nginx:alpine
 
 # Copy built files from builder stage
-#COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Copy nginx configuration (optional, for custom routing)
 # Uncomment if you need SPA routing support
@@ -29,6 +29,6 @@ RUN bun run build
 EXPOSE 80
 
 # Start nginx
-#CMD ["nginx", "-g", "daemon off;"]
-CMD ["bun", "astro", "preview"]
+CMD ["nginx", "-g", "daemon off;"]
+
 
