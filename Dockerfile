@@ -19,13 +19,13 @@ RUN bun run build
 FROM nginx:alpine
 
 # Remove default nginx config to avoid conflicts
-RUN rm -f /etc/nginx/conf.d/default.conf
+#RUN rm -f /etc/nginx/conf.d/default.conf
 
 # Copy built files from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Copy nginx configuration for proper routing
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+#COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
