@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Building2, Handshake, Users2, Link2 } from "lucide-react"
 
-export function PartnersAndSupportersPage() {
+export function PartnersAndSupportersSections() {
   const goldSponsors = [
     { name: "BioTech Ventures", logo: "/Assets/partners-logos/biotech-ventures-logo.jpg" },
     { name: "GeneFund Capital", logo: "/Assets/partners-logos/genefund-capital-logo.jpg" },

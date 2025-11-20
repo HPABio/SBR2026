@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
+import React from 'react';
 import Navigation from '../components/Navigation.astro';
-import { PartnersAndSupportersPage as PartnersContent } from '../components/partners-and-supporters-sections';
+import { PartnersAndSupportersSections } from '@/components/partners-and-supporters-sections.tsx';
 ---
 
 <html lang="en">
@@ -18,7 +19,7 @@ import { PartnersAndSupportersPage as PartnersContent } from '../components/part
 		<Navigation />
 		
 		<main class="pt-16">
-			<PartnersContent client:load />
+			<PartnersAndSupportersSections client:load />
 		</main>
 	</body>
 </html>
