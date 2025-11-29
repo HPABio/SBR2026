@@ -5,7 +5,7 @@
 set -e
 
 IMAGE_NAME="astro-page-test"
-CONTAINER_NAME="astro-page-test-container"
+CONTAINER_NAME="astro-page-container"
 
 echo "🔨 Building Docker image..."
 docker build -t $IMAGE_NAME .

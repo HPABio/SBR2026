@@ -85,7 +85,7 @@ export default function PitchingPage() {
               Why Pitch at <span className="text-primary">SynBio Reactor?</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
-              Join Europe's fastest-growing synthetic biology startup ecosystem
+              Join Europe's fasgrowing synthetic biology startup ecosystem
             </p>
           </div>
 
