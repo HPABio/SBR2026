@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Lightbulb, Users, TrendingUp, Award, Microscope, Rocket, MapPin, Calendar } from "lucide-react"
 import video from "/Assets/pitching_session/PitchingVideo_Example_SBR2026.mp4"
+import OrangeWaveBG from "public/Assets/WP_SynBioReactor_Summit_2026_files/SBR_orange_wave_BG-no_logo.png"
 
 export function HeroSection() {
   return (
@@ -38,7 +39,7 @@ export function HeroSection() {
         // For fade out, apply a class with animation reversing opacity to 0.
       */}
       {/* <img
-        src="/Assets/Home - SynBioReactor Summit 2026_files/Betonhalle-Welcome-SBR2026-AI-Nano-Banana.jpeg"
+        src="/Assets/WP_SynBioReactor_Summit_2026_files/Betonhalle-Welcome-SBR2026-AI-Nano-Banana.jpeg"
         alt=""
         className="absolute w-full h-full object-cover no-repeat -z-10 scale-[1.75]"
         aria-hidden="true"
@@ -68,6 +69,7 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Button
               size="lg"
+              onClick={() => window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSf3tJKhQo14tXnFDYWuHBFJ8qulqv55lQZBlpq7G1ZvB4ukLg/viewform?pli=1"}
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg px-8"
             >
               Apply Now
@@ -77,17 +79,17 @@ export function HeroSection() {
               variant="outline"
               className="border-2 border-border hover:bg-card font-semibold text-lg px-8 bg-transparent"
             >
-              View Schedule
+              Contact Us
             </Button>
           </div>
           <div className="flex items-center justify-center gap-8 pt-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-primary" />
-              <span>Berlin, Germany</span>
+              <span>Silent Green, Berlin, Germany</span>
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 text-primary" />
-              <span>Jan 19-20, 2026</span>
+              <span>Jan 19th-20th, 2026</span>
             </div>
           </div>
         </div>
@@ -102,19 +104,19 @@ export function StatsSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="text-center space-y-2">
-            <div className="text-5xl font-bold text-primary">5min</div>
+            <div className="text-5xl font-bold text-primary">2</div>
+            <div className="text-lg text-foreground font-medium">Sessions</div>
+            <div className="text-sm text-muted-foreground">with back2back pitches</div>
+          </div>
+          <div className="text-center space-y-2">
+            <div className="text-5xl font-bold text-primary"> &lt;5min</div>
             <div className="text-lg text-foreground font-medium">Pitch Duration</div>
             <div className="text-sm text-muted-foreground">Followed by Q&A</div>
           </div>
           <div className="text-center space-y-2">
-            <div className="text-5xl font-bold text-primary">15+</div>
+            <div className="text-5xl font-bold text-primary">7</div>
             <div className="text-lg text-foreground font-medium">Expert Judges</div>
-            <div className="text-sm text-muted-foreground">VCs & Industry Leaders</div>
-          </div>
-          <div className="text-center space-y-2">
-            <div className="text-5xl font-bold text-primary">500+</div>
-            <div className="text-lg text-foreground font-medium">Attendees</div>
-            <div className="text-sm text-muted-foreground">Investors & Founders</div>
+            <div className="text-sm text-muted-foreground">from VC & Industry</div>
           </div>
         </div>
       </div>
@@ -124,14 +126,15 @@ export function StatsSection() {
 
 export function BenefitsSection() {
   return (
-    <section className="py-20 px-4 lg:px-8 bg-background">
-      <div className="container mx-auto max-w-6xl">
+    <section className="relative py-20 px-4 lg:px-8 bg-background">
+      <img src={OrangeWaveBG.src} alt="Orange Wave Background" className="absolute bottom-0 left-0 w-full h-full object-cover -z-10" />
+      <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-balance">
             Why Pitch at <span className="text-primary">SynBio Reactor?</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
-            Join Europe's fastest-growing synthetic biology startup ecosystem
+            Join the fast-growing synthetic biology startup ecosystem at the heart of Europe
           </p>
         </div>
 

@@ -1,19 +1,61 @@
 ---
-// Click button, get confetti!
-// Styled by Tailwind :)
+interface Props {
+	class?: string;
+	className?: string;
+	onClick?: string;
+	href?: string;
+}
+
+const { class: classProp, className, onClick, href } = Astro.props;
+const classes = classProp || className || "";
+
+// Extract URL from onClick if it's a window.location.href assignment
+let redirectUrl: string | undefined;
+if (onClick) {
+	const urlMatch = onClick.match(/window\.location\.href\s*=\s*["']([^"']+)["']/);
+	if (urlMatch) {
+		redirectUrl = urlMatch[1];
+	}
+}
+const finalUrl = href || redirectUrl;
 ---
 
-<button
-	class="appearance-none py-2 px-4 bg-purple-500 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75"
->
-	<slot />
-</button>
+	{finalUrl ? (
+		<a
+			href={finalUrl}
+			class={`appearance-none py-2 px-4 bg-transparent font-[Tahoma] text-[20px] font-extrabold uppercase leading-[11px] text-[#F9AC4C] border-2 border-[#F9AC4C] rounded-lg shadow-md hover:bg-[#F9AC4C]/90 hover:text-black bg-[#F9AC4C] text-[#F9AC4C] focus:outline-none focus:ring-2 focus:ring-[#F9AC4C] focus:ring-opacity-75 ${classes}`}
+		>
+			<slot />
+		</a>
+	) : (
+		<button
+			class={`appearance-none py-2 px-4 bg-transparent font-[Tahoma] text-[20px] font-extrabold uppercase leading-[11px] text-[#F9AC4C] border-2 border-[#F9AC4C] rounded-lg shadow-md hover:bg-[#F9AC4C]/90 hover:text-black bg-[#F9AC4C] text-[#F9AC4C] focus:outline-none focus:ring-2 focus:ring-[#F9AC4C] focus:ring-opacity-75 ${classes}`}
+			data-onclick={onClick}
+		>
+			<slot />
+		</button>
+	)}
 
-<script>
-	import confetti from 'canvas-confetti';
-	const button = document.body.querySelector('button');
-
-	if (button) {
-		button.addEventListener('click', () => confetti());
-	}
-</script>
+{onClick && !finalUrl && (
+	<script is:inline>
+		(function() {
+			document.addEventListener('DOMContentLoaded', () => {
+				const buttons = document.querySelectorAll('button[data-onclick]');
+				buttons.forEach((button) => {
+					const onClickCode = button.getAttribute('data-onclick');
+					if (onClickCode) {
+						button.addEventListener('click', () => {
+							try {
+								// Safely execute the onClick code
+								const func = new Function(onClickCode.replace(/^\(\)\s*=>\s*/, ''));
+								func();
+							} catch (e) {
+								console.error('Error executing onClick:', e);
+							}
+						});
+					}
+				});
+			});
+		})();
+	</script>
+)}
