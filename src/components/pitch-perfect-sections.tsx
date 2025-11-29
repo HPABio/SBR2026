@@ -2,7 +2,7 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Lightbulb, Users, TrendingUp, Award, Microscope, Rocket, MapPin, Calendar } from "lucide-react"
-import video from "/Users/hendrikcooper/Local Programming/WEBDEV/Projects-webdev/SBR-AstroPage/AstroPage/public/Assets/pitching_session/PitchingVideo_Example_SBR2026.mp4"
+import video from "/Assets/pitching_session/PitchingVideo_Example_SBR2026.mp4"
 
 export function HeroSection() {
   return (
