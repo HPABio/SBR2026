@@ -4,6 +4,9 @@ import '../styles/global.css';
 import Navigation from '../components/Navigation.astro';
 import HomeHero from '../components/HomeHero.astro';
 import SilentGreen from '../components/SilentGreen.astro';
+// import SynBioWorldCafe from '../components/SynBioWorldCafe.astro';
+import Betonhalle from '../components/Betonhalle.astro';
+import FeaturesSection from '../components/FeaturesSection.astro';
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
@@ -26,7 +29,28 @@ import SilentGreen from '../components/SilentGreen.astro';
 		<Navigation />
 		<main class="pt-16">
 			<HomeHero />
-			<SilentGreen />
+			<div class="text-center space-y-4 mb-16">
+				<h2 class="text-4xl md:text-5xl  text-balance uppercase">
+				  Join us for <span class="font-bold text-primary">Two Days</span>
+				</h2>
+				<p class="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
+				  jam-packed with <a href="/pitchPerfect" class="text-primary hover:underline transition-colors">Pitches</a>, Workshops, Fireside Chats, and so much more
+				</p>
+			  </div>
+			  <FeaturesSection />
+				{/* Arrow shape divider at bottom */}
+				<!-- 				
+				<div class="absolute bottom-0 left-0 right-0 z-10" aria-hidden="true">
+					<svg 
+						xmlns="http://www.w3.org/2000/svg" 
+						viewBox="0 0 700 10" 
+						preserveAspectRatio="none"
+						class="w-full h-10 rotate-180 fill-gray-50"
+					>
+						<path d="M350,10L340,0h20L350,10z" />
+					</svg>
+				</div> -->
+
 		</main>
 	</body>
 </html>

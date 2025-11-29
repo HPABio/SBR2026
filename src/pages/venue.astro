@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+
+// Section Components
+import SilentGreen from '../components/SilentGreen.astro';
+import Betonhalle from '../components/Betonhalle.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Venue - SynBio Reactor Summit 2026</title>
+		<meta name="description" content="Learn about the venue for the SynBio Reactor Summit 2026" />
+	</head>
+
+	<body class="min-h-screen bg-background">
+		<Navigation />
+		<main class="pt-16">
+			<section class="py-20 px-4 lg:px-8">
+				<div class="container mx-auto max-w-4xl">
+					<div class="text-center space-y-4 mb-12">
+						<h1 class="text-4xl md:text-5xl font-bold text-balance">
+							Venue
+						</h1>
+                        <SilentGreen />
+                        <Betonhalle />  
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
