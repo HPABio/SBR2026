@@ -2,18 +2,48 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Lightbulb, Users, TrendingUp, Award, Microscope, Rocket, MapPin, Calendar } from "lucide-react"
+import video from "/Users/hendrikcooper/Local Programming/WEBDEV/Projects-webdev/SBR-AstroPage/AstroPage/public/Assets/pitching_session/PitchingVideo_Example_SBR2026.mp4"
 
 export function HeroSection() {
   return (
     <section className="pt-32 pb-20 px-4 lg:px-8 relative">
       {/* Absolute inset image for background */}
-      <img
+      {/* 
+        We use a wrapper div with animation classes to fade the video in and out.
+        This approach uses Tailwind CSS (or your CSS-in-JS approach) for fading,
+        or, if Tailwind is not available, you should implement your own fading CSS animation.
+      */}
+      <div className="fade-video-wrapper absolute w-full h-full -z-10">
+        <video
+          src={video}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover no-repeat scale-[1.75] fade-in"
+          aria-hidden="true"
+          draggable="false"
+        />
+      </div>
+      {/* 
+        CSS (add in your global CSS for fade effect):
+
+        .fade-in {
+          opacity: 0;
+          animation: fadeInVideo 2s ease-in forwards;
+        }
+        @keyframes fadeInVideo {
+          to { opacity: 1; }
+        }
+        // For fade out, apply a class with animation reversing opacity to 0.
+      */}
+      {/* <img
         src="/Assets/Home - SynBioReactor Summit 2026_files/Betonhalle-Welcome-SBR2026-AI-Nano-Banana.jpeg"
         alt=""
         className="absolute w-full h-full object-cover no-repeat -z-10 scale-[1.75]"
         aria-hidden="true"
         draggable="false"
-      />
+      /> */}
       {/* Gradient overlay from bottom (black) to top (transparent) */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black pointer-events-none" />
       <div className="container mx-auto max-w-6xl relative z-10">
