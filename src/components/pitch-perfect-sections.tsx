@@ -1,9 +1,10 @@
+'use client';
 import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Lightbulb, Users, TrendingUp, Award, Microscope, Rocket, MapPin, Calendar } from "lucide-react"
 import video from "/Assets/pitching_session/PitchingVideo_Example_SBR2026.mp4"
-import OrangeWaveBG from "public/Assets/WP_SynBioReactor_Summit_2026_files/SBR_orange_wave_BG-no_logo.png"
+import SBROrangeWaveBG from "/Assets/WP_SynBioReactor_Summit_2026_files/SBR_orange_wave_BG-no_logo.png";
 
 export function HeroSection() {
   return (
@@ -127,7 +128,7 @@ export function StatsSection() {
 export function BenefitsSection() {
   return (
     <section className="relative py-20 px-4 lg:px-8 bg-background">
-      <img src={OrangeWaveBG.src} alt="Orange Wave Background" className="absolute bottom-0 left-0 w-full h-full object-cover -z-10" />
+      <img src={`${SBROrangeWaveBG.src}`} alt="Orange Wave Background" className="absolute bottom-0 left-0 w-full h-full object-cover -z-10" />
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-balance">
