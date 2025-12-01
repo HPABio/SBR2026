@@ -3,8 +3,8 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Lightbulb, Users, TrendingUp, Award, Microscope, Rocket, MapPin, Calendar } from "lucide-react"
-import video from "/Assets/pitching_session/PitchingVideo_Example_SBR2026.mp4"
-import SBROrangeWaveBG from "/Assets/WP_SynBioReactor_Summit_2026_files/SBR_orange_wave_BG-no_logo.png";
+import video from "@/assets/pitching_session/PitchingVideo_Example_SBR2026.mp4"
+import SBROrangeWaveBG from "@/assets/WP_SynBioReactor_Summit_2026_files/SBR_orange_wave_BG-no_logo.png";
 
 export function HeroSection() {
   return (
@@ -40,7 +40,7 @@ export function HeroSection() {
         // For fade out, apply a class with animation reversing opacity to 0.
       */}
       {/* <img
-        src="/Assets/WP_SynBioReactor_Summit_2026_files/Betonhalle-Welcome-SBR2026-AI-Nano-Banana.jpeg"
+        src="@/assets/WP_SynBioReactor_Summit_2026_files/Betonhalle-Welcome-SBR2026-AI-Nano-Banana.jpeg"
         alt=""
         className="absolute w-full h-full object-cover no-repeat -z-10 scale-[1.75]"
         aria-hidden="true"

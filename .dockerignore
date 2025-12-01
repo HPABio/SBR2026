@@ -44,7 +44,7 @@ README.md
 
 # V0 template files
 /V0-Templates/
-public/Assets/V0 Templates/
+public@/assets/V0 Templates/
 
 # Backup files
 *.backup
