@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  bridge-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - SWAPCARD_API_URL=${SWAPCARD_API_URL:-https://developer.swapcard.com/event-admin/graphql}
+      - SWAPCARD_ACCESS_TOKEN=${SWAPCARD_ACCESS_TOKEN}
+      - SWAPCARD_EVENT_ID=${SWAPCARD_EVENT_ID}
+      - SWAPCARD_DEFAULT_GROUP_ID=${SWAPCARD_DEFAULT_GROUP_ID}
+      - TICKETTAILOR_WEBHOOK_SECRET=${TICKETTAILOR_WEBHOOK_SECRET}
+      - APP_PORT=3000
+      - APP_ENV=${APP_ENV:-development}
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
