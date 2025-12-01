@@ -1,4 +1,5 @@
 ---
+import SBR2026_Logo from "@/assets/WP_SynBioReactor_Summit_2026_files/cropped-SBR2025-Favicon-1-60x60.png";
 // Navigation component for SynBio Reactor Summit
 const currentPath = Astro.url.pathname;
 
@@ -21,7 +22,7 @@ const getLinkClasses = (path: string) => {
     <div class="flex items-center justify-between h-16">
       <a href="/" class="flex items-center gap-2">
         <img 
-          src="@/assets/WP_SynBioReactor_Summit_2026_files/cropped-SBR2025-Favicon-1-60x60.png" 
+          src={SBR2026_Logo.src} 
           alt="SynBio Reactor Logo" 
           class="w-10 h-10"
         />
