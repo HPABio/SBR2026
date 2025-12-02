@@ -2,15 +2,16 @@
 // LiquidButton.astro
 ---
 
-<button class="liquid-button h-10 w-32 relative my-3 px-8 py-4 text-lg text-white bg-[#ff7700] border-none cursor-pointer rounded-[15px]
-overflow-hidden transition-all duration-400 ease-in-out uppercase tracking-[2px] hover:bg-[#ff7700] group ">
-    <div class="relative z-10 text-primary-foreground font-black -translate-y-2 -translate-x-3">TICKETS</div>
-    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-1 transition-all duration-300"></div>
-    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-2 transition-all duration-300"></div>
-    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-3 transition-all duration-300"></div>
-    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-4 transition-all duration-300"></div>
-    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-5 transition-all duration-300"></div>
-    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-6 transition-all duration-300"></div>
+<button class="liquid-button h-10 w-32 relative my-3 px-8 py-4 text-lg text-white bg-[#ff7700] cursor-pointer rounded-[15px]
+overflow-hidden uppercase tracking-[2px] 
+hover:bg-black hover:border-[#ff7700] hover:text-primary border-2 border-black group transition-all duration-300 ease-in-out  ">
+<div class="bubble bg-transparent group-hover:bg-[#ff8800] bubble-4 transition-all duration-300"></div>
+<div class="bubble bg-transparent group-hover:bg-[#ff8800] bubble-5 transition-all duration-300"></div>
+<div class="bubble bg-transparent group-hover:bg-[#ff8800] bubble-1 transition-all duration-300"></div>
+<div class="bubble bg-transparent group-hover:bg-[#ff8800] bubble-3 transition-all duration-300"></div>
+<div class="relative text-primary-foreground font-black -translate-y-3 -translate-x-3 group-hover:text-white">TICKETS</div>
+<div class="bubble bg-transparent group-hover:bg-[#ff8800] bubble-2 transition-all duration-300"></div>
+<div class="bubble bg-transparent group-hover:bg-[#ff8800] bubble-6 transition-all duration-300"></div>
 </button>
   
 <style>
