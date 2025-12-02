@@ -4,11 +4,12 @@ import '../styles/global.css';
 import Navigation from '@/components/Navigation.astro';
 import HomeHero from '@/components/HomeHero.astro';
 import SilentGreen from '@/components/SilentGreen.astro';
-import SwapCardAgenda from '@/components/SwapCardAgenda-iFrame.astro';
 // import SynBioWorldCafe from '@/components/SynBioWorldCafe.astro';
 import Betonhalle from '@/components/Betonhalle.astro';
+import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
 import FeaturesSection from '@/components/FeaturesSection.astro';
 import QRCodeComponent from '@/components/QRCodeComponent.astro';
+import TicketVisual from '@/components/TicketVisual.astro';
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
 ---
@@ -17,7 +18,7 @@ import QRCodeComponent from '@/components/QRCodeComponent.astro';
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="@/assets/WP_SynBioReactor_Summit_2026_files/cropped-SBR2025-Favicon-1-60x60.png" />
+		<link rel="icon" type="image/png" href={SBRFavicon.src} />
 		<meta name="generator" content={Astro.generator} />
 		<title>SynBio Reactor Summit 2026</title>
 		<meta name="description" content="Berlin's premier synthetic biology startup and investor summit" />
@@ -30,7 +31,8 @@ import QRCodeComponent from '@/components/QRCodeComponent.astro';
 		<Navigation />
 		<main class="pt-16">
 			<HomeHero />
-			<div class="text-center space-y-4 mb-16">
+			<FeaturesSection class="mt-[100px]" />
+			<div class="text-center space-y-4 mb-16 px-14">
 				<h2 class="text-4xl md:text-5xl  text-balance uppercase">
 				  Join us for <span class="font-bold text-primary">Two Days</span>
 				</h2>
@@ -38,9 +40,11 @@ import QRCodeComponent from '@/components/QRCodeComponent.astro';
 				  jam-packed with <a href="/pitchPerfect" class="text-primary hover:underline transition-colors">Pitches</a>, Workshops, Fireside Chats, and so much more
 				</p>
 			  </div>
-			  <FeaturesSection />
-			  <QRCodeComponent />
-			  <SwapCardAgenda />
+			  <TicketVisual />
+			  <div class="w-full flex justify-center mb-32">
+				  <QRCodeComponent />
+				</div>
+
 
 				{/* Arrow shape divider at bottom */}
 				<!-- 				
@@ -58,3 +62,7 @@ import QRCodeComponent from '@/components/QRCodeComponent.astro';
 		</main>
 	</body>
 </html>
+
+
+
+

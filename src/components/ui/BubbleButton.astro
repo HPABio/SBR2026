@@ -1,0 +1,94 @@
+---
+// LiquidButton.astro
+---
+
+<button class="liquid-button h-10 w-32 relative my-3 px-8 py-4 text-lg text-white bg-[#ff7700] border-none cursor-pointer rounded-[15px]
+overflow-hidden transition-all duration-400 ease-in-out uppercase tracking-[2px] hover:bg-[#ff7700] group ">
+    <div class="relative z-10 text-primary-foreground font-black -translate-y-2 -translate-x-3">TICKETS</div>
+    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-1 transition-all duration-300"></div>
+    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-2 transition-all duration-300"></div>
+    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-3 transition-all duration-300"></div>
+    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-4 transition-all duration-300"></div>
+    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-5 transition-all duration-300"></div>
+    <div class="bubble bg-transparent group-hover:bg-black/80 bubble-6 transition-all duration-300"></div>
+</button>
+  
+<style>
+.liquid-button::before,
+.liquid-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0);
+    transition: all 0.7s ease;
+    border-radius: 40%;
+    z-index: 0;
+}
+
+/* Bubbles Effect */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    border-radius: 50%;
+    animation: bubble-rise 4s infinite ease-in-out;
+}
+
+.bubble-1 {
+    width: 10px;
+    height: 10px;
+    left: 20%;
+    animation-duration: 4s;
+}
+
+.bubble-2 {
+    width: 15px;
+    height: 15px;
+    left: 35%;
+    animation-duration: 5s;
+}
+
+.bubble-3 {
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    animation-duration: 3.5s;
+}
+
+.bubble-4 {
+    width: 12px;
+    height: 12px;
+    left: 65%;
+    animation-duration: 4.5s;
+}
+
+.bubble-5 {
+    width: 12px;
+    height: 12px;
+    left: 75%;
+    animation-duration: 5.5s;
+}
+
+.bubble-6 {
+    width: 12px;
+    height: 12px;
+    left: 85%;
+    animation-duration: 6.5s;
+}
+
+@keyframes bubble-rise {
+    0% {
+    bottom: -30px;
+    opacity: 0;
+    }
+    50% {
+    opacity: 1;
+    }
+    100% {
+    bottom: 100%;
+    opacity: 0;
+    }
+}
+</style>

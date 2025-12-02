@@ -36,7 +36,7 @@ export function Navigation() {
             </a>
           </div>
 
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary font-semibold">
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary font-semibold ">
             TICKETS
           </Button>
         </div>

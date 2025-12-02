@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
 const { content } = Astro.props;
 ---
 
@@ -7,7 +8,7 @@ const { content } = Astro.props;
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="@/assets/WP_SynBioReactor_Summit_2026_files/cropped-SBR2025-Favicon-1-60x60.png" />
+		<link rel="icon" type="image/png" href={SBRFavicon.src} />
 		<title>{content.title}</title>
 	</head>
 	<body>

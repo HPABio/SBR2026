@@ -1,8 +1,9 @@
 ---
+import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
 ---
 <section class="relative w-full h-screen">
 
-    <script is:inline>
+    <script is:inline async>
         (function() {
     var script = document.createElement("script");
     script.src = "https://app.swapcard.com/widget.js";
@@ -11,6 +12,20 @@
     })();
     </script>
 
-
-<iframe id="sc-widget" class="w-full h-full" src="https://app.swapcard.com/widget/event/synbioreactor-summit-sbr2026/plannings/RXZlbnRWaWV3XzEyNDIwNTM=?paginationMode=infinite&source=script&showActions=true" style="border: none; margin: 0px; width: 100%; display: block; height: 100%;"></iframe>
+<div id="swapcard-iframe-container" class="relative w-full h-full bg-[#121212]">
+    <div id="swapcard-loading" class="absolute inset-0 flex items-center justify-center w-full h-full  z-10">
+        <img src={SBRFavicon.src} alt="SynBio Reactor Summit 2026" class="w-16 h-16 animate-caret-blink duration-500 " />
+        <span class="text-3xl text-gray-500 ml-4">loading...</span>
+    </div>
+    
+    <div class="relative w-full h-full flex items-start justify-center pt-32 z-10">
+        <iframe
+            id="sc-widget"
+            class="w-full h-full relative z-0"
+            src="https://app.swapcard.com/widget/event/synbioreactor-summit-sbr2026/plannings/RXZlbnRWaWV3XzEyNDIwNTM=?paginationMode=infinite&source=script&showActions=true"
+            style="border: none; margin: 0px; width: 100%; display: block; height: 100%;"
+            onload="document.getElementById('swapcard-loading')?.remove();"
+        ></iframe>
+    </div>
+</div>
 </section>

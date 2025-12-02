@@ -3,13 +3,15 @@ import '../styles/global.css';
 // Component Imports
 import Navigation from '@/components/Navigation.astro';
 import ScheduleComponent from '@/components/ScheduleV1.tsx';
+import SwapCardAgenda from '@/components/SwapCardAgenda-iFrame.astro';
+import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href={SBRFavicon.src} />
 		<meta name="generator" content={Astro.generator} />
 		<title>SynBio Reactor Summit 2026</title>
 		<meta name="description" content="Berlin's premier synthetic biology startup and investor summit" />
@@ -18,7 +20,8 @@ import ScheduleComponent from '@/components/ScheduleV1.tsx';
 	<body class="min-h-screen bg-background">
 		<Navigation />
 		<main class="pt-16">
-			<ScheduleComponent client:load />
+			<!-- <ScheduleComponent client:load /> -->
+			<SwapCardAgenda />
 		</main>
 	</body>
 </html>

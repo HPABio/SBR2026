@@ -1,5 +1,6 @@
 ---
-import SBR2026_Logo from "@/assets/WP_SynBioReactor_Summit_2026_files/cropped-SBR2025-Favicon-1-60x60.png";
+import SBRFavicon from "@/assets/WP_SynBioReactor_Summit_2026_files/SBR2026-Favicon-1-60x60.png";
+import BubbleButton from '@/components/ui/BubbleButton.astro';
 // Navigation component for SynBio Reactor Summit
 const currentPath = Astro.url.pathname;
 
@@ -22,7 +23,7 @@ const getLinkClasses = (path: string) => {
     <div class="flex items-center justify-between h-16">
       <a href="/" class="flex items-center gap-2">
         <img 
-          src={SBR2026_Logo.src} 
+          src={SBRFavicon.src} 
           alt="SynBio Reactor Logo" 
           class="w-10 h-10"
         />
@@ -56,9 +57,12 @@ const getLinkClasses = (path: string) => {
         </a>
       </div>
 
-      <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary font-semibold px-4 py-2">
+      <!-- <button class="relative  overflow-visible inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all bg-primary text-primary-foreground 
+      hover:bg-primary/90 group hover:scale-110 border-2 border-primary font-semibold px-4 py-2">
+        <span class="absolute w-full h-[70%]  bottom-0 -right-1 -z-10 rounded-xl bg-[#ffa51f] opacity-30 blur-md group-hover:opacity-100 transition-opacity duration-300" />
         TICKETS
-      </button>
+      </button> -->
+      <BubbleButton />
     </div>
   </div>
 </nav>
