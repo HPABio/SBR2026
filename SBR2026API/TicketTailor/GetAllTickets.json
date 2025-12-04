@@ -1,0 +1,26 @@
+{
+  "name": "GetAllTickets",
+  "request": {
+    "type": "http",
+    "url": "https://api.tickettailor.com/v1/issued_tickets",
+    "scripts": {
+      "preRequest": "",
+      "postResponse": ""
+    },
+    "method": "GET",
+    "queryParams": [],
+    "headers": [],
+    "body": null,
+    "contentType": "text/plain",
+    "auth": {
+      "currentAuthType": "BASIC_AUTH",
+      "authConfigStore": {
+        "BASIC_AUTH": {
+          "username": "sk_10860_183832_b92dbebfd8aec3f6e794eeaca9c37720:",
+          "password": ""
+        }
+      }
+    },
+    "pathVariables": []
+  }
+}

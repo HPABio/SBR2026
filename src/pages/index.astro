@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { Trophy } from 'lucide-react';
 // Component Imports
 import Navigation from '@/components/Navigation.astro';
 import HomeHero from '@/components/HomeHero.astro';
@@ -10,6 +11,8 @@ import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
 import FeaturesSection from '@/components/FeaturesSection.astro';
 import QRCodeComponent from '@/components/QRCodeComponent.astro';
 import TicketVisual from '@/components/TicketVisual.astro';
+import Recap from '@/components/Recap.astro';
+import BubbleButton from '@/components/ui/BubbleButton.astro';
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
 ---
@@ -31,19 +34,42 @@ import TicketVisual from '@/components/TicketVisual.astro';
 		<Navigation />
 		<main class="pt-16">
 			<HomeHero />
-			<FeaturesSection class="mt-[100px]" />
-			<div class="text-center space-y-4 mb-16 px-14">
-				<h2 class="text-4xl md:text-5xl  text-balance uppercase">
-				  Join us for <span class="font-bold text-primary">Two Days</span>
-				</h2>
-				<p class="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
-				  jam-packed with <a href="/pitchPerfect" class="text-primary hover:underline transition-colors">Pitches</a>, Workshops, Fireside Chats, and so much more
-				</p>
-			  </div>
-			  <TicketVisual />
-			  <div class="w-full flex justify-center mb-32">
-				  <QRCodeComponent />
+			
+			
+			<div class="flex flex-col items-center justify-center h-[80vh] w-screen">
+				<FeaturesSection class="" />
+				<div class="w-full flex justify-center mb-14">
+					<BubbleButton text="Time Table" textClass="font-anton font-black text-6xl m-2 tracking-tight uppercase" />
 				</div>
+				<div class="text-center px-14">
+					<h2 class="text-4xl md:text-5xl text-balance uppercase">
+						Join us for <span class="font-black text-primary">Two Days</span>
+					</h2>
+					<p class="text-sm text-muted-foreground max-w-4xl mx-auto text-balance font-quicksand font-light uppercase">
+						jam-packed with <a href="/pitchPerfect" class="text-primary hover:underline transition-colors font-bold"><Trophy className="w-[14px] h-[14px] inline-block mb-1 ml-0.5 mr-1"/>Pitches</a>, <span class="font-bold">Workshops</span>, <span class=" font-bold">Fireside Chats</span>, and so much more
+					</p>
+				</div>
+			</div>
+			
+
+			<div class="w-full flex justify-center mt-32 hidden">
+				<TicketVisual />
+			</div>
+
+
+			<div class="w-full flex justify-center mb-32 hidden">
+				<QRCodeComponent />
+			</div>
+
+
+			<div class="w-full flex justify-center mb-32">
+				<Betonhalle />
+			</div>
+
+
+			<div class="w-full flex justify-center mb-32">
+				<Recap />
+			</div>
 
 
 				{/* Arrow shape divider at bottom */}

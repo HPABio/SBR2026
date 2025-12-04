@@ -4,6 +4,18 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-anton: "Anton", sans-serif;
+  --font-boldonse: "Boldonse", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-quicksand: "Quicksand", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+  --font-roboto-slab: "Roboto Slab", sans-serif;
+  --font-roboto-mono: "Roboto Mono", sans-serif;
+  --font-roboto-condensed: "Roboto Condensed", sans-serif;
+  --font-roboto-serif: "Roboto Serif", sans-serif;
+  --font-roboto-sans: "Roboto Sans", sans-serif;
+  --font-roboto-mono: "Roboto Mono", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -50,7 +62,7 @@
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.18 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.72 0.15 55);
+  --primary:  #F49B2B;
   --primary-foreground: oklch(0.12 0 0);
   --secondary: oklch(0.25 0 0);
   --secondary-foreground: oklch(0.98 0 0);
@@ -204,6 +216,10 @@
   --e-global-typography-text-font-weight: 400;
   --e-global-typography-accent-font-family: "Roboto";
   --e-global-typography-accent-font-weight: 500;
+  --e-global-typography-title-font-family: "Anton";
+  --e-global-typography-title-font-weight: 400;
+  --e-global-typography-subtitle-font-family: "Boldonse";
+  --e-global-typography-subtitle-font-weight: 400;
   --flex-wrap: initial;
   --justify-content: initial;
   --align-items: initial;

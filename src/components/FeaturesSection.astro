@@ -10,59 +10,151 @@ const { class: classProp, className } = Astro.props;
 const classes = classProp || className || "";
 ---
   
-<section class={`relative py-16 bg-black ${classes}`}>
-  <div class="container mx-auto max-w-4xl">
-    <div class="grid grid-cols-2 justify-center lg:justify-between lg:grid-cols-4 gap-y-8 gap-x-14 lg:gap-x-0">
+<section class={`relative py-16 bg-black ${classes} `}>
+  <div class="container mx-auto max-w-7xl hidden border-2 border-blue-500">
+    <div class="grid grid-cols-2 justify-center gap-y-8 gap-x-14 lg:justify-center lg:grid-cols-2 lg:gap-y-20 lg:gap-x-24 ">
 
-        <div class="text-center space-y-2 flex flex-col items-end lg:items-center justify-center">
-          <div class="text-5xl font-bold text-primary">+4
-              <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-                <Layers className="w-7 h-7 text-primary" />
+        <!-- Session Formats -->
+        <div class="text-center space-x-8 flex flex-col items-end lg:items-start justify-center">
+            <div class="text-8xl font-anton font-extrabold text-primary relative mx-auto"><span class="absolute text-6xl -left-7 top-8">+</span>4
+            </div>
+
+            <div class="flex flex-row w-full gap-3 items-center justify-cent1r">
+              <div class="flex justify-center items-center">
+                  <span class="inline-flex items-center justify-center w-10 aspect-square rounded-sm bg-white/10">
+                    <Layers className="w-5 h-5 text-white" />
+                  </span>
+              </div>
+              <div class="flex flex-col items-start justify-center gap-2">
+                <div class="text-lg text-foreground font-quicksand font-medium">Session Formats</div>
+                <div class="-mt-3 text-[0.6rem] font-quicksand text-muted-foreground uppercase">SBWC, workshops, and more</div>
+              </div>
+            </div>
+        </div>
+
+      <!-- Overarching Topics -->
+      <div class="text-center space-x-8 flex flex-col items-start lg:items-center justify-center">
+        <div class="text-8xl font-anton font-extrabold text-primary mt-32">5
+        </div>
+        <div class="flex flex-row w-full h-full gap-3 items-center justify-cent1r">
+          <div class="flex justify-center items-center">
+              <span class="inline-flex items-center justify-center w-10 aspect-square rounded-sm bg-white/10">
+                <LayoutGrid className="w-5 h-5 text-white" />
+              </span>
+          </div>
+          <div class="flex flex-col items-start justify-center gap-2">
+            <div class="text-lg text-foreground font-quicksand font-medium">Overarching Topics</div>
+            <div class="-mt-3 text-[0.6rem] font-quicksand text-muted-foreground uppercase">plus wildcard sessions</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rooms / Stages -->
+      <div class="text-center space-x-8 flex flex-col items-end lg:items-center justify-center">
+        <div class="text-8xl font-anton font-extrabold text-primary -mt-32">8
+        </div>
+          <div class="flex flex-row w-full gap-3 items-center justify-cent1r">
+            <div class="flex justify-center items-center">
+              <span class="inline-flex items-center justify-center w-10 aspect-square rounded-sm bg-white/10">
+                <Spotlight className="w-5 h-5 text-white" />
               </span>
             </div>
-            <div class="text-lg text-foreground font-medium">Session Formats</div>
-            <div class="-mt-3 text-sm text-muted-foreground">SBWC, workshops, and more</div>
-            <div class="flex justify-center items-center mb-2">
+            <div class="flex flex-col items-start justify-center gap-2">
+              <div class="text-lg text-foreground font-quicksand font-medium">Rooms / Stages</div>
+              <div class="-mt-3 text-[0.6rem] font-quicksand text-muted-foreground uppercase">with parallel program</div>
             </div>
-        </div>
-
-
-      <div class="text-center space-y-2 flex flex-col items-start lg:items-center justify-center">
-        <div class="text-5xl font-bold text-primary">5
-            <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-              <LayoutGrid className="w-7 h-7 text-primary" />
-              <!-- <BookOpen className="w-7 h-7 text-primary" /> -->
-            </span>
-          </div>
-          <div class="text-lg text-foreground font-medium">Overarching Topics</div>
-          <div class="-mt-3 text-sm text-muted-foreground">plus wildcard sessions</div>
-          <div class="flex justify-center items-center mb-2">
-          </div>
-      </div>
-      <div class="text-center space-y-2 flex flex-col items-end lg:items-center justify-center">
-        <div class="text-5xl font-bold text-primary">8
-          <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-            <Spotlight className="w-7 h-7 text-primary" />
-            <!-- <Theater className="w-7 h-7 text-primary" />
-            <svg class="fill-primary" height="30px" width="30px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M407.023,138.373c-0.006-0.006-0.01-0.011-0.016-0.017l-66.732-66.732c-6.515-6.516-17.079-6.516-23.594,0l-66.732,66.732 c-0.006,0.006-0.01,0.011-0.016,0.017c-3.203,3.212-4.874,7.563-4.874,11.783V250.26c0,9.214,7.47,16.684,16.684,16.684h133.471 c9.214,0,16.684-7.47,16.684-16.684V150.156C411.897,145.858,410.168,141.527,407.023,138.373z M328.477,107.015l26.456,26.457 H302.02L328.477,107.015z M378.529,233.576h-33.368v-16.684c0-9.214-7.47-16.684-16.684-16.684s-16.684,7.47-16.684,16.684v16.684 h-33.368V166.84h100.104V233.576z"></path> </g> </g> <g> <g> <path d="M328.477,0.001c-101.195,0-183.523,82.329-183.523,183.523c0,44.603,16.001,85.535,42.555,117.374l-23.127,23.127 l-11.798-11.798c-6.515-6.516-17.079-6.516-23.594,0c-5.737,5.737-108.975,108.975-114.317,114.317 c-19.563,19.561-19.564,51.221,0,70.783c19.561,19.561,51.221,19.564,70.783,0c5.194-5.194,108.72-108.72,114.317-114.317 c6.516-6.516,6.516-17.079,0-23.594l-11.798-11.798l23.127-23.127c31.84,26.555,72.771,42.556,117.375,42.556 C429.672,367.047,512,284.719,512,183.524S429.672,0.001,328.477,0.001z M61.861,473.734c-6.506,6.506-17.09,6.506-23.594,0 c-6.505-6.506-6.505-17.09,0-23.594l58.067-58.067l23.594,23.594L61.861,473.734z M143.522,392.073l-23.594-23.594l20.859-20.859 l23.594,23.594L143.522,392.073z M328.477,333.68c-82.796,0-150.155-67.36-150.155-150.155s67.36-150.155,150.155-150.155 s150.155,67.36,150.155,150.155S411.273,333.68,328.477,333.68z"></path> </g> </g> </g></svg> -->
-        </div>
-        </span>
-          <div class="text-lg text-foreground font-medium">Rooms / Stages</div>
-          <div class="-mt-3 text-sm text-muted-foreground">with parallel program</div>
-          <div class="flex justify-center items-center mb-2">
           </div>
       </div>
       
+      <!-- Program Speakers -->
+      <div class="text-center space-x-8 flex flex-col items-start lg:items-center justify-center">
+        <div class="text-8xl font-anton font-extrabold text-primary relative mt-44"><span class="absolute text-6xl -left-7 top-8">+</span>30
+        </div>
+        <div class="flex flex-row w-full gap-3 items-center justify-cent1r">
+          <div class="flex justify-center items-center">
+              <span class="inline-flex items-center justify-center w-10 aspect-square rounded-sm bg-white/10">
+                <Users className="w-5 h-5 text-white" />
+              </span>
+            </div>
+          <div class="flex flex-col items-start justify-center gap-2">
+            <div class="text-lg text-foreground font-quicksand font-medium">Program Speakers</div>
+            <div class="-mt-3 text-[0.6rem] font-quicksand text-muted-foreground uppercase">panelists, and hosts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container mx-auto max-w-6xl">
+    <div class="grid grid-cols-2 justify-center gap-y-8 gap-x-14 lg:justify-between lg:grid-cols-4 lg:gap-x-0">
+
+        <!-- Session Formats -->
+        <div class="text-center space-y-2 flex flex-col items-end lg:items-center justify-center">
+          <div class="text-8xl font-anton font-extrabold text-primary relative"><span class="absolute text-6xl -left-7 top-4">+</span>4
+          </div>
+          <div class="flex flex-row gap-1 ">
+            <div class="flex justify-center items-center">
+                <span class="inline-flex items-center justify-center w-6 aspect-square rounded-sm bg-white/10">
+                  <Layers className="w-3 h-3 text-white" />
+                </span>
+            </div>
+            <div class="flex flex-col w-full h-full items-start justify-center gap-2">
+              <div class="text-lg text-foreground font-quicksand font-medium">Session Formats</div>
+            </div>
+          </div>
+          <div class="-mt-2 text-[0.6rem] font-quicksand text-muted-foreground uppercase">SBWC, workshops, and more</div>
+        </div>
+
+      <!-- Overarching Topics -->
       <div class="text-center space-y-2 flex flex-col items-start lg:items-center justify-center">
-        <div class="text-5xl font-bold text-primary">+30
-            <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-              <Users className="w-7 h-7 text-primary" />
-            </span>
+        <div class="text-8xl font-anton font-extrabold text-primary">5
+        </div>
+        <div class="flex flex-row gap-1 ">
+          <div class="flex justify-center items-center">
+              <span class="inline-flex items-center justify-center w-6 aspect-square rounded-sm bg-white/10">
+                <LayoutGrid className="w-3 h-3 text-white" />
+              </span>
           </div>
-          <div class="text-lg text-foreground font-medium">Program Speakers</div>
-          <div class="-mt-3 text-sm text-muted-foreground">panelists, and hosts</div>
-          <div class="flex justify-center items-center mb-2">
+          <div class="flex flex-col w-full h-full items-start justify-center gap-2">
+            <div class="text-lg text-foreground font-quicksand font-medium">Big Topics</div>
           </div>
+        </div>
+        <div class="-mt-3 text-[0.6rem] font-quicksand text-muted-foreground uppercase"><span class="text-[0.8rem]">+</span> wildcard sessions</div>
+      </div>
+
+      <!-- Rooms / Stages -->
+      <div class="text-center space-y-2 flex flex-col items-end lg:items-center justify-center">
+        <div class="text-8xl font-anton font-extrabold text-primary">8
+        </div>
+          <div class="flex flex-row gap-1 ">
+            <div class="flex justify-center items-center">
+              <span class="inline-flex items-center justify-center w-6 aspect-square rounded-sm bg-white/10">
+                <Spotlight className="w-3 h-3 text-white" />
+              </span>
+            </div>
+            <div class="flex flex-col w-full h-full items-start justify-center gap-2">
+              <div class="text-lg text-foreground font-quicksand font-medium">Rooms / Stages</div>
+            </div>
+          </div>
+          <div class="-mt-2 text-[0.6rem] font-quicksand text-muted-foreground uppercase">with parallel program</div>
+      </div>
+      
+      <!-- Program Speakers -->
+      <div class="text-center space-y-2 flex flex-col items-start lg:items-center justify-center">
+        <div class="text-8xl font-anton font-extrabold text-primary relative"><span class="absolute text-6xl -left-7 top-4">+</span>30
+        </div>
+        <div class="flex flex-row gap-1 ">
+          <div class="flex justify-center items-center">
+              <span class="inline-flex items-center justify-center w-6 aspect-square rounded-sm bg-white/10">
+                <Users className="w-3 h-3 text-white" />
+              </span>
+            </div>
+          <div class="flex flex-col w-full h-full items-start justify-center gap-2">
+            <div class="text-lg text-foreground font-quicksand font-medium">Program Speakers</div>
+          </div>
+        </div>
+        <div class="-mt-2 text-[0.6rem] font-quicksand text-muted-foreground uppercase">panelists, and hosts</div>
       </div>
     </div>
   </div>
