@@ -13,6 +13,7 @@ import QRCodeComponent from '@/components/QRCodeComponent.astro';
 import TicketVisual from '@/components/TicketVisual.astro';
 import Recap from '@/components/Recap.astro';
 import BubbleButton from '@/components/ui/BubbleButton.astro';
+import SwapCardSection from '@/components/SwapCardSection.astro';
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
 ---
@@ -38,9 +39,9 @@ import BubbleButton from '@/components/ui/BubbleButton.astro';
 			
 			<div class="flex flex-col items-center justify-center h-[80vh] w-screen">
 				<FeaturesSection class="" />
-				<div class="w-full flex justify-center mb-14">
-					<BubbleButton text="Time Table" textClass="font-anton font-black text-6xl m-2 tracking-tight uppercase" />
-				</div>
+				<a href="/schedule" class="w-full flex justify-center mb-14">
+					<BubbleButton text="Check Out Time Table" textClass="font-anton font-black text-6xl m-2 tracking-tight uppercased" />
+				</a>
 				<div class="text-center px-14">
 					<h2 class="text-4xl md:text-5xl text-balance uppercase">
 						Join us for <span class="font-black text-primary">Two Days</span>
@@ -62,14 +63,18 @@ import BubbleButton from '@/components/ui/BubbleButton.astro';
 			</div>
 
 
-			<div class="w-full flex justify-center mb-32">
+			<div class="w-full flex justify-center ">
 				<Betonhalle />
 			</div>
 
+			<div class="w-full flex justify-center mb-32">
+				<SwapCardSection />
+			</div>
 
+<!-- 
 			<div class="w-full flex justify-center mb-32">
 				<Recap />
-			</div>
+			</div> -->
 
 
 				{/* Arrow shape divider at bottom */}

@@ -1,0 +1,29 @@
+---
+import SwapCardMockup from '@/assets/SwapCard/SwapCardMockUp2_noBG.png';
+import SwapCardLogo from '@/assets/SwapCard/swapcard_LogoWhite.png';
+import BubbleButtonSwapCard from '@/components/ui/BubbleButtonSwapCard.astro';
+---
+
+<section class="relative w-full h-screen px-12 mt-32">
+    <div class="w-full flex justify-center ">
+        <div class="mx-auto flex flex-col items-start justify-center">
+            <h3 class="text-sm text-center text-muted-foreground font-quicksand font-bold leading-tight uppercase lg:mb-[1vw]">check out our Event Platform</h3>
+            <img src={SwapCardLogo.src} alt="SwapCard Logo" class="w-[60vw] max-w-md  object-cover -mt-[4vw]" />
+        </div>
+    </div>
+    <div class="max-w-5xl mx-auto flex items-center justify-center gap-10 lg:gap-x-20">
+        <div class=" max-w-[25rem] w-full">
+            <img src={SwapCardMockup.src} alt="SwapCard Mockup" class="w-full h-full object-cover" />
+        </div>
+        <div class="gap-y-2 flex flex-col w-[70%]">
+            <div class="border-t-4 border-[#35CB85] w-18 rounded-full my-2"/>
+            <h2 class="text-4xl md:text-5xl font-anton font-black uppercase">Connect with attendees <br/>and speakers</h2>
+            <p class="hidden lg:block lg:w-[60%] text-[0.7rem] md:text-[0.8rem] text-muted-foreground font-quicksand font-light leading-tight mb-4">
+                Favorite sessions, book on site meetings, <br/>research attendees and speakers, and more <br/> - all in one place.
+            </p>
+            <div class="w-full flex justify-start">
+                <BubbleButtonSwapCard text="Take a look" class="rounded-md mt-4" textClass="text-xl lg:text-3xl m-1 font-anton font-bold text-highlight leading-tight uppercase" />
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,105 @@
+---
+import type { Props as NAMESectionProps } from 'astro';
+interface Props extends NAMESectionProps {
+    class?: string;
+    text?: string;
+    textClass?: string;
+}
+const { class: classProp, className } = Astro.props;
+const classes = classProp || className || "";
+const { text } = Astro.props;
+const { textClass } = Astro.props;
+---
+
+
+<button class={`liquid-button relative text-white bg-[#35CB85] cursor-pointer 
+overflow-hidden uppercase hover:bg-white hover:border-[ #35CB85] hover:text-[#35CB85] 
+border-2 border-transparent group transition-all duration-300 ease-in-out ${classes}`}>
+<div class="bubble bg-transparent group-hover:bg-[#35CB85] bubble-4 transition-all duration-300"></div>
+<div class="bubble bg-transparent group-hover:bg-[#35CB85] bubble-5 transition-all duration-300"></div>
+<div class="bubble bg-transparent group-hover:bg-[#35CB85] bubble-1 transition-all duration-300"></div>
+<div class="bubble bg-transparent group-hover:bg-[#35CB85] bubble-3 transition-all duration-300"></div>
+<div class={`relative group-hover:text-black ${textClass}`}>{text}</div>
+<div class="bubble bg-transparent group-hover:bg-[#35CB85] bubble-2 transition-all duration-300"></div>
+<div class="bubble bg-transparent group-hover:bg-[#35CB85] bubble-6 transition-all duration-300"></div>
+</button>
+  
+<style>
+.liquid-button::before,
+.liquid-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0);
+    transition: all 0.7s ease;
+    border-radius: 40%;
+    z-index: 0;
+}
+
+/* Bubbles Effect */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    border-radius: 50%;
+    animation: bubble-rise 4s infinite ease-in-out;
+}
+
+.bubble-1 {
+    width: 10px;
+    height: 10px;
+    left: 20%;
+    animation-duration: 4s;
+}
+
+.bubble-2 {
+    width: 15px;
+    height: 15px;
+    left: 35%;
+    animation-duration: 5s;
+}
+
+.bubble-3 {
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    animation-duration: 3.5s;
+}
+
+.bubble-4 {
+    width: 12px;
+    height: 12px;
+    left: 65%;
+    animation-duration: 4.5s;
+}
+
+.bubble-5 {
+    width: 12px;
+    height: 12px;
+    left: 75%;
+    animation-duration: 5.5s;
+}
+
+.bubble-6 {
+    width: 12px;
+    height: 12px;
+    left: 85%;
+    animation-duration: 6.5s;
+}
+
+@keyframes bubble-rise {
+    0% {
+    bottom: -30px;
+    opacity: 0;
+    }
+    50% {
+    opacity: 1;
+    }
+    100% {
+    bottom: 100%;
+    opacity: 0;
+    }
+}
+</style>
