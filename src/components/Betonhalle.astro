@@ -1,7 +1,10 @@
 ---
 // Betonhalle Section Component
-import OrangeWaveBG from '@/assets/WP_SynBioReactor_Summit_2026_files/SBR_orange_wave_BG-no_logo.png';
-import BetonhalleEmpty from '@/assets/WP_SynBioReactor_Summit_2026_files/Betonhalle_empty_1920px.webp';
+//images import
+import SBROrangeWaveBG from '@/assets/ExportWP/SBR_OrangeWave_BG.png';
+import BetonhalleEmpty from '@/assets/ExportWP/Betonhalle_empty_1920px.webp';
+import SilentGreenLogo from '@/assets/ExportWP/SilentGreenLogo-1024x601.png';
+import SilentGreenTotalSideviewBlueprint from '@/assets/ExportWP/SilentGreenTotalSideviewBlueprint.png';
 import BubbleButton from './ui/BubbleButton.astro';
 import { MapPin } from 'lucide-react';
 ---
@@ -20,19 +23,19 @@ import { MapPin } from 'lucide-react';
 	</div> -->
 
 	<div class="mt-[-60px] w-full relative flex flex-col pt-[300px] pb-32">
-		<img src={OrangeWaveBG.src} alt="Orange Wave Background" class="w-full h-full object-cover object-top absolute inset-0 z-0" />
+		<img src={SBROrangeWaveBG.src} alt="Orange Wave Background" class="w-full h-full object-cover object-top absolute inset-0 z-0" >
 		<div class="w-full flex flex-col  items-center gap-y-5 gap-x-5  mx-auto">
 			<div class="text-center w-full relative z-10 ">
 				<div class="w-full">
 					<h1 class="text-black font-anton font-black text-8xl uppercase tracking-tight">We Are Back</h1>
 					<h2 class="text-[#313131] leading-[27.3px] font-normal text-[21px] clear-both  my-2">- at -</h2>
 				</div>
-				<img loading="lazy" src="https://www.synbioreactor.de/wp-content/uploads/2025/09/silent-green-logo-1024x601.png" class="w-[20%] max-w-full h-full relative mx-auto ">
+				<img loading="lazy" src={SilentGreenLogo.src} class="w-[20%] max-w-full h-full relative mx-auto ">
 			</div>
 		</div>
 		<div class="w-full flex flex-row items-center justify-center mb-10 -mt-4">
 			<!-- <MapPin className="w-16 h-16 relative stroke-black translate-y-5" /> -->
-			<BubbleButton text="CHECK THE VENUE" class="rounded-md mt-10 bg-transparent " textClass="text-7xl mx-1 font-anton font-black tracking-tight uppercase" icon="hidden"/>
+			<BubbleButton text="CHECK THE VENUE" class="rounded-md mt-10 bg-transparent" textClass="text-7xl mx-1 font-anton font-black tracking-tight uppercase" icon="hidden"/>
 		</div>
 	</div>
 
@@ -41,14 +44,15 @@ import { MapPin } from 'lucide-react';
 			<div class="hidden">
 				<div class="text-center min-w-0 max-w-full relative gap-y-0 gap-x-0 ">
 					<div class="h-full ">
-					<h2 class="text-white leading-[61.1px] [font-family:Tahoma,sans-serif,system-ui,sans-serif] font-extrabold text-[47px] tracking-[7.2px] clear-both caret-white my-0">WORKSHOPS &amp; FIRE SIDE CHATS</h2>
-				</div>
+						<h2 class="text-white leading-[61.1px] font-extrabold text-[47px] tracking-[7.2px] clear-both caret-white my-0">WORKSHOPS &amp; FIRE SIDE CHATS</h2>
+					</div>
 				</div>
 				<div class="text-center min-w-0 max-w-full relative gap-y-0 gap-x-0 ">
 					<div class="h-full  mt-[-7px] mr-[-7px] mb-[-7px] ml-[-7px]">
-					<h2 class="text-white leading-[27.3px] font-normal text-[21px] clear-both caret-white my-0">- partake in great interactive sessions in<span class="caret-white">5 ateliers -</span>
-				</h2>
-				</div>
+						<h2 class="text-white leading-[27.3px] font-normal text-[21px] clear-both caret-white my-0">- partake in great interactive sessions in
+							<span class="caret-white">5 ateliers -</span>
+						</h2>
+					</div>
 				</div>
 				<div class="w-full min-w-0 max-w-full relative gap-y-0 gap-x-0 ">
 					<div class="h-full  rounded-br-[20px] rounded-t-[20px] rounded-bl-[20px]">
@@ -99,13 +103,12 @@ import { MapPin } from 'lucide-react';
 				</div>
 				</div>
 				</div>
-				<div class="w-full min-w-0 max-w-full relative shrink-0 gap-y-0 gap-x-0 ">
+				<div class="w-full min-w-0 max-w-full relative shrink-0 gap-y-0 gap-x-0 border-2 border-red-500">
 					<div class="w-full h-full ">
-					<div class="h-full ">
-					<div class="h-[60px] ">
+						<div class="h-full ">
+							<div class="h-[60px] "></div>
+						</div>
 					</div>
-				</div>
-				</div>
 				</div>
 			</div>
 	</div>
