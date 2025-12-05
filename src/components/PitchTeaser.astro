@@ -2,7 +2,7 @@
 import SwapCardMockup from '@/assets/SwapCard/SwapCardMockUp2_noBG.png';
 import SwapCardLogo from '@/assets/SwapCard/swapcard_LogoWhite.png';
 import BubbleButton from '@/components/ui/BubbleButton.astro';
-import { LaurelWreath } from './ui/laurel-wreath';
+import LaurelWreath from '@/components/ui/LaurelWreath.astro';
 ---
 
 <!-- Container -->
@@ -20,9 +20,9 @@ import { LaurelWreath } from './ui/laurel-wreath';
     <div class="max-w-5xl mx-auto flex items-center justify-center gap-10 lg:gap-x-20">
         
                 <!-- Text -->
-                <div class="gap-y-2 flex flex-col items-end w-[70%]">
+                <div class="gap-y-2 flex flex-col items-end w-[70%] relative">
                     
-                    <div class="hidden border-t-4 border-[#F49B2B] w-18 rounded-full my-2"/>
+                    <div class="border-t-4 border-[#F49B2B] w-18 rounded-full my-2"/>
                     <h2 class="text-4xl text-end  md:text-5xl font-anton font-black uppercase">Looking for a<br/>chance to pitch
                     </h2>
                     <!-- lifebuoy -->
@@ -34,8 +34,8 @@ import { LaurelWreath } from './ui/laurel-wreath';
                     <p class="hidden lg:block lg:w-[60%] text-end  text-[0.7rem] md:text-[0.8rem] text-muted-foreground font-quicksand font-light leading-tight mb-4">
                         Favorite sessions, book on site meetings, <br/>research attendees and speakers, and more <br/> - all in one place.
                     </p>
-                    <LaurelWreath/>
-                    <div class="w-full flex justify-end">
+                    <div class="w-full flex justify-end relative z-10 mt-10">
+                        <LaurelWreath color="#F49B2B" class="w-32 lg:w-44 absolute -top-2 lg:-top-6 right-2 lg:right-4"/>
                         <BubbleButton text="Pitching Contest" icon="hidden"
                         class="rounded-md mt-4" textClass="text-xl lg:text-3xl m-1 font-anton font-bold leading-tight uppercase" />
                     </div>

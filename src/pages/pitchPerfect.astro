@@ -1,30 +1,19 @@
 ---
-import '@/styles/global.css';
+import Layout from '@/layouts/main.astro';
 import Navigation from '@/components/Navigation.astro';
 import { PitchForm } from '@/components/pitch-form';
 import {
-  HeroSection,
-  StatsSection,
-  BenefitsSection,
-  JudgesSection,
-  CTASection,
-  Footer,
+	HeroSection,
+	StatsSection,
+	BenefitsSection,
+	JudgesSection,
+	CTASection,
+	Footer
 } from '@/components/pitch-perfect-sections';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="@/assets/ExportWP/cropped-SBR2025-Favicon-1-60x60.png" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Pitch Perfect - SynBio Reactor Summit 2026</title>
-		<meta name="description" content="Pitch your synthetic biology startup at Berlin's premier StartUp x Investor Summit" />
-	</head>
-
-	<body class="min-h-screen bg-background">
-		<Navigation />
-		
+<Layout content={{ title: "Pitch Perfect - SynBio Reactor Summit 2026" }}>
+	<Navigation />
 		<HeroSection client:load />
 		<StatsSection client:load />
 		<BenefitsSection client:load />
@@ -48,5 +37,4 @@ import {
 
 		<CTASection client:load />
 		<Footer client:load />
-	</body>
-</html>
+</Layout>

@@ -4,11 +4,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Lightbulb, Users, TrendingUp, Award, Microscope, Rocket, MapPin, Calendar } from "lucide-react"
 import video from "@/assets/pitching_session/PitchingVideo_Example_SBR2026.mp4"
-import SBROrangeWaveBG from "@/assets/ExportWP/SBR_OrangeWave_BG.png";
+import SBROrangeWaveBG from "@/assets/ExportWP/bgImages/SBR_OrangeWave_BG.png";
+import { LaurelWreath } from '@/components/ui/laurel-wreath';
 
 export function HeroSection() {
   return (
-    <section className="pt-32 pb-20 px-4 lg:px-8 relative">
+    <section className="pt-44 pb-20 px-4 lg:px-8 relative">
       {/* Absolute inset image for background */}
       {/* 
         We use a wrapper div with animation classes to fade the video in and out.
@@ -47,27 +48,30 @@ export function HeroSection() {
         draggable="false"
       /> */}
       {/* Gradient overlay from bottom (black) to top (transparent) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-black via-black/70 to-black pointer-events-none" />
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="text-center space-y-6">
-          <div className="inline-block">
-            <span className="text-sm font-mono text-primary uppercase tracking-wider">StartUp x Investor Summit</span>
+        <div className="text-center space-y-0">
+          <div className="">
+            <LaurelWreath color="#F49B2B" classes="w-14"/> 
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-balance leading-tight">
-            <span
-              className="font-black bg-gradient-to-tl from-[#dd5404] to-[#ff8800] bg-clip-text text-transparent inline-block"
-            >
-              PITCH
-            </span>{" "}
-            YOUR
-            <br />
-            <span className="text-foreground">SYNBIO STARTUP</span>
+          <div className="-mt-2">
+            <span className="text-xs text-muted-foreground font-quicksand font-light uppercase tracking-widest">StartUp x Investor Summit</span>
+          </div>
+          <h1 className="font-bold  uppercase text-balance leading-none mt-2">
+            <span className="font-black text-8xl md:text-9xl text-foregroundinline-block tracking-widest">
+              SYNBIO
+            </span>
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-balance leading-relaxed">
+          <h1 className="text-[2.5rem] md:text-7xl font-bold  uppercase text-balance leading-none -mt-2 md:-mt-4">
+              STARTUP {''}
+            <span className="font-black bg-linear-to-tl from-[#dd5404] to-[#ff8800] bg-clip-text text-transparent">
+              PITCHES</span>
+          </h1>
+          <p className="text-[0.7rem] md:text-sm font-quicksand font-medium text-muted-foreground max-w-2xl md:max-w-3xl mx-auto text-balance leading-4 md:leading-4.5 tracking-wide">
             Present your groundbreaking synthetic biology innovation to leading investors and industry experts at
             Berlin's premier biotech summit
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div className="flex flex-row items-center justify-center gap-4 pt-4 mt-6">
             <Button
               size="lg"
               onClick={() => window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSf3tJKhQo14tXnFDYWuHBFJ8qulqv55lQZBlpq7G1ZvB4ukLg/viewform?pli=1"}
@@ -83,7 +87,7 @@ export function HeroSection() {
               Contact Us
             </Button>
           </div>
-          <div className="flex items-center justify-center gap-8 pt-8 text-sm text-muted-foreground">
+          <div className="flex items-center justify-center gap-8 pt-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-primary" />
               <span>Silent Green, Berlin, Germany</span>
@@ -104,21 +108,28 @@ export function StatsSection() {
     <section className="py-16 px-4 lg:px-8 bg-black">
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center space-y-2">
-            <div className="text-5xl font-bold text-primary">2</div>
-            <div className="text-lg text-foreground font-medium">Sessions</div>
-            <div className="text-sm text-muted-foreground">with back2back pitches</div>
+          <div className="text-center relative">
+            <div className="absolute h-[40%] top-1/2 right-0 -translate-y-1/2
+            rounded-full bg-primary border-r border-muted-foreground"/>
+            <div className="text-9xl font-anton font-bold text-primary">2</div>
+            <div className="text-lg font-quicksand  text-foreground font-light">Sessions</div>
+            <div className="text-sm text-muted-foreground -mt-2">with back2back pitches</div>
           </div>
-          <div className="text-center space-y-2">
-            <div className="text-5xl font-bold text-primary"> &lt;5min</div>
-            <div className="text-lg text-foreground font-medium">Pitch Duration</div>
-            <div className="text-sm text-muted-foreground">Followed by Q&A</div>
+
+          <div className="text-center ">
+            <div className="text-9xl font-anton font-bold text-primary"> &lt;5min</div>
+            <div className="text-lg font-quicksand  text-foreground font-light">Pitch Duration</div>
+            <div className="text-sm text-muted-foreground -mt-2">Followed by Q&A</div>
           </div>
-          <div className="text-center space-y-2">
-            <div className="text-5xl font-bold text-primary">7</div>
-            <div className="text-lg text-foreground font-medium">Expert Judges</div>
-            <div className="text-sm text-muted-foreground">from VC & Industry</div>
+
+          <div className="text-center relative">
+            <div className="absolute h-[40%] top-1/2 -translate-y-1/2
+            rounded-full  border-r border-muted-foreground"/>
+            <div className="text-9xl font-anton font-bold text-primary">7</div>
+            <div className="text-lg font-quicksand  text-foreground font-light">Expert Judges</div>
+            <div className="text-sm text-muted-foreground -mt-2">from VC & Industry</div>
           </div>
+
         </div>
       </div>
     </section>
@@ -127,11 +138,12 @@ export function StatsSection() {
 
 export function BenefitsSection() {
   return (
-    <section className="relative py-20 px-4 lg:px-8 bg-background">
-      <img src={`${SBROrangeWaveBG.src}`} alt="Orange Wave Background" className="absolute bottom-0 left-0 w-full h-full object-cover -z-10" />
-      <div className="container mx-auto max-w-6xl relative z-10">
+    <section className="relative py-20 px-4 lg:px-8 bg-background z-0 overflow-hidden">
+      <img src={`${SBROrangeWaveBG.src}`} alt="Orange Wave Background" className="absolute top-24 translate-y-[140px] md:translate-y-[200px] left-0 w-full h-full object-cover object-top" />
+      <div className="absolute w-full h-[0px] bg-linear-to-b from-primary via-black/70 to-black pointer-events-none" />
+      <div className="container mx-auto max-w-6xl relative z-10 mt-32 ">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-balance">
+          <h2 className="text-4xl md:text-8xl font-bold font-anton uppercase text-balance">
             Why Pitch at <span className="text-primary">SynBio Reactor?</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
@@ -139,7 +151,7 @@ export function BenefitsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-44 sm:mt-44">
           <Card className="bg-card border-border hover:border-primary/50 transition-colors">
             <CardContent className="pt-6 space-y-4">
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -251,7 +263,7 @@ export function JudgesSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 z-10">
           {judges.map((judge, index) => (
             <Card key={index} className="bg-card border-border">
               <CardContent className="pt-6 space-y-3">
