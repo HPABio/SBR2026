@@ -62,9 +62,44 @@ const getLinkClasses = (path: string) => {
         <span class="absolute w-full h-[70%]  bottom-0 -right-1 -z-10 rounded-xl bg-[#ffa51f] opacity-30 blur-md group-hover:opacity-100 transition-opacity duration-300" />
         TICKETS
       </button> -->
-      <BubbleButton text="TICKETS" class="rounded-md" textClass="text-3xl mx-1 font-anton font-black tracking-tight uppercase" 
-      iconClass="h-8  fill-black group-hover:fill-white -translate-y-[4px] m-0 ml-0"/>
+      <div id="nav-ticket-button" class="opacity-0 pointer-events-none transition-opacity duration-300">
+        <BubbleButton text="TICKETS" class="rounded-md" textClass="text-3xl mx-1 font-anton font-black tracking-tight uppercase" 
+        iconClass="h-8  fill-black group-hover:fill-white -translate-y-[4px] m-0 ml-0"/>
+      </div>
     </div>
   </div>
 </nav>
+
+<script>
+  // Show navigation ticket button when hero ticket button is out of view
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroButton = document.getElementById('hero-ticket-button');
+    const navButton = document.getElementById('nav-ticket-button');
+    
+    if (!heroButton || !navButton) return;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // When hero button is NOT intersecting (out of view), show nav button
+          if (!entry.isIntersecting) {
+            navButton.classList.remove('opacity-0', 'pointer-events-none');
+            navButton.classList.add('opacity-100', 'pointer-events-auto');
+          } else {
+            // When hero button is visible, hide nav button
+            navButton.classList.add('opacity-0', 'pointer-events-none');
+            navButton.classList.remove('opacity-100', 'pointer-events-auto');
+          }
+        });
+      },
+      {
+        // Trigger when button is completely out of view
+        threshold: 0,
+        rootMargin: '0px'
+      }
+    );
+    
+    observer.observe(heroButton);
+  });
+</script>
 
