@@ -1,14 +1,17 @@
 ---
-import '../styles/global.css';
+import Layout from '@/layouts/main.astro';
 import { Trophy } from 'lucide-react';
+
+
+
 // Component Imports
 import Navigation from '@/components/Navigation.astro';
 import HomeHero from '@/components/HomeHero.astro';
 import SilentGreen from '@/components/SilentGreen.astro';
 // import SynBioWorldCafe from '@/components/SynBioWorldCafe.astro';
-import Betonhalle from '@/components/Betonhalle.astro';
+import BetonhalleTeaser from '@/components/BetonhalleTeaser.astro';
 import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
-import FeaturesSection from '@/components/FeaturesSection.astro';
+import FeatureSection from '@/components/FeatureSection.astro';
 import QRCodeComponent from '@/components/QRCodeComponent.astro';
 import TicketVisual from '@/components/TicketVisual.astro';
 import Recap from '@/components/Recap.astro';
@@ -20,89 +23,61 @@ import SBWCSection from '@/components/SBWCSection.astro';
 // https://docs.astro.build/basics/astro-components/
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href={SBRFavicon.src} />
-		<meta name="generator" content={Astro.generator} />
-		<title>SynBio Reactor Summit 2026</title>
-		<meta name="description" content="Berlin's premier synthetic biology startup and investor summit" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
-	</head>
 
-	<body class="min-h-screen bg-background">
-		<Navigation />
-		<main class="pt-16">
-			<HomeHero />
-			
-			
-			<div class="flex flex-col items-center justify-center h-[80vh] w-screen">
-				<FeaturesSection class="" />
-				<a href="/schedule" class="w-full flex justify-center mb-14">
-					<BubbleButton text="Check Out Time Table" textClass="font-anton font-black text-6xl m-2 tracking-tight uppercased" icon="hidden"/>
-				</a>
-				<div class="text-center px-14">
-					<h2 class="text-4xl md:text-5xl text-balance uppercase">
-						Join us for <span class="font-black text-primary">Two Days</span>
-					</h2>
-					<p class="text-sm text-muted-foreground max-w-4xl mx-auto text-balance font-quicksand font-light uppercase">
-						jam-packed with <a href="/pitchPerfect" class="text-primary hover:underline transition-colors font-bold"><Trophy className="w-[14px] h-[14px] inline-block mb-1 ml-0.5 mr-1"/>Pitches</a>, <span class="font-bold">Workshops</span>, <span class=" font-bold">Fireside Chats</span>, and so much more
-					</p>
-				</div>
-			</div>
-			
+<Layout content={{ title: "SynBio Reactor Summit 2026" }}>
 
-			<div class="w-full flex justify-center mt-32 hidden">
-				<TicketVisual />
-			</div>
+	<Navigation />
+	<main class="pt-16">
+		<HomeHero />
+		<FeatureSection />
 
 
-			<div class="w-full flex justify-center mb-32 hidden">
-				<QRCodeComponent />
-			</div>
+		<div class="w-full flex justify-center mt-32 hidden">
+			<TicketVisual />
+		</div>
 
 
-			<div class="w-full flex justify-center ">
-				<Betonhalle />
-			</div>
+		<div class="w-full flex justify-center mb-32 hidden">
+			<QRCodeComponent />
+		</div>
 
-			<div class="w-full flex justify-center mb-32">
-				<SwapCardSection />
-			</div>
 
-			<div class="w-full flex justify-center mb-32">
-				<PitchTeaser/>
-			</div>
+		<div class="w-full flex justify-center ">
+			<BetonhalleTeaser />
+		</div>
 
-			<div class="w-full flex justify-center mb-32">
-				<SBWCSection/>
-			</div>
+		<div class="w-full flex justify-center mb-32">
+			<SwapCardSection />
+		</div>
 
-<!-- 
-			<div class="w-full flex justify-center mb-32">
-				<Recap />
+		<div class="w-full flex justify-center mb-32">
+			<PitchTeaser/>
+		</div>
+
+		<div class="w-full flex justify-center mb-32">
+			<SBWCSection/>
+		</div>
+
+		<!-- 
+		<div class="w-full flex justify-center mb-32">
+			<Recap />
+		</div> -->
+
+
+			{/* Arrow shape divider at bottom */}
+			<!-- 				
+			<div class="absolute bottom-0 left-0 right-0 z-10" aria-hidden="true">
+				<svg 
+					xmlns="http://www.w3.org/2000/svg" 
+					viewBox="0 0 700 10" 
+					preserveAspectRatio="none"
+					class="w-full h-10 rotate-180 fill-gray-50"
+				>
+					<path d="M350,10L340,0h20L350,10z" />
+				</svg>
 			</div> -->
-
-
-				{/* Arrow shape divider at bottom */}
-				<!-- 				
-				<div class="absolute bottom-0 left-0 right-0 z-10" aria-hidden="true">
-					<svg 
-						xmlns="http://www.w3.org/2000/svg" 
-						viewBox="0 0 700 10" 
-						preserveAspectRatio="none"
-						class="w-full h-10 rotate-180 fill-gray-50"
-					>
-						<path d="M350,10L340,0h20L350,10z" />
-					</svg>
-				</div> -->
-
-		</main>
-	</body>
-</html>
+	</main>
+</Layout>
 
 
 

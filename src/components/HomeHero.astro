@@ -2,9 +2,9 @@
 import BubbleButton from "@/components/ui/BubbleButton.astro";
 import Button from "@/components/Button.astro";
 import SBR2026_WebPage_HeroVideo from "@/assets/SBR2026_WebPage_Hero.mp4";
-import SBR2026_Hero_Image from "@/assets/ExportWP/HeroSection_GASB_Location.png";
-import SBR2025_Logo from "@/assets/ExportWP/SBR2025-Logo.png";
-import BetonhalleWelcome from '@/assets/ExportWP/Betonhalle-Welcome-SBR2026-AI-Nano-Banana.jpeg';
+import SBR2026_Hero_Image from "@/assets/HeroSection_GASB_Location.png";
+import SBRLogoTitle from "@/assets/SBR-LogoTitle.png";
+import BetonhalleWelcome from '@/assets/ExportWP/venue/BetonhalleWelcomeSBR2026-NanoBanana.jpeg'
 // Home Hero Section Component
 // Similar structure to pitch-perfect hero but with logo and images
 ---
@@ -24,7 +24,7 @@ import BetonhalleWelcome from '@/assets/ExportWP/Betonhalle-Welcome-SBR2026-AI-N
 	class="w-screen h-full object-cover absolute inset-0"
 	/>
 	{/* Gradient overlay from bottom (black) to top (transparent) */}
-	<div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black">
+	<div class="absolute inset-0 bg-linear-to-t from-black via-black/70 to-black">
 	</div>
 	<div class="container mx-auto max-w-6xl relative z-10">
 		<div class="text-center space-y-3 flex flex-col items-center -mt-44">
@@ -41,7 +41,7 @@ import BetonhalleWelcome from '@/assets/ExportWP/Betonhalle-Welcome-SBR2026-AI-N
 			{/* SBR2025 Logo */}
 			<div class="flex flex-col items-center w-full">
 				<img 
-					src={SBR2025_Logo.src} 
+					src={SBRLogoTitle.src} 
 					alt="SynBio Reactor Summit 2025 Logo" 
 					class="max-w-[60%] sm:max-w-[50%] md:max-w-[40%] h-auto"
 				/>

@@ -1,0 +1,20 @@
+---
+import StatsComponent from '@/components/StatsComponent.astro';
+import BubbleButton from '@/components/ui/BubbleButton.astro';
+import { Trophy } from 'lucide-react';
+---
+
+<section class="flex flex-col items-center justify-center h-[80vh] w-screen">
+    <StatsComponent class="" />
+    <a href="/schedule" class="w-full flex justify-center mb-14">
+        <BubbleButton text="Check Out Time Table" textClass="font-anton font-black text-6xl m-2 tracking-tight uppercased" icon="hidden"/>
+    </a>
+    <div class="text-center px-14">
+        <h2 class="text-4xl md:text-5xl text-balance uppercase">
+            Join us for <span class="font-black text-primary">Two Days</span>
+        </h2>
+        <p class="text-sm text-muted-foreground max-w-4xl mx-auto text-balance font-quicksand font-light uppercase">
+            jam-packed with <a href="/pitchPerfect" class="text-primary hover:underline transition-colors font-bold"><Trophy className="w-[14px] h-[14px] inline-block mb-1 ml-0.5 mr-1"/>Pitches</a>, <span class="font-bold">Workshops</span>, <span class=" font-bold">Fireside Chats</span>, and so much more
+        </p>
+    </div>
+</section>

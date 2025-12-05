@@ -1,7 +1,18 @@
 ---
 import '../styles/global.css';
-import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
-const { content } = Astro.props;
+import SBRFavicon from '@/assets/SBR2026-Favicon.png';
+import ScreenSizeDEVTOOL from '@/components/ui/ScreenSizeDEVTOOL.astro';
+
+//Page Title and Description
+interface MainProps {
+	content?: {
+		title?: string;
+		description?: string;
+	};
+}
+
+const { content = {} }: MainProps = Astro.props;
+const title = content.title || "SynBio Reactor Summit 2026";
 ---
 
 <html lang="en">
@@ -9,12 +20,16 @@ const { content } = Astro.props;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href={SBRFavicon.src} />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<meta name="generator" content={Astro.generator} />
+		<title>SynBio Reactor Summit 2026</title>
+		<meta name="description" content="Berlin's premier synthetic biology startup and investor summit" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Anton&family=Anton+SC&family=Boldonse&display=swap" rel="stylesheet">
-		<title>{content.title}</title>
+		<title>{title}</title>
 	</head>
 	<body>
+		<ScreenSizeDEVTOOL />
 		<slot />
 	</body>
 </html>

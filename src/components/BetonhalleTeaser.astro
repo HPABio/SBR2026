@@ -1,2 +1,49 @@
 ---
+// Betonhalle Section Component
+//images import
+import SBROrangeWaveBG from '@/assets/ExportWP/bgImages/SBR_OrangeWave_BG.png';
+import BetonhalleEmpty from '@/assets/EportWP/venue/BetonhalleEmpty.webp';
+import SilentGreenLogo from '@/assets/ExportWP/venue/SilentGreenLogo.png';
+import SilentGreenTotalSideviewBlueprint from '@/assets/ExportWP/SilentGreenTotalSideviewBlueprint.png';
+import BubbleButton from './ui/BubbleButton.astro';
+import { MapPin } from 'lucide-react';
 ---
+
+<section class="relative pt-16 lg:pt-24 w-screen">
+	<div class="absolute w-full min-w-[2200px] left-1/2 -translate-x-1/2 bottom-0 z-10">
+		<svg 
+			xmlns="http://www.w3.org/2000/svg" 
+			viewBox="0 0 700 10" 
+			preserveAspectRatio="none"
+			class="h-10 w-full rotate-180 fill-black"
+		>
+			<path d="M350,10L340,0h20L350,10z" />
+		</svg>
+	</div>
+
+	<div class="mt-[-60px] w-full relative flex flex-col pt-[300px]  pb-32">
+		<img src={SBROrangeWaveBG.src} alt="Orange Wave Background" class="w-full h-full object-cover object-top absolute inset-0 z-0" >
+		<div class="w-full flex flex-col  items-center gap-y-5 gap-x-5  mx-auto">
+			<div class="text-center w-full relative z-10 ">
+				<div class="w-full">
+					<h1 class="text-black font-anton font-black text-8xl uppercase tracking-tight">We Are Back</h1>
+					<h2 class="text-[#313131] leading-[27.3px] font-normal text-[21px] clear-both  my-2">- at -</h2>
+				</div>
+				<img loading="lazy" src={SilentGreenLogo.src} class="w-[20%] max-w-full h-full relative mx-auto ">
+			</div>
+		</div>
+		<div class="w-full flex flex-row items-center justify-center mb-10 -mt-4">
+			<!-- <MapPin className="w-16 h-16 relative stroke-black translate-y-5" /> -->
+			<BubbleButton text="CHECK THE VENUE" class="rounded-md mt-10 bg-transparent" textClass="text-7xl mx-1 font-anton font-black tracking-tight uppercase" icon="hidden"/>
+		</div>
+	</div>
+
+
+			
+
+
+
+
+
+
+</section>
