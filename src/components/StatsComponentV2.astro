@@ -12,7 +12,7 @@ const classes = classProp || className || "";
   
 <section class={`relative py-16 ${classes} `}>
   <div class="container mx-auto max-w-6xl hidden lg:block">
-    <div class="flex flex-row-6 justify-center gap-y-8 gap-x-14 lg:justify-between lg:grid-cols-4 lg:gap-x-10">
+    <div class="flex flex-row justify-center gap-y-8 gap-x-14 lg:justify-between lg:grid-cols-4 lg:gap-x-6 xl:gap-x-10">
 
 
       <!-- Rooms / Stages  border-2 border-muted-foreground-->      
@@ -24,7 +24,7 @@ const classes = classProp || className || "";
         <div class="flex flex-col gap-0 ">  
           <!-- first row -->
           <div class="flex flex-col w-full h-full items-start justify-start gap-2">
-            <p class="text-xl text-foreground font-quicksand font-medium">Stages</p>
+            <p class="text-xl text-nowrap text-left text-foreground font-quicksand font-medium">Stages</p>
             <p class="-mt-2 text-[0.6rem] text-left font-quicksand text-muted-foreground uppercase">with parallel<br> program</p>
           </div>
           <div class="flex justify-start items-center mt-2">
@@ -35,19 +35,21 @@ const classes = classProp || className || "";
             <!-- second row -->
         </div>
       </div>
-      <div class="border border-muted-foreground w-0 h-[80px] my-auto mx-0 lg:mx-5 rounded-2xl"/>
+      <div class="border border-muted-foreground w-0 h-[80px] my-auto mx-0 lg:mr-6 xl:mx-5 rounded-2xl"/>
 
 
       <!-- Session Formats -->
       <div class="text-center flex flex-row items-center justify-center  gap-x-4">
         <!-- title number -->
-        <div class="md:text-[10rem] font-anton font-extrabold text-primary relative"><span class="absolute text-6xl -left-7 top-1/2">+</span>4
+        <div class="md:text-[10rem] font-anton font-extrabold text-primary relative"><span class="absolute text-7xl 2xl:text-8xl -left-8 lg:top-1/3 2xl:top-1/4 2xl:-left-11">+</span>4
         </div>
         
         <div class="flex flex-col gap-0">  
           <!-- first row -->
           <div class="flex flex-col w-full h-full items-start justify-start gap-2">
-            <p class="text-xl text-foreground font-quicksand font-medium">Session Types</p>
+            <p class="text-xl text-nowrap text-left text-foreground font-quicksand font-medium">
+              <span class="hidden xl:inline">Session Types</span>
+              <span class="inline xl:hidden">Formats</span></p>
             <p class="-mt-2 text-[0.6rem] text-left font-quicksand text-muted-foreground uppercase">SBWC, workshops,<br> and more</p>
           </div>
           <div class="flex justify-start items-center mt-2">
@@ -58,10 +60,10 @@ const classes = classProp || className || "";
             <!-- second row -->
         </div>
       </div>
-      <div class="border border-muted-foreground w-0 h-[80px] my-auto mx-0 lg:mx-5 rounded-2xl"/>
+      <div class="border border-muted-foreground w-0 h-[80px] my-auto mr-1 xl:mx-5 2xl:mr-2 rounded-2xl"/>
 
       <!-- Overarching Topics -->
-      <div class="text-center flex flex-row items-center justify-center  gap-x-4">
+      <div class="text-center flex flex-row items-center justify-center  gap-x-4 ">
         <!-- title number -->
         <div class="md:text-[10rem] font-anton font-extrabold text-primary">5
         </div>
@@ -69,7 +71,7 @@ const classes = classProp || className || "";
         <div class="flex flex-col gap-0">  
           <!-- first row -->
           <div class="flex flex-col w-full h-full items-start justify-start gap-2">
-            <p class="text-xl text-foreground font-quicksand font-medium">Big Topics</p>
+            <p class="text-xl text-nowrap text-left text-foreground font-quicksand font-medium">Big Topics</p>
             <p class="-mt-2 text-[0.6rem] text-left font-quicksand text-muted-foreground uppercase"><span class="text-[0.8rem]">+</span> wildcard<br> sessions</p>
           </div>
           <div class="flex justify-start items-center mt-2">
@@ -80,19 +82,19 @@ const classes = classProp || className || "";
             <!-- second row -->
         </div>
       </div>
-      <div class="border border-muted-foreground w-0 h-[80px] my-auto mx-0 lg:mx-5 rounded-2xl"/>
+      <div class="border border-muted-foreground w-0 h-[80px] my-auto mr-6 xl:mx-5 rounded-2xl"/>
 
       
       <!-- Program Speakers -->
       <div class="text-center flex flex-row items-center justify-center  gap-x-4 ">
         <!-- title number -->
-        <div class="md:text-[10rem] font-anton font-extrabold text-primary relative"><span class="absolute text-6xl -left-7 top-1/2">+</span>30
+        <div class="md:text-[10rem] font-anton font-extrabold text-primary relative"><span class="absolute text-7xl 2xl:text-8xl -left-8 lg:top-1/3 2xl:top-1/4 2xl:-left-11">+</span>30
         </div>
         
         <div class="flex flex-col gap-0 ">  
           <!-- first row -->
           <div class="flex flex-col w-full h-full items-start justify-start gap-2">
-            <p class="text-xl text-foreground font-quicksand font-medium">Speakers</p>
+            <p class="text-xl text-nowrap text-left text-foreground font-quicksand font-medium">Speakers</p>
             <p class="-mt-2 text-[0.6rem] text-left font-quicksand text-muted-foreground uppercase">panelists, and<br> hosts</p>
           </div>
           <div class="flex justify-start items-center mt-2 ">
