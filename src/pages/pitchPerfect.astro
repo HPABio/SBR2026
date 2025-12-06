@@ -10,17 +10,24 @@ import {
 	CTASection,
 	Footer
 } from '@/components/pitch-perfect-sections';
+import PitchHeroSection from '@/components/PitchHeroSection.astro';
+import PitchStatsSection from '@/components/PitchStatsSection.astro';
+import PitchBenefitsSection from '@/components/PitchBenefitsSection.astro';
+import PitchJudgesSection from '@/components/PitchJudgesSection.astro';
+import PitchCTASection from '@/components/PitchCTASection.astro';
 ---
 
 <Layout content={{ title: "Pitch Perfect - SynBio Reactor Summit 2026" }}>
 	<Navigation />
-		<HeroSection client:load />
-		<StatsSection client:load />
-		<BenefitsSection client:load />
-		<JudgesSection client:load />
+		<PitchHeroSection client:load />
+		<div class="p-12 bg-background">
+			<PitchStatsSection client:load />
+		</div>
+		<PitchBenefitsSection client:load />
+		<PitchJudgesSection client:load />
 
 		{/* Application Form Section */}
-		<section class="py-20 px-4 lg:px-8">
+		<section class="hidden py-20 px-4 lg:px-8">
 			<div class="container mx-auto max-w-3xl">
 				<div class="text-center space-y-4 mb-12">
 					<h2 class="text-4xl md:text-5xl font-bold text-balance">
@@ -35,6 +42,6 @@ import {
 			</div>
 		</section>
 
-		<CTASection client:load />
+		<PitchCTASection client:load />
 		<Footer client:load />
 </Layout>

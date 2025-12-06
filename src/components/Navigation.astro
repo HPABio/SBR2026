@@ -28,17 +28,17 @@ const getLinkClasses = (path: string) => {
           alt="SynBio Reactor Logo" 
           class="w-10 h-10"
         />
-        <span class="font-bold text-2xl font-anton uppercase"> #SBR2026</span>
+        <span class="hidden lg:block font-bold text-2xl font-anton uppercase"> #SBR2026</span>
       </a>
 
       <div class="hidden md:flex items-center gap-6">
         <a href="/" class={getLinkClasses('/')}>
           Home
         </a>
-        <a href="/about" class={getLinkClasses('/about')}>
+        <a href="/about" class={`${getLinkClasses('/about')} hidden lg:block`}>
           About
         </a>
-        <a href="/gasb" class={getLinkClasses('/gasb')}>
+        <a href="/gasb" class={`${getLinkClasses('/gasb')} hidden lg:block`}>
           GASB
         </a>
         <a href="/pitchPerfect" class={getLinkClasses('/pitchPerfect')}>
@@ -53,7 +53,7 @@ const getLinkClasses = (path: string) => {
         <a href="/schedule" class={getLinkClasses('/schedule')}>
           Schedule
         </a>
-        <a href="/sponsoring" class={getLinkClasses('/sponsoring')}>
+        <a href="/sponsoring" class={`${getLinkClasses('/sponsoring')} hidden lg:block`}>
           Sponsoring
         </a>
       </div>
@@ -63,9 +63,10 @@ const getLinkClasses = (path: string) => {
         <span class="absolute w-full h-[70%]  bottom-0 -right-1 -z-10 rounded-xl bg-[#ffa51f] opacity-30 blur-md group-hover:opacity-100 transition-opacity duration-300" />
         TICKETS
       </button> -->
-      <div id="nav-ticket-button" class="opacity-0 pointer-events-none transition-opacity duration-300">
+      <div  id={currentPath === '/' ? "nav-ticket-button" : ""}
+      class={currentPath === '/' ? "opacity-0 pointer-events-none transition-opacity duration-300" : ""}>
         <BubbleButton text="TICKETS" class="rounded-md" textClass="text-3xl mx-1 font-anton font-black tracking-tight uppercase" 
-        iconClass="h-8  fill-black group-hover:fill-white -translate-y-[4px] m-0 ml-0"/>
+        iconClass="h-8  fill-black group-hover:fill-white -translate-y-[4px] m-0 ml-0" href="https://www.tickettailor.com/events/germanassociationforsyntheticbiology/1643202?trackingConsent=1"/>
       </div>
     </div>
   </div>

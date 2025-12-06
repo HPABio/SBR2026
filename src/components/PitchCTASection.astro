@@ -1,0 +1,30 @@
+---
+import { Button } from '@/components/ui/button';
+---
+
+<section class="py-20 px-4 lg:px-8 bg-primary/10">
+  <div class="container mx-auto max-w-4xl text-center space-y-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-balance">Questions About the Pitching Contest?</h2>
+    <p class="text-lg text-muted-foreground text-balance">
+      Contact our team for more information about the application process, judging criteria, and event details.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <Button
+        size="lg"
+        variant="outline"
+        className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold bg-transparent"
+        client:load
+      >
+        Contact Us
+      </Button>
+      <Button
+        size="lg"
+        variant="outline"
+        className="border-2 border-border hover:bg-card font-semibold bg-transparent"
+        client:load
+      >
+        View FAQ
+      </Button>
+    </div>
+  </div>
+</section>

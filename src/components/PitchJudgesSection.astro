@@ -1,0 +1,52 @@
+---
+import { Card, CardContent } from "@/components/ui/card";
+
+const judges = [
+  {
+    name: "Dr. Sarah Chen",
+    role: "Partner, BioVentures Capital",
+    expertise: "Synthetic Biology Investments",
+  },
+  {
+    name: "Prof. Michael Weber",
+    role: "Director, Max Planck Institute",
+    expertise: "Metabolic Engineering",
+  },
+  { name: "Anna Kowalski", role: "CEO, GeneTech Solutions", expertise: "Biotech Scale-up" },
+  {
+    name: "Dr. James Morrison",
+    role: "Managing Director, DeepTech Fund",
+    expertise: "Early-stage Biotech",
+  },
+  { name: "Lisa Andersson", role: "Founder, BioCircular", expertise: "Green Chemistry" },
+  { name: "Dr. Raj Patel", role: "VP Innovation, Novozymes", expertise: "Industrial Biotechnology" },
+];
+---
+
+<section class="py-20 px-4 lg:px-8 bg-card/50">
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center space-y-4 mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-balance">
+        Meet the <span class="text-primary">Expert Judges</span>
+      </h2>
+      <p class="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
+        Your pitch will be evaluated by leading investors and industry pioneers
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 z-10">
+      {judges.map((judge) => (
+        <Card className="bg-card border-border" client:load>
+          <CardContent className="pt-6 space-y-3" client:load>
+            <div class="w-16 h-16 rounded-full bg-primary/20 mx-auto" />
+            <div class="text-center space-y-1">
+              <h3 class="font-bold text-lg">{judge.name}</h3>
+              <p class="text-sm text-muted-foreground">{judge.role}</p>
+              <p class="text-xs text-primary font-medium">{judge.expertise}</p>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>

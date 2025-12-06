@@ -1,0 +1,86 @@
+---
+import SBROrangeWaveBG from "@/assets/ExportWP/bgImages/SBR_OrangeWave_BG.png";
+import { Users, TrendingUp, Award, Microscope, Rocket, Lightbulb } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+---
+
+<section class="relative py-20 px-4 lg:px-8 bg-background z-0 overflow-hidden 2xl:-mt-32">
+  <img src={SBROrangeWaveBG.src} alt="Orange Wave Background" class="absolute top-0 left-0 w-full h-full object-cover object-top" />
+  <div class="container mx-auto max-w-6xl relative z-10 mt-32">
+    <div class="hidden 2xl:block relative w-full h-[1vw]"/>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-44 sm:mt-44">
+      <Card className="bg-card border-border hover:border-primary/50 transition-colors" client:load>
+        <CardContent className="pt-6 space-y-4" client:load>
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+            <Users className="w-6 h-6 text-primary" client:load />
+          </div>
+          <h3 class="text-xl font-bold">Direct Investor Access</h3>
+          <p class="text-muted-foreground leading-relaxed">
+            Connect with top-tier VCs actively investing in synthetic biology and biotech startups
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-card border-border hover:border-primary/50 transition-colors" client:load>
+        <CardContent className="pt-6 space-y-4" client:load>
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+            <Award className="w-6 h-6 text-primary" client:load />
+          </div>
+          <h3 class="text-xl font-bold">Prize & Recognition</h3>
+          <p class="text-muted-foreground leading-relaxed">
+            Win cash prizes, mentorship packages, and media coverage for your startup
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-card border-border hover:border-primary/50 transition-colors" client:load>
+        <CardContent className="pt-6 space-y-4" client:load>
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+            <Microscope className="w-6 h-6 text-primary" client:load />
+          </div>
+          <h3 class="text-xl font-bold">Expert Feedback</h3>
+          <p class="text-muted-foreground leading-relaxed">
+            Receive actionable insights from industry veterans and successful biotech founders
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-card border-border hover:border-primary/50 transition-colors" client:load>
+        <CardContent className="pt-6 space-y-4" client:load>
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+            <TrendingUp className="w-6 h-6 text-primary" client:load />
+          </div>
+          <h3 class="text-xl font-bold">Media Exposure</h3>
+          <p class="text-muted-foreground leading-relaxed">
+            Get featured in leading biotech publications and industry newsletters
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-card border-border hover:border-primary/50 transition-colors" client:load>
+        <CardContent className="pt-6 space-y-4" client:load>
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+            <Rocket className="w-6 h-6 text-primary" client:load />
+          </div>
+          <h3 class="text-xl font-bold">Partnership Opportunities</h3>
+          <p class="text-muted-foreground leading-relaxed">
+            Network with potential co-founders, advisors, and strategic partners
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-card border-border hover:border-primary/50 transition-colors" client:load>
+        <CardContent className="pt-6 space-y-4" client:load>
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+            <Lightbulb className="w-6 h-6 text-primary" client:load />
+          </div>
+          <h3 class="text-xl font-bold">Community Access</h3>
+          <p class="text-muted-foreground leading-relaxed">
+            Join GASB network and connect with Europe's synthetic biology community
+          </p>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>

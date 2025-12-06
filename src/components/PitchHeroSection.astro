@@ -1,0 +1,87 @@
+---
+import video from "@/assets/pitching_session/PitchingVideo_Example_SBR2026.mp4";
+import LaurelWreath from '@/components/ui/LaurelWreath.astro';
+import { Button } from '@/components/ui/button';
+import { MapPin, Calendar } from "lucide-react";
+---
+
+<section class="pt-44 pb-20 px-4 lg:px-8 relative">
+  <!-- Absolute inset image for background -->
+  <div class="fade-video-wrapper absolute w-full h-full -z-10">
+    <video
+      src={video}
+      autoplay
+      loop
+      muted
+      playsinline
+      class="w-full h-full object-cover no-repeat scale-[1.75] fade-in"
+      aria-hidden="true"
+      draggable="false"
+    />
+  </div>
+  
+  <!-- Gradient overlay from bottom (background) to top (transparent) -->
+  <div class="absolute inset-0 bg-linear-to-t from-background via-background/70 to-background pointer-events-none" />
+  <div class="container mx-auto max-w-6xl relative z-10">
+    <div class="text-center space-y-0">
+      <div class=" flex justify-center ">
+        <LaurelWreath color="#F49B2B" class="w-14 "/> 
+      </div>
+      <div class="-mt-1">
+        <span class="text-[0.6rem] text-muted-foreground font-quicksand font-light uppercase tracking-widest">StartUp x Investor Summit</span>
+      </div>
+      <h1 class="font-bold uppercase text-balance leading-none mt-2">
+        <span class="font-background text-8xl md:text-9xl text-foreground inline-block tracking-widest">
+          SYNBIO
+        </span>
+      </h1>
+      <h1 class="text-[2.5rem] md:text-7xl font-bold uppercase text-balance leading-none -mt-2 md:-mt-4">
+        STARTUP {' '}
+        <span class="font-background font-black text-primary">
+          PITCHES</span>
+      </h1>
+      <p class="text-[0.7rem] md:text-sm font-quicksand font-medium text-muted-foreground max-w-2xl md:max-w-3xl mx-auto text-balance leading-4 md:leading-4.5 tracking-wide">
+        Present your groundbreaking synthetic biology innovation to leading investors and industry experts at
+        Berlin's premier biotech summit
+      </p>
+      <div class="flex flex-row items-center justify-center gap-4 pt-4 mt-6">
+        <Button
+          size="lg"
+          onClick={() => window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSf3tJKhQo14tXnFDYWuHBFJ8qulqv55lQZBlpq7G1ZvB4ukLg/viewform?pli=1"}
+          className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg px-8"
+          client:load
+        >
+          Apply Now
+        </Button>
+        <Button
+          size="lg"
+          variant="outline"
+          className="border-2 border-border hover:bg-card font-semibold text-lg px-8 bg-transparent"
+          client:load
+        >
+          Contact Us
+        </Button>
+      </div>
+      <div class="flex items-center justify-center gap-8 pt-4 text-sm text-muted-foreground">
+        <div class="flex items-center gap-2">
+          <MapPin className="w-4 h-4 text-primary" client:load />
+          <span>Silent Green, Berlin, Germany</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <Calendar className="w-4 h-4 text-primary" client:load />
+          <span>Jan 19th-20th, 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fade-in {
+    opacity: 0;
+    animation: fadeInVideo 2s ease-in forwards;
+  }
+  @keyframes fadeInVideo {
+    to { opacity: 1; }
+  }
+</style>

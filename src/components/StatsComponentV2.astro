@@ -1,0 +1,211 @@
+---
+import { BookOpen, LayoutGrid, Layers, Users, Spotlight, Theater } from "lucide-react";
+import type { Props as FeaturesSectionProps } from "astro";
+
+interface Props extends FeaturesSectionProps {
+  class?: string;
+}
+
+const { class: classProp, className } = Astro.props;
+const classes = classProp || className || "";
+---
+  
+<section class={`relative py-16 ${classes} `}>
+  <div class="container mx-auto max-w-6xl hidden lg:block">
+    <div class="flex flex-row-6 justify-center gap-y-8 gap-x-14 lg:justify-between lg:grid-cols-4 lg:gap-x-10">
+
+
+      <!-- Rooms / Stages  border-2 border-muted-foreground-->      
+       <div class="text-center flex flex-row items-center justify-center  gap-x-4">
+        <!-- title number -->
+        <div class="md:text-[10rem] font-anton font-extrabold text-primary">6
+        </div>
+        
+        <div class="flex flex-col gap-0 ">  
+          <!-- first row -->
+          <div class="flex flex-col w-full h-full items-start justify-start gap-2">
+            <p class="text-xl text-foreground font-quicksand font-medium">Stages</p>
+            <p class="-mt-2 text-[0.6rem] text-left font-quicksand text-muted-foreground uppercase">with parallel<br> program</p>
+          </div>
+          <div class="flex justify-start items-center mt-2">
+            <span class="inline-flex items-center justify-center w-10 aspect-square rounded-sm bg-white/10">
+              <Spotlight className="w-7 h-7 text-muted-foreground" />
+            </span>
+          </div>
+            <!-- second row -->
+        </div>
+      </div>
+      <div class="border border-muted-foreground w-0 h-[80px] my-auto mx-0 lg:mx-5 rounded-2xl"/>
+
+
+      <!-- Session Formats -->
+      <div class="text-center flex flex-row items-center justify-center  gap-x-4">
+        <!-- title number -->
+        <div class="md:text-[10rem] font-anton font-extrabold text-primary relative"><span class="absolute text-6xl -left-7 top-1/2">+</span>4
+        </div>
+        
+        <div class="flex flex-col gap-0">  
+          <!-- first row -->
+          <div class="flex flex-col w-full h-full items-start justify-start gap-2">
+            <p class="text-xl text-foreground font-quicksand font-medium">Session Types</p>
+            <p class="-mt-2 text-[0.6rem] text-left font-quicksand text-muted-foreground uppercase">SBWC, workshops,<br> and more</p>
+          </div>
+          <div class="flex justify-start items-center mt-2">
+            <span class="inline-flex items-center justify-center w-10 aspect-square rounded-sm bg-white/10">
+              <Layers className="w-7 h-7 text-muted-foreground" />
+            </span>
+          </div>
+            <!-- second row -->
+        </div>
+      </div>
+      <div class="border border-muted-foreground w-0 h-[80px] my-auto mx-0 lg:mx-5 rounded-2xl"/>
+
+      <!-- Overarching Topics -->
+      <div class="text-center flex flex-row items-center justify-center  gap-x-4">
+        <!-- title number -->
+        <div class="md:text-[10rem] font-anton font-extrabold text-primary">5
+        </div>
+        
+        <div class="flex flex-col gap-0">  
+          <!-- first row -->
+          <div class="flex flex-col w-full h-full items-start justify-start gap-2">
+            <p class="text-xl text-foreground font-quicksand font-medium">Big Topics</p>
+            <p class="-mt-2 text-[0.6rem] text-left font-quicksand text-muted-foreground uppercase"><span class="text-[0.8rem]">+</span> wildcard<br> sessions</p>
+          </div>
+          <div class="flex justify-start items-center mt-2">
+            <span class="inline-flex items-center justify-center w-10 aspect-square rounded-sm bg-white/10">
+              <LayoutGrid className="w-7 h-7 text-muted-foreground" />
+            </span>
+          </div>
+            <!-- second row -->
+        </div>
+      </div>
+      <div class="border border-muted-foreground w-0 h-[80px] my-auto mx-0 lg:mx-5 rounded-2xl"/>
+
+      
+      <!-- Program Speakers -->
+      <div class="text-center flex flex-row items-center justify-center  gap-x-4 ">
+        <!-- title number -->
+        <div class="md:text-[10rem] font-anton font-extrabold text-primary relative"><span class="absolute text-6xl -left-7 top-1/2">+</span>30
+        </div>
+        
+        <div class="flex flex-col gap-0 ">  
+          <!-- first row -->
+          <div class="flex flex-col w-full h-full items-start justify-start gap-2">
+            <p class="text-xl text-foreground font-quicksand font-medium">Speakers</p>
+            <p class="-mt-2 text-[0.6rem] text-left font-quicksand text-muted-foreground uppercase">panelists, and<br> hosts</p>
+          </div>
+          <div class="flex justify-start items-center mt-2 ">
+            <span class="inline-flex items-center justify-center w-10 aspect-square rounded-sm bg-white/10">
+              <Users className="w-7 h-7 text-muted-foreground" />
+            </span>
+          </div>
+            <!-- second row -->
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div class="container mx-auto max-w-md sm:max-w-2xl md:max-w-5xl block lg:hidden">
+    <div class="flex flex-row-6 justify-center gap-y-8 gap-x-1 lg:justify-between lg:grid-cols-4 lg:gap-x-10">
+
+
+      <!-- Rooms / Stages  border-2 border-muted-foreground-->
+       <div class="text-center flex flex-row items-center justify-center gap-x-2 ml-4 relative">
+        <!-- title number -->
+        <div class="text-5xl sm:text-7xl md:text-9xl font-anton font-extrabold text-primary">6
+        </div>
+        
+        <div class="flex flex-col gap-0 ">  
+          <!-- first row -->
+          <div class="flex flex-col w-full h-full items-start justify-start sm:gap-2 md:gap-1">
+            <p class="sm:text-xs md:text-lg text-foreground font-quicksand font-bold">Stages</p>
+            <p class="-mt-2 sm:text-[0.3rem] md:text-[0.4rem] text-left font-quicksand text-muted-foreground md:leading-tight uppercase">with parallel<br> program</p>
+          </div>
+          <div class="flex justify-start items-center mt-1">
+            <span class="inline-flex items-center justify-center w-7 aspect-square rounded-sm bg-white/10">
+              <Spotlight className="w-4 h-4 text-muted-foreground" />
+            </span>
+          </div>
+            <!-- second row -->
+        </div>
+      </div>
+      <div class="border border-muted-foreground w-0 h-[30px] my-auto mx-4 rounded-2xl"/>
+
+
+      <!-- Session Formats -->
+      <div class="text-center flex flex-row items-center justify-center  gap-x-2 ml-4 relative">
+        <!-- title number -->
+        <div class="text-5xl sm:text-7xl md:text-9xl font-anton font-extrabold text-primary"><span class="absolute text-2xl sm:text-5xl md:text-6xl sm:-left-5 md:-left-7 sm:top-2 md:top-8">+</span>4
+        </div>
+        
+        <div class="flex flex-col gap-0">  
+          <!-- first row -->
+          <div class="flex flex-col w-full h-full items-start justify-start sm:gap-2 md:gap-1">
+            <p class="sm:text-xs md:text-lg text-foreground font-quicksand font-bold">Formats</p>
+            <p class="-mt-2 sm:text-[0.3rem] md:text-[0.4rem] text-left font-quicksand text-muted-foreground md:leading-tight uppercase">SBWC, workshops,<br> and more</p>
+          </div>
+          <div class="flex justify-start items-center mt-1">
+            <span class="inline-flex items-center justify-center w-7 aspect-square rounded-sm bg-white/10">
+              <Layers className="w-4 h-4 text-muted-foreground" />
+            </span>
+          </div>
+            <!-- second row -->
+        </div>
+      </div>
+      <div class="border border-muted-foreground w-0 h-[30px] my-auto mx-4 rounded-2xl"/>
+
+      <!-- Overarching Topics -->
+      <div class="text-center flex flex-row items-center justify-center  gap-x-2 ml-1 relative">
+        <!-- title number -->
+        <div class="text-5xl sm:text-7xl md:text-9xl font-anton font-extrabold text-primary">5
+        </div>
+        
+        <div class="flex flex-col gap-0">  
+          <!-- first row -->
+          <div class="flex flex-col w-full h-full items-start justify-start sm:gap-2 md:gap-1">
+            <p class="sm:text-xs md:text-lg text-foreground font-quicksand font-bold">Topics</p>
+            <p class="-mt-2 sm:text-[0.3rem] md:text-[0.4rem] text-left font-quicksand text-muted-foreground md:leading-tight uppercase"><span class="text-[0.5rem]">+</span> wildcard<br> sessions</p>
+          </div>
+          <div class="flex justify-start items-center mt-1">
+            <span class="inline-flex items-center justify-center w-7 aspect-square rounded-sm bg-white/10">
+              <LayoutGrid className="w-4 h-4 text-muted-foreground" />
+            </span>
+          </div>
+            <!-- second row -->
+        </div>
+      </div>
+      <div class="border border-muted-foreground w-0 h-[30px] my-auto mx-4 rounded-2xl"/>
+
+      
+      <!-- Program Speakers -->
+      <div class="text-center flex flex-row items-center justify-center  gap-x-2 ml-4 relative">
+        <!-- title number -->
+        <div class="text-5xl sm:text-7xl md:text-9xl font-anton font-extrabold text-primary"><span class="absolute text-2xl sm:text-5xl md:text-6xl sm:-left-5 md:-left-7 sm:top-2 md:top-8">+</span>30
+        </div>
+        
+        <div class="flex flex-col gap-0 ">  
+          <!-- first row -->
+          <div class="flex flex-col w-full h-full items-start justify-start sm:gap-2 md:gap-1">
+            <p class="sm:text-xs md:text-lg text-foreground font-quicksand font-bold">Speakers</p>
+            <p class="-mt-2 sm:text-[0.3rem] md:text-[0.4rem] text-left font-quicksand text-muted-foreground md:leading-tight uppercase">panelists, and<br> hosts</p>
+          </div>
+          <div class="flex justify-start items-center mt-1">
+            <span class="inline-flex items-center justify-center w-7 aspect-square rounded-sm bg-white/10">
+              <Users className="w-4 h-4 text-muted-foreground" />
+            </span>
+          </div>
+            <!-- second row -->
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  
+</section>
+
