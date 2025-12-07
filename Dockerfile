@@ -16,23 +16,19 @@ COPY . .
 RUN bun run build
 
 # Production stage
-FROM node:20-alpine
+FROM nginx:alpine
 
-WORKDIR /app
+# Remove default nginx config to avoid conflicts
+#RUN rm -f /etc/nginx/conf.d/default.conf
 
-# Copy package files
-COPY package.json ./
+# Copy built files from builder stage
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Install only production dependencies
-# Note: We use npm here since we're in a Node image, but bun.lock is used in build stage
-RUN npm install --only=production
+# Copy nginx configuration for proper routing
+#COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy built application from builder stage (both server and client)
-COPY --from=builder /app/dist ./dist
-
-# Expose port 80 (or use PORT env var)
-ENV PORT=80
+# Expose port 80
 EXPOSE 80
 
-# Start the Node.js server
-CMD ["node", "dist/server/entry.mjs"]
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]

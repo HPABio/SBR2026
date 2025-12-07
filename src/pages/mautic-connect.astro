@@ -1,28 +1,105 @@
 ---
-const MAUTIC_BASE_URL = import.meta.env.MAUTIC_BASE_URL ?? 'https://mautic.synbioreactor.de';
-const CLIENT_ID = import.meta.env.MAUTIC_CLIENT_ID;
-const REDIRECT_URI =
-  import.meta.env.MAUTIC_REDIRECT_URI ?? 'https://dev.synbioreactor.de/api/mautic/callback';
-
-const authorizeUrl =
-  MAUTIC_BASE_URL +
-  '/oauth/v2/authorize?' +
-  new URLSearchParams({
-    client_id: CLIENT_ID,
-    redirect_uri: REDIRECT_URI,
-    response_type: 'code',
-  }).toString();
+// Mautic OAuth integration page
+// Configure the API service URL below (where mautic-oauth-service is deployed)
+const MAUTIC_API_URL = 'https://api.synbioreactor.de'; // Change this to your API service URL
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Connect to Mautic</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 1rem;
+        line-height: 1.6;
+        background: #f9fafb;
+      }
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+      h1 { 
+        color: #111; 
+        margin-top: 0;
+      }
+      .btn {
+        display: inline-block;
+        background: #4f46e5;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background 0.2s;
+      }
+      .btn:hover {
+        background: #4338ca;
+      }
+      .success {
+        background: #d1fae5;
+        border: 1px solid #10b981;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        color: #065f46;
+      }
+      .error {
+        background: #fee2e2;
+        border: 1px solid #ef4444;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        color: #991b1b;
+      }
+      .back-link {
+        display: block;
+        margin-top: 1.5rem;
+        color: #6b7280;
+        text-decoration: none;
+      }
+      .back-link:hover {
+        color: #374151;
+      }
+    </style>
   </head>
   <body>
-    <h1>Connect to Mautic</h1>
-    <p>This will redirect you to Mautic to authorize access.</p>
-    <a href={authorizeUrl}>Connect to Mautic</a>
+    <div class="card">
+      <h1>🔗 Connect to Mautic</h1>
+      
+      <div id="status"></div>
+      
+      <p>Connect your Mautic account to enable marketing automation features.</p>
+      
+      <a href={`${MAUTIC_API_URL}/api/mautic/authorize`} class="btn">
+        Connect to Mautic
+      </a>
+      
+      <a href="/" class="back-link">← Back to Home</a>
+    </div>
+    
+    <script>
+      // Check URL params for OAuth result
+      const params = new URLSearchParams(window.location.search);
+      const statusDiv = document.getElementById('status');
+      
+      if (statusDiv) {
+        if (params.get('success') === 'true') {
+          statusDiv.innerHTML = '<div class="success">✅ Successfully connected to Mautic!</div>';
+        } else if (params.get('error')) {
+          const error = params.get('error') ?? 'unknown';
+          const messages: Record<string, string> = {
+            'missing_code': 'Authorization code was missing',
+            'token_failed': 'Failed to exchange token with Mautic',
+            'server_error': 'Server error occurred',
+          };
+          statusDiv.innerHTML = `<div class="error">❌ ${messages[error] ?? error}</div>`;
+        }
+      }
+    </script>
   </body>
 </html>
-
