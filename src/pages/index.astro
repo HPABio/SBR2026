@@ -6,16 +6,18 @@ import { Trophy } from 'lucide-react';
 
 // Component Imports
 import Navigation from '@/components/Navigation.astro';
+import QRCodeComponent from '@/components/QRCodeComponent.astro';
+import BubbleButton from '@/components/ui/BubbleButton.astro';
+import TicketVisual from '@/components/TicketVisual.astro';
+import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
+
+//Section Import
 import HomeHero from '@/components/HomeHero.astro';
+import FeatureSection from '@/components/FeatureSection.astro';
 import SilentGreen from '@/components/SilentGreen.astro';
 // import SynBioWorldCafe from '@/components/SynBioWorldCafe.astro';
 import BetonhalleTeaser from '@/components/BetonhalleTeaser.astro';
-import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
-import FeatureSection from '@/components/FeatureSection.astro';
-import QRCodeComponent from '@/components/QRCodeComponent.astro';
-import TicketVisual from '@/components/TicketVisual.astro';
 import Recap from '@/components/Recap.astro';
-import BubbleButton from '@/components/ui/BubbleButton.astro';
 import SwapCardSection from '@/components/SwapCardSection.astro';
 import PitchTeaser from '@/components/PitchTeaser.astro';
 import SBWCSection from '@/components/SBWCSection.astro';
@@ -56,6 +58,10 @@ import SBWCSection from '@/components/SBWCSection.astro';
 
 		<div class="w-full flex justify-center mb-32">
 			<SBWCSection/>
+		</div>
+
+		<div class="w-full flex justify-center mb-32">
+			<Recap/>
 		</div>
 
 		<!-- 

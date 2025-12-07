@@ -1,50 +1,75 @@
 ---
-import SwapCardMockup from '@/assets/SwapCard/SwapCardMockUp2_noBG.png';
-import SwapCardLogo from '@/assets/SwapCard/swapcard_LogoWhite.png';
-import BubbleButton from '@/components/ui/BubbleButton.astro';
-import LaurelWreath from '@/components/ui/LaurelWreath.astro';
+import NanoBananaImg from "@/assets/ExportWP/venue/BetonhalleWelcomeSBR2026-NanoBanana.jpeg";
+import BubbleButton from "@/components/ui/BubbleButton.astro";
+import LaurelWreath from "@/components/ui/LaurelWreath.astro";
 ---
 
 <!-- Container -->
-<section class="relative w-full h-screen px-12 mt-32">
-    
-    <!-- Image Container -->
-    <div class="w-full flex justify-center">
-        <div class="mx-auto flex flex-col items-start justify-center">
-            <h3 class="text-sm text-center text-muted-foreground font-quicksand font-bold leading-tight uppercase lg:mb-[1vw]">check out our Event Platform</h3>
-            <img src={SwapCardLogo.src} alt="SwapCard Logo" class="w-[60vw] max-w-md  object-cover -mt-[4vw]" />
-        </div>
-    </div>
-
-    <!-- Text Container -->
-    <div class="max-w-5xl mx-auto flex items-center justify-center gap-10 lg:gap-x-20">
-        
-                <!-- Text -->
-                <div class="gap-y-2 flex flex-col items-end w-[70%] relative">
-                    
-                    <div class="border-t-4 border-[#F49B2B] w-18 rounded-full my-2"/>
-                    <h2 class="text-4xl text-end  md:text-5xl font-anton font-black uppercase">Looking for a<br/>chance to pitch
+<section
+    class="relative w-full min-h-screen px-4 md:px-12 mt-32 flex flex-col items-center justify-center overflow-hidden"
+>
+    <!-- Content Container -->
+    <div
+        class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10"
+    >
+        <!-- Text Side -->
+        <div
+            class="flex flex-col items-end text-right space-y-6 order-2 lg:order-1"
+        >
+            <div class="space-y-2">
+                <div class="flex flex-col items-end">
+                    <div class="h-1 w-24 bg-[#F49B2B] rounded-full mb-4"></div>
+                    <h2
+                        class="text-4xl md:text-5xl lg:text-6xl font-anton uppercase leading-[0.9] tracking-tight"
+                    >
+                        Looking for a<br />
+                        <span class="text-[#F49B2B]">chance to pitch?</span>
                     </h2>
-                    <!-- lifebuoy -->
-                    <!-- <svg width="24" height="24" viewBox="0 0 24 24" class="fill-white " xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12.0001 2C10.1329 2 8.26877 2.52572 6.63677 3.56543C6.53935 3.54913 6.44142 3.53711 6.34282 3.53711C5.89342 3.53711 5.44405 3.70639 5.10552 4.04492L4.04497 5.10547C3.63218 5.51827 3.47492 6.09525 3.56548 6.63672C1.48601 9.90111 1.48596 14.0993 3.56548 17.3633C3.47492 17.9048 3.63218 18.4817 4.04497 18.8945L5.10552 19.9551C5.51832 20.3679 6.0953 20.5251 6.63677 20.4346C9.90117 22.514 14.0994 22.5141 17.3633 20.4346C17.9048 20.5251 18.4818 20.3679 18.8946 19.9551L19.9551 18.8945C20.3679 18.4817 20.5252 17.9048 20.4346 17.3633C22.5141 14.0989 22.5141 9.9007 20.4346 6.63672C20.5252 6.09525 20.3679 5.51827 19.9551 5.10547L18.8946 4.04492C18.5561 3.70639 18.1067 3.53711 17.6573 3.53711C17.5587 3.53711 17.4608 3.54913 17.3633 3.56543C15.7312 2.52574 13.8672 2 12.0001 2ZM12.0001 3.5C13.3686 3.49999 14.7348 3.83368 15.9747 4.49023L13.6944 6.77051C13.1599 6.59639 12.5913 6.5 12.0001 6.5C11.4088 6.5 10.8402 6.59639 10.3057 6.77051L8.02544 4.49023C9.26513 3.8337 10.6316 3.50001 12.0001 3.5ZM6.34282 5.02734C6.40522 5.02734 6.46761 5.0535 6.51958 5.10547L8.88677 7.47266C8.33409 7.8543 7.85435 8.33404 7.47271 8.88672L5.10552 6.51953C5.00157 6.41559 5.00157 6.26996 5.10552 6.16602L6.16607 5.10547C6.21804 5.0535 6.28043 5.02734 6.34282 5.02734ZM17.6573 5.02734C17.7197 5.02734 17.7821 5.0535 17.834 5.10547L18.8946 6.16602C18.9985 6.26996 18.9985 6.41559 18.8946 6.51953L16.5274 8.88672C16.1458 8.33404 15.666 7.8543 15.1133 7.47266L17.4805 5.10547C17.5325 5.0535 17.5949 5.02734 17.6573 5.02734ZM12.0001 8C14.2181 8 16.0001 9.78198 16.0001 12C16.0001 14.218 14.2181 16 12.0001 16C9.78203 16 8.00005 14.218 8.00005 12C8.00005 9.78198 9.78203 8 12.0001 8ZM4.49029 8.02539L6.77056 10.3057C6.59644 10.8402 6.50005 11.4088 6.50005 12C6.50005 12.5912 6.59644 13.1598 6.77056 13.6943L4.49029 15.9746C3.17721 13.4952 3.17719 10.5051 4.49029 8.02539ZM19.5098 8.02539C20.8229 10.5048 20.8229 13.4949 19.5098 15.9746L17.2295 13.6943C17.4037 13.1598 17.5001 12.5912 17.5001 12C17.5001 11.4088 17.4037 10.8402 17.2295 10.3057L19.5098 8.02539ZM7.47271 15.1133C7.85435 15.666 8.33409 16.1457 8.88677 16.5273L6.51958 18.8945C6.41564 18.9985 6.27001 18.9985 6.16607 18.8945L5.10552 17.834C5.00157 17.73 5.00157 17.5844 5.10552 17.4805L7.47271 15.1133ZM16.5274 15.1133L18.8946 17.4805C18.9985 17.5844 18.9985 17.73 18.8946 17.834L17.834 18.8945C17.7301 18.9985 17.5845 18.9985 17.4805 18.8945L15.1133 16.5273C15.666 16.1457 16.1458 15.666 16.5274 15.1133ZM10.3057 17.2295C10.8402 17.4036 11.4088 17.5 12.0001 17.5C12.5913 17.5 13.1599 17.4036 13.6944 17.2295L15.9747 19.5098C13.4953 20.8228 10.5052 20.8229 8.02544 19.5098L10.3057 17.2295Z" />
-                    </svg> -->
-                    
-                    
-                    <p class="hidden lg:block lg:w-[60%] text-end  text-[0.7rem] md:text-[0.8rem] text-muted-foreground font-quicksand font-light leading-tight mb-4">
-                        Favorite sessions, book on site meetings, <br/>research attendees and speakers, and more <br/> - all in one place.
-                    </p>
-                    <div class="w-full flex justify-end relative z-10 mt-10">
-                        <LaurelWreath color="#F49B2B" class="w-32 lg:w-44 absolute -top-2 lg:-top-6 right-2 lg:right-4"/>
-                        <BubbleButton text="Pitching Contest" icon="hidden"
-                        class="rounded-md mt-4" textClass="text-xl lg:text-3xl m-1 font-anton font-bold leading-tight uppercase" />
-                    </div>
                 </div>
-    
-                <!-- Logo -->
-        <div class=" max-w-[25rem] w-full">
-            <img src={SwapCardMockup.src} alt="SwapCard Mockup" class="w-full h-full object-cover" />
+            </div>
+
+            <p
+                class="text-lg text-muted-foreground font-quicksand font-medium max-w-md leading-relaxed"
+            >
+                Take the stage and showcase your innovation. <br />
+                Connect with investors, industry leaders, and peers in an electrifying
+                atmosphere.
+            </p>
+
+            <div class="relative pt-4 pr-4">
+                <LaurelWreath
+                    color="#F49B2B"
+                    class="w-24 lg:w-32 absolute -top-6 -right-6 lg:-right-8 opacity-80 rotate-12"
+                />
+                <BubbleButton
+                    text="Pitching Contest"
+                    icon="hidden"
+                    href="/pitchPerfect"
+                    class="rounded-full"
+                    textClass="text-xl lg:text-2xl px-8 py-2 font-anton uppercase tracking-wide"
+                />
+            </div>
+        </div>
+
+        <!-- Image Side -->
+        <div
+            class="relative w-full aspect-video lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl skew-y-3 lg:skew-y-0 lg:rotate-3 hover:rotate-0 transition-transform duration-700 ease-out group order-1 lg:order-2"
+        >
+            <div
+                class="absolute inset-0 bg-primary/20 mix-blend-overlay z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-500"
+            >
+            </div>
+            <img
+                src={NanoBananaImg.src}
+                alt="Nano Banana Pro Pitch Event"
+                class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
+            />
         </div>
     </div>
 
+    <!-- Background Decoration -->
+    <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-[#F49B2B]/5 to-transparent -z-10 blur-3xl pointer-events-none rounded-[100%]"
+    >
+    </div>
 </section>
