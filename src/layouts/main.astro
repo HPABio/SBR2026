@@ -29,7 +29,7 @@ const title = content.title || "SynBio Reactor Summit 2026";
 		<title>{title}</title>
 	</head>
 	<body>
-		<ScreenSizeDEVTOOL />
+		{import.meta.env.DEV && <ScreenSizeDEVTOOL />}
 		<slot />
 	</body>
 </html>
