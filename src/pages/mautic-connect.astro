@@ -1,0 +1,28 @@
+---
+const MAUTIC_BASE_URL = import.meta.env.MAUTIC_BASE_URL ?? 'https://mautic.synbioreactor.de';
+const CLIENT_ID = import.meta.env.MAUTIC_CLIENT_ID;
+const REDIRECT_URI =
+  import.meta.env.MAUTIC_REDIRECT_URI ?? 'https://dev.synbioreactor.de/api/mautic/callback';
+
+const authorizeUrl =
+  MAUTIC_BASE_URL +
+  '/oauth/v2/authorize?' +
+  new URLSearchParams({
+    client_id: CLIENT_ID,
+    redirect_uri: REDIRECT_URI,
+    response_type: 'code',
+  }).toString();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Connect to Mautic</title>
+  </head>
+  <body>
+    <h1>Connect to Mautic</h1>
+    <p>This will redirect you to Mautic to authorize access.</p>
+    <a href={authorizeUrl}>Connect to Mautic</a>
+  </body>
+</html>
+
