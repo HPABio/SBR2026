@@ -28,3 +28,5 @@ pnpm-debug.log*
 /V0-Templates/*
 package.json.backup
 package.json.temp
+
+SBR2026API/*
