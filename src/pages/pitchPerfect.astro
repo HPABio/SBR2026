@@ -19,12 +19,12 @@ import PitchCTASection from '@/components/PitchCTASection.astro';
 
 <Layout content={{ title: "Pitch Perfect - SynBio Reactor Summit 2026" }}>
 	<Navigation />
-		<PitchHeroSection client:load />
+		<PitchHeroSection />
 		<div class="p-12 bg-background">
-			<PitchStatsSection client:load />
+			<PitchStatsSection />
 		</div>
-		<PitchBenefitsSection client:load />
-		<PitchJudgesSection client:load />
+		<PitchBenefitsSection />
+		<PitchJudgesSection />
 
 		{/* Application Form Section */}
 		<section class="hidden py-20 px-4 lg:px-8">
@@ -38,10 +38,10 @@ import PitchCTASection from '@/components/PitchCTASection.astro';
 					</p>
 				</div>
 
-				<PitchForm client:load />
+				<PitchForm />
 			</div>
 		</section>
 
-		<PitchCTASection client:load />
-		<Footer client:load />
+		<PitchCTASection />
+		<Footer />
 </Layout>
