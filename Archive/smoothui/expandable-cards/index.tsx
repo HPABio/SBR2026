@@ -1,6 +1,6 @@
 "use client";
 
-import { getAllPeople, getAvatarUrl, getImageKitUrl } from "@smoothui/data";
+import { getAllPeople, getAvatarUrl, getImageKitUrl } from "@smoothui";
 import { Play } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
