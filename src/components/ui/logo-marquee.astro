@@ -1,0 +1,44 @@
+---
+import type { Props as LogoMarqueeProps } from "astro";
+import { Image } from "astro:assets";
+import { Marquee } from "@/components/ui/marquee.tsx";
+
+interface Props extends LogoMarqueeProps {
+    class?: string;
+}
+
+const { class: classProp, className } = Astro.props;
+const classes = classProp || className || "";
+
+const logos = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/logos/*.{jpeg,jpg,png,gif,svg}",
+    { eager: true },
+);
+const logoImages = Object.values(logos).map((logo) => logo.default);
+---
+
+<section class={`relative bg-black ${classes}`}>
+    <div class="py-8 flex flex-col items-center justify-center">
+        <div
+        class="mx-auto flex h-full w-full max-w-2xl lg:max-w-5xl items-center justify-center overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [mask-size:100%_100%] [mask-repeat:no-repeat] px-6"
+        >
+        <div>
+            <Marquee className="[--gap:80px]" client:visible>
+                {
+                        logoImages.map((logo) => (
+                            <Image
+                                src={logo}
+                                alt="Company Logo"
+                                height={80}
+                                class="mx-8 h-20 md:h-32 w-auto object-contain grayscale opacity-70 hover:opacity-100 transition-opacity"
+                            />
+                        ))
+                    }
+                </Marquee>
+            </div>
+        </div>
+        <h1 class="mt-10 px-12 text-muted-foreground text-center text-sm font-medium">
+            Trusted by biotechs most creative companies.
+        </h1>
+    </div>
+</section>
