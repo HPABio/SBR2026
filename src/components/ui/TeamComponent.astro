@@ -7,28 +7,35 @@ interface Props extends TeamComponentProps {
 }
 const { class: classProp } = Astro.props;
 const classes = classProp || "";
+
+const portraits = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/imagesTeam/*.{jpeg,jpg,png,gif,svg}",
+    { eager: true },
+);
+const allPortraits = Object.values(portraits).map((portrait) => portrait.default);
+
 ---
 
 <section class={`relative py-16 bg-black ${classes}`}>
     <div class="mx-auto max-w-5xl px-6">
-        <div class="text-center">
-            <h2 class="text-3xl font-semibold">
-                Built by the Community <br /> for the Community
+        <div class="flex flex-col items-center justify-center w-full">
+            <h2 class="text-5xl font-black font-anton uppercase text-left w-fit">
+                Meet <span class="text-primary">the people</span><br /> running the show
+                <p class="text-xs mt-0 font-quicksand font-extralight text-muted-foreground">
+                    Harum quae dolore orrupti aut temporibus ariatur.
+                </p>
             </h2>
-            <p class="mt-6">
-                Harum quae dolore orrupti aut temporibus ariatur.
-            </p>
         </div>
         <div class="mx-auto mt-12 flex max-w-lg flex-wrap justify-center gap-3">
             <a
-                href="https://github.com/meschacirung"
+                href=""
                 target="_blank"
-                title="Méschac Irung"
+                title="Raoul Polder"
                 class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
             >
-                <img
-                    alt="John Doe"
-                    src="https://randomuser.me/api/portraits/men/1.jpg"
+                <Image
+                    alt="Raoul Polder"
+                    src={allPortraits[0]}
                     loading="lazy"
                     width={120}
                     height={120}
@@ -40,9 +47,9 @@ const classes = classProp || "";
                 title="Méschac Irung"
                 class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
             >
-                <img
+                <Image
                     alt="John Doe"
-                    src="https://randomuser.me/api/portraits/men/2.jpg"
+                    src={allPortraits[1]}
                     loading="lazy"
                     width={120}
                     height={120}
@@ -54,9 +61,9 @@ const classes = classProp || "";
                 title="Méschac Irung"
                 class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
             >
-                <img
+                <Image
                     alt="John Doe"
-                    src="https://randomuser.me/api/portraits/men/3.jpg"
+                    src={allPortraits[2]}
                     loading="lazy"
                     width={120}
                     height={120}
@@ -68,9 +75,9 @@ const classes = classProp || "";
                 title="Méschac Irung"
                 class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
             >
-                <img
+                <Image
                     alt="John Doe"
-                    src="https://randomuser.me/api/portraits/men/4.jpg"
+                    src={allPortraits[3]}
                     loading="lazy"
                     width={120}
                     height={120}
@@ -82,9 +89,9 @@ const classes = classProp || "";
                 title="Méschac Irung"
                 class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
             >
-                <img
+                <Image
                     alt="John Doe"
-                    src="https://randomuser.me/api/portraits/men/5.jpg"
+                    src={allPortraits[4]}
                     loading="lazy"
                     width={120}
                     height={120}
@@ -96,9 +103,9 @@ const classes = classProp || "";
                 title="Méschac Irung"
                 class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
             >
-                <img
+                <Image
                     alt="John Doe"
-                    src="https://randomuser.me/api/portraits/men/6.jpg"
+                    src={allPortraits[5]}
                     loading="lazy"
                     width={120}
                     height={120}
@@ -110,9 +117,9 @@ const classes = classProp || "";
                 title="Méschac Irung"
                 class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
             >
-                <img
+                <Image
                     alt="John Doe"
-                    src="https://randomuser.me/api/portraits/men/7.jpg"
+                    src={allPortraits[6]}
                     loading="lazy"
                     width={120}
                     height={120}
@@ -124,9 +131,9 @@ const classes = classProp || "";
                 title="Méschac Irung"
                 class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
             >
-                <img
+                <Image
                     alt="John Doe"
-                    src="https://randomuser.me/api/portraits/men/1.jpg"
+                    src={allPortraits[7]}
                     loading="lazy"
                     width={120}
                     height={120}
@@ -138,9 +145,9 @@ const classes = classProp || "";
                 title="Méschac Irung"
                 class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
             >
-                <img
+                <Image
                     alt="John Doe"
-                    src="https://randomuser.me/api/portraits/men/8.jpg"
+                    src={allPortraits[8]}
                     loading="lazy"
                     width={120}
                     height={120}
@@ -152,9 +159,9 @@ const classes = classProp || "";
                 title="Méschac Irung"
                 class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
             >
-                <img
+                <Image
                     alt="John Doe"
-                    src="https://randomuser.me/api/portraits/men/9.jpg"
+                    src={allPortraits[9]}
                     loading="lazy"
                     width={120}
                     height={120}
@@ -166,9 +173,9 @@ const classes = classProp || "";
                 title="Méschac Irung"
                 class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
             >
-                <img
+                <Image
                     alt="John Doe"
-                    src="https://randomuser.me/api/portraits/men/10.jpg"
+                    src={allPortraits[10]}
                     loading="lazy"
                     width={120}
                     height={120}

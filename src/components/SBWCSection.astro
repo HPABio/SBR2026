@@ -7,9 +7,9 @@ interface Props extends NAMESectionProps {
 const { class: classProp, className } = Astro.props;
 const classes = classProp || className || "";
 ---
-<section class={`relative py-16 bg-black ${classes}`}>
+<section class={`relative py-16 ${classes}`}>
   
-    <div class="container mx-auto max-w-7xl flex items-center justify-center">
+    <div class="container h-full mx-auto max-w-7xl flex items-center justify-center">
         <h2 class="text-4xl font-bold text-white">SBWC</h2>
     </div>
 </section>

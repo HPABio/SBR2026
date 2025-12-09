@@ -1,51 +1,46 @@
 ---
-import Layout from '@/layouts/main.astro';
-import { Trophy } from 'lucide-react';
-
-
+import Layout from "@/layouts/main.astro";
+import { Trophy } from "lucide-react";
 
 // Component Imports
-import Navigation from '@/components/Navigation.astro';
-import QRCodeComponent from '@/components/QRCodeComponent.astro';
-import BubbleButton from '@/components/ui/BubbleButton.astro';
-import TicketVisual from '@/components/TicketVisual.astro';
-import LogoMarquee from '@/components/ui/logo-marquee.astro';
-import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
-import TeamComponent from '@/components/ui/TeamComponent.astro';
-import GridList02 from '@/components/ui/grid-list-02';
+import Navigation from "@/components/Navigation.astro";
+import QRCodeComponent from "@/components/QRCodeComponent.astro";
+import BubbleButton from "@/components/ui/BubbleButton.astro";
+import TicketVisual from "@/components/TicketVisual.astro";
+import LogoMarquee from "@/components/ui/logo-marquee.astro";
+import SBRFavicon from "@/assets/SBR2026-Favicon-1-60x60.png";
+import TeamComponent from "@/components/ui/TeamComponent.astro";
+import { TeamSection2 } from "@/components/TeamSection2.tsx";
+import {GradientBars} from "@/components/ui/gradient-bars.tsx";
+import {StarsBackground} from "@/components/ui/stars-background.tsx";
 
 //Section Import
-import HomeHero from '@/components/HomeHero.astro';
-import FeatureSection from '@/components/FeatureSection.astro';
-import SilentGreen from '@/components/SilentGreen.astro';
+import HomeHero from "@/components/HomeHero.astro";
+import FeatureSection from "@/components/FeatureSection.astro";
+import SilentGreen from "@/components/SilentGreen.astro";
 // import SynBioWorldCafe from '@/components/SynBioWorldCafe.astro';
-import BetonhalleTeaser from '@/components/BetonhalleTeaser.astro';
-import Recap from '@/components/Recap.astro';
-import SwapCardSection from '@/components/SwapCardSection.astro';
-import PitchTeaser from '@/components/PitchTeaser.astro';
-import SBWCSection from '@/components/SBWCSection.astro';
+import BetonhalleTeaser from "@/components/BetonhalleTeaser.astro";
+import Recap from "@/components/Recap.astro";
+import SwapCardSection from "@/components/SwapCardSection.astro";
+import PitchTeaser from "@/components/PitchTeaser.astro";
+import SBWCSection from "@/components/SBWCSection.astro";
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
 ---
 
-
 <Layout content={{ title: "SynBio Reactor Summit 2026" }}>
-
 	<Navigation />
 	<main class="pt-16">
 		<HomeHero />
 		<FeatureSection />
 
-
 		<div class="w-full flex justify-center mt-32 hidden">
 			<TicketVisual />
 		</div>
 
-
 		<div class="w-full flex justify-center mb-32 hidden">
 			<QRCodeComponent />
 		</div>
-
 
 		<div class="w-full flex justify-center mb-32">
 			<BetonhalleTeaser />
@@ -56,24 +51,35 @@ import SBWCSection from '@/components/SBWCSection.astro';
 		</div>
 
 		<div class="relative w-full flex justify-center mb-32">
-			<PitchTeaser/>
+<GradientBars client:visible className='w-screen h-full mt-0 mx-auto absolute -bottom-44 left-0'/>
+			<PitchTeaser />
 		</div>
 
-		<div class="w-screen flex items-center justify-center mb-32">
-			<SBWCSection class='w-screen'/>
-			
-		</div>
-
-		<div class="w-full flex flex-col justify-center mb-32">
-			<Recap/>
+		<div class="relative w-full h-full min-h-2xl flex items-center justify-center mb-32 bg-linear-to-b from-transparent via-[#E46B08] to-primary">
+			<SBWCSection class="w-full h-full" />
 		</div>
 
 		<div class="w-full flex flex-col justify-center mb-32">
-			<TeamComponent/>
+			<Recap />
 		</div>
 
 		<div class="w-full flex flex-col justify-center mb-32">
-			<GridList02/>
+			<TeamComponent />
+		</div>
+
+		<div class="w-full flex flex-col justify-center mb-32 relative">
+			<StarsBackground client:visible className="absolute top-0 left-0 right-0 z-0"/>
+			<TeamSection2
+				client:visible
+				title="Meet Our Team"
+				description="The minds behind the SynBio Reactor Summit."
+				ctaText="Learn More"
+				ctaHref="/about"
+			/>
+		</div>
+
+		<div class="w-full flex flex-col justify-center mb-32">
+			<!-- <GridList02/> -->
 		</div>
 
 		<!-- 
@@ -81,9 +87,8 @@ import SBWCSection from '@/components/SBWCSection.astro';
 			<Recap />
 		</div> -->
 
-
-			{/* Arrow shape divider at bottom */}
-			<!-- 				
+		{/* Arrow shape divider at bottom */}
+		<!-- 				
 			<div class="absolute bottom-0 left-0 right-0 z-10" aria-hidden="true">
 				<svg 
 					xmlns="http://www.w3.org/2000/svg" 
@@ -96,7 +101,3 @@ import SBWCSection from '@/components/SBWCSection.astro';
 			</div> -->
 	</main>
 </Layout>
-
-
-
-
