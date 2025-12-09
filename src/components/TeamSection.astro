@@ -1,0 +1,95 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils"; // Assuming cn is a utility function that works in Astro
+import { ArrowRight } from "lucide-react"; // This will need to be rendered as an SVG or a client-side React component
+
+// --- TYPE DEFINITIONS ---
+interface Testimonial {
+  imgSrc: string;
+  alt: string;
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  testimonials: Testimonial[];
+  badgeText?: string;
+  title: string; // Changed from React.ReactNode to string for simplicity in Astro
+  description: string; // Changed from React.ReactNode to string for simplicity in Astro
+  ctaText: string;
+  ctaHref: string;
+}
+
+const {
+  testimonials,
+  badgeText = "Testimonials",
+  title,
+  description,
+  ctaText,
+  ctaHref,
+  class: className, // Use 'class' for Astro components
+  ...rest
+} = Astro.props;
+
+// --- PRE-DEFINED POSITIONS FOR THE IMAGES ---
+// These positions are carefully chosen to replicate the reference image layout.
+// They are responsive, with some images hidden on smaller screens.
+const imagePositions = [
+  // Desktop and Tablet positions
+  { top: "5%", left: "15%", className: "hidden lg:block w-24 h-24" },
+  { top: "15%", left: "35%", className: "hidden md:block w-20 h-20" },
+  { top: "5%", left: "55%", className: "hidden md:block w-16 h-16" },
+  { top: "10%", right: "15%", className: "hidden lg:block w-28 h-28" },
+  { top: "25%", right: "5%", className: "hidden md:block w-20 h-20" },
+  { top: "45%", right: "10%", className: "hidden lg:block w-24 h-24" },
+  { top: "50%", left: "5%", className: "hidden md:block w-28 h-28" },
+  { bottom: "5%", left: "20%", className: "hidden lg:block w-20 h-20" },
+  { bottom: "15%", left: "45%", className: "hidden md:block w-16 h-16" },
+  { bottom: "10%", right: "30%", className: "hidden md:block w-24 h-24" },
+  { bottom: "2%", right: "15%", className: "hidden lg:block w-20 h-20" },
+  // Mobile-specific positions (simpler layout)
+  { top: "10%", left: "5%", className: "block md:hidden w-16 h-16" },
+  { top: "5%", right: "10%", className: "block md:hidden w-20 h-20" },
+  { bottom: "5%", left: "10%", className: "block md:hidden w-20 h-20" },
+  { bottom: "10%", right: "5%", className: "block md:hidden w-16 h-16" },
+];
+
+// --- ANIMATION LOGIC ---
+// Framer Motion animations cannot be directly used in server-side Astro.
+// To retain animations, this component would need to be wrapped in a React component
+// and rendered with client:load, or animations would need to be re-implemented with CSS/JS.
+// For this refactor, the motion components are removed, and the structure is kept.
+// If animations are critical, consider creating a React wrapper for this component.
+
+// Example of how to import and use a React component with client:load
+// import AnimatedTestimonialGridReact from './AnimatedTestimonialGrid.jsx';
+// <AnimatedTestimonialGridReact client:load {...Astro.props} />
+---
+
+<section
+  class={cn("relative w-full max-w-7xl mx-auto py-32 sm:py-40 px-4", className)}
+  {...rest}
+>
+  {/* Absolutely Positioned Images */}
+  {
+    testimonials.slice(0, imagePositions.length).map((testimonial, index) => (
+      <div
+        class={cn(
+          "absolute rounded-lg shadow-xl",
+          imagePositions[index].className,
+        )}
+        style={{
+          top: imagePositions[index].top,
+          left: imagePositions[index].left,
+          right: imagePositions[index].right,
+          bottom: imagePositions[index].bottom,
+        }}
+      >
+        <img
+          src={testimonial.imgSrc}
+          alt={testimonial.alt}
+          class="w-full h-full object-cover rounded-lg"
+        />
+        {/* Framer Motion animations removed for Astro component. */}
+      </div>
+    ))
+  }
+</section>

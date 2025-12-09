@@ -3,8 +3,11 @@ import '../styles/global.css';
 // Component Imports
 import Navigation from '@/components/Navigation.astro';
 import ScheduleComponent from '@/components/ScheduleV1.tsx';
+import {V0EventSchedule} from '@/components/V0event-schedule.tsx';
 import SwapCardAgenda from '@/components/SwapCardAgenda-iFrame.astro';
+import SwapCardLogoWhite from "@/assets/SwapCard/swapcard_LogoWhite.png"
 import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
+import { Image } from 'astro:assets';
 ---
 
 <html lang="en">
@@ -19,9 +22,19 @@ import SBRFavicon from '@/assets/SBR2026-Favicon-1-60x60.png';
 
 	<body class="min-h-screen bg-background">
 		<Navigation />
-		<main class="pt-16">
+		<main class="pt-16 flex flex-col justify-center bg-[#121212]">
 			<!-- <ScheduleComponent client:load /> -->
-			<SwapCardAgenda />
+			<div class=" w-full flex flex-col items-center justify-center mb-32 px-14">
+				<a class="" href="https://app.swapcard.com/event/synbioreactor-summit-sbr2026">
+					<Image src={SwapCardLogoWhite} alt="SynBio Reactor Summit 2026" class="" />
+				</a>
+				<SwapCardAgenda class=""/>
+			</div>
+
+			<div class="hidden w-full flex flex-col justify-center mb-32">
+				<V0EventSchedule />
+			</div>
+
 		</main>
 	</body>
 </html>
