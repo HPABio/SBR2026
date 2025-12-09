@@ -1,6 +1,8 @@
 ---
 import RecapVideo from "@/assets/RecapVideoSBR2025.mp4";
-import LogoMarquee from "@/components/ui/logo-marquee.astro";
+// import LogoMarquee from "@/components/ui/logo-marquee.astro";
+import {LogoMarquee} from "@/components/LogoMarquee.tsx";
+import MultiRowMarquee from "./MultiRowMarquee.astro";
 ---
 
 <section class="relative py-16 lg:py-24 w-screen">
@@ -149,5 +151,9 @@ import LogoMarquee from "@/components/ui/logo-marquee.astro";
         </div>
     </div>
 </div>
-<LogoMarquee class="w-full h-32"/>
+<!-- <LogoMarquee/> -->
+ <div class="w-full flex items-center justify-center">
+     <MultiRowMarquee class="w-full max-w-xl md:max-w-3xl lg:max-w-5xl 2xl:max-w-[1600px]"/>
+ </div>
+
 </section>

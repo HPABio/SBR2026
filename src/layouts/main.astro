@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SBRFavicon from '@/assets/SBR2026-Favicon.png';
 import ScreenSizeDEVTOOL from '@/components/ui/ScreenSizeDEVTOOL.astro';
+import Footer from '@/components/Footer.astro';
 
 //Page Title and Description
 interface MainProps {
@@ -31,5 +32,6 @@ const title = content.title || "SynBio Reactor Summit 2026";
 	<body>
 		{import.meta.env.DEV && <ScreenSizeDEVTOOL />}
 		<slot />
+		<Footer />
 	</body>
 </html>

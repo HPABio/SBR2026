@@ -2,6 +2,7 @@
 import Layout from '@/layouts/main.astro';
 import Navigation from '@/components/Navigation.astro';
 import { PitchForm } from '@/components/pitch-form';
+import WinnerLaurel from '@/components/ui/winner-laurel.astro';
 import {
 	HeroSection,
 	StatsSection,
@@ -41,7 +42,15 @@ import PitchCTASection from '@/components/PitchCTASection.astro';
 				<PitchForm />
 			</div>
 		</section>
+		
+
+		<h2 class="text-4xl md:text-5xl font-bold text-balance">
+			Convince <span class="text-primary">The Jury</span>
+		</h2>
+		<p class="text-xl text-muted-foreground text-balance">
+			and 
+		</p>
+		<WinnerLaurel classes="w-full my-10" awardLevel="GOLD" title="WINNER" awardName="SynBio Reactor Summit" winnerName="team:_______________" date="2026"/>
 
 		<PitchCTASection />
-		<Footer />
 </Layout>

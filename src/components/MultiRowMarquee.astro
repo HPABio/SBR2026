@@ -1,0 +1,82 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { Image } from "astro:assets";
+import { Marquee } from "@/components/ui/marquee.tsx";
+
+interface Props extends HTMLAttributes<"section"> {
+    class?: string;
+    className?: string;
+    theme?: "light" | "dark";
+}
+
+const { class: classProp, className, theme = "dark", ...props } = Astro.props;
+const classes = classProp || className || "";
+
+const bgColor = theme === "light" ? "bg-white" : "bg-background";
+// Invert filter for light mode so white logos (if any) are visible, or standard grayscale.
+// Assuming logos are standard colors. Grayscale usually works on both if contrast is okay.
+// But if background is white, logos need to be dark enough.
+// If background is black, logos need to be light enough.
+// The `logo-marquee.astro` used grayscale opacity-70.
+const imageClasses =
+    "mx-8 h-12 w-auto object-contain grayscale opacity-70 hover:opacity-100 transition-opacity invert";
+
+const logos = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/logos/*.{jpeg,jpg,png,gif,svg}",
+    { eager: true },
+);
+const allLogos = Object.values(logos).map((logo) => logo.default);
+
+// Split logos into rows (e.g. 3 rows)
+const chunkSize = Math.ceil(allLogos.length / 3);
+const row1 = allLogos.slice(0, chunkSize);
+const row2 = allLogos.slice(chunkSize, chunkSize * 2);
+const row3 = allLogos.slice(chunkSize * 2);
+// Fallback if not enough logos
+const safeRow1 = row1.length > 0 ? row1 : allLogos;
+const safeRow2 = row2.length > 0 ? row2 : allLogos;
+const safeRow3 = row3.length > 0 ? row3 : allLogos;
+---
+
+<section class={`relative py-16 ${bgColor} ${classes}`} {...props}>
+    <Marquee client:visible className="[--gap:40px] mb-8">
+        {
+            safeRow1.map((logo, index) => (
+                <Image
+                    src={logo}
+                    alt={`Company Logo ${index}`}
+                    height={60}
+                    class={imageClasses}
+                />
+            ))
+        }
+    </Marquee>
+
+    <Marquee client:visible reverse className="[--gap:40px] mb-8">
+        {
+            safeRow2.map((logo, index) => (
+                <Image
+                    src={logo}
+                    alt={`Company Logo ${index}`}
+                    height={60}
+                    class={imageClasses}
+                />
+            ))
+        }
+    </Marquee>
+
+    <Marquee client:visible speed="slow" className="[--gap:40px]">
+        {
+            safeRow3.map((logo, index) => (
+                <Image
+                    src={logo}
+                    alt={`Company Logo ${index}`}
+                    height={60}
+                    class={imageClasses}
+                />
+            ))
+        }
+    </Marquee>
+    <div class="absolute w-[10vw] max-w-[250px] h-full top-0 left-0 bg-linear-to-r from-background via-background to-transparent"/>
+    <div class="absolute w-[10vw] max-w-[250px] h-full top-0 right-0 bg-linear-to-l from-background via-background to-transparent"/>
+</section>

@@ -1,36 +1,40 @@
-import type { ComponentPropsWithoutRef } from "react"
-
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
+import type { ComponentPropsWithoutRef } from "react";
 
 interface MarqueeProps extends ComponentPropsWithoutRef<"div"> {
   /**
    * Optional CSS class name to apply custom styles
    */
-  className?: string
+  className?: string;
   /**
    * Whether to reverse the animation direction
    * @default false
    */
-  reverse?: boolean
+  reverse?: boolean;
   /**
    * Whether to pause the animation on hover
    * @default false
    */
-  pauseOnHover?: boolean
+  pauseOnHover?: boolean;
   /**
    * Content to be displayed in the marquee
    */
-  children: React.ReactNode
+  children: React.ReactNode;
   /**
    * Whether to animate vertically instead of horizontally
    * @default false
    */
-  vertical?: boolean
+  vertical?: boolean;
   /**
    * Number of times to repeat the content
-   * @default 200
+   * @default 4
    */
-  repeat?: number
+  repeat?: number;
+  /**
+   * Animation speed variant
+   * @default "normal"
+   */
+  speed?: "slow" | "normal" | "fast";
 }
 
 export function Marquee({
@@ -39,19 +43,27 @@ export function Marquee({
   pauseOnHover = false,
   children,
   vertical = false,
-  repeat = 200,
+  repeat = 5,
+  speed = "normal",
   ...props
 }: MarqueeProps) {
+  const speedVariants = {
+    slow: "[--duration:120s]",
+    normal: "[--duration:40s]",
+    fast: "[--duration:10s]",
+  };
+
   return (
     <div
       {...props}
       className={cn(
-        "group flex [gap:var(--gap)] overflow-hidden p-2 [--duration:100s] [--gap:1rem] invert",
+        "group flex overflow-hidden p-1 [--gap:6px] [gap:var(--gap)]",
+        speedVariants[speed],
         {
           "flex-row": !vertical,
           "flex-col": vertical,
         },
-        className
+        className,
       )}
     >
       {Array(repeat)
@@ -70,5 +82,5 @@ export function Marquee({
           </div>
         ))}
     </div>
-  )
+  );
 }

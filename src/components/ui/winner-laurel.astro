@@ -1,5 +1,6 @@
 ---
 interface Props {
+    classes?: string;
     awardLevel?: string;
     title?: string;
     awardName?: string;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const {
+    classes = "",
     awardLevel = "GOLD",
     title = "WINNER",
     awardName = "A Design Award & Competetion",
@@ -16,9 +18,7 @@ const {
 } = Astro.props;
 ---
 
-<div
-    class="relative z-0 flex flex-col items-center justify-center p-6 overflow-hidden"
->
+<div class={`relative z-0 flex flex-col items-center justify-center p-6 overflow-hidden ${classes}`}>
     <svg
         class="fill-primary absolute top-1/2 h-full w-full -translate-y-1/2"
         width="892.77"
@@ -41,7 +41,7 @@ const {
         <h1 class="text-4xl font-black tracking-tight">{title}</h1>
         <div class="bg-primary mx-auto my-3 h-[1px] w-40"></div>
         <h2 class="mb-4 w-60 text-xl font-light">{awardName}</h2>
-        <p class="text-primary/60 italic">{winnerName}</p>
+        <p class="text-primary/60 italic my-3 mt-6">{winnerName}</p>
         <div class="text-xl font-bold">{date}</div>
     </div>
 </div>

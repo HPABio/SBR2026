@@ -3,11 +3,12 @@ import NanoBananaImg from "@/assets/ExportWP/venue/BetonhalleWelcomeSBR2026-Nano
 import BubbleButton from "@/components/ui/BubbleButton.astro";
 import LaurelWreath from "@/components/ui/LaurelWreath.astro";
 import {GradientBars} from "@/components/ui/gradient-bars.tsx";
+import WinnerLaurel from "@/components/ui/winner-laurel.astro";
 ---
 
 <!-- Container -->
 <section
-    class="relative w-full min-h-screen px-4 md:px-12 mt-32 flex flex-col items-center justify-center overflow-hidden"
+    class="relative w-full min-h-screen lg:min-h-[1000px] px-4 md:px-12 mt-32 flex flex-col items-center justify-center overflow-hidden"
 >
 <GradientBars client:visible className='w-screen h-full mt-0 mx-auto absolute -bottom-44 left-0'/>
 <div class="w-full h-[150px] absolute top-0 left-0 right-0 z-10 bg-linear-to-b from-background to-transparent"/>
@@ -62,6 +63,7 @@ import {GradientBars} from "@/components/ui/gradient-bars.tsx";
                 class="absolute inset-0 bg-primary/20 mix-blend-overlay z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-500"
             >
             </div>
+            <WinnerLaurel/>
             <img
                 src={NanoBananaImg.src}
                 alt="Nano Banana Pro Pitch Event"
