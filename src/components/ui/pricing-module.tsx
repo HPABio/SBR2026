@@ -13,6 +13,7 @@ import { Switch } from "@/components/ui/switch";
 import { Check, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+
 export interface PlanFeature {
   label: string;
   included: boolean;
@@ -58,6 +59,9 @@ export function PricingModule({
         className
       )}
     >
+      <div className="inset-0 absolute bg-gradient-to-b from-background to-transparent">
+        <img />
+      </div>
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold tracking-tight mb-2">{title}</h2>
         <p className="text-muted-foreground mb-8">{subtitle}</p>

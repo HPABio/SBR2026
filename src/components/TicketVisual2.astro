@@ -1,0 +1,224 @@
+---
+// TicketVisual.astro
+import type { Props as NAMESectionProps } from 'astro';
+import SBRTitleLogo from "@/assets/SBR-LogoTitle.png";
+import SBRFavicon from "@/assets/SBR2026-Favicon.png";
+
+interface Props extends NAMESectionProps {
+class?: string;
+user?: {name: string, role: string, dateTime: string, room?: string, category?: string, title?: string, company?: string};
+session?: { title?: string, description?: string, image?: string, room?: string, type?: string };
+}
+const defaultSession = { title: "SYNBIOREACTOR", description: "Berlin's premier synthetic biology startup and investor summit", image: SBRFavicon.src, type: "Keynote" };
+const defaultUser = {name: "Hendrik Cooper", role: "SPEAKER", dateTime: "SEP 24, 2025", room: "Betonhalle Main", category: "BIODEFENSE", title: "Bio Defense in the Age of Engineered Biology", company: "Biocentra"}
+const { class: classProp, className, user = defaultUser, session = defaultSession } = Astro.props;
+const classes = classProp || className || "";
+---
+<section class={`relative py-16 bg-black ${classes}`}>
+
+    <div class="flex flex-col items-center justify-center p-8">
+    <div class="relative w-[280px] h-[190px] bg-white rounded-t-2xl rounded-b-lg shadow-lg overflow-hidden flex flex-col justify-end p-4 text-gray-800
+    ">
+        
+        <!-- Icon at top -->
+        <div class="absolute top-4 right-4 aspect-square w-20 flex justify-end rounded-full border-4 border-background">
+            <img src={session.image} alt={session.title} class="object-cover" />
+        </div>
+        <div class="absolute top-8 left-4 w-1/2">
+            <p class="font-semibold">{user.role}</p>
+        </div>
+
+        <!-- Role Section -->
+        <div class="flex items-center px-2 text-xl font-semibold gap-1 mb-2">
+        <p>{user.name}</p>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+        >
+            <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m15 10l-4 4l-2-2m4.246-8.541l1.221 1.04c.308.262.69.42 1.092.453l1.6.128a1.92 1.92 0 0 1 1.761 1.76l.127 1.6c.033.403.192.786.454 1.093l1.04 1.22a1.92 1.92 0 0 1 0 2.492l-1.04 1.221c-.262.308-.421.69-.453 1.093l-.128 1.6a1.92 1.92 0 0 1-1.76 1.761l-1.6.128a1.92 1.92 0 0 0-1.093.452l-1.221 1.04a1.92 1.92 0 0 1-2.492 0l-1.22-1.04a1.92 1.92 0 0 0-1.094-.452l-1.6-.128a1.92 1.92 0 0 1-1.76-1.762l-.128-1.599a1.92 1.92 0 0 0-.453-1.092l-1.04-1.222a1.92 1.92 0 0 1 0-2.49l1.04-1.222c.263-.308.42-.69.452-1.093l.128-1.599A1.92 1.92 0 0 1 6.842 5.08l1.598-.127A1.92 1.92 0 0 0 9.533 4.5l1.221-1.04a1.92 1.92 0 0 1 2.492 0"
+            ></path>
+        </svg>
+        </div>
+
+        <!-- session Info -->
+        <div class="flex p-2 text-[8px]">
+        <div class="w-1/2">
+            <p class="font-semibold uppercase">Affiliation</p>
+            <p class="font-normal">{user.company}</p>
+        </div>
+        <div class="w-1/2">
+            <p class="font-semibold uppercase">Begin</p>
+            <p class="font-normal">{user.dateTime}</p>
+        </div>
+        </div>
+
+        <!-- Separator Line -->
+        <div class="w-[85%] absolute bottom-0 left-0 right-0 mx-auto border-t-4 border-dashed border-gray-400"></div>
+
+    </div>
+    <div class="relative w-[280px] h-[190px] bg-white rounded-t-lg rounded-b-2xl shadow-lg overflow-hidden flex flex-col justify-end p-4 text-gray-800">
+        
+        
+
+        <!-- User Info -->
+        <div class="flex flex-col p-2">
+        <p class="text-[10px]">{user.title}</p>
+        <p class="text-lg -mt-1">{session.type}</p>
+        </div>
+
+        <!-- Bottom Section with QR and Room Info -->
+        <div class="flex w-full">
+        <div class="w-1/2 py-2 px-3 text-gray-500">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="64"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            >
+            <path d="M10.725 2.97249e-07H9.9V0.825H10.725V2.97249e-07Z"></path>
+            <path d="M11.55 0.825H10.725V1.65H11.55V0.825Z"></path>
+            <path d="M9.9 4.125L9.075 4.125V4.95H9.9V4.125Z"></path>
+            <path d="M14.85 4.125L14.025 4.125L14.025 4.95H14.85V4.125Z"></path>
+            <path d="M16.5 4.125H15.675V4.95H16.5V4.125Z"></path>
+            <path d="M17.325 4.95H16.5V5.775H17.325V4.95Z"></path>
+            <path d="M5.775 6.6H4.95V7.425H5.775V6.6Z"></path>
+            <path d="M7.425 6.6H6.6V7.425H7.425L7.425 6.6Z"></path>
+            <path d="M22.275 6.6H21.45V7.425H22.275V6.6Z"></path>
+            <path d="M9.075 7.425H8.25V8.25H9.075V7.425Z"></path>
+            <path d="M5.775 9.9H4.95V10.725H5.775V9.9Z"></path>
+            <path d="M16.5 9.9H15.675V10.725H16.5V9.9Z"></path>
+            <path d="M19.8 9.9H18.975V10.725H19.8V9.9Z"></path>
+            <path d="M22.275 10.725H21.45V11.55H22.275V10.725Z"></path>
+            <path d="M5.775 11.55L4.95 11.55V12.375H5.775V11.55Z"></path>
+            <path d="M19.8 12.375H18.975V13.2H19.8V12.375Z"></path>
+            <path d="M21.45 12.375H20.625V13.2H21.45V12.375Z"></path>
+            <path d="M5.775 13.2H4.95V14.025H5.775V13.2Z"></path>
+            <path d="M6.6 14.025L5.775 14.025V14.85H6.6V14.025Z"></path>
+            <path d="M15.675 14.025L14.85 14.025V14.85H15.675V14.025Z"></path>
+            <path d="M18.975 14.025L18.15 14.025L18.15 14.85H18.975V14.025Z"></path>
+            <path d="M20.625 14.025H19.8V14.85H20.625V14.025Z"></path>
+            <path d="M7.425 14.85H6.6V15.675H7.425V14.85Z"></path>
+            <path d="M22.275 17.325H21.45V18.15H22.275V17.325Z"></path>
+            <path d="M8.25 18.15H7.425L7.425 18.975H8.25V18.15Z"></path>
+            <path d="M18.975 18.15H18.15V18.975H18.975V18.15Z"></path>
+            <path d="M23.1 18.15H22.275V18.975H23.1V18.15Z"></path>
+            <path d="M7.425 19.8H6.6V20.625H7.425V19.8Z"></path>
+            <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12.375 17.325H14.025L14.025 18.975H13.2V19.8H11.55V20.625H12.375V21.45H11.55V22.275H10.725V23.1H11.55L11.55 22.275H12.375V23.1H13.2V23.925H8.25V23.1H6.6V22.275H9.075V23.1H9.9V21.45H7.425L7.425 20.625H9.075V18.975H11.55V18.15L12.375 18.15V17.325Z"
+            ></path>
+            <path
+                d="M22.275 14.85H20.625V15.675L18.975 15.675V16.5H15.675L15.675 17.325H14.85V18.15H15.675L15.675 18.975H14.025L14.025 19.8H14.85V20.625H13.2V22.275H14.025L14.025 23.925H14.85V23.1H15.675L15.675 23.925H18.15V23.1H19.8V22.275H18.15V21.45H15.675V20.625H18.975V21.45H19.8V20.625H20.625V19.8H21.45V18.975H20.625V17.325H21.45V15.675H22.275V14.85ZM14.025 22.275V21.45H14.85V22.275H14.025ZM19.8 19.8H17.325V17.325H19.8V19.8Z"
+            ></path>
+            <path
+                d="M23.1 19.8H22.275V20.625H20.625V21.45H21.45V22.275H22.275V23.925H23.1V23.1H23.925V21.45H23.1V19.8Z"
+            ></path>
+            <path d="M21.45 22.275H20.625V23.1H19.8V23.925H21.45V22.275Z"></path>
+            <path
+                d="M23.1 15.675H22.275V17.325H23.1V18.15V18.975V19.8H23.925V16.5H23.1V15.675Z"
+            ></path>
+            <path
+                d="M22.275 12.375H23.1V13.2H23.925V15.675H23.1V14.025H22.275V12.375Z"
+            ></path>
+            <path
+                d="M23.1 12.375H23.925V7.425L22.275 7.425V8.25H23.1V9.075H22.275V9.9H23.1V12.375Z"
+            ></path>
+            <path
+                d="M18.975 6.6V7.425H19.8V9.9H20.625V10.725H21.45V8.25H20.625V6.6H18.975Z"
+            ></path>
+            <path d="M20.625 10.725H19.8V12.375H20.625V10.725Z"></path>
+            <path d="M18.975 10.725H18.15V12.375H18.975V10.725Z"></path>
+            <path
+                d="M17.325 12.375V11.55H16.5V13.2H17.325V14.025H18.15L18.15 12.375H17.325Z"
+            ></path>
+            <path d="M17.325 14.025L16.5 14.025V15.675H17.325V14.025Z"></path>
+            <path
+                d="M9.9 3.3V4.125H10.725V4.95H11.55L11.55 5.775H12.375V4.95H13.2V4.125H14.025V3.3H9.9Z"
+            ></path>
+            <path
+                d="M15.675 4.95H14.85V5.775H14.025L14.025 4.95H13.2V7.425H15.675L15.675 4.95Z"
+            ></path>
+            <path
+                d="M16.5 6.6V7.425H17.325V9.075H16.5V9.9H18.15V8.25H18.975V7.425H18.15V6.6H16.5Z"
+            ></path>
+            <path
+                d="M10.725 15.675L9.9 15.675V16.5H9.075V17.325H8.25V18.15H9.9V17.325H10.725V15.675Z"
+            ></path>
+            <path
+                d="M4.125 14.025H4.95V14.85H5.775V15.675H4.125L4.125 14.025Z"
+            ></path>
+            <path
+                d="M3.3 12.375H4.95V13.2H4.125V14.025H1.65V13.2H3.3V12.375Z"
+            ></path>
+            <path d="M1.65 14.85V14.025L2.97249e-07 14.025V14.85H1.65Z"></path>
+            <path d="M2.97249e-07 16.5V17.325H1.65V16.5H2.97249e-07Z"></path>
+            <path
+                d="M2.97249e-07 18.15V23.925H5.775V18.15H2.97249e-07ZM4.95 23.1H0.825V18.975H4.95V23.1Z"
+            ></path>
+            <path d="M1.65 19.8V22.275H4.125V19.8H1.65Z"></path>
+            <path
+                d="M1.65 8.25H2.475V9.9H3.3V10.725H4.95V11.55H3.3V12.375H2.475V10.725H1.65V13.2H2.97249e-07V9.075H0.825V9.9H1.65V8.25Z"
+            ></path>
+            <path
+                d="M3.3 9.9H4.95V9.075H4.125V6.6H3.3V7.425L2.475 7.425V8.25H3.3V9.9Z"
+            ></path>
+            <path
+                d="M1.65 8.25V6.6H0.825V7.425L2.97249e-07 7.425V8.25H1.65Z"
+            ></path>
+            <path
+                d="M4.95 9.075H5.775V9.9H6.6V9.075H7.425V8.25H4.95V9.075Z"
+            ></path>
+            <path
+                d="M7.425 9.075H8.25V11.55L9.075 11.55V12.375H8.25V14.025H7.425L7.425 12.375H6.6V10.725H7.425L7.425 9.075Z"
+            ></path>
+            <path
+                d="M10.725 15.675H12.375V16.5H14.025L14.025 17.325H14.85V16.5H15.675V15.675L13.2 15.675V14.85H12.375V14.025H14.85V13.2H15.675L15.675 10.725H14.85V9.075H14.025V8.25H12.375V6.6H11.55L11.55 5.775H10.725V4.95H9.9V5.775H9.075V4.95H8.25V5.775H7.425L7.425 6.6H9.9V8.25H9.075V9.075H9.9V9.9H9.075V10.725H10.725V12.375H9.9V14.025L9.075 14.025V14.85H10.725V15.675ZM14.85 10.725V12.375H14.025V10.725H14.85ZM11.55 14.85H10.725V13.2H11.55L11.55 14.85ZM11.55 13.2V10.725H13.2V11.55L12.375 11.55V12.375H13.2V13.2H11.55ZM11.55 8.25H12.375V9.9H10.725V9.075H11.55V8.25Z"
+            ></path>
+            <path
+                d="M6.6 1.65H8.25V4.125H7.425V5.775H6.6V3.3H7.425L7.425 2.475H6.6V1.65Z"
+            ></path>
+            <path
+                d="M7.425 2.97249e-07V0.825H8.25V1.65H9.9V0.825H9.075V2.97249e-07H7.425Z"
+            ></path>
+            <path d="M11.55 1.65L11.55 2.475H13.2V1.65H11.55Z"></path>
+            <path d="M12.375 2.97249e-07V0.825H14.025V2.97249e-07H12.375Z"></path>
+            <path
+                d="M17.325 2.97249e-07H16.5V0.825H14.85V1.65H14.025V2.475H14.85V3.3H15.675V1.65H16.5V3.3H17.325V2.97249e-07Z"
+            ></path>
+            <path d="M19.8 1.65V4.125H22.275V1.65H19.8Z"></path>
+            <path
+                d="M18.15 2.97249e-07H23.925V5.775H18.15V2.97249e-07ZM23.1 4.95V0.825H18.975V4.95H23.1Z"
+            ></path>
+            <path
+                d="M8.25 17.325V16.5H6.6V15.675H5.775V16.5H4.125L4.125 15.675H2.475V14.85H1.65V16.5H2.475V17.325H6.6V18.15H7.425V17.325H8.25Z"
+            ></path>
+            <path
+                d="M0 0L5.775 2.97249e-07V5.775H2.97249e-07L0 0ZM4.95 4.95V0.825L0.825 0.825L0.825 4.95H4.95Z"
+            ></path>
+            <path d="M1.65 1.65V4.125H4.125V1.65H1.65Z"></path>
+            </svg>
+        </div>
+        <div class="flex flex-col w-1/2 text-[8px]">
+            <div class="py-1">
+            <p class="font-semibold">ROOM</p>
+            <p class="font-normal">{user.room}</p>
+            </div>
+            <div class="py-1">
+            <p class="font-semibold">CATEGORY</p>
+            <p class="font-normal">{user.category}</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</section>
