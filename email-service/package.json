@@ -1,0 +1,23 @@
+{
+  "name": "sbr-email-service",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Standalone email service for SynBio Reactor Summit sponsoring flyer requests",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2",
+    "nodemailer": "^7.0.11"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.2",
+    "@types/nodemailer": "^7.0.4",
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17"
+  }
+}

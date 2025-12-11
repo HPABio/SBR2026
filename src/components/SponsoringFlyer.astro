@@ -89,18 +89,27 @@ const { class: classProp } = Astro.props;
     ) as HTMLElement;
 
     if (form) {
-        form.addEventListener("submit", (e) => {
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
-            const email = input.value;
+            const email = input.value.trim();
 
-            // Simulate API call / delay
             const btn = form.querySelector("button");
-            if (btn) {
-                const originalText = btn.innerHTML;
-                btn.disabled = true;
-                btn.innerHTML = "Sending...";
+            if (!btn) return;
 
-                setTimeout(() => {
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = "Sending...";
+
+            try {
+                const response = await fetch('/api/request-flyer', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
                     // Update success message
                     if (successEmail) successEmail.textContent = email;
 
@@ -108,9 +117,19 @@ const { class: classProp } = Astro.props;
                     formContainer.style.opacity = "0";
                     setTimeout(() => {
                         successContainer.classList.remove("hidden");
-                        // Trigger animation by ensuring it renders
                     }, 300);
-                }, 800);
+                } else {
+                    // Handle error
+                    alert(data.error || 'Failed to send request. Please try again.');
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                }
+            } catch (error) {
+                // Handle network error
+                console.error('Error:', error);
+                alert('Network error. Please check your connection and try again.');
+                btn.disabled = false;
+                btn.innerHTML = originalText;
             }
         });
     }
