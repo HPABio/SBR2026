@@ -1,0 +1,13 @@
+---
+import type { Props as SponsoringPackagesProps } from 'astro';
+interface Props extends SponsoringPackagesProps {
+  class?: string;
+}
+const { class: classProp } = Astro.props;
+const classes = classProp || "";
+---
+<section class={`relative py-16 bg-black ${classes}`}>
+    <div class="container mx-auto max-w-4xl">
+        <h2 class="text-4xl font-bold tracking-tight mb-2">Sponsorship Packages</h2>
+    </div>
+</section>

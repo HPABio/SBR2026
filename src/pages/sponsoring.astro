@@ -1,27 +1,21 @@
 ---
-import "../styles/global.css";
+import Layout from "@/layouts/main.astro";
 import Navigation from "@/components/Navigation.astro";
 import SponsoringFlyer from "@/components/SponsoringFlyer.astro";
+import OtherSponsors from "@/components/ui/other-sponsors.tsx";
+import TeamComponent from "@/components/ui/TeamComponent.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Sponsoring - SynBio Reactor Summit 2026</title>
-		<meta
-			name="description"
-			content="Sponsor the SynBio Reactor Summit 2026 and support the synthetic biology startup ecosystem"
-		/>
-	</head>
+<Layout>
 
 	<body class="min-h-screen bg-background">
 		<Navigation />
 
 		<main class="pt-16">
-			<section class="py-20 px-4 lg:px-8">
+			
+			<SponsoringFlyer />
+			<OtherSponsors />
+			<section class="hidden py-20 px-4 lg:px-8">
 				<div class="container mx-auto max-w-4xl">
 					<div class="text-center space-y-4 mb-12">
 						<h1 class="text-4xl md:text-5xl font-bold text-balance">
@@ -139,7 +133,7 @@ import SponsoringFlyer from "@/components/SponsoringFlyer.astro";
 						<div class="mt-8">
 							<a
 								href="mailto:sbr@ga-sb.de"
-								class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary font-semibold px-6 py-3"
+								class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm transition-all bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary font-semibold px-6 py-3"
 							>
 								Become a Sponsor
 							</a>
@@ -147,8 +141,9 @@ import SponsoringFlyer from "@/components/SponsoringFlyer.astro";
 					</div>
 				</div>
 			</section>
-
-			<SponsoringFlyer />
+			<div class=" w-full flex flex-col justify-center mb-32">
+				<TeamComponent />
+			</div>
 		</main>
 	</body>
-</html>
+</Layout>

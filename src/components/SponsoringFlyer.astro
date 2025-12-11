@@ -9,27 +9,24 @@ const { class: classProp } = Astro.props;
 ---
 
 <section
-    class={`relative overflow-hidden rounded-xl border border-white/10 ${classProp || ""}`}
+    class={`relative overflow-hidden rounded-xl border-b border-white/10 ${classProp || ""}`}
 >
     <!-- Input Form State -->
     <div
         id="flyer-form-container"
         class="relative py-16 bg-black flex flex-col items-center justify-center text-center p-6"
     >
-        <div class="space-y-6 max-w-md w-full">
-            <div class="space-y-2">
-                <h2
-                    class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60"
-                >
-                    Get the Sponsoring Flyer
-                </h2>
-                <p class="text-muted-foreground">
-                    Receive our detailed sponsorship packages and opportunities
-                    directly to your inbox.
-                </p>
+        <div class="space-y-6 max-w-3xl w-full">
+            <div class="space-y-2 flex flex-col items-center justify-center">
+                <h2 class="w-fit text-3xl font-anton font-medium md:text-6xl lg:text-7xl tracking-tight uppercase text-left">Info Flyer for<br/>
+                    <span class="text-8xl text-primary">Sponsors</span>
+                    <p class="font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
+                      interested in sponsoring the event?
+                    </p>
+                    </h2>
             </div>
 
-            <form id="flyer-form" class="space-y-4">
+            <form id="flyer-form" class="space-y-4 max-w-lg mx-auto">
                 <div class="space-y-2">
                     <label for="email-input" class="sr-only">Email</label>
                     <input
@@ -112,6 +109,10 @@ const { class: classProp } = Astro.props;
                 if (response.ok) {
                     // Update success message
                     if (successEmail) successEmail.textContent = email;
+
+                    // Restore button state before hiding form
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
 
                     // Toggle visibility
                     formContainer.style.opacity = "0";
