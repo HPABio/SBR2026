@@ -2,19 +2,28 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Building2, Handshake, Users2, Link2 } from "lucide-react"
 
+import SPRIND from "@/assets/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg"
+import BIOCENTRA from "@/assets/partners-logos/LinkedIn-Thumbnails/BioCentra-biocentra-eu.jpeg"
+import VOSSIUS from "@/assets/partners-logos/LinkedIn-Thumbnails/VOSSIUS-vossiusandpartner.jpeg"
+import BioCircular from "@/assets/partners-logos/biocircular-logo.jpg"
+import GreenChemSolutions from "@/assets/partners-logos/greenchem-solutions-logo.jpg"
+import MetaboliteTech from "@/assets/partners-logos/metabolitetech-logo.jpg"
+import BioScalePartners from "@/assets/partners-logos/bioscale-partners-logo.jpg"
+import EnzymeDynamics from "@/assets/partners-logos/enzyme-dynamics-logo.jpg"
+
 export default function PartnersAndSupportersSections() {
   const goldSponsors = [
-    { name: "SPRIN-D", logo: "src/assets/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg" },
-    { name: "BIOCENTRA", logo: "src/assets/partners-logos/LinkedIn-Thumbnails/BioCentra-biocentra-eu.jpeg" },
-    { name: "VOSSIUS", logo: "src/assets/partners-logos/LinkedIn-Thumbnails/VOSSIUS-vossiusandpartner.jpeg" },
+    { name: "SPRIN-D", logo: SPRIND },
+    { name: "BIOCENTRA", logo: BIOCENTRA },
+    { name: "VOSSIUS", logo: VOSSIUS },
   ]
 
   const silverSponsors = [
-    { name: "BioCircular", logo: "src/assets/partners-logos/biocircular-logo.jpg" },
-    { name: "GreenChem Solutions", logo: "src/assets/partners-logos/greenchem-solutions-logo.jpg" },
-    { name: "MetaboliteTech", logo: "src/assets/partners-logos/metabolitetech-logo.jpg" },
-    { name: "BioScale Partners", logo: "src/assets/partners-logos/bioscale-partners-logo.jpg" },
-    { name: "Enzyme Dynamics", logo: "src/assets/partners-logos/enzyme-dynamics-logo.jpg" },
+    { name: "BioCircular ", logo: BioCircular },
+    { name: "GreenChem Solutions ", logo: GreenChemSolutions },
+    { name: "MetaboliteTech ", logo: MetaboliteTech },
+    { name: "BioScale Partners ", logo: BioScalePartners },
+    { name: "Enzyme Dynamics ", logo: EnzymeDynamics},
   ]
 
   const partners = [
@@ -91,7 +100,7 @@ export default function PartnersAndSupportersSections() {
                 <CardContent className="w-full h-full ">
                   <div className="flex items-center justify-center h-full w-full">
                     <img
-                      src={sponsor.logo || "src/assets/partners-logos/placeholder.svg"}
+                      src={sponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
                       alt={sponsor.name}
                     className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
                     />
@@ -126,7 +135,7 @@ export default function PartnersAndSupportersSections() {
                 <CardContent className="pt-6 pb-6">
                   <div className="flex items-center justify-center h-24">
                     <img
-                      src={sponsor.logo || "src/assets/partners-logos/placeholder.svg"}
+                      src={sponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
                       alt={sponsor.name}
                       className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity"
                     />
