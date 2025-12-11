@@ -1,0 +1,60 @@
+# Build stage
+FROM oven/bun:1 AS builder
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json bun.lock ./
+
+# Install dependencies
+RUN bun install --frozen-lockfile
+
+# Copy source code
+COPY . .
+
+# Build the Astro project
+RUN bun run build
+
+# Production stage - Multi-stage with Node.js server + nginx reverse proxy
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install nginx and bun
+RUN apk add --no-cache nginx
+
+# Copy package files for production dependencies
+COPY package.json package-lock.json* ./
+
+# Install production dependencies only (using npm since we're on node image)
+RUN npm ci --only=production || npm install --only=production
+
+# Copy built files from builder stage
+COPY --from=builder /app/dist ./dist
+
+# Copy nginx configuration
+COPY nginx.conf /etc/nginx/sites-available/default
+
+# Remove default nginx config
+RUN rm -f /etc/nginx/sites-enabled/default && \
+    ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
+# Expose ports
+EXPOSE 80
+
+# Set environment to production
+ENV NODE_ENV=production
+ENV HOST=0.0.0.0
+ENV PORT=4321
+
+# Create a startup script that runs both nginx and the Node.js server
+RUN echo '#!/bin/sh\n\
+set -e\n\
+# Start nginx in the background\n\
+nginx\n\
+# Start the Astro server in the foreground\n\
+exec node dist/server/entry.mjs\n\
+' > /app/start.sh && chmod +x /app/start.sh
+
+# Run the startup script
+CMD ["/app/start.sh"]
