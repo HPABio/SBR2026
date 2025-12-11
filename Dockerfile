@@ -20,11 +20,12 @@ FROM oven/bun:1
 
 WORKDIR /app
 
-# Copy package files for production dependencies
+# Copy package files
 COPY package.json bun.lock ./
 
-# Install production dependencies only
-RUN bun install --frozen-lockfile --production
+# Copy node_modules from builder stage (faster than reinstalling)
+# For SSR, we need all dependencies, not just production ones
+COPY --from=builder /app/node_modules ./node_modules
 
 # Copy built files from builder stage
 COPY --from=builder /app/dist ./dist
