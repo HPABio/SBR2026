@@ -45,18 +45,27 @@ import { MapPin, Calendar } from "lucide-react";
         Berlin's premier biotech summit
       </p>
       <div class="flex flex-row items-center justify-center gap-4 pt-4 mt-6">
-        <Button
-          size="lg"
-          onClick={() => window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSf3tJKhQo14tXnFDYWuHBFJ8qulqv55lQZBlpq7G1ZvB4ukLg/viewform?pli=1"}
-          className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg px-8"
-          client:load
+        <!-- 
+          The likely issue is that Astro's <Button> component is server-rendered and
+          client:load only applies to React/Vue/Svelte components, not simple Astro/JSX wrappers.
+          If your Button is a wrapper around a native <button>, it will NOT have the JS loaded 
+          unless it's from a UI framework and wrapped with client:load **and** able to run on the client.
+
+          If Button does not forward the onClick and is not a client component, use a native <a> or <button> directly.
+        -->
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf3tJKhQo14tXnFDYWuHBFJ8qulqv55lQZBlpq7G1ZvB4ukLg/viewform?pli=1"
+          class="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-lg font-semibold text-primary-foreground shadow transition-colors hover:bg-primary/90"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Apply Now
-        </Button>
+        </a>
         <Button
           size="lg"
           variant="outline"
           className="border-2 border-border hover:bg-card font-semibold text-lg px-8 bg-transparent"
+          onClick={() => { window.location.href = "mailto:sbr@ga-sb.de"; }}
           client:load
         >
           Contact Us

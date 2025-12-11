@@ -1,4 +1,5 @@
 ---
+import { SiteVerification, GoogleTagmanager } from '@digi4care/astro-google-tagmanager';
 import '../styles/global.css';
 import SBRFavicon from '@/assets/SBR2026-Favicon.png';
 import ScreenSizeDEVTOOL from '@/components/ui/ScreenSizeDEVTOOL.astro';
@@ -20,13 +21,8 @@ const title = content.title || "SynBio Reactor Summit 2026";
 <html lang="en">
 	<head>
 		{!import.meta.env.DEV && (
-		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-QFBMRL8F28"></script>
-		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-QFBMRL8F28')
-			</script>
+		<SiteVerification id="synbioreactor-de" />
+        <GoogleTagmanager id="GTM-K7TV5ND7" domain="https://www.googletagmanager.com" container="gmt.js" />
 		)}
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -40,10 +36,6 @@ const title = content.title || "SynBio Reactor Summit 2026";
 		<title>{title}</title>
 	</head>
 	<body>
-		{import.meta.env.PROD && (
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-QFBMRL8F28"
-			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-			)}
 		{import.meta.env.DEV && <ScreenSizeDEVTOOL />}
 		<CookieConsent />
 		<slot />
