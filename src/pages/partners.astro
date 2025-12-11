@@ -1,20 +1,12 @@
 ---
-import '../styles/global.css';
+import Layout from "@/layouts/main.astro";
 import React from 'react';
 import Navigation from '@/components/Navigation.astro';
 import PartnersAndSupportersSections from '@/components/partners-and-supporters-sections.tsx';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Partners & Supporters - SynBio Reactor Summit 2026</title>
-		<meta name="description" content="Meet our partners, sponsors, and supporters powering the SynBio Reactor Summit ecosystem" />
-	</head>
 
+<Layout>	
 	<body class="min-h-screen bg-background">
 		<Navigation />
 		
@@ -22,5 +14,5 @@ import PartnersAndSupportersSections from '@/components/partners-and-supporters-
 			<PartnersAndSupportersSections client:load />
 		</main>
 	</body>
-</html>
+</Layout>
 

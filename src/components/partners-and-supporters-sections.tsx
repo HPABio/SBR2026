@@ -53,14 +53,15 @@ export default function PartnersAndSupportersSections() {
                 Partner Program
               </Badge>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-balance leading-tight">
-              <span className="text-primary">POWERING</span> THE
-              <br />
-              <span className="text-foreground">SYNBIO ECOSYSTEM</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-balance leading-relaxed">
-              Together with leading organizations and visionaries, we're building the future of synthetic biology
-            </p>
+            <div className="space-y-2 flex flex-col items-center justify-center">
+                <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">Meet Our Network of <br/>
+                    <span className="text-8xl text-primary">Supporters</span>
+                    <p className="ml-2 font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
+                      partners, sponsors, and contributors
+                    </p>
+                    </h2>
+            </div>
+
           </div>
         </div>
       </section>
