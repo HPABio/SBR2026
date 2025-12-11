@@ -14,16 +14,17 @@ import WinnerLaurel from "@/components/ui/winner-laurel.astro";
     >
         <!-- Text Side -->
         <div
-            class="-mt-[300px] lg:mt-0 flex flex-col items-end text-right space-y-2 order-2 lg:order-1"
+            class=" -mt-[300px] lg:mt-0 flex flex-col items-end text-right space-y-2 order-2 lg:order-1"
         >
             <div class="space-y-2">
                 <div class="flex flex-col items-start lg:items-end">
                     <div class="h-1 w-24 bg-[#F49B2B] rounded-full mb-8 lg:mb-4 xl:mb-6"></div>
                     <h2
-                        class="text-4xl md:text-7xl lg:text-6xl font-anton font-black uppercase leading-[0.9] tracking-tight text-left lg:text-right"
+                        class="text-4xl md:text-7xl lg:text-6xl font-anton font-black uppercase tracking-tight text-left lg:text-right"
                     >
-                        Looking for a<br />
-                        <span class="text-[#F49B2B]">chance to pitch?</span>
+                        Looking for a<br class="" />chance <br class="lg:hidden" />
+                        <span class="text-[#F49B2B] text-8xl lg:text-6xl">to pitch
+                        </span>?
                         <p class="lg:hidden block text-base text-muted-foreground capitalize tracking-widest
                         font-quicksand font-thin max-w-md leading-none text-left lg:text-right mt-2">
                             Take the stage and showcase your innovation.
@@ -35,14 +36,14 @@ import WinnerLaurel from "@/components/ui/winner-laurel.astro";
             </div>
 
             <p
-                class="hidden lg:block text-lg text-muted-foreground font-quicksand font-medium max-w-md leading-relaxed lg:leading-[1.2] text-left lg:text-right"
+                class="hidden lg:block text-base text-muted-foreground font-quicksand font-thin max-w-md leading-none tracking-widest text-right"
             >
-                Take the stage and showcase your innovation. <br />
+                Take the stage and showcase your innovation.
                 Connect with investors, industry leaders, and peers in an electrifying
                 atmosphere.
             </p>
 
-            <div class="relative pt-10 lg:pt-8 pr-4 mx-auto lg:mx-0">
+            <div class="relative pt-10 lg:pt-8 pr-4 mx-auto lg:mx-0 ">
                 <LaurelWreath
                     color="#F49B2B"
                     class="block lg:hidden w-24 lg:w-32 absolute top-4 -right-4 lg:-right-8 opacity-80 rotate-20"
@@ -59,9 +60,9 @@ import WinnerLaurel from "@/components/ui/winner-laurel.astro";
 
         <!-- Image Side -->
         <div
-            class="relative w-full h-full items-center justify-center hidden lg:flex 
-            lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-none skew-y-3 lg:skew-y-0 lg:rotate-3 
-            hover:rotate-10 transition-transform duration-700 ease-out group order-1 lg:order-2"
+            class="relative w-2/3 h-full items-center justify-center hidden lg:flex
+            lg:aspect-4/3 rounded-2xl shadow-none skew-y-3 lg:skew-y-0 lg:rotate-3 
+            hover:rotate-10 transition-transform duration-700 ease-out group order-1 lg:order-2 overflow-visible"
         >
             <div
                 class="absolute inset-0 bg-primary/0 mix-blend-overlay z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-500 "
@@ -71,7 +72,7 @@ import WinnerLaurel from "@/components/ui/winner-laurel.astro";
             <img
                 src={NanoBananaImg.src}
                 alt="Nano Banana Pro Pitch Event"
-                class="hidden w-full h-full object-cover"
+                class="hidden h-full object-cover"
             />
         </div>
     </div>

@@ -7,9 +7,16 @@ interface Props extends NAMESectionProps {
 const { class: classProp, className } = Astro.props;
 const classes = classProp || className || "";
 ---
-<section class={`relative py-16 ${classes}`}>
+<section class={`relative h-full ${classes}`}>
   
-    <div class="container h-screen mx-auto max-w-7xl flex items-center justify-center">
-        <h2 class="text-4xl font-bold text-white">SBWC</h2>
+    <div class="container h-[200px] mx-auto max-w-7xl flex items-center justify-center">
+        <h2 class="text-4xl font-bold text-white"></h2>
     </div>
+    <div class="h-full w-fit mt-auto  flex flex-col items-start justify-center">
+      <h2
+          class="text-black text-9xl font-anton font-black uppercase tracking-tight clear-both caret-white my-0 text-left"
+      >
+          Looking back at
+      </h2>
+  </div>
 </section>

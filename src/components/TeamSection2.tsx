@@ -135,7 +135,7 @@ export const TeamSection2 = ({
         )}
         <h1 className="text-4xl md:text-7xl xl:text-8xl font-anton font-black tracking-tight text-black max-w-3xl uppercase">
           {title}
-        <p className="max-w-xl font-quicksand text-left text-light text-lg text-white -mt-2  mb-8 tracking-widest">
+        <p className="max-w-xl font-quicksand font-light text-left text-foreground text-base -mt-2  mb-8 tracking-widest">
           {description}
         </p>
         </h1>

@@ -162,3 +162,4 @@ This service can be deployed independently:
 - Configure `ALLOWED_ORIGIN` to restrict CORS to your domain
 - Consider adding rate limiting for production
 - The data file should be backed up regularly
+

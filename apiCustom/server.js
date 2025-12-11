@@ -190,3 +190,4 @@ app.listen(PORT, () => {
   console.log(`Data file: ${DATA_FILE}`);
   console.log(`Admin secret: ${ADMIN_SECRET.substring(0, 10)}...`);
 });
+
