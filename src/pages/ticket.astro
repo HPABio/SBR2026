@@ -1,0 +1,36 @@
+---
+import type { Props as NAMESectionProps } from 'astro';
+interface Props extends NAMESectionProps {
+  class?: string;
+}
+const { class: classProp, className } = Astro.props;
+const classes = classProp || className || "";
+---
+<section class={`relative py-16 bg-black ${classes}`}>
+    <div class="container mx-auto">
+
+        <div class="w-full h-full bg-primary">
+            <iframe src="https://www.tickettailor.com/checkout/view-event/id/5878107/chk/516f/?modal_widget=true&widget=true&trackingConsent=1" style="border: none; margin: 0px; width: 60%; display: block; height: 100%; min-height: 1600px;"></iframe>
+
+        </div>
+
+
+
+        <h2 class="text-4xl font-bold text-white">Ticket Tailor Widget</h2>
+        <!-- Ticket Tailor Widget. Paste this into your website where you want the widget to appear. Do not change the code or the widget may not work properly. -->
+<div class="tt-widget">
+    <div class="tt-widget-fallback">
+    <p>
+    <a href="https://www.tickettailor.com/all-tickets/germanassociationforsyntheticbiology/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true" target="_blank">Click here to buy tickets</a>
+    <br />
+    <small>
+    <a href="https://www.tickettailor.com?rf=wdg_183832" class="tt-widget-powered">Sell tickets online with Ticket Tailor</a>
+</small>
+</p>
+</div>
+<script src="https://cdn.tickettailor.com/js/widgets/min/widget.js" data-url="https://www.tickettailor.com/all-tickets/germanassociationforsyntheticbiology/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true" data-type="inline" data-inline-minimal="true" data-inline-show-logo="false" data-inline-bg-fill="false" data-inline-inherit-ref-from-url-param="" data-inline-ref="website_widget">
+</script>
+</div>
+<!-- End of Ticket Tailor Widget -->
+    </div>
+</section>

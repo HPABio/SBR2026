@@ -81,7 +81,7 @@ export const StarsBackground = ({
     return (
         <div
             className={cn(
-                "relative size-full overflow-hidden bg-[radial-gradient(ellipse_at_bottom,_#262626_0%,_#000_100%)]",
+                "relative size-full overflow-hidden bg-[radial-gradient(ellipse_at_bottom,_#F49B2B_0%,_#E46B08_100%)]",
                 className
             )}
             onMouseMove={handleMouseMove}

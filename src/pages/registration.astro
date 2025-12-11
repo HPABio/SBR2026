@@ -1,24 +1,32 @@
 ---
-import '../styles/global.css';
+// import assets
+import Layout from '@/layouts/main.astro';
+import SBROrangeWaveBG from '@/assets/ExportWP/bgImages/SBR_OrangeWave_BG.png';
 // Component Imports
 import Navigation from '@/components/Navigation.astro';
 import SwapCardRegistration from '@/components/SwapCardRegistration-iFrame.astro';
+import Image from 'astro/components/Image.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>SynBio Reactor Summit 2026</title>
-		<meta name="description" content="Berlin's premier synthetic biology startup and investor summit" />
-	</head>
 
+
+<Layout content={{ title: "SynBio Reactor Summit 2026" }}>
 	<body class="min-h-screen bg-background">
 		<Navigation />
-		<main class="pt-16">
-			<SwapCardRegistration />
+		<main class="w-full h-full relative overflow-hidden">
+			<div class="absolute bottom-0 w-screen min-w-[1200px] h-3/4 z-0 overflow-hidden translate-y-[100px]">
+				<Image src={SBROrangeWaveBG} alt="SBR Orange Wave" class="object-cover" />
+			</div>
+			<div class="relative w-full h-full flex flex-col justify-center items-center pt-32">
+				<h1 class="text-8xl font-bold font-anton tracking-tight text-white uppercase text-background">Get your <br/>tickets <span class="text-primary">now</span> !
+					<p class="font-quicksand text-xl text-thin text-muted-foreground tracking-widest -mt-1">Register for SynBio Reactor Summit 2026</p>
+				</h1>
+				<div class="relative w-full mx-auto z-10 p-4 mt-12 ">
+					<iframe src="https://www.tickettailor.com/checkout/view-event/id/5878107/chk/516f/?modal_widget=true&widget=true&trackingConsent=1" style="border: none; width: 60%; height: 100%; min-width: 600px; min-height: 1200px;" class="overflow-hidden rounded-lg mx-auto block"></iframe>
+				</div>
+			</div>
+
+			<!-- <SwapCardRegistration /> -->
 		</main>
 	</body>
-</html>  
+</Layout>

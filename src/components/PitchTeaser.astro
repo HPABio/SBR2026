@@ -2,27 +2,23 @@
 import NanoBananaImg from "@/assets/ExportWP/venue/BetonhalleWelcomeSBR2026-NanoBanana.jpeg";
 import BubbleButton from "@/components/ui/BubbleButton.astro";
 import LaurelWreath from "@/components/ui/LaurelWreath.astro";
-// import {GradientBars} from "@/components/ui/gradient-bars.tsx";
 import WinnerLaurel from "@/components/ui/winner-laurel.astro";
 ---
 
 <!-- Container -->
 <section
-    class="relative w-full min-h-screen lg:min-h-[1000px] px-4 md:px-12 mt-32 flex flex-col items-center justify-center overflow-hidden"
->
-<!-- <GradientBars client:visible className='w-screen h-full mt-0 mx-auto absolute -bottom-44 left-0'/> -->
-<div class="w-full h-[150px] absolute top-0 left-0 right-0 z-10 bg-linear-to-b from-background to-transparent"/>
+    class="relative w-full min-h-screen lg:min-h-[1000px] px-4 md:px-12 mt-32 flex flex-col items-center justify-center overflow-hidden">
     <!-- Content Container -->
     <div
         class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10 mb-32 -mt-32"
     >
         <!-- Text Side -->
         <div
-            class="flex flex-col items-end text-right space-y-6 order-2 lg:order-1"
+            class="flex flex-col items-end text-right space-y-2 order-2 lg:order-1"
         >
             <div class="space-y-2">
                 <div class="flex flex-col items-end">
-                    <div class="h-1 w-24 bg-[#F49B2B] rounded-full mb-4"></div>
+                    <div class="h-1 w-24 bg-[#F49B2B] rounded-full mb-4 xl:mb-6"></div>
                     <h2
                         class="text-4xl md:text-5xl lg:text-6xl font-anton uppercase leading-[0.9] tracking-tight"
                     >
@@ -33,41 +29,43 @@ import WinnerLaurel from "@/components/ui/winner-laurel.astro";
             </div>
 
             <p
-                class="text-lg text-muted-foreground font-quicksand font-medium max-w-md leading-relaxed"
+                class="text-lg text-muted-foreground font-quicksand font-medium max-w-md leading-relaxed lg:leading-[1.2]"
             >
                 Take the stage and showcase your innovation. <br />
                 Connect with investors, industry leaders, and peers in an electrifying
                 atmosphere.
             </p>
 
-            <div class="relative pt-4 pr-4">
+            <div class="relative pt-4 lg:pt-8 pr-4">
                 <LaurelWreath
                     color="#F49B2B"
-                    class="w-24 lg:w-32 absolute -top-6 -right-6 lg:-right-8 opacity-80 rotate-12"
+                    class="hidden w-24 lg:w-32 absolute -top-6 -right-6 lg:-right-8 opacity-80 rotate-12"
                 />
                 <BubbleButton
                     text="Pitching Contest"
                     icon="hidden"
                     href="/pitchPerfect"
-                    class="rounded-full"
-                    textClass="text-xl lg:text-2xl px-8 py-2 font-anton uppercase tracking-wide"
+                    class="rounded-md"
+                    textClass="text-xl lg:text-3xl px-2 py-2 font-anton uppercase tracking-tight"
                 />
             </div>
         </div>
 
         <!-- Image Side -->
         <div
-            class="relative w-full aspect-video lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl skew-y-3 lg:skew-y-0 lg:rotate-3 hover:rotate-0 transition-transform duration-700 ease-out group order-1 lg:order-2"
+            class="relative w-full h-full flex items-center justify-center 
+            lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-none skew-y-3 lg:skew-y-0 lg:rotate-3 
+            hover:rotate-10 transition-transform duration-700 ease-out group order-1 lg:order-2"
         >
             <div
-                class="absolute inset-0 bg-primary/20 mix-blend-overlay z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-500"
+                class="absolute inset-0 bg-primary/0 mix-blend-overlay z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-500 "
             >
             </div>
-            <WinnerLaurel/>
+            <WinnerLaurel classes="group-hover:scale-[1.1] duration-500"/>
             <img
                 src={NanoBananaImg.src}
                 alt="Nano Banana Pro Pitch Event"
-                class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
+                class="hidden w-full h-full object-cover"
             />
         </div>
     </div>

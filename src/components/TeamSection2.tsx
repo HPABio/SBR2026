@@ -85,7 +85,7 @@ const floatingAnimation = () => ({
 // --- COMPONENT ---
 export const TeamSection2 = ({
   testimonials = allTestimonials,
-  badgeText = 'Testimonials',
+  badgeText = 'Team',
   title,
   description,
   ctaText,
@@ -104,7 +104,7 @@ export const TeamSection2 = ({
       {testimonials.slice(0, imagePositions.length).map((testimonial, index) => (
         <motion.div
           key={index}
-          className={cn('absolute rounded-lg shadow-xl', imagePositions[index].className)}
+          className={cn('absolute rounded-lg', imagePositions[index].className)}
           style={{
             top: imagePositions[index].top,
             left: imagePositions[index].left,
@@ -120,7 +120,7 @@ export const TeamSection2 = ({
           <motion.img
             src={testimonial.imgSrc}
             alt={testimonial.alt}
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover rounded-lg  shadow-xl"
             animate={floatingAnimation()}
           />
         </motion.div>
@@ -129,16 +129,16 @@ export const TeamSection2 = ({
       {/* Central Content */}
       <div className="relative z-10 flex flex-col items-center text-center">
         {badgeText && (
-          <div className="mb-4 inline-block rounded-full bg-secondary px-3 py-1 text-sm font-semibold text-secondary-foreground">
+          <div className="mb-4 inline-block font-anton rounded-full bg-secondary px-3 py-1 text-sm font-semibold text-secondary-foreground">
             {badgeText}
           </div>
         )}
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground mb-4 max-w-3xl">
+        <h1 className="text-4xl md:text-7xl xl:text-8xl font-anton font-black tracking-tight text-black max-w-3xl uppercase">
           {title}
-        </h1>
-        <p className="max-w-xl text-lg text-muted-foreground mb-8">
+        <p className="max-w-xl font-quicksand text-light text-lg text-foreground mb-8 tracking-widest">
           {description}
         </p>
+        </h1>
         <a
           href={ctaHref}
           className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"

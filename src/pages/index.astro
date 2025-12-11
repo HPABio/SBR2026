@@ -1,6 +1,8 @@
 ---
 import Layout from "@/layouts/main.astro";
 import { Trophy } from "lucide-react";
+import Image from "astro/components/Image.astro";
+import TakeTheStage from "@/assets/pitching_session/TakeTheStage.png";
 
 // Component Imports
 import Navigation from "@/components/Navigation.astro";
@@ -11,8 +13,8 @@ import LogoMarquee from "@/components/ui/logo-marquee.astro";
 import SBRFavicon from "@/assets/SBR2026-Favicon-1-60x60.png";
 import TeamComponent from "@/components/ui/TeamComponent.astro";
 import { TeamSection2 } from "@/components/TeamSection2.tsx";
-import {GradientBars} from "@/components/ui/gradient-bars.tsx";
-import {StarsBackground} from "@/components/ui/stars-background.tsx";
+import { GradientBars } from "@/components/ui/gradient-bars.tsx";
+import { StarsBackground } from "@/components/ui/stars-background.tsx";
 
 //Section Import
 import HomeHero from "@/components/HomeHero.astro";
@@ -50,13 +52,42 @@ import SBWCSection from "@/components/SBWCSection.astro";
 			<SwapCardSection />
 		</div>
 
-		<div class="relative w-full flex justify-center mb-32">
-<GradientBars client:visible className='w-screen h-full mt-0 mx-auto absolute -bottom-44 left-0'/>
+		<div class="relative w-full flex justify-center pb-32">
+			<div class="absolute w-full h-full my-auto opacity-1">
+				<Image
+					src={TakeTheStage}
+					alt="SynBio Reactor Summit 2026"
+					class="h-full w-full object-cover"
+				/>
+			</div>
+			<div
+				class="absolute top-0 mx-auto h-full w-[90%] bg-linear-to-b from-background via-transparent to-background"
+			>
+			</div>
+			<div
+				class="absolute top-0 mx-auto h-full w-[90%] bg-linear-to-r from-background via-transparent to-background"
+			>
+			</div>
+			<div
+				class="absolute bottom-0 left-0 right-0 h-44 w-full bg-linear-to-t from-[#ff7700] via-transparent to-transparent z-0"
+			>
+			</div>
+			<GradientBars
+				client:visible
+				className="w-screen h-full mt-0 mx-auto absolute bottom-0 left-0 z-10"
+			/>
 			<PitchTeaser />
 		</div>
 
-		<div class="relative w-full h-full min-h-2xl flex items-center justify-center mb-32 bg-linear-to-b from-transparent via-[#E46B08] to-primary">
+		<div
+			class="relative w-full h-full min-h-2xl flex items-center justify-center mb-32
+		bg-linear-to-b from-[#ff7700] to-primary"
+		>
 			<SBWCSection class="w-full h-full" />
+		</div>
+
+		<div class="w-full flex flex-col justify-center mb-32">
+			<!-- COMPONENT -->
 		</div>
 
 		<div class="w-full flex flex-col justify-center mb-32">
@@ -68,10 +99,14 @@ import SBWCSection from "@/components/SBWCSection.astro";
 		</div>
 
 		<div class="w-full flex flex-col justify-center mb-32 relative">
-			<StarsBackground client:visible className="absolute top-0 left-0 right-0 z-0"/>
+			<StarsBackground
+				client:visible
+				starColor="#E46B08"
+				className="absolute top-0 left-0 right-0 z-0"
+			/>
 			<TeamSection2
 				client:visible
-				title="Meet Our Team"
+				title="Meet The People"
 				description="The minds behind the SynBio Reactor Summit."
 				ctaText="Learn More"
 				ctaHref="/about"
