@@ -1,0 +1,123 @@
+---
+import SponsoringFlyerSuccess from "./SponsoringFlyerSuccess.astro";
+
+interface Props {
+    class?: string;
+}
+
+const { class: classProp } = Astro.props;
+---
+
+<section
+    class={`relative overflow-hidden rounded-xl border border-white/10 ${classProp || ""}`}
+>
+    <!-- Input Form State -->
+    <div
+        id="flyer-form-container"
+        class="relative py-16 bg-black flex flex-col items-center justify-center text-center p-6"
+    >
+        <div class="space-y-6 max-w-md w-full">
+            <div class="space-y-2">
+                <h2
+                    class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60"
+                >
+                    Get the Sponsoring Flyer
+                </h2>
+                <p class="text-muted-foreground">
+                    Receive our detailed sponsorship packages and opportunities
+                    directly to your inbox.
+                </p>
+            </div>
+
+            <form id="flyer-form" class="space-y-4">
+                <div class="space-y-2">
+                    <label for="email-input" class="sr-only">Email</label>
+                    <input
+                        type="email"
+                        id="email-input"
+                        required
+                        placeholder="name@company.com"
+                        class="flex h-11 w-full rounded-md border border-input bg-white/5 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200"
+                    />
+                </div>
+                <button
+                    type="submit"
+                    class="inline-flex h-11 w-full items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                >
+                    Request Flyer
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="ml-2 h-4 w-4"
+                        ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"
+                        ></path></svg
+                    >
+                </button>
+            </form>
+
+            <p class="text-xs text-muted-foreground text-balance">
+                By requesting the flyer, you agree to receive information about
+                the SynBio Reactor Summit.
+            </p>
+        </div>
+    </div>
+
+    <!-- Success State (Hidden by default) -->
+    <div id="flyer-success-container" class="hidden absolute inset-0 bg-black">
+        <SponsoringFlyerSuccess email="" />
+    </div>
+</section>
+
+<script>
+    const form = document.querySelector("#flyer-form") as HTMLFormElement;
+    const input = document.querySelector("#email-input") as HTMLInputElement;
+    const formContainer = document.querySelector(
+        "#flyer-form-container",
+    ) as HTMLElement;
+    const successContainer = document.querySelector(
+        "#flyer-success-container",
+    ) as HTMLElement;
+    const successEmail = document.querySelector(
+        ".js-success-email",
+    ) as HTMLElement;
+
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const email = input.value;
+
+            // Simulate API call / delay
+            const btn = form.querySelector("button");
+            if (btn) {
+                const originalText = btn.innerHTML;
+                btn.disabled = true;
+                btn.innerHTML = "Sending...";
+
+                setTimeout(() => {
+                    // Update success message
+                    if (successEmail) successEmail.textContent = email;
+
+                    // Toggle visibility
+                    formContainer.style.opacity = "0";
+                    setTimeout(() => {
+                        successContainer.classList.remove("hidden");
+                        // Trigger animation by ensuring it renders
+                    }, 300);
+                }, 800);
+            }
+        });
+    }
+</script>
+
+<style>
+    #flyer-form-container {
+        transition: opacity 0.3s ease-in-out;
+    }
+</style>

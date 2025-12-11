@@ -1,0 +1,46 @@
+---
+import { Mail } from "lucide-react";
+
+interface Props {
+    email: string;
+    class?: string;
+}
+
+const { email, class: classProp } = Astro.props;
+---
+
+<section
+    class={`relative py-16 bg-black flex flex-col items-center justify-center text-center p-6 ${classProp || ""}`}
+>
+    <div
+        class="space-y-6 max-w-md w-full animate-in fade-in zoom-in duration-500"
+    >
+        <!-- Icon Container -->
+        <div
+            class="mx-auto w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mb-6 ring-1 ring-primary/20 shadow-[0_0_20px_rgba(244,155,43,0.1)]"
+        >
+            <Mail className="w-12 h-12 text-primary" strokeWidth={1.5} />
+        </div>
+
+        <!-- Text Content -->
+        <div class="space-y-4">
+            <h2
+                class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60"
+            >
+                Thank You!
+            </h2>
+
+            <div class="space-y-2 text-muted-foreground text-lg">
+                <p>The sponsoring flyer is on its way to:</p>
+                <p class="font-medium text-primary break-all js-success-email">
+                    {email}
+                </p>
+            </div>
+
+            <p class="text-sm text-muted-foreground/60 pt-4">
+                Please check your spam folder if you don't see it within a few
+                minutes.
+            </p>
+        </div>
+    </div>
+</section>

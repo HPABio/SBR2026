@@ -1,6 +1,7 @@
 ---
-import '../styles/global.css';
-import Navigation from '@/components/Navigation.astro';
+import "../styles/global.css";
+import Navigation from "@/components/Navigation.astro";
+import SponsoringFlyer from "@/components/SponsoringFlyer.astro";
 ---
 
 <html lang="en">
@@ -10,12 +11,15 @@ import Navigation from '@/components/Navigation.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Sponsoring - SynBio Reactor Summit 2026</title>
-		<meta name="description" content="Sponsor the SynBio Reactor Summit 2026 and support the synthetic biology startup ecosystem" />
+		<meta
+			name="description"
+			content="Sponsor the SynBio Reactor Summit 2026 and support the synthetic biology startup ecosystem"
+		/>
 	</head>
 
 	<body class="min-h-screen bg-background">
 		<Navigation />
-		
+
 		<main class="pt-16">
 			<section class="py-20 px-4 lg:px-8">
 				<div class="container mx-auto max-w-4xl">
@@ -24,45 +28,69 @@ import Navigation from '@/components/Navigation.astro';
 							<span class="text-primary">Sponsor</span> the Summit
 						</h1>
 						<p class="text-xl text-muted-foreground text-balance">
-							Support the next generation of synthetic biology innovation
+							Support the next generation of synthetic biology
+							innovation
 						</p>
 					</div>
 
 					<div class="prose prose-invert max-w-none space-y-6">
 						<p class="text-lg text-muted-foreground">
-							By sponsoring the SynBio Reactor Summit 2026, you're investing in the future of 
-							synthetic biology. Your support enables us to bring together the brightest minds 
-							in the field and create opportunities for groundbreaking innovations.
+							By sponsoring the SynBio Reactor Summit 2026, you're
+							investing in the future of synthetic biology. Your
+							support enables us to bring together the brightest
+							minds in the field and create opportunities for
+							groundbreaking innovations.
 						</p>
-						
-						<h2 class="text-2xl font-bold mt-8 mb-4">Sponsorship Tiers</h2>
-						
+
+						<h2 class="text-2xl font-bold mt-8 mb-4">
+							Sponsorship Tiers
+						</h2>
+
 						<div class="space-y-6">
 							<div class="border border-border rounded-lg p-6">
-								<h3 class="text-xl font-bold mb-2 text-primary">Platinum Sponsor</h3>
-								<ul class="list-disc list-inside space-y-2 text-muted-foreground">
-									<li>Premium booth location at the summit</li>
+								<h3 class="text-xl font-bold mb-2 text-primary">
+									Platinum Sponsor
+								</h3>
+								<ul
+									class="list-disc list-inside space-y-2 text-muted-foreground"
+								>
+									<li>
+										Premium booth location at the summit
+									</li>
 									<li>Keynote speaking opportunity</li>
-									<li>Logo placement on all marketing materials</li>
+									<li>
+										Logo placement on all marketing
+										materials
+									</li>
 									<li>VIP access to all events</li>
 									<li>10 complimentary tickets</li>
 								</ul>
 							</div>
 
 							<div class="border border-border rounded-lg p-6">
-								<h3 class="text-xl font-bold mb-2 text-primary">Gold Sponsor</h3>
-								<ul class="list-disc list-inside space-y-2 text-muted-foreground">
+								<h3 class="text-xl font-bold mb-2 text-primary">
+									Gold Sponsor
+								</h3>
+								<ul
+									class="list-disc list-inside space-y-2 text-muted-foreground"
+								>
 									<li>Exhibition booth at the summit</li>
 									<li>Workshop hosting opportunity</li>
-									<li>Logo placement on website and program</li>
+									<li>
+										Logo placement on website and program
+									</li>
 									<li>Access to networking events</li>
 									<li>5 complimentary tickets</li>
 								</ul>
 							</div>
 
 							<div class="border border-border rounded-lg p-6">
-								<h3 class="text-xl font-bold mb-2 text-primary">Silver Sponsor</h3>
-								<ul class="list-disc list-inside space-y-2 text-muted-foreground">
+								<h3 class="text-xl font-bold mb-2 text-primary">
+									Silver Sponsor
+								</h3>
+								<ul
+									class="list-disc list-inside space-y-2 text-muted-foreground"
+								>
 									<li>Logo placement on website</li>
 									<li>Social media recognition</li>
 									<li>Access to networking events</li>
@@ -71,25 +99,46 @@ import Navigation from '@/components/Navigation.astro';
 							</div>
 						</div>
 
-						<h2 class="text-2xl font-bold mt-8 mb-4">Why Sponsor?</h2>
-						<ul class="list-disc list-inside space-y-2 text-muted-foreground">
-							<li>Connect with the most promising synthetic biology startups</li>
-							<li>Build brand awareness in the synthetic biology community</li>
-							<li>Access to exclusive networking opportunities</li>
-							<li>Support innovation and entrepreneurship in synthetic biology</li>
-							<li>Position your organization as a leader in the field</li>
+						<h2 class="text-2xl font-bold mt-8 mb-4">
+							Why Sponsor?
+						</h2>
+						<ul
+							class="list-disc list-inside space-y-2 text-muted-foreground"
+						>
+							<li>
+								Connect with the most promising synthetic
+								biology startups
+							</li>
+							<li>
+								Build brand awareness in the synthetic biology
+								community
+							</li>
+							<li>
+								Access to exclusive networking opportunities
+							</li>
+							<li>
+								Support innovation and entrepreneurship in
+								synthetic biology
+							</li>
+							<li>
+								Position your organization as a leader in the
+								field
+							</li>
 						</ul>
 
-						<h2 class="text-2xl font-bold mt-8 mb-4">Custom Sponsorship Packages</h2>
+						<h2 class="text-2xl font-bold mt-8 mb-4">
+							Custom Sponsorship Packages
+						</h2>
 						<p class="text-muted-foreground">
-							We also offer custom sponsorship packages tailored to your organization's specific 
-							needs and goals. Contact us to discuss how we can create a sponsorship package 
-							that works for you.
+							We also offer custom sponsorship packages tailored
+							to your organization's specific needs and goals.
+							Contact us to discuss how we can create a
+							sponsorship package that works for you.
 						</p>
 
 						<div class="mt-8">
-							<a 
-								href="mailto:sbr@ga-sb.de" 
+							<a
+								href="mailto:sbr@ga-sb.de"
 								class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary font-semibold px-6 py-3"
 							>
 								Become a Sponsor
@@ -98,10 +147,8 @@ import Navigation from '@/components/Navigation.astro';
 					</div>
 				</div>
 			</section>
+
+			<SponsoringFlyer />
 		</main>
 	</body>
 </html>
-
-
-
-
