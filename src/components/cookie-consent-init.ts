@@ -1,4 +1,4 @@
-import CookieConsent from 'vanilla-cookieconsent';
+import * as CookieConsent from 'vanilla-cookieconsent';
 
 // Initialize Cookie Consent
 if (typeof window !== 'undefined') {
