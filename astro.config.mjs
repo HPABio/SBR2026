@@ -10,7 +10,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   // Set your site URL here or via SITE_URL environment variable
   // This is required for sitemap generation
-  site: process.env.SITE_URL || 'https://example.com', // TODO: Update with your actual production URL
+  site: process.env.SITE_URL || 'https://synbioreactor.de', // TODO: Update with your actual production URL
   vite: {
       plugins: [tailwindcss()],
 	},
