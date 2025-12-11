@@ -5,7 +5,7 @@ export default function OtherSponsors() {
     <section className="py-20 flex min-h-screen flex-col items-center justify-center rounded-xl border-b border-white/10">
       <div className="space-y-6">
         <div className="relative z-10 space-y-3 text-left flex flex-col items-center justify-center">
-          <h2 className="w-fit text-3xl font-anton font-medium md:text-6xl lg:text-7xl tracking-tight uppercase ">Join our <br/>
+          <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase ">Join our <br/>
           <span className="text-8xl text-primary">sponsors</span>
           <p className="font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
             and help us make the summit a success.

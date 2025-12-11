@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import Layout from "@/layouts/main.astro";
 // Component Imports
 import Navigation from "@/components/Navigation.astro";
 import ScheduleComponent from "@/components/ScheduleV1.tsx";
@@ -10,19 +10,8 @@ import SBRFavicon from "@/assets/SBR2026-Favicon-1-60x60.png";
 import { Image } from "astro:assets";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href={SBRFavicon.src} />
-		<meta name="generator" content={Astro.generator} />
-		<title>SynBio Reactor Summit 2026</title>
-		<meta
-			name="description"
-			content="Berlin's premier synthetic biology startup and investor summit"
-		/>
-	</head>
 
+<Layout>
 	<body class="min-h-screen bg-background">
 		<Navigation />
 		<main class="pt-16 flex flex-col justify-center bg-[#121212]">
@@ -30,22 +19,31 @@ import { Image } from "astro:assets";
 			<div
 				class="w-full flex flex-col items-center justify-center mb-32 px-14"
 			>
-				<a
-					class=""
-					href="https://app.swapcard.com/event/synbioreactor-summit-sbr2026"
-				>
-					<Image
-						src={SwapCardLogoWhite}
-						alt="SynBio Reactor Summit 2026"
-						class=""
-					/>
-				</a>
-				<!-- <SwapCardAgenda class="hidden"/> -->
+			
+			<!-- <a
+			class=""
+			href="https://app.swapcard.com/event/synbioreactor-summit-sbr2026"
+			>
+			<Image
+			src={SwapCardLogoWhite}
+			alt="SynBio Reactor Summit 2026"
+			class=""
+			/>
+		</a> -->
+		<div class="space-y-2 flex flex-col items-center justify-center pt-24 lg:pt-44 mb-12">
+			<h2 class="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">Synbio reactor <br/>
+				<span class="text-8xl text-primary">SESSIONS</span>
+				<p class="font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
+					Search and book your favorite sessions.
+				</p>
+			</h2>
+		</div>
+				<SwapCardAgenda class="hidden"/>
 			</div>
 
-			<div class="w-full flex flex-col justify-center mb-32">
+			<!-- <div class="w-full flex flex-col justify-center mb-32">
 				<V0EventSchedule />
-			</div>
+			</div> -->
 		</main>
 	</body>
-</html>
+</Layout>

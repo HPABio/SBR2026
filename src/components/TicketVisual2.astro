@@ -4,15 +4,54 @@ import type { Props as NAMESectionProps } from 'astro';
 import SBRTitleLogo from "@/assets/SBR-LogoTitle.png";
 import SBRFavicon from "@/assets/SBR2026-Favicon.png";
 
+interface SpeakerData {
+	name: string;
+	role?: string;
+	dateTime?: string;
+	room?: string;
+	category?: string;
+	title?: string;
+	company?: string;
+	sessionTitle?: string;
+	sessionDescription?: string;
+	sessionImage?: string;
+	sessionType?: string;
+}
+
 interface Props extends NAMESectionProps {
 class?: string;
+speaker?: SpeakerData;
 user?: {name: string, role: string, dateTime: string, room?: string, category?: string, title?: string, company?: string};
 session?: { title?: string, description?: string, image?: string, room?: string, type?: string };
 }
+
 const defaultSession = { title: "SYNBIOREACTOR", description: "Berlin's premier synthetic biology startup and investor summit", image: SBRFavicon.src, type: "Keynote" };
 const defaultUser = {name: "Hendrik Cooper", role: "SPEAKER", dateTime: "SEP 24, 2025", room: "Betonhalle Main", category: "BIODEFENSE", title: "Bio Defense in the Age of Engineered Biology", company: "Biocentra"}
-const { class: classProp, className, user = defaultUser, session = defaultSession } = Astro.props;
+
+// If speaker prop is provided, use it to construct user and session
+let { class: classProp, className, speaker, user, session } = Astro.props;
 const classes = classProp || className || "";
+
+if (speaker) {
+	user = {
+		name: speaker.name,
+		role: speaker.role || "SPEAKER",
+		dateTime: speaker.dateTime || "SEP 24, 2025",
+		room: speaker.room || "Betonhalle Main",
+		category: speaker.category || "SYNTHETIC BIOLOGY",
+		title: speaker.title || "",
+		company: speaker.company || ""
+	};
+	session = {
+		title: speaker.sessionTitle || defaultSession.title,
+		description: speaker.sessionDescription || defaultSession.description,
+		image: speaker.sessionImage || defaultSession.image,
+		type: speaker.sessionType || defaultSession.type
+	};
+} else {
+	user = user || defaultUser;
+	session = session || defaultSession;
+}
 ---
 <section class={`relative py-16 bg-black ${classes}`}>
 

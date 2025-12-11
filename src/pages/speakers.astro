@@ -5,6 +5,82 @@ import Navigation from '@/components/Navigation.astro';
 import PartnersAndSupportersSections from '@/components/partners-and-supporters-sections.tsx';
 import TicketVisual from '@/components/TicketVisual.astro';
 import TicketVisual2 from '@/components/TicketVisual2.astro';
+
+// Define speakers JSON object
+const speakers = [
+	{
+		name: "Hendrik Cooper",
+		role: "SPEAKER",
+		dateTime: "SEP 24, 2025",
+		room: "Betonhalle Main",
+		category: "BIODEFENSE",
+		title: "Bio Defense in the Age of Engineered Biology",
+		company: "Biocentra",
+		sessionTitle: "SYNBIOREACTOR",
+		sessionDescription: "Berlin's premier synthetic biology startup and investor summit",
+		sessionType: "Keynote"
+	},
+	{
+		name: "Sarah Johnson",
+		role: "SPEAKER",
+		dateTime: "SEP 24, 2025",
+		room: "Room A",
+		category: "BIOTECH",
+		title: "The Future of Synthetic Biology",
+		company: "BioTech Innovations",
+		sessionTitle: "SYNBIOREACTOR",
+		sessionDescription: "Berlin's premier synthetic biology startup and investor summit",
+		sessionType: "Presentation"
+	},
+	{
+		name: "Michael Chen",
+		role: "SPEAKER",
+		dateTime: "SEP 24, 2025",
+		room: "Workshop Room 1",
+		category: "INVESTMENT",
+		title: "Investing in Synthetic Biology Startups",
+		company: "Venture Capital Partners",
+		sessionTitle: "SYNBIOREACTOR",
+		sessionDescription: "Berlin's premier synthetic biology startup and investor summit",
+		sessionType: "Workshop"
+	},
+	{
+		name: "Emma Rodriguez",
+		role: "SPEAKER",
+		dateTime: "SEP 24, 2025",
+		room: "Betonhalle Main",
+		category: "RESEARCH",
+		title: "CRISPR and Beyond: Next-Gen Gene Editing",
+		company: "Genome Labs",
+		sessionTitle: "SYNBIOREACTOR",
+		sessionDescription: "Berlin's premier synthetic biology startup and investor summit",
+		sessionType: "Keynote"
+	},
+	{
+		name: "David Kim",
+		role: "SPEAKER",
+		dateTime: "SEP 24, 2025",
+		room: "Room B",
+		category: "STARTUPS",
+		title: "Building a SynBio Startup from Scratch",
+		company: "StartupBio",
+		sessionTitle: "SYNBIOREACTOR",
+		sessionDescription: "Berlin's premier synthetic biology startup and investor summit",
+		sessionType: "Panel"
+	},
+	{
+		name: "Lisa Anderson",
+		role: "SPEAKER",
+		dateTime: "SEP 24, 2025",
+		room: "Workshop Room 2",
+		category: "REGULATION",
+		title: "Navigating Regulatory Challenges in SynBio",
+		company: "Regulatory Solutions Inc",
+		sessionTitle: "SYNBIOREACTOR",
+		sessionDescription: "Berlin's premier synthetic biology startup and investor summit",
+		sessionType: "Discussion"
+	}
+];
 ---
 
 <html lang="en">
@@ -13,15 +89,22 @@ import TicketVisual2 from '@/components/TicketVisual2.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Partners & Supporters - SynBio Reactor Summit 2026</title>
-		<meta name="description" content="Meet our partners, sponsors, and supporters powering the SynBio Reactor Summit ecosystem" />
+		<title>Speakers - SynBio Reactor Summit 2026</title>
+		<meta name="description" content="Meet our speakers at the SynBio Reactor Summit 2026" />
 	</head>
 
 	<body class="min-h-screen bg-background">
 		<Navigation />
 		
 		<main class="pt-16">
-			<TicketVisual2 />
+			<div class="container mx-auto px-4 py-8">
+				<h1 class="text-4xl font-bold text-center mb-8">Speakers</h1>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+					{speakers.map((speaker) => (
+						<TicketVisual2 speaker={speaker} />
+					))}
+				</div>
+			</div>
 			<PartnersAndSupportersSections client:load />
 		</main>
 	</body>
