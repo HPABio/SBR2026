@@ -1,8 +1,10 @@
 ---
+//import assets
 import Layout from "@/layouts/main.astro";
 import { Trophy } from "lucide-react";
 import Image from "astro/components/Image.astro";
 import TakeTheStage from "@/assets/pitching_session/TakeTheStage.png";
+import BlackWaveDevider from "@/assets/Other/blackWave_devider.png"
 
 // Component Imports
 import Navigation from "@/components/Navigation.astro";
@@ -68,37 +70,42 @@ import SBWCSection from "@/components/SBWCSection.astro";
 				class="absolute top-0 mx-auto h-full w-[90%] bg-linear-to-r from-background via-transparent to-background"
 			>
 			</div>
+			<GradientBars
+			client:visible
+			className="w-screen h-full mt-0 mx-auto absolute bottom-0 left-0 z-10"
+			/>
 			<div
-				class="absolute bottom-0 left-0 right-0 h-44 w-full bg-linear-to-t from-[#ff7700] via-transparent to-transparent z-0"
+				class="absolute bottom-0 left-0 right-0 h-96 w-full bg-[radial-gradient(ellipse_at_bottom,_#FFFFFF00_0%,_#FFFFFF00_90%,_#ff7700_100%)] z-10 rotate-180"
 			>
 			</div>
-			<GradientBars
-				client:visible
-				className="w-screen h-full mt-0 mx-auto absolute bottom-0 left-0 z-10"
-			/>
 			<PitchTeaser />
 		</div>
 
-		<div
-			class="relative w-full h-full min-h-2xl flex items-center justify-center mb-32
-		bg-linear-to-b from-[#ff7700] to-primary"
-		>
-			<SBWCSection class="w-full h-full" />
+		<div class="relative w-full h-full min-h-2xl flex items-center justify-center mb-32
+		bg-linear-to-t from-primary to-[#ff7700] py-44">
+			<SBWCSection />
 		</div>
 
 		<div class="w-full flex flex-col justify-center mb-32">
-			<!-- COMPONENT -->
+			<!-- <SBWCSection /> -->
 		</div>
 
 		<div class="w-full flex flex-col justify-center mb-32">
 			<Recap />
 		</div>
 
-		<div class="w-full flex flex-col justify-center mb-32">
+		<div class="hidden w-full flex flex-col justify-center mb-32">
 			<TeamComponent />
 		</div>
 
-		<div class="w-full flex flex-col justify-center mb-32 relative">
+		<div class="w-full flex flex-col justify-center mb-32 relative pt-[300px] pb-44">
+			<div class="absolute w-full h-[200px] top-0 left-0 z-10">
+				<Image
+					src={BlackWaveDevider}
+					alt="SynBio Reactor Summit 2026"
+					class="h-full w-full object-fit rotate-180"
+				/>
+			</div>
 			<StarsBackground
 				client:visible
 				starColor="#E46B08"
@@ -107,7 +114,7 @@ import SBWCSection from "@/components/SBWCSection.astro";
 			<TeamSection2
 				client:visible
 				title="Meet The People"
-				description="The minds behind the SynBio Reactor Summit."
+				description="Running The SynBio Reactor."
 				ctaText="Learn More"
 				ctaHref="/about"
 			/>

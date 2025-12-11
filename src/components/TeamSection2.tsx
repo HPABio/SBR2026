@@ -85,7 +85,7 @@ const floatingAnimation = () => ({
 // --- COMPONENT ---
 export const TeamSection2 = ({
   testimonials = allTestimonials,
-  badgeText = 'Team',
+  badgeText = 'Organizing Team',
   title,
   description,
   ctaText,
@@ -129,23 +129,26 @@ export const TeamSection2 = ({
       {/* Central Content */}
       <div className="relative z-10 flex flex-col items-center text-center">
         {badgeText && (
-          <div className="mb-4 inline-block font-anton rounded-full bg-secondary px-3 py-1 text-sm font-semibold text-secondary-foreground">
+          <div className="mb-4 inline-block font-anton rounded-full bg-secondary px-3 py-1 text-sm font-light text-primary uppercase tracking-widest">
             {badgeText}
           </div>
         )}
         <h1 className="text-4xl md:text-7xl xl:text-8xl font-anton font-black tracking-tight text-black max-w-3xl uppercase">
           {title}
-        <p className="max-w-xl font-quicksand text-light text-lg text-foreground mb-8 tracking-widest">
+        <p className="max-w-xl font-quicksand text-left text-light text-lg text-white -mt-2  mb-8 tracking-widest">
           {description}
         </p>
         </h1>
-        <a
+        {/* <a
           href={ctaHref}
-          className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          className="hidden inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 
+          text-base font-medium text-primary-foreground 
+          shadow-sm transition-colors hover:bg-primary/90 
+          focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         >
           {ctaText}
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </a>
+          <ArrowRight className="hidden ml-2 h-5 w-5" />
+        </a> */}
       </div>
     </section>
   );
