@@ -1,5 +1,5 @@
 ---
-import TicketVisual from "./TicketVisual.astro";
+const classes = Astro.props.classes;
 import { Card, CardContent } from "@/components/ui/card";
 
 const judges = [
@@ -24,18 +24,16 @@ const judges = [
 ];
 ---
 
-<section class="py-20 px-4 lg:px-8 bg-card/50">
+<section class={`py-20 px-4 lg:px-8 bg-card/50 ${classes}`}>
   <div class="container mx-auto max-w-6xl">
-    <div class="text-center space-y-4 mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-balance">
-        Meet the <span class="text-primary">Expert Judges</span>
-      </h2>
-      <p class="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
-        Your pitch will be evaluated by leading investors and industry pioneers
-      </p>
-    </div>
-
-    
+    <div class="text-center mb-16 flex flex-col items-center justify-start">
+      <h2 class="w-fit text-4xl md:text-8xl font-anton font-black uppercase text-balance text-left ">
+				Meet our Jury<br/> <span class="text-[180px] text-primary"> Members</span>
+        <p class="text-xl font-quicksand font-light text-muted-foreground text-balance">
+          From Academia & Industry and beyond
+        </p>
+			</h2>
+		</div>
 
     <div class="grid md:grid-cols-3 gap-8 z-10">
       {judges.map((judge) => (

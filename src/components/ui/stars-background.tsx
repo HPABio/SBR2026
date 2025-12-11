@@ -13,6 +13,7 @@ interface StarsBackgroundProps {
     speed?: number;
     transition?: SpringOptions;
     starColor?: string;
+    particleSize?: number;
     className?: string;
     children?: React.ReactNode;
 }
@@ -22,6 +23,7 @@ export const StarsBackground = ({
     speed = 50,
     transition = { stiffness: 50, damping: 20 },
     starColor = "#fff",
+    particleSize = 5,
     className,
     children,
 }: StarsBackgroundProps) => {
@@ -81,31 +83,33 @@ export const StarsBackground = ({
     return (
         <div
             className={cn(
-                "relative size-full overflow-hidden bg-[radial-gradient(ellipse_at_bottom,_#F49B2B_0%,_#ff7700_70%,_#ff7700_100%)]",
+                "relative size-full max-w-9xl mx-auto overflow-hidden bg-primary ",
                 className
             )}
             onMouseMove={handleMouseMove}
         >
-            <motion.div style={{ x: springX, y: springY }}>
+            <motion.div style={{ x: springX, y: springY }}
+            className="max-w-9xl mx-auto border-2 border-red-500 w-full h-full bg-[radial-gradient(ellipse_at_bottom,#F49B2B_0%,#ff7700_70%,#ff7700_100%)] mt-12"
+            >
                 {/* Star Layer 1 */}
                 <motion.div
-                    className="absolute top-0 left-0 w-full h-[2000px]"
+                    className="absolute top-0 left-1/3 w-screen h-[2000px]"
                     animate={{ y: [0, -2000] }}
                     transition={starLayer1Transition}
                 >
                     <div
                         className="absolute bg-transparent rounded-full"
                         style={{
-                            width: "1px",
-                            height: "1px",
+                            width: `${1 * particleSize}px`,
+                            height: `${1 * particleSize}px`,
                             boxShadow: boxShadow1,
                         }}
                     />
                     <div
                         className="absolute bg-transparent rounded-full top-[2000px]"
                         style={{
-                            width: "1px",
-                            height: "1px",
+                            width: `${1 * particleSize}px`,
+                            height: `${1 * particleSize}px`,
                             boxShadow: boxShadow1,
                         }}
                     />
@@ -113,23 +117,23 @@ export const StarsBackground = ({
 
                 {/* Star Layer 2 */}
                 <motion.div
-                    className="absolute top-0 left-0 w-full h-[2000px]"
+                    className="absolute top-0 left-0 left-1/3 w-screen h-[2000px]"
                     animate={{ y: [0, -2000] }}
                     transition={starLayer2Transition}
                 >
                     <div
                         className="absolute bg-transparent rounded-full"
                         style={{
-                            width: "2px",
-                            height: "2px",
+                            width: `${2 * particleSize}px`,
+                            height: `${2 * particleSize}px`,
                             boxShadow: boxShadow2,
                         }}
                     />
                     <div
                         className="absolute bg-transparent rounded-full top-[2000px]"
                         style={{
-                            width: "2px",
-                            height: "2px",
+                            width: `${2 * particleSize}px`,
+                            height: `${2 * particleSize}px`,
                             boxShadow: boxShadow2,
                         }}
                     />
@@ -144,16 +148,16 @@ export const StarsBackground = ({
                     <div
                         className="absolute bg-transparent rounded-full"
                         style={{
-                            width: "3px",
-                            height: "3px",
+                            width: `${3 * particleSize}px`,
+                            height: `${3 * particleSize}px`,
                             boxShadow: boxShadow3,
                         }}
                     />
                     <div
                         className="absolute bg-transparent rounded-full top-[2000px]"
                         style={{
-                            width: "3px",
-                            height: "3px",
+                            width: `${3 * particleSize}px`,
+                            height: `${3 * particleSize}px`,
                             boxShadow: boxShadow3,
                         }}
                     />

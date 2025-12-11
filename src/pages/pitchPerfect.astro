@@ -25,7 +25,7 @@ import PitchCTASection from '@/components/PitchCTASection.astro';
 			<PitchStatsSection />
 		</div>
 		<PitchBenefitsSection />
-		<PitchJudgesSection />
+		<PitchJudgesSection classes="hidden" />
 
 		{/* Application Form Section */}
 		<section class="hidden py-20 px-4 lg:px-8">
@@ -42,15 +42,19 @@ import PitchCTASection from '@/components/PitchCTASection.astro';
 				<PitchForm />
 			</div>
 		</section>
-		
+		<div class="flex flex-col items-center justify-center">
+			<div class="flex flex-col items-center justify-center my-40">
+				<h2 class="w-fit text-4xl md:text-7xl font-anton font-black uppercase text-balance">
+					Convince our<br/> <span class="text-[180px] text-primary">Judges</span>
+					<p class="text-xl font-quicksand font-light text-muted-foreground text-balance">
+						and set the stage for a successful year
+					</p>
+				</h2>
+			</div>
+			<WinnerLaurel classes="w-full my-20" awardLevel="GOLD" title="WINNER" awardName="SynBio Reactor Summit" winnerName="team:_______________" date="2026"/>
 
-		<h2 class="text-4xl md:text-5xl font-bold text-balance">
-			Convince <span class="text-primary">The Jury</span>
-		</h2>
-		<p class="text-xl text-muted-foreground text-balance">
-			and 
-		</p>
-		<WinnerLaurel classes="w-full my-10" awardLevel="GOLD" title="WINNER" awardName="SynBio Reactor Summit" winnerName="team:_______________" date="2026"/>
+		</div>
+		
 
 		<PitchCTASection />
 </Layout>
