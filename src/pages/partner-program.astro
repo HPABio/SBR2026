@@ -1,22 +1,12 @@
 ---
-import '../styles/global.css';
+import Layout from '@/layouts/main.astro';
 import Navigation from '@/components/Navigation.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Partner Program - SynBio Reactor Summit 2026</title>
-		<meta name="description" content="Join our partner program and become part of the SynBio Reactor Summit ecosystem" />
-	</head>
-
-	<body class="min-h-screen bg-background">
-		<Navigation />
-		
-		<main class="pt-16">
+<Layout>
+	<Navigation />
+	
+	<main class="pt-16">
 			<section class="py-20 px-4 lg:px-8">
 				<div class="container mx-auto max-w-4xl">
 					<div class="text-center space-y-4 mb-12">
@@ -76,8 +66,7 @@ import Navigation from '@/components/Navigation.astro';
 				</div>
 			</section>
 		</main>
-	</body>
-</html>
+</Layout>
 
 
 

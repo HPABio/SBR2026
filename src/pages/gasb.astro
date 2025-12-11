@@ -1,19 +1,10 @@
 ---
-import '../styles/global.css';
+import Layout from '@/layouts/main.astro';
 import Navigation from '@/components/Navigation.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>GASB - SynBio Reactor Summit 2026</title>
-		<meta name="description" content="Learn about GASB - German Association for Synthetic Biology" />
-	</head>
 
-	<body class="min-h-screen bg-background">
+<Layout>
 		<Navigation />
 		
 		<main class="pt-16">
@@ -60,8 +51,7 @@ import Navigation from '@/components/Navigation.astro';
 				</div>
 			</section>
 		</main>
-	</body>
-</html>
+</Layout>
 
 
 
