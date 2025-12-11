@@ -89,7 +89,7 @@ export const StarsBackground = ({
             onMouseMove={handleMouseMove}
         >
             <motion.div style={{ x: springX, y: springY }}
-            className="max-w-9xl mx-auto border-2 border-red-500 w-full h-full bg-[radial-gradient(ellipse_at_bottom,#F49B2B_0%,#ff7700_70%,#ff7700_100%)] mt-12"
+            className="max-w-9xl mx-auto w-full h-full bg-[radial-gradient(ellipse_at_bottom,#F49B2B_0%,#ff7700_70%,#ff7700_100%)] mt-12"
             >
                 {/* Star Layer 1 */}
                 <motion.div
