@@ -35,23 +35,23 @@ const getLinkClasses = (path: string) => {
         <a href="/" class={getLinkClasses('/')}>
           Home
         </a>
-        <a href="/about" class={`${getLinkClasses('/about')} hidden`}>
-          About
-        </a>
-        <a href="/gasb" class={`${getLinkClasses('/gasb')} hidden lg:block`}>
-          GASB
+        <a href="/schedule" class={getLinkClasses('/schedule')}>
+          Schedule
         </a>
         <a href="/pitchPerfect" class={getLinkClasses('/pitchPerfect')}>
           Pitching
+        </a>
+        <a href="/about" class={`${getLinkClasses('/about')} hidden`}>
+          About
+        </a>
+        <a href="https://gasb.de" class={`${getLinkClasses('/gasb')} hidden lg:block`}>
+          GASB
         </a>
         <a
           href="/partners"
           class={getLinkClasses('/partners')}
         >
           Partners
-        </a>
-        <a href="/schedule" class={getLinkClasses('/schedule')}>
-          Schedule
         </a>
         <a href="/sponsoring" class={`${getLinkClasses('/sponsoring')} hidden lg:block`}>
           Sponsoring
