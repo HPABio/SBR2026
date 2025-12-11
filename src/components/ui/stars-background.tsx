@@ -3,7 +3,6 @@ import React, {
     useState,
     useEffect,
     useCallback,
-    useRef,
 } from "react";
 import { cn } from "@/lib/utils";
 import { motion, useMotionValue, useSpring, type SpringOptions, type Transition } from "framer-motion";
