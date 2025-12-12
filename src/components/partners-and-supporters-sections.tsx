@@ -13,42 +13,46 @@ import EnzymeDynamics from "@/assets/partners-logos/enzyme-dynamics-logo.jpg"
 
 export default function PartnersAndSupportersSections() {
   const goldSponsors = [
-    { name: "SPRIN-D", logo: SPRIND },
-    { name: "BIOCENTRA", logo: BIOCENTRA },
-    { name: "VOSSIUS", logo: VOSSIUS },
+    { name: "SPRIN-D", logo: SPRIND, link:"https://www.sprind.de/" },
+    { name: "BIOCENTRA", logo: BIOCENTRA, link:"https://www.biocentra.eu/" },
+    { name: "VOSSIUS", logo: VOSSIUS, link:"https://www.vossius.de/" },
   ]
 
   const silverSponsors = [
-    { name: "BioCircular ", logo: BioCircular },
-    { name: "GreenChem Solutions ", logo: GreenChemSolutions },
-    { name: "MetaboliteTech ", logo: MetaboliteTech },
-    { name: "BioScale Partners ", logo: BioScalePartners },
-    { name: "Enzyme Dynamics ", logo: EnzymeDynamics},
+    { name: "BioCircular ", logo: BioCircular, link:"dummy" },
+    { name: "BioCircular ", logo: BioCircular, link:"dummy" },
+    { name: "BioCircular ", logo: BioCircular, link:"dummy" },
+    { name: "BioCircular ", logo: BioCircular, link:"dummy" },
+    { name: "BioCircular ", logo: BioCircular, link:"dummy" },
+    { name: "BioCircular ", logo: BioCircular, link:"dummy" },
+    { name: "BioCircular ", logo: BioCircular, link:"dummy" },
+    { name: "BioCircular ", logo: BioCircular, link:"dummy" },
+    
   ]
 
   const partners = [
-    { name: "GASB", description: "German Association for Synthetic Biology", icon: Building2 },
-    { name: "Max Planck Institute", description: "Research Excellence in Biotechnology", icon: Building2 },
-    { name: "Technical University Berlin", description: "Academic Partner", icon: Building2 },
-    { name: "BioRegion Berlin", description: "Regional Innovation Network", icon: Building2 },
+    { name: "GASB", description: "German Association for Synthetic Biology", icon: Building2, link:"dummy" },
+    { name: "Max Planck Institute", description: "Research Excellence in Biotechnology", icon: Building2, link:"dummy" },
+    { name: "Technical University Berlin", description: "Academic Partner", icon: Building2, link:"dummy" },
+    { name: "BioRegion Berlin", description: "Regional Innovation Network", icon: Building2, link:"dummy" },
   ]
 
   const collaborators = [
-    { name: "European SynBio Alliance", description: "Pan-European Network" },
-    { name: "BioInnovate Hub", description: "Innovation Accelerator" },
-    { name: "Life Sciences Network", description: "Industry Connection" },
-    { name: "Green Chemistry Institute", description: "Sustainability Partner" },
-    { name: "Biotech Founders Club", description: "Startup Community" },
-    { name: "Lab-to-Market Initiative", description: "Commercialization Support" },
+    { name: "European SynBio Alliance", description: "Pan-European Network", link:"dummy" },
+    { name: "BioInnovate Hub", description: "Innovation Accelerator", link:"dummy" },
+    { name: "Life Sciences Network", description: "Industry Connection", link:"dummy" },
+    { name: "Green Chemistry Institute", description: "Sustainability Partner", link:"dummy" },
+    { name: "Biotech Founders Club", description: "Startup Community", link:"dummy" },
+    { name: "Lab-to-Market Initiative", description: "Commercialization Support", link:"dummy" },
   ]
 
   const connectors = [
-    { name: "Dr. Sarah Weber", role: "Biotech Investment Expert" },
-    { name: "Prof. Michael Schmidt", role: "Synthetic Biology Pioneer" },
-    { name: "Anna Hoffmann", role: "Industry Relations" },
-    { name: "Dr. Thomas Klein", role: "Research Translation" },
-    { name: "Lisa Müller", role: "Startup Ecosystem Builder" },
-    { name: "Dr. Andreas Berg", role: "Innovation Advisor" },
+    { name: "Dr. Sarah Weber", role: "Biotech Investment Expert", link:"dummy" },
+    { name: "Prof. Michael Schmidt", role: "Synthetic Biology Pioneer", link:"dummy" },
+    { name: "Anna Hoffmann", role: "Industry Relations", link:"dummy" },
+    { name: "Dr. Thomas Klein", role: "Research Translation", link:"dummy" },
+    { name: "Lisa Müller", role: "Startup Ecosystem Builder", link:"dummy" },
+    { name: "Dr. Andreas Berg", role: "Innovation Advisor", link:"dummy" },
   ]
 
   return (
@@ -66,7 +70,7 @@ export default function PartnersAndSupportersSections() {
                 <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">Meet Our Network of <br/>
                     <span className="text-8xl text-primary">Supporters</span>
                     <p className="ml-2 font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
-                      partners, sponsors, and contributors
+                      sponsors, partners, and other contributors
                     </p>
                     </h2>
             </div>
@@ -78,34 +82,59 @@ export default function PartnersAndSupportersSections() {
       {/* Gold Sponsors */}
       <section className="py-20 px-4 lg:px-8 bg-card/30">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center space-y-4 mb-16">
-            <div className="flex justify-center">
+          <div className="text-center space-y-4 mb-16 flex flex-col items-center justify-center">
+            {/* <div className="flex justify-center items-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm font-semibold text-primary uppercase tracking-wider">Gold Tier</span>
+                <span className="text-sm font-semibold text-primary uppercase tracking-wider">Gold Tier</span> 
               </div>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold">Premium Sponsors</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our platinum partners driving innovation in synthetic biology
-            </p>
+            </div> */}
+            <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left relative">
+                <Badge variant="outline" className="absolute top-8 left-1/2 -translate-x-1/2 border-primary text-primary font-mono uppercase tracking-wider opacity-75 text-center">Thanks to</Badge> 
+              <br/>Our main <br/>
+                    <span className="text-8xl text-primary">Sponsors</span>
+                    <p className="font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest ">
+                      supporting this years summit <br/>
+                    </p>
+                    </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 justify-items-center items-center mx-auto">
+          <div className="flex flex-row justify-between items-center mx-auto w-full max-w-5xl gap-10 px-14">
             {goldSponsors.map((sponsor, index) => (
               <Card
                 key={index}
                 className="bg-card border-2 border-primary/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 aspect-square
                 overflow-hidden max-w-[250px]" >
+                  <a href={sponsor.link} className="flex items-center justify-center h-full w-full">
                 <CardContent className="w-full h-full ">
-                  <div className="flex items-center justify-center h-full w-full">
                     <img
                       src={sponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
                       alt={sponsor.name}
-                    className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
-                    />
-                  </div>
+                      className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
+                      />
                 </CardContent>
+              </a>
+              </Card>
+            ))}
+          </div>
+          <div className="grid grid-cols-4 gap-6 w-full max-w-5xl mx-auto mt-14 px-14">
+            {silverSponsors.map((sponsor, index) => (
+              <Card
+                key={index}
+                className="bg-card border-primary/30 hover:border-primary/50 transition-all hover:shadow-md"
+              >
+                <a href={sponsor.link} className="flex items-center justify-center h-full w-full">
+                  <CardContent className="flex items-center justify-center relative">
+                    <img
+                      src={sponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
+                      alt={sponsor.name}
+                      className="object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/50 text-white">
+                      <Badge variant="outline" className="border-primary text-primary font-mono uppercase tracking-wider">{sponsor.name}</Badge>
+                    </div>
+                  </CardContent>
+                </a>
               </Card>
             ))}
           </div>
@@ -113,6 +142,7 @@ export default function PartnersAndSupportersSections() {
       </section>
 
       {/* Silver Sponsors */}
+      {/* TODO: hide silver tier */}
       <section className="py-20 px-4 lg:px-8">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
@@ -120,10 +150,14 @@ export default function PartnersAndSupportersSections() {
               <div className="w-2 h-2 rounded-full bg-muted-foreground" />
               <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Silver Tier</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold">Supporting Sponsors</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Organizations championing synthetic biology advancement
-            </p>
+            <div className="space-y-2 flex flex-col items-center justify-center">
+                <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">Info Flyer for<br/>
+                    <span className="text-8xl text-primary">Silver Tier</span>
+                    <p className="font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
+                      Organizations championing synthetic biology advancement
+                    </p>
+                    </h2>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -147,19 +181,19 @@ export default function PartnersAndSupportersSections() {
         </div>
       </section>
 
-      {/* Partners */}
+      {/* Advisory Board */}
       <section className="py-20 px-4 lg:px-8 bg-card/30">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
               <Handshake className="w-4 h-4 text-primary" />
-              <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Partners</span>
+              <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Advisors</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold">
-              Strategic <span className="text-primary">Partners</span>
+              Strategic <span className="text-primary">Advisory Board</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Leading institutions shaping the synthetic biology landscape
+              Supporting us with their expertise and insights
             </p>
           </div>
 
@@ -189,16 +223,16 @@ export default function PartnersAndSupportersSections() {
         </div>
       </section>
 
-      {/* Collaborators */}
+      {/* ecosystem partners */}
       <section className="py-20 px-4 lg:px-8">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border">
               <Users2 className="w-4 h-4 text-primary" />
-              <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Collaborators</span>
+              <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Ecosystem Partners</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold">
-              Community <span className="text-primary">Collaborators</span>
+              Ecosystem <span className="text-primary">Partners</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Network partners amplifying our collective impact
@@ -220,8 +254,8 @@ export default function PartnersAndSupportersSections() {
         </div>
       </section>
 
-      {/* Connectors */}
-      <section className="py-20 px-4 lg:px-8 bg-card/30">
+      {/* Connectors - show when you got at least three connectors */}
+      <section className="py-20 px-4 lg:px-8 bg-card/30 hidden">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
@@ -285,21 +319,6 @@ export default function PartnersAndSupportersSections() {
           </Card>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-4 lg:px-8 border-t border-border">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-card border-2 border-primary flex items-center justify-center">
-                <div className="w-4 h-4 rounded-full bg-primary" />
-              </div>
-              <span className="font-bold">SynBio Reactor Summit 2026</span>
-            </div>
-            <div className="text-sm text-muted-foreground">© 2026 GASB - German Association for Synthetic Biology</div>
-          </div>
-        </div>
-      </footer>
     </>
   )
 }

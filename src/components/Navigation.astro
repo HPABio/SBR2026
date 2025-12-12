@@ -19,7 +19,7 @@ const getLinkClasses = (path: string) => {
 };
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-b border-border">
   <div class="container mx-auto px-4 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="/" class="flex items-center gap-2">
@@ -63,6 +63,7 @@ const getLinkClasses = (path: string) => {
         <span class="absolute w-full h-[70%]  bottom-0 -right-1 -z-10 rounded-xl bg-[#ffa51f] opacity-30 blur-md group-hover:opacity-100 transition-opacity duration-300" />
         TICKETS
       </button> -->
+
       <div  id={currentPath === '/' ? "nav-ticket-button" : ""}
       class={currentPath === '/' ? "opacity-0 pointer-events-none transition-opacity duration-300" : ""}>
         <BubbleButton text="TICKETS" class="rounded-md" textClass="text-3xl mx-1 font-anton font-black tracking-tight uppercase" 
