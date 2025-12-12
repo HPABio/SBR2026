@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '@/layouts/main.astro';
+import type { Props as SocialMediaProps } from 'astro';
+interface Props extends SocialMediaProps {
+  class?: string;
+}
+const { class: classProp, className } = Astro.props;
+const classes = classProp || className || "";
+---
+<Layout>
+<section class={`relative py-16 bg-black ${classes}`}>
+    <div class="mx-auto max-w-5xl px-6">
+        <h2 class="text-5xl font-black font-anton uppercase text-left w-fit">Social Media</h2>
+        <p class="text-xl text-muted-foreground max-w-2xl md:max-w-4xl mx-auto text-balance">
+            Follow us on our social media platforms to stay up to date with the latest news and updates.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-background rounded-xl p-4">
+                <h3 class="text-xl font-bold font-anton uppercase text-left w-fit">Twitter</h3>
+            </div>
+        </div>
+        <div style="position: relative; width: 100%; height: 0; padding-top: 73.3478%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+ 
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https://www.canva.com/design/DAG7H763B90/L4tGAjb-xKKoHLnWNuG1pQ/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAG7H763B90&#x2F;L4tGAjb-xKKoHLnWNuG1pQ&#x2F;view?utm_content=DAG7H763B90&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">SBR2026 meets LSTN Berlin</a> von GASB e.V.
+    </div>
+</section>
+</Layout>

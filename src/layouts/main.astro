@@ -20,9 +20,24 @@ const title = content.title || "SynBio Reactor Summit 2026";
 
 <html lang="en">
 	<head>
+		<!-- Bootstrap gtag so calls (e.g. consent updates) don't error -->
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			window.gtag =
+				window.gtag ||
+				function () {
+					window.dataLayer.push(arguments);
+				};
+		</script>
+
 		{!import.meta.env.DEV && (
-		<SiteVerification id="synbioreactor-de" />
-        <GoogleTagmanager id="GTM-K7TV5ND7" domain="https://www.googletagmanager.com" container="gmt.js" />
+			<>
+				<SiteVerification id="synbioreactor-de" />
+				<script is:inline>
+					window.gtag('set', 'linker', { domains: ['tickettailor.com'] });
+				</script>
+				<GoogleTagmanager id="GTM-K7TV5ND7" domain="https://www.googletagmanager.com" container="gmt.js" />
+			</>
 		)}
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
