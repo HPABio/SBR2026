@@ -13,9 +13,9 @@ import EnzymeDynamics from "@/assets/partners-logos/enzyme-dynamics-logo.jpg"
 
 export default function PartnersAndSupportersSections() {
   const goldSponsors = [
-    { name: "SPRIN-D", logo: SPRIND, link:"https://www.sprind.de/" },
-    { name: "BIOCENTRA", logo: BIOCENTRA, link:"https://www.biocentra.eu/" },
-    { name: "VOSSIUS", logo: VOSSIUS, link:"https://www.vossius.de/" },
+    { name: "SPRIN-D", logo: SPRIND, link:"https://www.sprind.org/" },
+    { name: "BIOCENTRA", logo: BIOCENTRA, link:"dummy" },
+    { name: "VOSSIUS", logo: VOSSIUS, link:"https://www.vossius.eu/en/" },
   ]
 
   const silverSponsors = [
@@ -79,7 +79,7 @@ export default function PartnersAndSupportersSections() {
         </div>
       </section>
 
-      {/* Gold Sponsors */}
+      {/* Main Sponsors */}
       <section className="py-20 px-4 lg:px-8 bg-card/30">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16 flex flex-col items-center justify-center">
@@ -103,15 +103,18 @@ export default function PartnersAndSupportersSections() {
             {goldSponsors.map((sponsor, index) => (
               <Card
                 key={index}
-                className="bg-card border-2 border-primary/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 aspect-square
-                overflow-hidden max-w-[250px]" >
+                className="bg-card border-2 border-primary/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 aspect-square max-w-[250px] group" >
                   <a href={sponsor.link} className="flex items-center justify-center h-full w-full">
-                <CardContent className="w-full h-full ">
+                <CardContent className="w-full h-full relative">
                     <img
                       src={sponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
                       alt={sponsor.name}
                       className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
                       />
+                      {/* Reveal text on hover by sliding up */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/50 text-white transform translate-y-full transition-transform duration-300">
+                      <Badge variant="outline" className="border-primary text-primary font-mono uppercase tracking-wider opacity-0 group-hover:opacity-100">{sponsor.name}</Badge>
+                    </div>
                 </CardContent>
               </a>
               </Card>
@@ -121,7 +124,7 @@ export default function PartnersAndSupportersSections() {
             {silverSponsors.map((sponsor, index) => (
               <Card
                 key={index}
-                className="bg-card border-primary/30 hover:border-primary/50 transition-all hover:shadow-md"
+                className="bg-card border-primary/30 hover:border-primary/50 transition-all hover:shadow-md group"
               >
                 <a href={sponsor.link} className="flex items-center justify-center h-full w-full">
                   <CardContent className="flex items-center justify-center relative">
@@ -130,8 +133,9 @@ export default function PartnersAndSupportersSections() {
                       alt={sponsor.name}
                       className="object-contain opacity-80 hover:opacity-100 transition-opacity"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/50 text-white">
-                      <Badge variant="outline" className="border-primary text-primary font-mono uppercase tracking-wider">{sponsor.name}</Badge>
+                    {/* Reveal text on hover by sliding up */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/50 text-white transform translate-y-full transition-transform duration-300">
+                      <Badge variant="outline" className="border-primary text-primary font-mono uppercase tracking-wider opacity-0 group-hover:opacity-100">{sponsor.name}</Badge>
                     </div>
                   </CardContent>
                 </a>
@@ -143,7 +147,7 @@ export default function PartnersAndSupportersSections() {
 
       {/* Silver Sponsors */}
       {/* TODO: hide silver tier */}
-      <section className="py-20 px-4 lg:px-8">
+      <section className="py-20 px-4 lg:px-8 hidden">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border">
