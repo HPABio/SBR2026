@@ -30,7 +30,7 @@ export default function PartnersAndSupportersSections() {
     
   ]
 
-  const partners = [
+  const advisoryBoard = [
     { name: "GASB", description: "German Association for Synthetic Biology", icon: Building2, link:"dummy" },
     { name: "Max Planck Institute", description: "Research Excellence in Biotechnology", icon: Building2, link:"dummy" },
     { name: "Technical University Berlin", description: "Academic Partner", icon: Building2, link:"dummy" },
@@ -188,22 +188,26 @@ export default function PartnersAndSupportersSections() {
       {/* Advisory Board */}
       <section className="py-20 px-4 lg:px-8 bg-card/30">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center space-y-4 mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
-              <Handshake className="w-4 h-4 text-primary" />
-              <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Advisors</span>
+          <div className="text-center space-y-6">
+            <div className="inline-block">
+              <Badge variant="outline" className="border-primary text-primary font-mono uppercase tracking-wider">
+              <Handshake className="w-4 h-4 text-primary" />Advisory Board
+              </Badge>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Strategic <span className="text-primary">Advisory Board</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Supporting us with their expertise and insights
-            </p>
+            <div className="space-y-2 flex flex-col items-center justify-center">
+              <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">
+                Meet our <br/>
+                <span className="text-8xl text-primary">Advisors</span>
+                <p className="ml-2 font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
+                  Supporting us with their expertise and insights
+                </p>
+              </h2>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {partners.map((partner, index) => {
-              const Icon = partner.icon
+            {advisoryBoard.map((advisor, index) => {
+              const Icon = advisor.icon
               return (
                 <Card
                   key={index}
@@ -215,8 +219,12 @@ export default function PartnersAndSupportersSections() {
                         <Icon className="w-6 h-6 text-primary" />
                       </div>
                       <div className="space-y-1">
-                        <h3 className="text-xl font-bold">{partner.name}</h3>
-                        <p className="text-muted-foreground">{partner.description}</p>
+                        <h3 className="text-xl font-bold">{advisor.name}</h3>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
+              <Handshake className="w-4 h-4 text-primary" />
+              <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Advisors</span>
+            </div>
+                        <p className="text-muted-foreground">{advisor.description}</p>
                       </div>
                     </div>
                   </CardContent>
