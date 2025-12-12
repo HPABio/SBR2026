@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Building2, Handshake, Users2, Link2 } from "lucide-react"
+import { Building2, Users2, Link2, Rocket, Unplug } from "lucide-react"
 
 import SPRIND from "@/assets/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg"
 import BIOCENTRA from "@/assets/partners-logos/LinkedIn-Thumbnails/BioCentra-biocentra-eu.jpeg"
@@ -11,12 +11,36 @@ import MetaboliteTech from "@/assets/partners-logos/metabolitetech-logo.jpg"
 import BioScalePartners from "@/assets/partners-logos/bioscale-partners-logo.jpg"
 import EnzymeDynamics from "@/assets/partners-logos/enzyme-dynamics-logo.jpg"
 
+import AdrianFriedrich from "@/assets/ExportWP/advisors/Advisor_AF_.png"
+import IlyaLebedev from "@/assets/ExportWP/advisors/Advisor_IL_.png"
+import KathrinBrenker from "@/assets/ExportWP/advisors/Advisor_KB_.png"
+import MaxLebeau from "@/assets/ExportWP/advisors/Advisor_ML_.png"
+import HendrikCooper from "@/assets/ExportWP/advisors/SBR-Advisor-HC.png"
+import NicolasKrink from "@/assets/ExportWP/advisors/SBR-Advisor-NK.png"
+import PatrickRose from "@/assets/ExportWP/advisors/SBR-Advisor-PR.png"
+
+
 export default function PartnersAndSupportersSections() {
   const goldSponsors = [
     { name: "SPRIN-D", logo: SPRIND, link:"https://www.sprind.org/" },
     { name: "BIOCENTRA", logo: BIOCENTRA, link:"dummy" },
     { name: "VOSSIUS", logo: VOSSIUS, link:"https://www.vossius.eu/en/" },
   ]
+
+  const advisoryBoard = [
+    { name: "Patrick Rose", logo: PatrickRose, link:"dummy" },
+    { name: "Nicolas Krink", logo: NicolasKrink, link:"dummy" },
+    { name: "Max Lebeau", logo: MaxLebeau, link:"dummy" },
+    { name: "Kathrin Brenker", logo: KathrinBrenker, link:"dummy" },
+    // { name: "Massimo Porticasso", logo: MassimoPorticasso, link:"dummy" },
+    { name: "Adrian Friedrich", logo: AdrianFriedrich, link:"dummy" },
+    // { name: "Andreas Worberg", logo: AndreasWorberg, link:"dummy" },
+    // { name: "Andreas Heyl", logo: AndreasHeyl, link:"dummy" },
+    { name: "Hendrik Cooper", logo: HendrikCooper, link:"dummy" },
+  ]
+  
+  
+  
 
   const silverSponsors = [
     { name: "BioCircular ", logo: BioCircular, link:"dummy" },
@@ -30,7 +54,7 @@ export default function PartnersAndSupportersSections() {
     
   ]
 
-  const advisoryBoard = [
+  const dummyPartners = [
     { name: "GASB", description: "German Association for Synthetic Biology", icon: Building2, link:"dummy" },
     { name: "Max Planck Institute", description: "Research Excellence in Biotechnology", icon: Building2, link:"dummy" },
     { name: "Technical University Berlin", description: "Academic Partner", icon: Building2, link:"dummy" },
@@ -90,7 +114,8 @@ export default function PartnersAndSupportersSections() {
               </div>
             </div> */}
             <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left relative">
-                <Badge variant="outline" className="absolute top-8 left-1/2 -translate-x-1/2 border-primary text-primary font-mono uppercase tracking-wider opacity-75 text-center">Thanks to</Badge> 
+                <Badge variant="outline" className="absolute top-8 left-1/2 -translate-x-1/2 border-primary text-primary font-mono uppercase tracking-wider opacity-75 text-center">
+                <Rocket className="w-4 h-4 text-primary" />Thanks to</Badge> 
               <br/>Our main <br/>
                     <span className="text-8xl text-primary">Sponsors</span>
                     <p className="font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest ">
@@ -188,24 +213,25 @@ export default function PartnersAndSupportersSections() {
       {/* Advisory Board */}
       <section className="py-20 px-4 lg:px-8 bg-card/30">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center space-y-6">
+
+          <div className="text-center space-y-6 pb-16">
             <div className="inline-block">
               <Badge variant="outline" className="border-primary text-primary font-mono uppercase tracking-wider">
-              <Handshake className="w-4 h-4 text-primary" />Advisory Board
+              <Users2 className="w-4 h-4 text-primary" />Advisory Board
               </Badge>
             </div>
             <div className="space-y-2 flex flex-col items-center justify-center">
               <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">
                 Meet our <br/>
                 <span className="text-8xl text-primary">Advisors</span>
-                <p className="ml-2 font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
+                <p className="font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
                   Supporting us with their expertise and insights
                 </p>
               </h2>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 px-14">
             {advisoryBoard.map((advisor, index) => {
               const Icon = advisor.icon
               return (
@@ -221,7 +247,7 @@ export default function PartnersAndSupportersSections() {
                       <div className="space-y-1">
                         <h3 className="text-xl font-bold">{advisor.name}</h3>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
-              <Handshake className="w-4 h-4 text-primary" />
+              <Users2 className="w-4 h-4 text-primary" />
               <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Advisors</span>
             </div>
                         <p className="text-muted-foreground">{advisor.description}</p>
@@ -238,20 +264,25 @@ export default function PartnersAndSupportersSections() {
       {/* ecosystem partners */}
       <section className="py-20 px-4 lg:px-8">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center space-y-4 mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border">
-              <Users2 className="w-4 h-4 text-primary" />
-              <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Ecosystem Partners</span>
+         
+          <div className="text-center space-y-6 pb-16 px-14">
+            <div className="inline-block">
+              <Badge variant="outline" className="border-primary text-primary font-mono uppercase tracking-wider">
+                <Unplug className="w-4 h-4 text-primary" />Ecosystem Partners
+              </Badge>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Ecosystem <span className="text-primary">Partners</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Network partners amplifying our collective impact
-            </p>
+            <div className="space-y-2 flex flex-col items-center justify-center">
+              <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">
+                Meet our <br/>
+                <span className="text-8xl text-primary">Partners</span>
+                <p className="font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
+                  amplifying our collective impact
+                </p>
+              </h2>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-14">
             {collaborators.map((collaborator, index) => (
               <Card key={index} className="bg-card border-border hover:border-primary/50 transition-colors">
                 <CardContent className="pt-4 pb-4">
