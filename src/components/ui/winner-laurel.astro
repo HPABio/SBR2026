@@ -4,7 +4,7 @@ interface Props {
     awardLevel?: string;
     // Supports "\n" line breaks; also accepts "<br>" which is converted to "\n"
     title?: string;
-    awardName?: string;
+    awardSubheader?: string;
     winnerName?: string;
     date?: string;
 }
@@ -15,10 +15,10 @@ Colipi`;
 
 const {
     classes = "",
-    awardLevel = "FINALISTS",
-    title = defaultTitle,
-    awardName = "Startup Pitch",
-    winnerName = "ndostiX, Bfab, Colipi",
+    awardLevel = "contest",
+    title = "Finalists",
+    awardSubheader = "Start Up Pitches",
+    winnerName = defaultTitle,
     date = "2025",
 } = Astro.props;
 
@@ -47,8 +47,8 @@ const titleText = title.replace(/<br\s*\/?>/gi, "\n");
         </div>
         <h1 class="text-4xl font-black tracking-tight whitespace-pre-line">{titleText}</h1>
         <div class="bg-primary mx-auto my-3 h-[1px] w-40"></div>
-        <h2 class="mb-4 w-60 text-xl font-light">{awardName}</h2>
-        <p class="text-primary/60 italic my-3 mt-6">{winnerName}</p>
+        <p class="text-2xl text-primary/90 italic my-3 mt-3">{winnerName}</p>
+        <h2 class="mb-0 w-60 text-xl font-light">{awardSubheader}</h2>
         <div class="text-xl font-bold">{date}</div>
     </div>
 </div>
