@@ -330,7 +330,7 @@ export default function PartnersAndSupportersSections() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-6 gap-x-14 px-14 max-w-xl md:max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 gap-x-14 px-14 max-w-xl md:max-w-4xl lg:max-w-5xl 2xl:max-w-6xl mx-auto">
             {advisoryBoard.map((advisor, index) => {
               return (
                 <Card
@@ -349,7 +349,7 @@ export default function PartnersAndSupportersSections() {
                   <CardContent className="h-full group">
                     <div className="flex items-start h-full">
                       <div className="flex flex-col justify-between items-start space-y-4 h-full">
-                        <h3 className="text-3xl font-anton font-bold">{advisor.name}
+                        <h3 className="lg:w-1/3 2xl:w-full text-3xl font-anton font-bold">{advisor.name}
                         <p className="text-sm text-muted-foreground font-quicksand font-light">{advisor.company}</p>
                         </h3>
                       <div className="inline-flex items-center mt-2 gap-2 py-1.5 rounded-lg">
