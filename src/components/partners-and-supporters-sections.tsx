@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Building2, Users2, Link2, Rocket, Unplug, Linkedin, Twitter, Instagram, Link } from "lucide-react"
+import { ExportPng } from "@/components/export-png"
 
 import partnersLogoList from "@/data/partnersLogoList.json"
 
@@ -16,6 +17,7 @@ import BrightBiotech from "@/assets/logos/Sponsors/BrightBiotech_Logo.png"
 import UniteLabs from "@/assets/logos/Sponsors/UniteLabs_Logo.png"
 import CordenBiochem from "@/assets/logos/Sponsors/CordenBiochem_Logo.png"
 import Nucleate from "@/assets/logos/Nucleate_Logo.png"
+import BiocatalystFoundation from "@/assets/logos/BiocatalystFoundation_Logo_white.png"
 import LSTNBerlin from "@/assets/partners-logos/LinkedIn-Thumbnails/Life_Sciences_Tech_Network_-_Berlin-lifesciencestechnetwork-berlin.jpeg"
 // import FoodLabs from "@/assets/logos/FoodLabs_Logo.png"
 // import BiocatalystFoundation from "@/assets/logos/Biocatalyst_Foundation_Logo.png"
@@ -127,7 +129,7 @@ export default function PartnersAndSupportersSections() {
     { name: "Nucleate",domain:"nucleate.org", description: "Sustainability Partner", link:"dummy", imageClasses:""},
     { name: "Amino Collective",domain:"aminocollective.com", description: "Startup Community", link:"dummy", imageClasses:"scale-[1.7]"},
     { name: "FoodLabs",domain:"foodlabs.com", description: "Commercialization Support", link:"dummy", imageClasses:""},
-    { name: "Biocatalyst Foundation",domain:"biocatalyst.eu", description: "Commercialization Support", link:"dummy", imageClasses:"brightness-[1] scale-[1.5]"},
+    { name: "Biocatalyst Foundation", logoNA:BiocatalystFoundation.src, description: "Commercialization Support", link:"dummy", imageClasses:"brightness-[1] scale-[1.5]"},
     { name: "BCG",domain:"bcg.com", description: "", link:"dummy", imageClasses:"contrast-[10] scale-[1.8] "},
     { name: "Mimotype",domain:"mimotype.org", description: "", link:"dummy", imageClasses:"invert"},
 
@@ -218,53 +220,58 @@ export default function PartnersAndSupportersSections() {
 
           <div className="flex flex-row justify-between items-center mx-auto w-fit max-w-5xl gap-10 px-14">
             {mainSponsors.map((sponsor, index) => (
-              <Card
-                key={index}
-                className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
-                h-36 aspect-video max-w-[250px] group p-4 relative" >
+              <ExportPng key={index} exportKey="mainSponsors" name={sponsor.name} index={index}>
+                <Card
+                  className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
+                  h-36 aspect-video max-w-[250px] group p-4 relative"
+                >
                   <a href={sponsor.link} className="">
-                <CardContent className="flex items-center justify-center h-full w-full aspect-video  p-0 rounded-lg overflow-hidden">
-                    <img
-                      src={sponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
-                      alt={sponsor.name}
-                      className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity grayscale brightness-[4]"
+                    <CardContent className="flex items-center justify-center h-full w-full aspect-video  p-0 rounded-lg overflow-hidden">
+                      <img
+                        src={sponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
+                        alt={sponsor.name}
+                        className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity grayscale brightness-[4]"
                       />
                       {/* Company name badge */}
-                      <Badge variant="outline" 
-                      className="absolute -bottom-4 left-4 p-1 px-2 bg-black/50 border-muted-foreground/30 group-hover:border-primary text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider">
+                      <Badge
+                        variant="outline"
+                        className="absolute -bottom-4 left-4 p-1 px-2 bg-black/50 border-muted-foreground/30 group-hover:border-primary text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider"
+                      >
                         {sponsor.name}
                       </Badge>
-                </CardContent>
-              </a>
-              </Card>
+                    </CardContent>
+                  </a>
+                </Card>
+              </ExportPng>
             ))}
           </div>
           <div className="grid grid-cols-4 gap-6 w-full max-w-5xl mx-auto mt-24 px-14">
             {supportingSponsors.map((supSponsor, index) => (
-              <Card
-                key={index}
-                className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
-                aspect-video max-w-[250px] group p-4 relative"
-              >
-                <a href={supSponsor.link} className="">
-                  <CardContent className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden">
-                    <img
-                      src={supSponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
-                      alt={supSponsor.name}
-                      className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity grayscale brightness-[4]"
-                    />
-                    {/* Company name badge */}
-                    <Badge 
-                      variant="outline"
-                      className="absolute bg-card -bottom-4 left-4 p-1 px-2 border-[0.5px] border-muted-foreground/30
-                      group-hover:border-primary group-hover:border text-[0.6rem] 
-                      text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider"
-                    >
-                      {supSponsor.name}
-                    </Badge>
-                  </CardContent>
-                </a>
-              </Card>
+              <ExportPng key={index} exportKey="supportingSponsors" name={supSponsor.name} index={index}>
+                <Card
+                  className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
+                  aspect-video max-w-[250px] group p-4 relative"
+                >
+                  <a href={supSponsor.link} className="">
+                    <CardContent className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden">
+                      <img
+                        src={supSponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
+                        alt={supSponsor.name}
+                        className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity grayscale brightness-[4]"
+                      />
+                      {/* Company name badge */}
+                      <Badge
+                        variant="outline"
+                        className="absolute bg-card -bottom-4 left-4 p-1 px-2 border-[0.5px] border-muted-foreground/30
+                        group-hover:border-primary group-hover:border text-[0.6rem] 
+                        text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider"
+                      >
+                        {supSponsor.name}
+                      </Badge>
+                    </CardContent>
+                  </a>
+                </Card>
+              </ExportPng>
             ))}
           </div>
         </div>
