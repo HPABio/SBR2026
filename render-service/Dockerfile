@@ -10,9 +10,9 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
 
-# If you add a lockfile later, switch to npm ci.
-RUN npm install --omit=dev
+RUN npm ci --omit=dev
 
 COPY src /app/src
 COPY assets /app/assets

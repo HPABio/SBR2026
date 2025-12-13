@@ -1,7 +1,7 @@
 ---
 import Layout from '@/layouts/main.astro';
 import type { Props as SocialMediaProps } from 'astro';
-import ImAttendingSBR2026 from '@/assets/Other/socialMedia/I_am_Attending_SBR2026.png';
+import ImAttendingSBR2026 from '@/assets/Other/socialMedia/I_am_attending_SBR2026.png';
 import SBRLogo from '@/assets/SBR2026-Favicon-lg.png';
 interface Props extends SocialMediaProps {
   class?: string;
@@ -216,10 +216,10 @@ const classes = classProp || className || "";
 </Layout>
 
 <script type="module">
-  // Optional future backend integration:
-  // - set PUBLIC_SOCIAL_RENDER_API (e.g. "http://localhost:8080/render") and swap download action to a fetch().
-  // For now, we render fully client-side via Canvas.
-  const RENDER_API = import.meta.env.PUBLIC_SOCIAL_RENDER_API;
+  // Backend integration (Coolify-friendly):
+  // The browser calls a same-origin API route, which proxies to the render container.
+  // No public render-service URL needed in the client.
+  const RENDER_ENDPOINT = '/api/social/render';
 
   const $ = (id) => /** @type {HTMLElement} */ (document.getElementById(id));
   const form = /** @type {HTMLFormElement} */ ($('social-card-form'));
@@ -633,21 +633,41 @@ const classes = classProp || className || "";
   });
 
   downloadBtn.addEventListener('click', async () => {
-    // Future backend hook (disabled by default):
-    // If you later provide a render service, you can implement:
-    // - const fd = new FormData(form); fd.append('showLogo', String(showLogoInput.checked)) ...
-    // - fetch(RENDER_API, { method: 'POST', body: fd }) -> blob -> download
-    if (RENDER_API) {
-      setStatus(`Backend render API configured (${RENDER_API}) but not wired yet; downloading client-side for now.`);
-    }
-
     const fn = safeFilenamePart(firstNameInput.value) || safeFilenamePart(lastNameInput.value)
       ? `sbr2026-${safeFilenamePart(firstNameInput.value)}-${safeFilenamePart(lastNameInput.value)}.png`.replace(/--+/g, '-')
       : 'sbr2026-social.png';
 
-    // Export uses the preview stage geometry, so positions match the "example" layout.
-    renderExportCanvasFromStage();
-    downloadCanvasPng(fn);
+    // Prefer backend render (consistent fonts/metrics, no client perf issues).
+    try {
+      setStatus('Rendering...');
+      const fd = new FormData(form);
+      fd.set('showLogo', String(showLogoInput.checked));
+      fd.set('uppercase', String(uppercaseInput.checked));
+      fd.set('tuning', JSON.stringify(tuning));
+
+      const resp = await fetch(RENDER_ENDPOINT, { method: 'POST', body: fd });
+      if (!resp.ok) {
+        const msg = await resp.text();
+        throw new Error(msg || `HTTP ${resp.status}`);
+      }
+      const blob = await resp.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fn;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      setStatus('');
+      return;
+    } catch (e) {
+      // Fallback: client-side export using the preview stage geometry.
+      setStatus('Backend render failed; exporting locally instead.');
+      renderExportCanvasFromStage();
+      downloadCanvasPng(fn);
+      return;
+    }
   });
 
   // Initial render once template/logo are ready

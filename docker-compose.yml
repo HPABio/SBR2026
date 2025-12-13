@@ -1,0 +1,36 @@
+services:
+  web:
+    image: astropage-web:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+      - PORT=4321
+      # Internal URL (service name) used by the Astro API proxy route
+      - RENDER_SERVICE_URL=http://render-service:8080
+      # Optional: used by astro.config.mjs for sitemap
+      # - SITE_URL=https://your-domain.example
+    ports:
+      - "4321:4321"
+    depends_on:
+      render-service:
+        condition: service_healthy
+
+  render-service:
+    image: astropage-render-service:local
+    build:
+      context: ./render-service
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+    expose:
+      - "8080"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:8080/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
