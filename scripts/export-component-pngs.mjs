@@ -176,9 +176,20 @@ async function main() {
         n++
       }
 
+      // Our wrapper uses `display: contents` so the wrapper node itself has no box.
+      // Screenshot the first real element child (typically the card root).
+      const target = (await marker.$(":scope > *")) ?? marker
+
       // Keep it stable: scroll into view and screenshot just this element.
-      await marker.scrollIntoViewIfNeeded()
-      await marker.screenshot({ path: outPath, type: "png" })
+      await target.scrollIntoViewIfNeeded()
+      const box = await target.boundingBox()
+      if (!box || box.width <= 1 || box.height <= 1) {
+        // Don't fail the whole build if an element is hidden/not rendered on this route.
+        // eslint-disable-next-line no-console
+        console.warn(`[export-png] Skipping invisible element on ${route}: ${outPath}`)
+        continue
+      }
+      await target.screenshot({ path: outPath, type: "png" })
     }
   }
 

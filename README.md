@@ -21,3 +21,19 @@ bun create astro@latest -- --template with-tailwindcss
 Astro comes with [Tailwind](https://tailwindcss.com) support out of the box. This example showcases how to style your Astro project with Tailwind.
 
 For complete setup instructions, please see our [Tailwind Integration Guide](https://docs.astro.build/en/guides/integrations-guide/tailwind).
+
+## 📦 How to use it
+Normal build (no PNG export):
+```sh
+bun run build
+```
+Export PNGs during build (this is the on/off “variable”):
+```sh
+PUBLIC_EXPORT_COMPONENT_PNGS=true bun run build
+```
+One-time setup for Playwright (needed the first time you export):
+install deps (if you haven’t):
+```sh
+bun install
+```
+install the browser:
