@@ -1,10 +1,8 @@
 ---
-import { Image } from 'astro:assets';
 import Layout from '@/layouts/main.astro';
 import type { Props as SocialMediaProps } from 'astro';
 import ImAttendingSBR2026 from '@/assets/Other/socialMedia/I_am_Attending_SBR2026.png';
 import SBRLogo from '@/assets/SBR2026-Favicon-lg.png';
-import AdrianFriedrich from "@/assets/ExportWP/advisors/Advisor_AF_.png";
 interface Props extends SocialMediaProps {
   class?: string;
 }
@@ -16,65 +14,489 @@ const classes = classProp || className || "";
     <div class="mx-auto max-w-5xl px-6">
         <h2 class="text-5xl font-black font-anton uppercase text-left w-fit">Social Media</h2>
         <p class="text-xl text-muted-foreground max-w-2xl md:max-w-4xl mx-auto text-balance">
-            Follow us on our social media platforms to stay up to date with the latest news and updates.
+            Generate your own SBR2026 social post: upload an image, add your details, and download the final graphic.
         </p>
-        <div class="flex flex-col gap-4 items-center justify-center my-44">
-          <h3 class="text-xl font-bold font-anton uppercase text-center w-fit">Social Media Post</h3>
-            <div class="bg-background rounded-xl p-4 border-2 border-red-500 relative aspect-square">
-                <Image src={ImAttendingSBR2026} alt="Im Attending SBR2026" width={600} height={1200} class="w-full h-full object-contain" />
-                <div class="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] w-full h-full bg-black/0 z-10"></div>
+        <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
+          <!-- Controls -->
+          <div class="rounded-xl border border-border bg-background/40 p-5">
+            <h3 class="text-xl font-bold font-anton uppercase">Social Media Post Generator</h3>
+            <p class="mt-2 text-sm text-muted-foreground">
+              Everything is rendered in your browser. Later, you can switch this page to call a separate render backend without changing the form.
+            </p>
+
+            <form id="social-card-form" class="mt-5 space-y-4">
+              <div class="space-y-2">
+                <label class="text-sm font-semibold" for="portrait">Your image (PNG/JPG)</label>
+                <input id="portrait" name="portrait" type="file" accept="image/*" class="block w-full rounded-md border border-border bg-background px-3 py-2 text-sm" />
+                <p class="text-xs text-muted-foreground">Tip: use a portrait photo; we’ll center-crop it to fit the frame.</p>
+              </div>
+
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div class="space-y-2">
+                  <label class="text-sm font-semibold" for="firstName">First name</label>
+                  <input id="firstName" name="firstName" type="text" placeholder="First name" class="block w-full rounded-md border border-border bg-background px-3 py-2 text-sm" />
+                </div>
+                <div class="space-y-2">
+                  <label class="text-sm font-semibold" for="lastName">Last name</label>
+                  <input id="lastName" name="lastName" type="text" placeholder="Last name" class="block w-full rounded-md border border-border bg-background px-3 py-2 text-sm" />
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label class="text-sm font-semibold" for="affiliation">Affiliation</label>
+                <input id="affiliation" name="affiliation" type="text" placeholder="Company / University / Team" class="block w-full rounded-md border border-border bg-background px-3 py-2 text-sm" />
+              </div>
+
+              <div class="space-y-2">
+                <label class="text-sm font-semibold" for="slogan">Headline</label>
+                <input id="slogan" name="slogan" type="text" value="i'm attending" class="block w-full rounded-md border border-border bg-background px-3 py-2 text-sm" />
+              </div>
+
+              <div class="space-y-2">
+                <label class="text-sm font-semibold" for="website">Website</label>
+                <input id="website" name="website" type="text" value="www.synbioreactor.de" class="block w-full rounded-md border border-border bg-background px-3 py-2 text-sm" />
+              </div>
+
+              <div class="space-y-2">
+                <label class="text-sm font-semibold" for="quote">Quote / message</label>
+                <textarea id="quote" name="quote" rows="4" class="block w-full resize-y rounded-md border border-border bg-background px-3 py-2 text-sm">"I'm attending the SBR2026 to learn more about the latest trends in the industry and to network with other professionals."</textarea>
+              </div>
+
+              <div class="flex flex-wrap gap-4">
+                <label class="inline-flex items-center gap-2 text-sm">
+                  <input id="showLogo" type="checkbox" checked class="h-4 w-4 accent-primary" />
+                  Show SBR logo sticker
+                </label>
+                <label class="inline-flex items-center gap-2 text-sm">
+                  <input id="uppercase" type="checkbox" checked class="h-4 w-4 accent-primary" />
+                  Uppercase name + affiliation
+                </label>
+              </div>
+
+              <div class="flex flex-wrap gap-3 pt-2">
+                <button id="downloadBtn" type="button" class="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
+                  Download PNG
+                </button>
+                <button id="resetBtn" type="button" class="rounded-md border border-border bg-background px-4 py-2 text-sm font-semibold">
+                  Reset
+                </button>
+              </div>
+
+              <p id="status" class="text-xs text-muted-foreground"></p>
+            </form>
+          </div>
+
+          <!-- Preview -->
+          <div class="rounded-xl border border-border bg-background/40 p-5">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-xl font-bold font-anton uppercase">Preview</h3>
+              <div class="text-xs text-muted-foreground">This is exactly what downloads.</div>
+            </div>
+
+            <div class="mt-4 overflow-hidden rounded-lg border border-border bg-black/20">
+              <!-- This stage matches the original "example" layout (absolute-positioned divs) -->
+              <div id="previewStage" class="relative aspect-square w-full bg-black @container">
+                <img id="previewTemplate" src={ImAttendingSBR2026.src} alt="SBR2026 social template" class="h-full w-full object-cover" />
+
                 <!-- Name Tag -->
-                <div class="absolute top-1/2 left-1/2 translate-x-[30%] -translate-y-[115%] 
-                w-[200px] bg-green-600/0 border border-green-300 z-10 p-0">
-                  <h1 class="text-3xl font-bold font-anton uppercase text-left tracking-relaxed m-0 w-fit
-                  bg-linear-to-r from-primary via-yellow-400 to-primary text-transparent bg-clip-text">LAST NAME</h1>
-                  <h2 class="text-white text-lg font-bold font-anton uppercase text-left tracking-snug -mt-2">FIRST NAME</h2>
-                  <p class="text-white text-sm font-light font-quicksand uppercase text-left tracking-snug -mt-1">AFFILIATION</p>
+                <div
+                  class="absolute top-1/2 left-1/2 translate-x-[30%] -translate-y-[115%] w-[33.333%] bg-green-600/0 z-10 p-0"
+                >
+                  <h1
+                    id="ovLastName"
+                    class="text-[5.0cqw] font-bold font-anton uppercase text-left tracking-relaxed m-0 w-fit bg-linear-to-r from-primary via-yellow-400 to-primary text-transparent bg-clip-text"
+                  >
+                    LAST NAME
+                  </h1>
+                  <h2 id="ovFirstName" class="text-white text-[2.85cqw] font-bold font-anton uppercase text-left tracking-snug -mt-2">
+                    FIRST NAME
+                  </h2>
+                  <p id="ovAffiliation" class="text-white text-[2.05cqw] font-light font-quicksand uppercase text-left tracking-snug -mt-1">
+                    AFFILIATION
+                  </p>
                 </div>
-                <!-- Input Image -->
-                <div class="w-[105px] h-[161px] absolute top-1/2 left-1/2 
-                translate-x-[127%] -translate-y-[30%] bg-green-600/0 border border-green-300 z-10">
-                  <Image src={AdrianFriedrich} alt="Input Image" class="h-full object-cover" />
+
+                <!-- Portrait -->
+                <div
+                  id="ovPortraitWrap"
+                  class="absolute top-1/2 left-1/2 translate-x-[127%] -translate-y-[30%] w-[17.5%] h-[26.833%] overflow-hidden rounded-md bg-white/5 z-10"
+                >
+                  <img id="ovPortrait" alt="Your uploaded portrait" class="h-full w-full object-cover" />
                 </div>
+
                 <!-- SBR Logo Sticker -->
-                <div class="w-[70px] h-[70px] absolute top-1/2 left-1/2 
-                translate-x-[140%] translate-y-[80%] bg-green-600/0 border border-green-300 z-10">
-                  <Image src={SBRLogo} alt="SBR Logo" class="w-full h-full object-contain" />
+                <div
+                  id="ovLogoWrap"
+                  class="absolute top-1/2 left-1/2 translate-x-[140%] translate-y-[80%] w-[11.667%] h-[11.667%] z-10"
+                >
+                  <img id="ovLogo" src={SBRLogo.src} alt="SBR Logo" class="h-full w-full object-contain" />
                 </div>
+
                 <!-- Slogan Text -->
-                <div class="absolute top-8 left-9 translate-x-[0%] translate-y-[0%] 
-                w-[400px] bg-green-600/0 border border-green-300 z-10 p-0">
-                  <h1 class="text-background text-[5rem] font-bold font-anton uppercase text-left tracking-tight text-nowrap">i'm attending</h1>
+                <div class="absolute top-[3.3%] left-[3.5%] w-[66.667%] z-10 p-0">
+                  <h1 id="ovSlogan" class="text-background text-[13cqw] font-bold font-anton uppercase text-left tracking-tight text-nowrap">
+                    i'm attending
+                  </h1>
                 </div>
-                
-                <!-- Some greetings text -->
-                <div class="absolute 
-                top-1/2 left-1/2 -translate-x-[160%] translate-y-[350%] bg-green-600/0 border border-green-300 z-10">
-                  <p class="text-foreground text-base font-quicksand font-light text-left tracking-relaxed leading-relaxed">
+
+                <!-- Website + Quote -->
+                <div class="absolute bottom-[5.5%] left-[4.2%] z-10">
+                  <p id="ovWebsite" class="text-foreground text-[2.3cqw] font-quicksand font-light text-left tracking-relaxed leading-relaxed">
                     www.synbioreactor.de
                   </p>
-                  <p class="w-[260px] absolute top-1/2 left-1/2 -translate-x-[27%] -translate-y-[126%] text-muted-foreground text-base font-mono font-semibold text-left tracking-relaxed leading-relaxed">
+                  <p
+                    id="ovQuote"
+                    class="w-[43.333%] absolute top-1/2 left-1/2 -translate-x-[27%] -translate-y-[126%] text-muted-foreground text-[2.05cqw] font-mono font-semibold text-left tracking-relaxed leading-relaxed"
+                  >
                     "I'm attending the SBR2026 to learn more about the latest trends in the industry and to network with other professionals."
                   </p>
                 </div>
-
-
-
-                <div class="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] w-full h-full bg-green-600/0 border border-green-300 z-10"></div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] w-full h-full bg-green-600/0 border border-green-300 z-10"></div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] w-full h-full bg-green-600/0 border border-green-300 z-10"></div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] w-full h-full bg-green-600/0 border border-green-300 z-10"></div>
+              </div>
             </div>
+
+            <!-- hidden sources for export rendering -->
+            <img id="templateImg" src={ImAttendingSBR2026.src} alt="" class="hidden" />
+            <img id="logoImg" src={SBRLogo.src} alt="" class="hidden" />
+            <canvas id="exportCanvas" class="hidden"></canvas>
+          </div>
         </div>
-        <div style="position: relative; width: 100%; height: 0; padding-top: 73.3478% padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden border-radius: 8px; will-change: transform;">
- 
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAG7H763B90/L4tGAjb-xKKoHLnWNuG1pQ/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-</div>
-<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAG7H763B90&#x2F;L4tGAjb-xKKoHLnWNuG1pQ&#x2F;view?utm_content=DAG7H763B90&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">SBR2026 meets LSTN Berlin</a> von GASB e.V.
     </div>
 </section>
 </Layout>
+
+<script type="module">
+  // Optional future backend integration:
+  // - set PUBLIC_SOCIAL_RENDER_API (e.g. "http://localhost:8080/render") and swap download action to a fetch().
+  // For now, we render fully client-side via Canvas.
+  const RENDER_API = import.meta.env.PUBLIC_SOCIAL_RENDER_API;
+
+  const $ = (id) => /** @type {HTMLElement} */ (document.getElementById(id));
+  const form = /** @type {HTMLFormElement} */ ($('social-card-form'));
+  const portraitInput = /** @type {HTMLInputElement} */ ($('portrait'));
+  const firstNameInput = /** @type {HTMLInputElement} */ ($('firstName'));
+  const lastNameInput = /** @type {HTMLInputElement} */ ($('lastName'));
+  const affiliationInput = /** @type {HTMLInputElement} */ ($('affiliation'));
+  const sloganInput = /** @type {HTMLInputElement} */ ($('slogan'));
+  const websiteInput = /** @type {HTMLInputElement} */ ($('website'));
+  const quoteInput = /** @type {HTMLTextAreaElement} */ ($('quote'));
+  const showLogoInput = /** @type {HTMLInputElement} */ ($('showLogo'));
+  const uppercaseInput = /** @type {HTMLInputElement} */ ($('uppercase'));
+  const downloadBtn = /** @type {HTMLButtonElement} */ ($('downloadBtn'));
+  const resetBtn = /** @type {HTMLButtonElement} */ ($('resetBtn'));
+  const statusEl = /** @type {HTMLParagraphElement} */ ($('status'));
+  const templateImgEl = /** @type {HTMLImageElement} */ ($('templateImg'));
+  const logoImgEl = /** @type {HTMLImageElement} */ ($('logoImg'));
+  const exportCanvas = /** @type {HTMLCanvasElement} */ ($('exportCanvas'));
+  const ctx = exportCanvas.getContext('2d', { willReadFrequently: false });
+  if (!ctx) throw new Error('Canvas 2D context not available');
+
+  const previewStage = /** @type {HTMLDivElement} */ ($('previewStage'));
+  const ovLastName = /** @type {HTMLHeadingElement} */ ($('ovLastName'));
+  const ovFirstName = /** @type {HTMLHeadingElement} */ ($('ovFirstName'));
+  const ovAffiliation = /** @type {HTMLParagraphElement} */ ($('ovAffiliation'));
+  const ovSlogan = /** @type {HTMLHeadingElement} */ ($('ovSlogan'));
+  const ovWebsite = /** @type {HTMLParagraphElement} */ ($('ovWebsite'));
+  const ovQuote = /** @type {HTMLParagraphElement} */ ($('ovQuote'));
+  const ovPortraitWrap = /** @type {HTMLDivElement} */ ($('ovPortraitWrap'));
+  const ovPortrait = /** @type {HTMLImageElement} */ ($('ovPortrait'));
+  const ovLogoWrap = /** @type {HTMLDivElement} */ ($('ovLogoWrap'));
+
+  /** @type {HTMLImageElement | null} */
+  let portraitImgForExport = null;
+  /** @type {string | null} */
+  let portraitObjectUrl = null;
+
+  function setStatus(message) {
+    statusEl.textContent = message || '';
+  }
+
+  function normalizeText(s) {
+    const t = (s || '').trim();
+    if (!uppercaseInput.checked) return t;
+    return t.toUpperCase();
+  }
+
+  function safeFilenamePart(s) {
+    return (s || '')
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-_]/g, '')
+      .slice(0, 50);
+  }
+
+  function drawCoverImage(img, x, y, w, h) {
+    const iw = img.naturalWidth || img.width;
+    const ih = img.naturalHeight || img.height;
+    if (!iw || !ih) return;
+
+    const scale = Math.max(w / iw, h / ih);
+    const sw = w / scale;
+    const sh = h / scale;
+    const sx = (iw - sw) / 2;
+    const sy = (ih - sh) / 2;
+    ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+  }
+
+  function wrapText(text, maxWidth) {
+    const words = (text || '').split(/\s+/).filter(Boolean);
+    const lines = [];
+    let line = '';
+    for (const word of words) {
+      const test = line ? `${line} ${word}` : word;
+      if (ctx.measureText(test).width <= maxWidth) {
+        line = test;
+      } else {
+        if (line) lines.push(line);
+        line = word;
+      }
+    }
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  function ensureCanvasSizeFromTemplate() {
+    const w = templateImgEl.naturalWidth || templateImgEl.width;
+    const h = templateImgEl.naturalHeight || templateImgEl.height;
+    if (!w || !h) return false;
+    if (exportCanvas.width !== w || exportCanvas.height !== h) {
+      exportCanvas.width = w;
+      exportCanvas.height = h;
+    }
+    return true;
+  }
+
+  function renderPreview() {
+    const firstName = normalizeText(firstNameInput.value) || 'FIRST NAME';
+    const lastName = normalizeText(lastNameInput.value) || 'LAST NAME';
+    const affiliation = normalizeText(affiliationInput.value) || 'AFFILIATION';
+    const slogan = (sloganInput.value || '').trim() || "i'm attending";
+    const website = (websiteInput.value || '').trim() || 'www.synbioreactor.de';
+    const quote = (quoteInput.value || '').trim()
+      || `"I'm attending the SBR2026 to learn more about the latest trends in the industry and to network with other professionals."`;
+
+    ovFirstName.textContent = firstName;
+    ovLastName.textContent = lastName;
+    ovAffiliation.textContent = affiliation;
+    ovSlogan.textContent = slogan;
+    ovWebsite.textContent = website;
+    ovQuote.textContent = quote;
+
+    ovLogoWrap.style.display = showLogoInput.checked ? '' : 'none';
+  }
+
+  function cssFont(el, scale) {
+    const cs = getComputedStyle(el);
+    const sizePx = parseFloat(cs.fontSize || '16') * scale;
+    const style = cs.fontStyle && cs.fontStyle !== 'normal' ? cs.fontStyle : '';
+    const weight = cs.fontWeight || '400';
+    // Note: font-stretch / variant are rarely needed here.
+    return `${style} ${weight} ${sizePx}px ${cs.fontFamily}`;
+  }
+
+  function getLineHeight(el, scale) {
+    const cs = getComputedStyle(el);
+    const fs = parseFloat(cs.fontSize || '16');
+    const lhRaw = cs.lineHeight;
+    const lh = lhRaw === 'normal' ? fs * 1.2 : parseFloat(lhRaw || String(fs * 1.2));
+    return lh * scale;
+  }
+
+  function renderExportCanvasFromStage() {
+    if (!ensureCanvasSizeFromTemplate()) return;
+
+    const stageRect = previewStage.getBoundingClientRect();
+    if (!stageRect.width || !stageRect.height) return;
+
+    const w = exportCanvas.width;
+    const h = exportCanvas.height;
+    const scaleX = w / stageRect.width;
+    const scaleY = h / stageRect.height;
+    const scale = Math.min(scaleX, scaleY);
+
+    // Background template
+    ctx.clearRect(0, 0, w, h);
+    ctx.drawImage(templateImgEl, 0, 0, w, h);
+
+    // Portrait
+    if (portraitImgForExport) {
+      const r = ovPortraitWrap.getBoundingClientRect();
+      const x = (r.left - stageRect.left) * scaleX;
+      const y = (r.top - stageRect.top) * scaleY;
+      const rw = r.width * scaleX;
+      const rh = r.height * scaleY;
+      drawCoverImage(portraitImgForExport, x, y, rw, rh);
+    }
+
+    // Logo
+    if (showLogoInput.checked) {
+      const r = ovLogoWrap.getBoundingClientRect();
+      const x = (r.left - stageRect.left) * scaleX;
+      const y = (r.top - stageRect.top) * scaleY;
+      const rw = r.width * scaleX;
+      const rh = r.height * scaleY;
+      if (logoImgEl.naturalWidth || logoImgEl.width) {
+        ctx.drawImage(logoImgEl, x, y, rw, rh);
+      }
+    }
+
+    // Text: draw based on preview element rects + computed styles so positions match exactly.
+    const drawTextTopLeft = (el, text, fillStyle, isGradient = false) => {
+      if (!text) return;
+      const r = el.getBoundingClientRect();
+      const x = (r.left - stageRect.left) * scaleX;
+      const y = (r.top - stageRect.top) * scaleY;
+      ctx.save();
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      ctx.font = cssFont(el, scale);
+      if (isGradient) {
+        const grad = ctx.createLinearGradient(x, y, x + Math.max(1, r.width * scaleX), y);
+        grad.addColorStop(0, '#e11d48');
+        grad.addColorStop(0.5, '#facc15');
+        grad.addColorStop(1, '#e11d48');
+        ctx.fillStyle = grad;
+      } else {
+        ctx.fillStyle = fillStyle || getComputedStyle(el).color;
+      }
+      ctx.fillText(text, x, y);
+      ctx.restore();
+    };
+
+    drawTextTopLeft(ovLastName, ovLastName.textContent || '', undefined, true);
+    drawTextTopLeft(ovFirstName, ovFirstName.textContent || '', '#ffffff');
+    drawTextTopLeft(ovAffiliation, ovAffiliation.textContent || '', '#ffffff');
+
+    // Slogan
+    drawTextTopLeft(ovSlogan, ovSlogan.textContent || '', getComputedStyle(ovSlogan).color || '#0b0b0b');
+
+    // Website
+    drawTextTopLeft(ovWebsite, ovWebsite.textContent || '', getComputedStyle(ovWebsite).color || '#111111');
+
+    // Quote (wrap to element width)
+    const quoteText = ovQuote.textContent || '';
+    if (quoteText) {
+      const r = ovQuote.getBoundingClientRect();
+      const x = (r.left - stageRect.left) * scaleX;
+      const y = (r.top - stageRect.top) * scaleY;
+      const maxWidth = r.width * scaleX;
+      const lh = getLineHeight(ovQuote, scale);
+      ctx.save();
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      ctx.font = cssFont(ovQuote, scale);
+      ctx.fillStyle = getComputedStyle(ovQuote).color || '#6b7280';
+      const lines = wrapText(quoteText, maxWidth).slice(0, 6);
+      lines.forEach((line, i) => ctx.fillText(line, x, y + i * lh));
+      ctx.restore();
+    }
+  }
+
+  async function loadPortraitFromFile(file) {
+    if (!file) {
+      portraitImgForExport = null;
+      if (portraitObjectUrl) URL.revokeObjectURL(portraitObjectUrl);
+      portraitObjectUrl = null;
+      ovPortrait.removeAttribute('src');
+      renderPreview();
+      return;
+    }
+    const url = URL.createObjectURL(file);
+    try {
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = url;
+      await img.decode();
+      portraitImgForExport = img;
+      if (portraitObjectUrl) URL.revokeObjectURL(portraitObjectUrl);
+      portraitObjectUrl = url;
+      ovPortrait.src = url;
+      renderPreview();
+      // NOTE: we intentionally keep `url` alive for the <img> preview until replaced/reset
+    } catch (e) {
+      URL.revokeObjectURL(url);
+      throw e;
+    }
+  }
+
+  async function ensureAssetsReady() {
+    // Wait for hidden <img> elements to load enough for naturalWidth/Height.
+    const waitDecode = async (img) => {
+      if (!img) return;
+      try {
+        if (img.complete && (img.naturalWidth || img.width)) return;
+        await img.decode();
+      } catch {
+        // ignore: decode can fail in some browsers; we'll still attempt render after load event.
+      }
+    };
+    await Promise.all([waitDecode(templateImgEl), waitDecode(logoImgEl)]);
+    renderPreview();
+  }
+
+  function downloadCanvasPng(filename) {
+    setStatus('');
+    exportCanvas.toBlob((blob) => {
+      if (!blob) {
+        setStatus('Export failed: could not create image blob.');
+        return;
+      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }, 'image/png');
+  }
+
+  // Wire up events
+  portraitInput.addEventListener('change', async () => {
+    const file = portraitInput.files?.[0];
+    await loadPortraitFromFile(file);
+  });
+
+  form.addEventListener('input', () => renderPreview());
+
+  resetBtn.addEventListener('click', () => {
+    form.reset();
+    // Put back default values that reset() may clear in some browsers for programmatic value.
+    sloganInput.value = "i'm attending";
+    websiteInput.value = 'www.synbioreactor.de';
+    quoteInput.value = `"I'm attending the SBR2026 to learn more about the latest trends in the industry and to network with other professionals."`;
+    showLogoInput.checked = true;
+    uppercaseInput.checked = true;
+    portraitImgForExport = null;
+    portraitInput.value = '';
+    if (portraitObjectUrl) URL.revokeObjectURL(portraitObjectUrl);
+    portraitObjectUrl = null;
+    ovPortrait.removeAttribute('src');
+    renderPreview();
+    setStatus('');
+  });
+
+  downloadBtn.addEventListener('click', async () => {
+    // Future backend hook (disabled by default):
+    // If you later provide a render service, you can implement:
+    // - const fd = new FormData(form); fd.append('showLogo', String(showLogoInput.checked)) ...
+    // - fetch(RENDER_API, { method: 'POST', body: fd }) -> blob -> download
+    if (RENDER_API) {
+      setStatus(`Backend render API configured (${RENDER_API}) but not wired yet; downloading client-side for now.`);
+    }
+
+    const fn = safeFilenamePart(firstNameInput.value) || safeFilenamePart(lastNameInput.value)
+      ? `sbr2026-${safeFilenamePart(firstNameInput.value)}-${safeFilenamePart(lastNameInput.value)}.png`.replace(/--+/g, '-')
+      : 'sbr2026-social.png';
+
+    // Export uses the preview stage geometry, so positions match the "example" layout.
+    renderExportCanvasFromStage();
+    downloadCanvasPng(fn);
+  });
+
+  // Initial render once template/logo are ready
+  ensureAssetsReady();
+</script>
 
 
