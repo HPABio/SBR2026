@@ -1,0 +1,18 @@
+{ "partnersLogoList": 
+    {
+        "SPRIN-D": "@/assets/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg",
+        "GASB": "@/assets/partners-logos/LinkedIn-Thumbnails/GASB_Logo_white.png",
+        "BIOCENTRA": "@/assets/partners-logos/LinkedIn-Thumbnails/BioCentra-biocentra-eu.jpeg",
+        "VOSSIUS": "@/assets/partners-logos/LinkedIn-Thumbnails/VOSSIUS-vossiusandpartner.jpeg",
+        "BioCircular": "@/assets/partners-logos/dummyLogos/biocircular-logo.jpg",
+        "Biocompile": "@/assets/logos/Sponsors/Biocompile_Logo_white.png",
+        "BrightBiotech": "@/assets/logos/Sponsors/BrightBiotech_Logo.png",
+        "UniteLabs": "@/assets/logos/Sponsors/UniteLabs_Logo.png",
+        "CordenBiochem": "@/assets/logos/Sponsors/CordenBiochem_Logo.png",
+        "Nucleate": "@/assets/logos/Nucleate_Logo.png",
+        "FoodLabs": "@/assets/logos/FoodLabs_Logo.png",
+        "Biocatalyst Foundation": "@/assets/logos/Biocatalyst_Foundation_Logo.png",
+        "BCG": "@/assets/logos/BCG_Logo.png",
+        "Mimotype": "@/assets/logos/Mimotype_Logo.png"
+    }
+}
