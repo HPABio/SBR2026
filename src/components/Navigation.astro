@@ -64,14 +64,97 @@ const getLinkClasses = (path: string) => {
         TICKETS
       </button> -->
 
-      <div  id={currentPath === '/' ? "nav-ticket-button" : ""}
-      class={currentPath === '/' ? "opacity-0 pointer-events-none transition-opacity duration-300" : ""}>
-        <BubbleButton text="TICKETS" class="rounded-md" textClass="text-3xl mx-1 font-anton font-black tracking-tight uppercase" 
-        iconClass="h-8  fill-black group-hover:fill-white -translate-y-[4px] m-0 ml-0" href="/registration"/>
+      <div
+        id={currentPath === '/' ? "nav-ticket-button" : ""}
+        class={currentPath === '/' ? "opacity-0 pointer-events-none transition-opacity duration-300" : ""}
+      >
+        <div class="flex items-center gap-3">
+          <BubbleButton
+            text="TICKETS"
+            class="rounded-md"
+            textClass="text-3xl mx-1 font-anton font-black tracking-tight uppercase"
+            iconClass="h-8 fill-black group-hover:fill-white -translate-y-[4px] m-0 ml-0"
+            href="/registration"
+          />
+
+          <!-- Mobile hamburger (right of Tickets) -->
+          <button
+            type="button"
+            class="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-md border border-border bg-background/60 hover:bg-background transition-colors"
+            aria-label="Open menu"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            data-mobile-menu-trigger
+          >
+            <svg viewBox="0 0 24 24" class="h-6 w-6" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M4 6.75A.75.75 0 0 1 4.75 6h14.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 6.75Zm0 5.25A.75.75 0 0 1 4.75 11.25h14.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 12Zm0 5.25A.75.75 0 0 1 4.75 16.5h14.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 17.25Z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- Mobile overlay menu -->
+<div
+  id="mobile-menu"
+  class="md:hidden fixed inset-0 z-60 hidden"
+  data-mobile-menu
+>
+  <div
+    class="absolute inset-0 bg-black/60"
+    data-mobile-menu-overlay
+    aria-hidden="true"
+  />
+  <div
+    class="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-background border-l border-border shadow-2xl flex flex-col"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu"
+  >
+    <div class="flex items-center justify-between p-4 border-b border-border">
+      <span class="font-anton text-2xl uppercase tracking-tight">Menu</span>
+      <button
+        type="button"
+        class="inline-flex items-center justify-center h-10 w-10 rounded-md hover:bg-muted transition-colors"
+        aria-label="Close menu"
+        data-mobile-menu-close
+      >
+        <svg viewBox="0 0 24 24" class="h-6 w-6" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M6.22 6.22a.75.75 0 0 1 1.06 0L12 10.94l4.72-4.72a.75.75 0 1 1 1.06 1.06L13.06 12l4.72 4.72a.75.75 0 1 1-1.06 1.06L12 13.06l-4.72 4.72a.75.75 0 1 1-1.06-1.06L10.94 12 6.22 7.28a.75.75 0 0 1 0-1.06Z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col p-5 gap-4">
+      <a href="/" class="text-lg font-medium hover:text-primary transition-colors" data-mobile-menu-link>
+        Home
+      </a>
+      <a href="/timetable" class="text-lg font-medium hover:text-primary transition-colors" data-mobile-menu-link>
+        Time Table
+      </a>
+      <a href="/speakers" class="text-lg font-medium hover:text-primary transition-colors" data-mobile-menu-link>
+        Speakers
+      </a>
+      <a href="/pitchPerfect" class="text-lg font-medium hover:text-primary transition-colors" data-mobile-menu-link>
+        Pitching
+      </a>
+      <a href="/partners" class="text-lg font-medium hover:text-primary transition-colors" data-mobile-menu-link>
+        Partners
+      </a>
+      <a href="/sponsoring" class="text-lg font-medium hover:text-primary transition-colors" data-mobile-menu-link>
+        Sponsors
+      </a>
+    </div>
+  </div>
+</div>
 
 <script>
   // Show navigation ticket button when hero ticket button is out of view
@@ -103,6 +186,44 @@ const getLinkClasses = (path: string) => {
     );
     
     observer.observe(heroButton);
+  });
+</script>
+
+<script>
+  // Mobile menu: open/close, close on outside click, ESC, or link click
+  document.addEventListener('DOMContentLoaded', () => {
+    const menu = document.querySelector('[data-mobile-menu]');
+    const trigger = document.querySelector('[data-mobile-menu-trigger]');
+
+    if (!menu || !trigger) return;
+
+    const overlay = menu.querySelector('[data-mobile-menu-overlay]');
+    const closeBtn = menu.querySelector('[data-mobile-menu-close]');
+    const links = menu.querySelectorAll('[data-mobile-menu-link]');
+
+    let prevBodyOverflow = '';
+
+    const openMenu = () => {
+      prevBodyOverflow = document.body.style.overflow || '';
+      document.body.style.overflow = 'hidden';
+      menu.classList.remove('hidden');
+      trigger.setAttribute('aria-expanded', 'true');
+    };
+
+    const closeMenu = () => {
+      document.body.style.overflow = prevBodyOverflow;
+      menu.classList.add('hidden');
+      trigger.setAttribute('aria-expanded', 'false');
+    };
+
+    trigger.addEventListener('click', openMenu);
+    overlay?.addEventListener('click', closeMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+    links.forEach((link) => link.addEventListener('click', closeMenu));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
   });
 </script>
 
