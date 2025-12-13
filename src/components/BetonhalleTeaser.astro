@@ -29,13 +29,16 @@ import { MapPin } from 'lucide-react';
 					<h1 class="text-black font-anton font-black text-8xl uppercase tracking-tight">We Are Back</h1>
 					<h2 class="text-[#313131] leading-[27.3px] font-normal text-[21px] clear-both  my-2">- at -</h2>
 				</div>
-				<img loading="lazy" src={SilentGreenLogo.src} class="w-[20%] max-w-full h-full relative mx-auto ">
+				<img loading="lazy" src={SilentGreenLogo.src} class="mb-6 md:mb-0 w-[70%] md:w-[20%] max-w-full h-full relative mx-auto ">
+				<h2 class="text-[#313131] leading-[27.3px] font-normal text-[21px] clear-both  my-2">- check the -</h2>
 			</div>
 		</div>
 		<div class="w-full flex flex-row items-center justify-center mb-10 -mt-4">
 			<!-- <MapPin className="w-16 h-16 relative stroke-black translate-y-5" /> -->
 			<BubbleButton text="CHECK THE VENUE" href="/venue"
-			class="rounded-md mt-10 bg-transparent" textClass="text-7xl mx-1 font-anton font-black tracking-tight uppercase" icon="hidden"/>
+			class="hidden md:block rounded-md mt-10 bg-transparent" textClass="text-7xl mx-1 font-anton font-black tracking-tight uppercase" icon="hidden"/>
+			<BubbleButton text="TIME TABLE" href="/timetable"
+			class="block md:hidden rounded-md mt-4 bg-transparent" textClass="text-7xl mx-1 font-anton font-black tracking-tight uppercase" icon="hidden"/>
 		</div>
 	</div>
 

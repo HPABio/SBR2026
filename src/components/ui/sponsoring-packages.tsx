@@ -466,7 +466,7 @@ export function SponsoringPackages({ className }: SponsoringPackagesProps) {
           className
         )}
       >
-        <div className="inset-0 absolute z-0 translate-y-[150px] lg:translate-y-[200px]">
+        <div className="inset-0 absolute z-0 translate-y-[150px] lg:translate-y-[200px] rounded-2xl overflow-hidden">
           <img src={SBROrangeWaveBG.src} alt="SynBio Reactor Summit 2026" className="w-full h-full min-w-[800px] object-cover object-top z-0" />
         </div>
         <div className="max-w-2xl mx-auto z-10 relative">

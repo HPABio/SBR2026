@@ -131,7 +131,7 @@ export default function PartnersAndSupportersSections() {
     { name: "FoodLabs",domain:"foodlabs.com", description: "Commercialization Support", link:"dummy", imageClasses:""},
     { name: "Biocatalyst Foundation", logoNA:BiocatalystFoundation.src, description: "Commercialization Support", link:"dummy", imageClasses:"brightness-[1] scale-[1.5]"},
     { name: "BCG",domain:"bcg.com", description: "", link:"dummy", imageClasses:"contrast-[10] scale-[1.8] "},
-    { name: "Mimotype",domain:"mimotype.org", description: "", link:"dummy", imageClasses:"invert"},
+    // { name: "Mimotype",domain:"mimotype.org", description: "", link:"dummy", imageClasses:"invert"},
 
     // { name: "Vossius", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
     // { name: "TWIST", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
@@ -218,12 +218,12 @@ export default function PartnersAndSupportersSections() {
                     </h2>
           </div>
 
-          <div className="flex flex-row justify-between items-center mx-auto w-fit max-w-5xl gap-10 px-14">
+          <div className="flex flex-row justify-between items-center mx-auto w-fit max-w-screen sm:max-w-5xl gap-2 sm:gap-10 sm:px-14">
             {mainSponsors.map((sponsor, index) => (
               <ExportPng key={index} exportKey="mainSponsors" name={sponsor.name} index={index}>
                 <Card
                   className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
-                  h-36 aspect-video max-w-[250px] group p-4 relative"
+                  md:h-36 aspect-video max-w-[250px] group md:p-4 p-1 relative"
                 >
                   <a href={sponsor.link} className="">
                     <CardContent className="flex items-center justify-center h-full w-full aspect-video  p-0 rounded-lg overflow-hidden">
@@ -235,7 +235,10 @@ export default function PartnersAndSupportersSections() {
                       {/* Company name badge */}
                       <Badge
                         variant="outline"
-                        className="absolute -bottom-4 left-4 p-1 px-2 bg-black/50 border-muted-foreground/30 group-hover:border-primary text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider"
+                        className="absolute -bottom-4 md:left-4 left-2 p-1 px-2 bg-black/50 
+                        border-muted-foreground/30 group-hover:border-primary 
+                        text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider 
+                        text-[0.5rem] sm:text-[0.8rem]"
                       >
                         {sponsor.name}
                       </Badge>
@@ -245,12 +248,12 @@ export default function PartnersAndSupportersSections() {
               </ExportPng>
             ))}
           </div>
-          <div className="grid grid-cols-4 gap-6 w-full max-w-5xl mx-auto mt-24 px-14">
+          <div className="grid grid-cols-4 md:gap-6 gap-2 w-full max-w-5xl mx-auto mt-24 md:px-14">
             {supportingSponsors.map((supSponsor, index) => (
               <ExportPng key={index} exportKey="supportingSponsors" name={supSponsor.name} index={index}>
                 <Card
                   className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
-                  aspect-video max-w-[250px] group p-4 relative"
+                  aspect-video max-w-[250px] group sm:p-4 p-1 relative"
                 >
                   <a href={supSponsor.link} className="">
                     <CardContent className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden">
@@ -262,9 +265,10 @@ export default function PartnersAndSupportersSections() {
                       {/* Company name badge */}
                       <Badge
                         variant="outline"
-                        className="absolute bg-card -bottom-4 left-4 p-1 px-2 border-[0.5px] border-muted-foreground/30
-                        group-hover:border-primary group-hover:border text-[0.6rem] 
-                        text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider"
+                        className="absolute bg-card -bottom-2 md:-bottom-4 md:left-4 left-1 p-1 px-2 border-[0.5px] 
+                        border-muted-foreground/30 group-hover:border-primary group-hover:border
+                        text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider
+                        text-[0.4rem] sm:text-[0.6rem]"
                       >
                         {supSponsor.name}
                       </Badge>
@@ -338,7 +342,7 @@ export default function PartnersAndSupportersSections() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 gap-x-14 px-14 max-w-xl md:max-w-4xl lg:max-w-5xl 2xl:max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 gap-x-14 sm:px-14 px-4 max-w-xl md:max-w-4xl lg:max-w-5xl 2xl:max-w-6xl mx-auto">
             {advisoryBoard.map((advisor, index) => {
               return (
                 <Card
@@ -415,12 +419,12 @@ export default function PartnersAndSupportersSections() {
             </div>
           </div>
 
-          <div className="grid grid-cols-4 gap-6 w-full max-w-5xl mx-auto mt-24 px-14">
+          <div className="grid grid-cols-3 sm:grid-cols-4 sm:gap-6 gap-2 gap-y-8 w-full max-w-5xl mx-auto mt-24 sm:px-14 px-4">
             {partners.map((partner, index) => (
               <Card
                 key={index}
                 className="bg-card hover:bg-black border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
-                aspect-video max-w-[250px] group p-4 relative"
+                aspect-video max-w-[250px] group sm:p-4 p-1 relative"
               >
                 <div className="bg-primary w-[90%] h-[90%] absolute top-1 left-2 z-10 opacity-0 mix-blend-multiply group-hover:opacity-100 transition-opacity duration-300" />
                 <a href={partner.link} className="">
@@ -434,11 +438,12 @@ export default function PartnersAndSupportersSections() {
                     {/* Company name badge */}
                     <Badge 
                       variant="outline"
-                      className="absolute bg-card -bottom-4 left-4 p-1 px-2 border-[0.5px] border-muted-foreground/30
-                      group-hover:border-primary group-hover:border text-[0.6rem] 
-                      text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider"
+                      className="flex absolute max-w-[95%] w-fit bg-card sm:-bottom-4 -bottom-2 sm:left-4 left-1 p-1 px-2 border-[0.5px]
+                      border-muted-foreground/30 group-hover:border-primary group-hover:border text-wrap items-center justify-center
+                      text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider
+                      text-[0.3rem] sm:text-[0.6rem]"
                     >
-                      {partner.name}
+                      <p className="text-wrap">{partner.name}</p>
                     </Badge>
                   </CardContent>
                 </a>
