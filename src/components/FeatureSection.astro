@@ -1,11 +1,18 @@
 ---
+import type { Props as FeatureSectionProps } from 'astro';
+interface Props extends FeatureSectionProps {
+  class?: string;
+}
+const { class: classProp, className } = Astro.props;
+const classes = classProp || className || "";
+
 import StatsComponent from '@/components/StatsComponent.astro';
 import StatsComponentV2 from '@/components/StatsComponentV2.astro';
 import BubbleButton from '@/components/ui/BubbleButton.astro';
 import { Trophy } from 'lucide-react';
 ---
 
-<section class="flex flex-col items-center justify-center h-[80vh] w-screen">
+<section class={`flex flex-col items-center justify-center h-[80vh] w-screen ${classes}`}>
     <div class="text-center px-14 mt-14">
         <h2 class="text-4xl md:text-5xl text-balance uppercase">
             Join us for <span class="font-black text-primary">Two Days</span>
