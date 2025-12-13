@@ -73,6 +73,51 @@ const classes = classProp || className || "";
                 </label>
               </div>
 
+              <!-- Manual position tuning -->
+              <div class="rounded-lg border border-border bg-background/60 p-4">
+                <div class="flex items-center justify-between gap-4">
+                  <div>
+                    <p class="text-sm font-semibold">Position controls</p>
+                    <p class="text-xs text-muted-foreground">
+                      Select a block and nudge it on the preview. Export uses the same positions.
+                    </p>
+                  </div>
+                  <button id="resetTuningBtn" type="button" class="rounded-md border border-border bg-background px-3 py-2 text-xs font-semibold">
+                    Reset positions
+                  </button>
+                </div>
+
+                <div class="mt-3 space-y-3">
+                  <div class="space-y-2">
+                    <label class="text-sm font-semibold" for="blockSelect">Selected block</label>
+                    <select id="blockSelect" class="block w-full rounded-md border border-border bg-background px-3 py-2 text-sm">
+                      <option value="name">Name tag</option>
+                      <option value="portrait">Portrait</option>
+                      <option value="logo">Logo sticker</option>
+                      <option value="slogan">Headline</option>
+                      <option value="website">Website</option>
+                      <option value="quote">Quote</option>
+                    </select>
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                      <label class="text-sm font-semibold" for="xSlider">X offset</label>
+                      <span id="xVal" class="text-xs text-muted-foreground">0%</span>
+                    </div>
+                    <input id="xSlider" type="range" min="-30" max="30" step="0.5" value="0" class="w-full" />
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                      <label class="text-sm font-semibold" for="ySlider">Y offset</label>
+                      <span id="yVal" class="text-xs text-muted-foreground">0%</span>
+                    </div>
+                    <input id="ySlider" type="range" min="-30" max="30" step="0.5" value="0" class="w-full" />
+                  </div>
+                </div>
+              </div>
+
               <div class="flex flex-wrap gap-3 pt-2">
                 <button id="downloadBtn" type="button" class="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
                   Download PNG
@@ -96,11 +141,13 @@ const classes = classProp || className || "";
             <div class="mt-4 overflow-hidden rounded-lg border border-border bg-black/20">
               <!-- This stage matches the original "example" layout (absolute-positioned divs) -->
               <div id="previewStage" class="relative aspect-square w-full bg-black @container">
-                <img id="previewTemplate" src={ImAttendingSBR2026.src} alt="SBR2026 social template" class="h-full w-full object-cover" />
+                <img id="previewTemplate" src={ImAttendingSBR2026.src} alt="SBR2026 social template" class="h-full w-full object-contain" />
 
                 <!-- Name Tag -->
                 <div
+                  id="block-name"
                   class="absolute top-1/2 left-1/2 translate-x-[30%] -translate-y-[115%] w-[33.333%] bg-green-600/0 z-10 p-0"
+                  style="translate: 0px 0px;"
                 >
                   <h1
                     id="ovLastName"
@@ -120,6 +167,7 @@ const classes = classProp || className || "";
                 <div
                   id="ovPortraitWrap"
                   class="absolute top-1/2 left-1/2 translate-x-[127%] -translate-y-[30%] w-[17.5%] h-[26.833%] overflow-hidden rounded-md bg-white/5 z-10"
+                  style="translate: 0px 0px;"
                 >
                   <img id="ovPortrait" alt="Your uploaded portrait" class="h-full w-full object-cover" />
                 </div>
@@ -128,29 +176,32 @@ const classes = classProp || className || "";
                 <div
                   id="ovLogoWrap"
                   class="absolute top-1/2 left-1/2 translate-x-[140%] translate-y-[80%] w-[11.667%] h-[11.667%] z-10"
+                  style="translate: 0px 0px;"
                 >
                   <img id="ovLogo" src={SBRLogo.src} alt="SBR Logo" class="h-full w-full object-contain" />
                 </div>
 
                 <!-- Slogan Text -->
-                <div class="absolute top-[3.3%] left-[3.5%] w-[66.667%] z-10 p-0">
+                <div id="block-slogan" class="absolute top-[3.3%] left-[3.5%] w-[66.667%] z-10 p-0" style="translate: 0px 0px;">
                   <h1 id="ovSlogan" class="text-background text-[13cqw] font-bold font-anton uppercase text-left tracking-tight text-nowrap">
                     i'm attending
                   </h1>
                 </div>
 
                 <!-- Website + Quote -->
-                <div class="absolute bottom-[5.5%] left-[4.2%] z-10">
+                <div id="block-website" class="absolute bottom-[5.5%] left-[4.2%] z-10" style="translate: 0px 0px;">
                   <p id="ovWebsite" class="text-foreground text-[2.3cqw] font-quicksand font-light text-left tracking-relaxed leading-relaxed">
                     www.synbioreactor.de
                   </p>
-                  <p
-                    id="ovQuote"
-                    class="w-[43.333%] absolute top-1/2 left-1/2 -translate-x-[27%] -translate-y-[126%] text-muted-foreground text-[2.05cqw] font-mono font-semibold text-left tracking-relaxed leading-relaxed"
-                  >
-                    "I'm attending the SBR2026 to learn more about the latest trends in the industry and to network with other professionals."
-                  </p>
                 </div>
+
+                <p
+                  id="block-quote"
+                  class="w-[43.333%] absolute bottom-[9.5%] left-[22%] text-muted-foreground text-[2.05cqw] font-mono font-semibold text-left tracking-relaxed leading-relaxed z-10"
+                  style="translate: 0px 0px;"
+                >
+                  "I'm attending the SBR2026 to learn more about the latest trends in the industry and to network with other professionals."
+                </p>
               </div>
             </div>
 
@@ -183,6 +234,12 @@ const classes = classProp || className || "";
   const uppercaseInput = /** @type {HTMLInputElement} */ ($('uppercase'));
   const downloadBtn = /** @type {HTMLButtonElement} */ ($('downloadBtn'));
   const resetBtn = /** @type {HTMLButtonElement} */ ($('resetBtn'));
+  const resetTuningBtn = /** @type {HTMLButtonElement} */ ($('resetTuningBtn'));
+  const blockSelect = /** @type {HTMLSelectElement} */ ($('blockSelect'));
+  const xSlider = /** @type {HTMLInputElement} */ ($('xSlider'));
+  const ySlider = /** @type {HTMLInputElement} */ ($('ySlider'));
+  const xVal = /** @type {HTMLSpanElement} */ ($('xVal'));
+  const yVal = /** @type {HTMLSpanElement} */ ($('yVal'));
   const statusEl = /** @type {HTMLParagraphElement} */ ($('status'));
   const templateImgEl = /** @type {HTMLImageElement} */ ($('templateImg'));
   const logoImgEl = /** @type {HTMLImageElement} */ ($('logoImg'));
@@ -196,15 +253,38 @@ const classes = classProp || className || "";
   const ovAffiliation = /** @type {HTMLParagraphElement} */ ($('ovAffiliation'));
   const ovSlogan = /** @type {HTMLHeadingElement} */ ($('ovSlogan'));
   const ovWebsite = /** @type {HTMLParagraphElement} */ ($('ovWebsite'));
-  const ovQuote = /** @type {HTMLParagraphElement} */ ($('ovQuote'));
   const ovPortraitWrap = /** @type {HTMLDivElement} */ ($('ovPortraitWrap'));
   const ovPortrait = /** @type {HTMLImageElement} */ ($('ovPortrait'));
   const ovLogoWrap = /** @type {HTMLDivElement} */ ($('ovLogoWrap'));
+  const blockName = /** @type {HTMLDivElement} */ ($('block-name'));
+  const blockSlogan = /** @type {HTMLDivElement} */ ($('block-slogan'));
+  const blockWebsite = /** @type {HTMLDivElement} */ ($('block-website'));
+  const blockQuote = /** @type {HTMLParagraphElement} */ ($('block-quote'));
 
   /** @type {HTMLImageElement | null} */
   let portraitImgForExport = null;
   /** @type {string | null} */
   let portraitObjectUrl = null;
+
+  const TUNING_KEY = 'sbr.social.tuning.v1';
+  /** @type {Record<string, {xPct: number, yPct: number}>} */
+  let tuning = {
+    name: { xPct: 0, yPct: 0 },
+    portrait: { xPct: 0, yPct: 0 },
+    logo: { xPct: 0, yPct: 0 },
+    slogan: { xPct: 0, yPct: 0 },
+    website: { xPct: 0, yPct: 0 },
+    quote: { xPct: 0, yPct: 0 },
+  };
+
+  const tweakableEls = {
+    name: blockName,
+    portrait: ovPortraitWrap,
+    logo: ovLogoWrap,
+    slogan: blockSlogan,
+    website: blockWebsite,
+    quote: blockQuote,
+  };
 
   function setStatus(message) {
     statusEl.textContent = message || '';
@@ -280,9 +360,65 @@ const classes = classProp || className || "";
     ovAffiliation.textContent = affiliation;
     ovSlogan.textContent = slogan;
     ovWebsite.textContent = website;
-    ovQuote.textContent = quote;
+    blockQuote.textContent = quote;
 
     ovLogoWrap.style.display = showLogoInput.checked ? '' : 'none';
+    applyAllTweaks();
+  }
+
+  function loadTuning() {
+    try {
+      const raw = localStorage.getItem(TUNING_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') tuning = { ...tuning, ...parsed };
+    } catch {
+      // ignore
+    }
+  }
+
+  function saveTuning() {
+    try {
+      localStorage.setItem(TUNING_KEY, JSON.stringify(tuning));
+    } catch {
+      // ignore
+    }
+  }
+
+  function setElementTranslateByPct(el, xPct, yPct) {
+    const r = previewStage.getBoundingClientRect();
+    const tx = (r.width * xPct) / 100;
+    const ty = (r.height * yPct) / 100;
+    el.style.translate = `${tx}px ${ty}px`;
+  }
+
+  function applyAllTweaks() {
+    for (const key of Object.keys(tweakableEls)) {
+      const el = tweakableEls[key];
+      const { xPct, yPct } = tuning[key] || { xPct: 0, yPct: 0 };
+      if (el) setElementTranslateByPct(el, xPct, yPct);
+    }
+  }
+
+  function syncSlidersFromSelection() {
+    const key = blockSelect.value;
+    const { xPct, yPct } = tuning[key] || { xPct: 0, yPct: 0 };
+    xSlider.value = String(xPct);
+    ySlider.value = String(yPct);
+    xVal.textContent = `${Number(xPct).toFixed(1)}%`;
+    yVal.textContent = `${Number(yPct).toFixed(1)}%`;
+  }
+
+  function updateSelectedFromSliders() {
+    const key = blockSelect.value;
+    const xPct = Number(xSlider.value);
+    const yPct = Number(ySlider.value);
+    tuning[key] = { xPct, yPct };
+    xVal.textContent = `${xPct.toFixed(1)}%`;
+    yVal.textContent = `${yPct.toFixed(1)}%`;
+    const el = tweakableEls[key];
+    if (el) setElementTranslateByPct(el, xPct, yPct);
+    saveTuning();
   }
 
   function cssFont(el, scale) {
@@ -374,18 +510,18 @@ const classes = classProp || className || "";
     drawTextTopLeft(ovWebsite, ovWebsite.textContent || '', getComputedStyle(ovWebsite).color || '#111111');
 
     // Quote (wrap to element width)
-    const quoteText = ovQuote.textContent || '';
+    const quoteText = blockQuote.textContent || '';
     if (quoteText) {
-      const r = ovQuote.getBoundingClientRect();
+      const r = blockQuote.getBoundingClientRect();
       const x = (r.left - stageRect.left) * scaleX;
       const y = (r.top - stageRect.top) * scaleY;
       const maxWidth = r.width * scaleX;
-      const lh = getLineHeight(ovQuote, scale);
+      const lh = getLineHeight(blockQuote, scale);
       ctx.save();
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
-      ctx.font = cssFont(ovQuote, scale);
-      ctx.fillStyle = getComputedStyle(ovQuote).color || '#6b7280';
+      ctx.font = cssFont(blockQuote, scale);
+      ctx.fillStyle = getComputedStyle(blockQuote).color || '#6b7280';
       const lines = wrapText(quoteText, maxWidth).slice(0, 6);
       lines.forEach((line, i) => ctx.fillText(line, x, y + i * lh));
       ctx.restore();
@@ -459,6 +595,10 @@ const classes = classProp || className || "";
   });
 
   form.addEventListener('input', () => renderPreview());
+  blockSelect.addEventListener('change', () => syncSlidersFromSelection());
+  xSlider.addEventListener('input', () => updateSelectedFromSliders());
+  ySlider.addEventListener('input', () => updateSelectedFromSliders());
+  window.addEventListener('resize', () => applyAllTweaks());
 
   resetBtn.addEventListener('click', () => {
     form.reset();
@@ -474,6 +614,21 @@ const classes = classProp || className || "";
     portraitObjectUrl = null;
     ovPortrait.removeAttribute('src');
     renderPreview();
+    setStatus('');
+  });
+
+  resetTuningBtn.addEventListener('click', () => {
+    tuning = {
+      name: { xPct: 0, yPct: 0 },
+      portrait: { xPct: 0, yPct: 0 },
+      logo: { xPct: 0, yPct: 0 },
+      slogan: { xPct: 0, yPct: 0 },
+      website: { xPct: 0, yPct: 0 },
+      quote: { xPct: 0, yPct: 0 },
+    };
+    saveTuning();
+    applyAllTweaks();
+    syncSlidersFromSelection();
     setStatus('');
   });
 
@@ -496,6 +651,8 @@ const classes = classProp || className || "";
   });
 
   // Initial render once template/logo are ready
+  loadTuning();
+  syncSlidersFromSelection();
   ensureAssetsReady();
 </script>
 

@@ -16,6 +16,7 @@ import BrightBiotech from "@/assets/logos/Sponsors/BrightBiotech_Logo.png"
 import UniteLabs from "@/assets/logos/Sponsors/UniteLabs_Logo.png"
 import CordenBiochem from "@/assets/logos/Sponsors/CordenBiochem_Logo.png"
 import Nucleate from "@/assets/logos/Nucleate_Logo.png"
+import LSTNBerlin from "@/assets/partners-logos/LinkedIn-Thumbnails/Life_Sciences_Tech_Network_-_Berlin-lifesciencestechnetwork-berlin.jpeg"
 // import FoodLabs from "@/assets/logos/FoodLabs_Logo.png"
 // import BiocatalystFoundation from "@/assets/logos/Biocatalyst_Foundation_Logo.png"
 // import BCG from "@/assets/logos/Boston_Consulting_Group_(BCG)-boston-consulting-group"
@@ -122,7 +123,7 @@ export default function PartnersAndSupportersSections() {
   const partners = [
     { name: "Biolabs",domain:"biolabs.io", description: "Pan-European Network", link:"dummy", imageClasses:"invert scale-[2] contrast-[4]"},
     { name: "Berlin Partner GmbH",domain:"berlin-partner.de", description: "Innovation Accelerator", link:"dummy", imageClasses:"invert scale-[1.2]"},
-    { name: "Life Sciences Tech Network Berlin", logoNA:logoNA, description: "Industry Connection", link:"dummy", imageClasses:"translate-y-6 scale-[1.3] invert"},
+    { name: "Life Sciences Tech Network Berlin", logoNA:LSTNBerlin.src, description: "Industry Connection", link:"dummy", imageClasses:"translate-y-0 brightness-[1.8] contrast-[4] scale-[1.3] "},
     { name: "Nucleate",domain:"nucleate.org", description: "Sustainability Partner", link:"dummy", imageClasses:""},
     { name: "Amino Collective",domain:"aminocollective.com", description: "Startup Community", link:"dummy", imageClasses:"scale-[1.7]"},
     { name: "FoodLabs",domain:"foodlabs.com", description: "Commercialization Support", link:"dummy", imageClasses:""},
