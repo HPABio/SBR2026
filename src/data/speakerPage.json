@@ -318,14 +318,14 @@
           "sessionType": "Fire Side Chat"
         },
         {
-          "name": "Hendrik + Nucleate",
-          "role": "SPEAKER",
+          "name": "Ann-Kristin Müller",
+          "role": "HOST",
           "dateTime": "10:30",
           "room": "Atelier",
           "category": "Break Out Session",
-          "title": "SBWC Session 1",
-          "company": "BioCentra + Nucleate",
-          "companyDomain": "biocentra.com, nucleate.bio",
+          "title": "An Introduction to the German Start Up SynBio Ecosystem",
+          "company": "Biolabs Heidelberg",
+          "companyDomain": "biolabs.com",
           "sessionTitle": "SBWC1",
           "sessionDescription": "",
           "sessionType": "Workshop"
