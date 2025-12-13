@@ -267,14 +267,17 @@ const classes = classProp || className || "";
   let portraitObjectUrl = null;
 
   const TUNING_KEY = 'sbr.social.tuning.v1';
+  const DEFAULT_TUNING = {
+    name: { xPct: 11.0, yPct: -14.0 },
+    portrait: { xPct: 22.0, yPct: -8.0 },
+    logo: { xPct: 14.5, yPct: 9.5 },
+    slogan: { xPct: 0.0, yPct: 0.0 },
+    website: { xPct: 5.5, yPct: -24.5 },
+    quote: { xPct: -12.5, yPct: -30.0 },
+  };
   /** @type {Record<string, {xPct: number, yPct: number}>} */
   let tuning = {
-    name: { xPct: 0, yPct: 0 },
-    portrait: { xPct: 0, yPct: 0 },
-    logo: { xPct: 0, yPct: 0 },
-    slogan: { xPct: 0, yPct: 0 },
-    website: { xPct: 0, yPct: 0 },
-    quote: { xPct: 0, yPct: 0 },
+    ...DEFAULT_TUNING,
   };
 
   const tweakableEls = {
@@ -618,14 +621,7 @@ const classes = classProp || className || "";
   });
 
   resetTuningBtn.addEventListener('click', () => {
-    tuning = {
-      name: { xPct: 0, yPct: 0 },
-      portrait: { xPct: 0, yPct: 0 },
-      logo: { xPct: 0, yPct: 0 },
-      slogan: { xPct: 0, yPct: 0 },
-      website: { xPct: 0, yPct: 0 },
-      quote: { xPct: 0, yPct: 0 },
-    };
+    tuning = { ...DEFAULT_TUNING };
     saveTuning();
     applyAllTweaks();
     syncSlidersFromSelection();

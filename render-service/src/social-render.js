@@ -27,14 +27,67 @@ const ASSETS_DIR = path.resolve(__dirname, '..', 'assets');
 const TEMPLATE_PATH = path.join(ASSETS_DIR, 'template.png');
 const LOGO_PATH = path.join(ASSETS_DIR, 'logo.png');
 
+// Font embedding: ensures backend render matches browser preview more closely.
+// We fetch TTFs once per process and embed them into the SVG via @font-face.
+const ANTON_TTF_URL =
+  process.env.ANTON_TTF_URL ||
+  'https://raw.githubusercontent.com/google/fonts/main/ofl/anton/Anton-Regular.ttf';
+const QUICKSAND_TTF_URL =
+  process.env.QUICKSAND_TTF_URL ||
+  'https://raw.githubusercontent.com/google/fonts/main/ofl/quicksand/Quicksand%5Bwght%5D.ttf';
+
+/** @type {Promise<{ antonBase64?: string, quicksandBase64?: string }> | null} */
+let fontCachePromise = null;
+
+function toBase64(buf) {
+  return Buffer.from(buf).toString('base64');
+}
+
+async function fetchAsBase64(url) {
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error(`Failed to fetch font: ${url} (${resp.status})`);
+  const ab = await resp.arrayBuffer();
+  return toBase64(Buffer.from(ab));
+}
+
+async function getEmbeddedFonts() {
+  if (fontCachePromise) return fontCachePromise;
+  fontCachePromise = (async () => {
+    /** @type {{ antonBase64?: string, quicksandBase64?: string }} */
+    const out = {};
+    try {
+      out.antonBase64 = await fetchAsBase64(ANTON_TTF_URL);
+    } catch {
+      // If network/font fetch fails, we fall back to system fonts.
+    }
+    try {
+      out.quicksandBase64 = await fetchAsBase64(QUICKSAND_TTF_URL);
+    } catch {
+      // ignore
+    }
+    return out;
+  })();
+  return fontCachePromise;
+}
+
 function clamp(n, min, max) {
   return Math.max(min, Math.min(max, n));
 }
 
+/** @type {Tuning} */
+const DEFAULT_TUNING = {
+  name: { xPct: 11.0, yPct: -14.0 },
+  portrait: { xPct: 22.0, yPct: -8.0 },
+  logo: { xPct: 14.5, yPct: 9.5 },
+  slogan: { xPct: 0.0, yPct: 0.0 },
+  website: { xPct: 5.5, yPct: -24.5 },
+  quote: { xPct: -12.5, yPct: -30.0 },
+};
+
 /** @param {unknown} maybe */
 function normalizeTuning(maybe) {
   /** @type {Tuning} */
-  const out = {};
+  const out = { ...DEFAULT_TUNING };
   if (!maybe || typeof maybe !== 'object') return out;
   for (const [k, v] of Object.entries(maybe)) {
     if (!v || typeof v !== 'object') continue;
@@ -95,39 +148,38 @@ export async function renderSocialPng(input) {
   const W = meta.width ?? 1024;
   const H = meta.height ?? 1024;
 
+  const { antonBase64, quicksandBase64 } = await getEmbeddedFonts();
+
   const tuning = normalizeTuning(input.tuning);
   const dx = (key) => ((tuning[key]?.xPct ?? 0) / 100) * W;
   const dy = (key) => ((tuning[key]?.yPct ?? 0) / 100) * H;
 
-  // Base layout (fractions match earlier frontend ratios)
+  // Base layout: mirror the exact CSS used in `src/pages/social-media.astro`.
+  // Stage is square (template is square), and percentages are relative to stage width/height.
   const photoRect = {
-    x: W * 0.735 + dx('portrait'),
-    y: H * 0.395 + dy('portrait'),
-    w: W * 0.165,
-    h: H * 0.255,
+    // left: 50%, top: 50%, translateX(127% of own width), translateY(-30% of own height)
+    w: W * 0.175,
+    h: H * 0.26833,
+    x: W * 0.5 + (W * 0.175) * 1.27 + dx('portrait'),
+    y: H * 0.5 - (H * 0.26833) * 0.3 + dy('portrait'),
   };
   const logoRect = {
-    x: W * 0.755 + dx('logo'),
-    y: H * 0.675 + dy('logo'),
-    w: W * 0.11,
-    h: W * 0.11,
-  };
-  const namePos = {
-    x: W * 0.62 + dx('name'),
-    y: H * 0.30 + dy('name'),
+    // left: 50%, top: 50%, translateX(140% of own width), translateY(80% of own height)
+    w: W * 0.11667,
+    h: H * 0.11667,
+    x: W * 0.5 + (W * 0.11667) * 1.4 + dx('logo'),
+    y: H * 0.5 + (H * 0.11667) * 0.8 + dy('logo'),
   };
   const sloganPos = {
-    x: W * 0.075 + dx('slogan'),
-    y: H * 0.155 + dy('slogan'),
-  };
-  const websitePos = {
-    x: W * 0.10 + dx('website'),
-    y: H * 0.88 + dy('website'),
+    x: W * 0.035 + dx('slogan'),
+    y: H * 0.033 + dy('slogan'),
   };
   const quoteBox = {
-    x: W * 0.36 + dx('quote'),
-    y: H * 0.80 + dy('quote'),
-    w: W * 0.36,
+    x: W * 0.22 + dx('quote'),
+    // y is computed after wrapping (because the preview anchors via `bottom: 9.5%`)
+    y: 0,
+    w: W * 0.43333,
+    bottom: H * (1 - 0.095) + dy('quote'),
   };
 
   // Portrait (cover crop)
@@ -174,37 +226,55 @@ export async function renderSocialPng(input) {
   const website = String(input.website || '').trim();
   const quote = String(input.quote || '').trim();
 
-  const lastSize = Math.round(W * 0.055);
-  const firstSize = Math.round(W * 0.034);
-  const affSize = Math.round(W * 0.022);
-  const sloganSize = Math.round(W * 0.08);
-  const websiteSize = Math.round(W * 0.022);
-  const quoteSize = Math.round(W * 0.02);
+  // Match preview cqw sizes
+  const lastSize = Math.round(W * 0.05); // 5.0cqw
+  const firstSize = Math.round(W * 0.0285); // 2.85cqw
+  const affSize = Math.round(W * 0.0205); // 2.05cqw
+  const sloganSize = Math.round(W * 0.13); // 13cqw
+  const websiteSize = Math.round(W * 0.023); // 2.3cqw
+  const quoteSize = Math.round(W * 0.0205); // 2.05cqw
 
-  const quoteLines = quote ? wrapTextSimple(quote, 44, 6) : [];
+  // Quote in preview uses monospace + fixed width. Estimate wrap by character width (~0.62em for monospace).
+  const quoteMaxChars = Math.max(10, Math.floor(quoteBox.w / (quoteSize * 0.62)));
+  const quoteLines = quote ? wrapTextSimple(quote, quoteMaxChars, 6) : [];
+  const quoteLineH = Math.round(quoteSize * 1.6); // leading-relaxed-ish
+  const quoteHeight = quoteLines.length * quoteLineH;
+  quoteBox.y = quoteBox.bottom - quoteHeight;
+
+  // Website is anchored by `bottom: 5.5%` in preview.
+  const websiteBottom = H * (1 - 0.055) + dy('website');
+  const websiteY = websiteBottom - Math.round(websiteSize * 1.25);
+  const websiteX = W * 0.042 + dx('website');
+
+  // Name tag block: centered + translated by percent of its own box.
+  // left: 50% + translateX(30% of block width), top: 50% + translateY(-115% of block height)
+  const nameX = W * 0.5 + (W * 0.33333) * 0.3 + dx('name');
+  const nameBlockHeight =
+    Math.round(lastSize * 0.85) + Math.round(firstSize * 0.75) + Math.round(affSize * 1.2);
+  const nameTop = H * 0.5 - nameBlockHeight * 1.15 + dy('name');
+  const nameLastY = nameTop;
+  const nameFirstY = nameTop + Math.round(lastSize * 0.85);
+  const nameAffY = nameFirstY + Math.round(firstSize * 0.75);
 
   const svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
-  <defs>
-    <linearGradient id="nameGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#e11d48"/>
-      <stop offset="0.5" stop-color="#facc15"/>
-      <stop offset="1" stop-color="#e11d48"/>
-    </linearGradient>
-  </defs>
+  <style>
+    ${antonBase64 ? `@font-face{font-family:'Anton';src:url(data:font/ttf;base64,${antonBase64}) format('truetype');font-weight:400;font-style:normal;}` : ''}
+    ${quicksandBase64 ? `@font-face{font-family:'Quicksand';src:url(data:font/ttf;base64,${quicksandBase64}) format('truetype');font-weight:100 900;font-style:normal;}` : ''}
+  </style>
 
-  ${lastName ? `<text x="${namePos.x}" y="${namePos.y}" font-size="${lastSize}" font-family="Anton, Impact, Arial" font-weight="800" fill="url(#nameGrad)">${escapeXml(lastName)}</text>` : ''}
-  ${firstName ? `<text x="${namePos.x}" y="${namePos.y + Math.round(H * 0.035)}" font-size="${firstSize}" font-family="Anton, Impact, Arial" font-weight="800" fill="#ffffff">${escapeXml(firstName)}</text>` : ''}
-  ${affiliation ? `<text x="${namePos.x}" y="${namePos.y + Math.round(H * 0.062)}" font-size="${affSize}" font-family="Arial" font-weight="500" fill="#ffffff">${escapeXml(affiliation)}</text>` : ''}
+  ${lastName ? `<text x="${nameX}" y="${nameLastY}" dominant-baseline="text-before-edge" font-size="${lastSize}" font-family="${antonBase64 ? 'Anton' : 'DejaVu Sans'}" font-weight="800" fill="#F08A22">${escapeXml(lastName)}</text>` : ''}
+  ${firstName ? `<text x="${nameX}" y="${nameFirstY}" dominant-baseline="text-before-edge" font-size="${firstSize}" font-family="${antonBase64 ? 'Anton' : 'DejaVu Sans'}" font-weight="800" fill="#ffffff">${escapeXml(firstName)}</text>` : ''}
+  ${affiliation ? `<text x="${nameX}" y="${nameAffY}" dominant-baseline="text-before-edge" font-size="${affSize}" font-family="${quicksandBase64 ? 'Quicksand' : 'DejaVu Sans'}" font-weight="300" fill="#ffffff">${escapeXml(affiliation)}</text>` : ''}
 
-  ${slogan ? `<text x="${sloganPos.x}" y="${sloganPos.y}" font-size="${sloganSize}" font-family="Anton, Impact, Arial" font-weight="700" fill="#0b0b0b">${escapeXml(slogan)}</text>` : ''}
+  ${slogan ? `<text x="${sloganPos.x}" y="${sloganPos.y}" dominant-baseline="text-before-edge" font-size="${sloganSize}" font-family="${antonBase64 ? 'Anton' : 'DejaVu Sans'}" font-weight="700" fill="#0b0b0b">${escapeXml(slogan)}</text>` : ''}
 
-  ${website ? `<text x="${websitePos.x}" y="${websitePos.y}" font-size="${websiteSize}" font-family="Arial" font-weight="400" fill="#111111">${escapeXml(website)}</text>` : ''}
+  ${website ? `<text x="${websiteX}" y="${websiteY}" dominant-baseline="text-before-edge" font-size="${websiteSize}" font-family="${quicksandBase64 ? 'Quicksand' : 'DejaVu Sans'}" font-weight="300" fill="#111111">${escapeXml(website)}</text>` : ''}
 
   ${quoteLines
     .map((line, i) => {
-      const y = quoteBox.y + i * Math.round(W * 0.028);
-      return `<text x="${quoteBox.x}" y="${y}" font-size="${quoteSize}" font-family="monospace" font-weight="600" fill="#6b7280">${escapeXml(line)}</text>`;
+      const y = quoteBox.y + i * quoteLineH;
+      return `<text x="${quoteBox.x}" y="${y}" dominant-baseline="text-before-edge" font-size="${quoteSize}" font-family="monospace" font-weight="600" fill="#6b7280">${escapeXml(line)}</text>`;
     })
     .join('\n')}
 </svg>`;
