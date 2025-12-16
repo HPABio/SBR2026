@@ -562,28 +562,28 @@ export default function PartnersAndSupportersSections() {
       {/* CTA Section */}
       <section className="py-20 px-4 lg:px-8">
         <div className="container mx-auto max-w-4xl">
-          <Card className="bg-gradient-to-br from-card to-card/50 border-primary/30">
+          <Card className="bg-linear-to-br from-card to-card/50 border-primary/30">
             <CardContent className="pt-12 pb-12 text-center space-y-6">
               <h2 className="text-3xl md:text-4xl text-balance uppercase">
                 <span className="text-primary font-bold ">Help Us</span> spread the word!
               </h2>
-              <p className="text-lg text-muted-foreground text-balance max-w-4xl mx-auto">
-                Share the event online with your networks - either via social media channels or via for your accessable email lists.
-                Send us a message to let us know about your effort and get listed here as a connector or collaborator.
+              <p className="text-lg text-muted-foreground font-quicksand font-light text-balance max-w-4xl mx-auto">
+                <span className="font-bold">Share the event online with your networks</span> - either via social media channels or via for your accessable email lists.
+                Send us a message to let us know about your effort and get listed here as one of our connectors.
                 If you are interested in becoming a partner or sponsor, please contact us - we still have some vacancies left for organizations and individuals.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                 <a
                   href="mailto:sbr@ga-sb.de"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground hover:bg-transparent hover:text-primary hover:border-primary hover:border-2 font-semibold text-lg rounded-lg transition-colors"
                 >
-                  Become a Partner
+                  Get Info
                 </a>
                 <a
                   href="/sponsoring"
-                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-border hover:bg-card font-semibold text-lg rounded-lg transition-colors bg-transparent"
+                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-border hover:bg-card hover:text-primary hover:border-primary font-semibold text-lg rounded-lg transition-colors bg-transparent"
                 >
-                  Sponsorship Info
+                  Become a Sponsor
                 </a>
               </div>
             </CardContent>
