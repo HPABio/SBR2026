@@ -40,16 +40,64 @@ import PatrickRose from "@/assets/ExportWP/advisors/SBR-Advisor-PR.png"
 
 export default function PartnersAndSupportersSections() {
   const mainSponsors = [
-    { name: "SPRIN-D", logo: SPRIND, link:"https://www.sprind.org/" },
-    { name: "BIOCENTRA", logo: BIOCENTRA, link:"dummy " },
-    { name: "TWIST", logo: BioCircular, link:"dummy", imageClasses:""},
+    {
+      name: "SPRIN-D",
+      domain: "sprind.org",
+      logoNA: SPRIND.src,
+      description: "",
+      link: "https://www.sprind.org/",
+      imageClasses: "brightness-[1.2] contrast-[3] scale-[1.8]",
+    },
+    {
+      name: "BIOCENTRA",
+      domain: "",
+      logoNA: BIOCENTRA.src,
+      description: "",
+      link: "dummy ",
+      imageClasses: "brightness-[95%] contrast-[2] scale-[1.6] saturate-[0] -translate-y-1 invert",
+    },
+    {
+      name: "TWIST",
+      domain: "twistbioscience.com",
+      description: "",
+      link: "https://twistbioscience.com/",
+      imageClasses: "brightness-[1] contrast-[3] scale-[1.25]",
+    },
     // { name: "VOSSIUS", logo: VOSSIUS, link:"https://www.vossius.eu/en/" },
   ]
   const supportingSponsors = [
-    { name: "Corden Biochem", logo: CordenBiochem, link:"https://www.cordenbiochem.com/" },
-    { name: "UniteLabs", logo: UniteLabs, link:"https://www.unitelabs.io/" },
-    { name: "Bright Biotech", logo: BrightBiotech, link:"https://www.brightbiotech.co.uk/" },
-    { name: "biocompile", logo: Biocompile, link:"https://www.biocompile.com/" },
+    {
+      name: "Corden Biochem",
+      domain: "cordenbiochem.com",
+      logoNA: CordenBiochem.src,
+      description: "",
+      link: "https://www.cordenbiochem.com/",
+      imageClasses: "brightness-[2] contrast-[3] scale-[1]",
+    },
+    {
+      name: "UniteLabs",
+      domain: "unitelabs.io",
+      logoNA: UniteLabs.src,
+      description: "",
+      link: "https://www.unitelabs.io/",
+      imageClasses: "brightness-[70%] contrast-[3] scale-[1.05] invert",
+    },
+    {
+      name: "Bright Biotech",
+      domain: "brightbiotech.co.uk",
+      logoNA: BrightBiotech.src,
+      description: "",
+      link: "https://www.brightbiotech.co.uk/",
+      imageClasses: "brightness-[1.1] contrast-[3] scale-[1.25] invert",
+    },
+    {
+      name: "biocompile",
+      domain: "biocompile.com",
+      logoNA: Biocompile.src,
+      description: "",
+      link: "https://www.biocompile.com/",
+      imageClasses: "brightness-[1.1] contrast-[3] scale-[1]",
+    },
   ]
 
   const advisoryBoard = [
@@ -227,9 +275,15 @@ export default function PartnersAndSupportersSections() {
                   <a href={sponsor.link} className="">
                     <CardContent className="flex items-center justify-center h-full w-full aspect-video  p-0 rounded-lg overflow-hidden">
                       <img
-                        src={sponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
+                        src={
+                          sponsor.logoNA ||
+                          (sponsor.domain
+                            ? `https://img.logo.dev/${sponsor.domain}?token=pk_RfMRuwDLQme4qwss9CJbiA&format=webp&retina=true`
+                            : logoNA)
+                        }
                         alt={sponsor.name}
-                        className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity grayscale brightness-[4]"
+                        className={`w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity 
+                        saturate-[0] brightness-[1] contrast-[1] mix-blend-screen ${sponsor.imageClasses || ""}`}
                       />
                       {/* Company name badge */}
                       <Badge
@@ -257,9 +311,15 @@ export default function PartnersAndSupportersSections() {
                   <a href={supSponsor.link} className="">
                     <CardContent className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden">
                       <img
-                        src={supSponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
+                        src={
+                          supSponsor.logoNA ||
+                          (supSponsor.domain
+                            ? `https://img.logo.dev/${supSponsor.domain}?token=pk_RfMRuwDLQme4qwss9CJbiA&format=webp&retina=true`
+                            : logoNA)
+                        }
                         alt={supSponsor.name}
-                        className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity grayscale brightness-[4]"
+                        className={`w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity 
+                        saturate-[0] brightness-[1] contrast-[1] mix-blend-screen ${supSponsor.imageClasses || ""}`}
                       />
                       {/* Company name badge */}
                       <Badge
