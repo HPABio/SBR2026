@@ -248,8 +248,9 @@ export default function PitchingPage() {
               size="lg"
               variant="outline"
               className="border-2 border-border hover:bg-card font-semibold bg-transparent"
+              onClick={() => window.location.href = "/timetable"}
             >
-              View FAQ
+              Time Table
             </Button>
           </div>
         </div>

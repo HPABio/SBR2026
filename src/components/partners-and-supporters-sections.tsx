@@ -41,8 +41,8 @@ import PatrickRose from "@/assets/ExportWP/advisors/SBR-Advisor-PR.png"
 export default function PartnersAndSupportersSections() {
   const mainSponsors = [
     { name: "SPRIN-D", logo: SPRIND, link:"https://www.sprind.org/" },
-    { name: "GASB", logo: GASB_Logo_Black, link:"https://www.gasb.de/" },
     { name: "BIOCENTRA", logo: BIOCENTRA, link:"dummy " },
+    { name: "TWIST", logo: BioCircular, link:"dummy", imageClasses:""},
     // { name: "VOSSIUS", logo: VOSSIUS, link:"https://www.vossius.eu/en/" },
   ]
   const supportingSponsors = [
@@ -134,7 +134,6 @@ export default function PartnersAndSupportersSections() {
     // { name: "Mimotype",domain:"mimotype.org", description: "", link:"dummy", imageClasses:"invert"},
 
     // { name: "Vossius", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
-    // { name: "TWIST", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
     // { name: "CDD Vault", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
     // { name: "Provolute", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
     // { name: "Xynabio", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
