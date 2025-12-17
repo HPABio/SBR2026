@@ -173,12 +173,12 @@ export default function PartnersAndSupportersSections() {
   const partners = [
     { name: "Biolabs",domain:"biolabs.io", description: "Pan-European Network", link:"dummy", imageClasses:"invert scale-[2] contrast-[4]"},
     { name: "Berlin Partner GmbH",domain:"berlin-partner.de", description: "Innovation Accelerator", link:"dummy", imageClasses:"invert scale-[1.2]"},
-    { name: "Life Sciences Tech Network Berlin", logoNA:LSTNBerlin.src, description: "Industry Connection", link:"dummy", imageClasses:"translate-y-0 brightness-[1.8] contrast-[4] scale-[1.3] "},
-    { name: "Nucleate",domain:"nucleate.org", description: "Sustainability Partner", link:"dummy", imageClasses:""},
+    { name: "LSTN Berlin", logoNA:LSTNBerlin.src, description: "Industry Connection", link:"dummy", imageClasses:"translate-y-0 brightness-[1.8] contrast-[4] scale-[1.3] "},
+    { name: "Nucleate",domain:"nucleate.org", description: "Sustainability Partner", link:"dummy", imageClasses:"scale-[1.5]"},
     { name: "Amino Collective",domain:"aminocollective.com", description: "Startup Community", link:"dummy", imageClasses:"scale-[1.7]"},
-    { name: "FoodLabs",domain:"foodlabs.com", description: "Commercialization Support", link:"dummy", imageClasses:""},
+    { name: "FoodLabs",domain:"foodlabs.com", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.5]"},
     { name: "Biocatalyst Foundation", logoNA:BiocatalystFoundation.src, description: "Commercialization Support", link:"dummy", imageClasses:"brightness-[1] scale-[1.5]"},
-    { name: "BCG",domain:"bcg.com", description: "", link:"dummy", imageClasses:"contrast-[10] scale-[1.8] "},
+    { name: "Boston Consulting Group",domain:"bcg.com", description: "", link:"dummy", imageClasses:"contrast-[10] scale-[1.8] "},
     // { name: "Mimotype",domain:"mimotype.org", description: "", link:"dummy", imageClasses:"invert"},
 
     // { name: "Vossius", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
@@ -226,7 +226,9 @@ export default function PartnersAndSupportersSections() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-6">
             <div className="inline-block group">
-              <Badge variant="outline" className="p-1 px-2 border-muted-foreground/40 text-muted-foreground group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider">
+              <Badge 
+                variant="outline" 
+                className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} p-1 px-2 border-muted-foreground/40 text-muted-foreground group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider`}>
                 Partner Program
               </Badge>
             </div>
@@ -254,8 +256,10 @@ export default function PartnersAndSupportersSections() {
               </div>
             </div> */}
             <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left relative">
-                <Badge variant="outline" className="absolute p-1 px-2 top-8 left-1/2 -translate-x-1/2 border-muted-foreground/40 text-muted-foreground 
-                group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider text-center">
+                <Badge 
+                  variant="outline" 
+                  className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} absolute p-1 px-2 top-8 left-1/2 -translate-x-1/2 border-muted-foreground/40 text-muted-foreground 
+                group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider text-center`}>
                 <Rocket className="w-5 h-5 text-primary" />Thanks to</Badge> 
               <br/>Our main <br/>
                     <span className="text-8xl text-primary">Sponsors</span>
@@ -267,12 +271,12 @@ export default function PartnersAndSupportersSections() {
 
           <div className="flex flex-row justify-between items-center mx-auto w-fit max-w-screen sm:max-w-5xl gap-2 sm:gap-10 sm:px-14">
             {mainSponsors.map((sponsor, index) => (
-              <ExportPng key={index} exportKey="mainSponsors" name={sponsor.name} index={index}>
-                <Card
+              <Card
                   className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
                   md:h-36 aspect-video max-w-[250px] group md:p-4 p-1 relative"
                 >
                   <a href={sponsor.link} className="">
+              <ExportPng key={index} exportKey="mainSponsors" name={sponsor.name} index={index}>
                     <CardContent className="flex items-center justify-center h-full w-full aspect-video  p-0 rounded-lg overflow-hidden">
                       <img
                         src={
@@ -288,27 +292,27 @@ export default function PartnersAndSupportersSections() {
                       {/* Company name badge */}
                       <Badge
                         variant="outline"
-                        className="absolute -bottom-4 md:left-4 left-2 p-1 px-2 bg-black/50 
+                        className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} absolute -bottom-4 md:left-4 left-2 p-1 px-2 bg-black/50 
                         border-muted-foreground/30 group-hover:border-primary 
                         text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider 
-                        text-[0.5rem] sm:text-[0.8rem]"
+                        text-[0.5rem] sm:text-[0.8rem]`}
                       >
                         {sponsor.name}
                       </Badge>
                     </CardContent>
+              </ExportPng>
                   </a>
                 </Card>
-              </ExportPng>
             ))}
           </div>
           <div className="grid grid-cols-4 md:gap-6 gap-2 w-full max-w-5xl mx-auto mt-24 md:px-14">
             {supportingSponsors.map((supSponsor, index) => (
-              <ExportPng key={index} exportKey="supportingSponsors" name={supSponsor.name} index={index}>
-                <Card
+              <Card
                   className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
                   aspect-video max-w-[250px] group sm:p-4 p-1 relative"
                 >
                   <a href={supSponsor.link} className="">
+              <ExportPng key={index} exportKey="supportingSponsors" name={supSponsor.name} index={index}>
                     <CardContent className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden">
                       <img
                         src={
@@ -324,17 +328,17 @@ export default function PartnersAndSupportersSections() {
                       {/* Company name badge */}
                       <Badge
                         variant="outline"
-                        className="absolute bg-card -bottom-2 md:-bottom-4 md:left-4 left-1 p-1 px-2 border-[0.5px] 
+                        className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} absolute bg-card -bottom-2 md:-bottom-4 md:left-4 left-1 p-1 px-2 border-[0.5px] 
                         border-muted-foreground/30 group-hover:border-primary group-hover:border
                         text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider
-                        text-[0.4rem] sm:text-[0.6rem]"
+                        text-[0.4rem] sm:text-[0.6rem]`}
                       >
                         {supSponsor.name}
                       </Badge>
                     </CardContent>
+              </ExportPng>
                   </a>
                 </Card>
-              </ExportPng>
             ))}
           </div>
         </div>
@@ -386,7 +390,9 @@ export default function PartnersAndSupportersSections() {
 
           <div className="text-center space-y-6 pb-16 ">
             <div className="inline-block">
-            <Badge variant="outline" className="p-1 px-2 border-muted-foreground/40 text-muted-foreground group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider">
+            <Badge 
+              variant="outline" 
+              className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} p-1 px-2 border-muted-foreground/40 text-muted-foreground group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider`}>
               <Users2 className="w-5 h-5 text-primary" />Advisory Board
               </Badge>
             </div>
@@ -409,7 +415,9 @@ export default function PartnersAndSupportersSections() {
                   className="bg-card border-border hover:border-primary/50 transition-all hover:shadow-md relative overflow-hidden pb-0"
                   > 
                   {/* <a href={advisor.link} target="_blank" rel="noopener noreferrer" >
-                    <Badge variant="outline" className="relative border-muted-foreground text-muted-foreground font-anton uppercase tracking-wider opacity-75 text-center 
+                    <Badge 
+                      variant="outline" 
+                      className="hidden relative border-muted-foreground text-muted-foreground font-anton uppercase tracking-wider opacity-75 text-center 
                     hover:pl-6 hover:text-black hover:bg-primary hover:border-black hover:font-black transition-all duration-300 group-hover:scale-110 group">
                     <Link className="w-8 h-8 absolute my-auto left-2 text-transparent group-hover:text-black group-hover:scale-150 transition-all duration-300" />
                     SBR2026</Badge>
@@ -463,7 +471,9 @@ export default function PartnersAndSupportersSections() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-6 pb-16 px-14">
             <div className="inline-block">
-              <Badge variant="outline" className="p-1 px-2 border-muted-foreground/40 text-muted-foreground group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider">
+              <Badge 
+                variant="outline" 
+                className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} p-1 px-2 border-muted-foreground/40 text-muted-foreground group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider`}>
                 <Unplug className="w-5 h-5 text-primary" />Ecosystem Partners
               </Badge>
             </div>
@@ -487,6 +497,7 @@ export default function PartnersAndSupportersSections() {
               >
                 <div className="bg-primary w-[90%] h-[90%] absolute top-1 left-2 z-10 opacity-0 mix-blend-multiply group-hover:opacity-100 transition-opacity duration-300" />
                 <a href={partner.link} className="">
+                  <ExportPng key={index} exportKey="partners" name={partner.name} index={index}>
                   <CardContent id={`${partner.name} Logo`} className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden bac">
                     <img
                       src={partner.logoNA || `https://img.logo.dev/${partner.domain}?token=pk_RfMRuwDLQme4qwss9CJbiA&format=webp&retina=true`}
@@ -497,14 +508,15 @@ export default function PartnersAndSupportersSections() {
                     {/* Company name badge */}
                     <Badge 
                       variant="outline"
-                      className="flex absolute max-w-[95%] w-fit bg-card sm:-bottom-4 -bottom-2 sm:left-4 left-1 p-1 px-2 border-[0.5px]
+                      className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} flex absolute max-w-[95%] w-fit bg-card sm:-bottom-4 -bottom-2 sm:left-4 left-1 p-1 px-2 border-[0.5px]
                       border-muted-foreground/30 group-hover:border-primary group-hover:border text-wrap items-center justify-center
                       text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider
-                      text-[0.3rem] sm:text-[0.6rem]"
+                      text-[0.3rem] sm:text-[0.6rem]`}
                     >
                       <p className="text-wrap">{partner.name}</p>
                     </Badge>
                   </CardContent>
+                  </ExportPng>
                 </a>
               </Card>
             ))}
