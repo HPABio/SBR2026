@@ -73,6 +73,9 @@ const { class: classProp } = Astro.props;
 </section>
 
 <script>
+    const EMAIL_STORAGE_KEY = "sbr_sponsor_email";
+    const EMAIL_SYNC_EVENT = "sbr:sponsor-email";
+
     const form = document.querySelector("#flyer-form") as HTMLFormElement;
     const input = document.querySelector("#email-input") as HTMLInputElement;
     const formContainer = document.querySelector(
@@ -84,6 +87,21 @@ const { class: classProp } = Astro.props;
     const successEmail = document.querySelector(
         ".js-success-email",
     ) as HTMLElement;
+
+    // Prefill from sponsorship packages gate (if present)
+    try {
+        const storedEmail = localStorage.getItem(EMAIL_STORAGE_KEY);
+        if (storedEmail && input) input.value = storedEmail;
+    } catch {
+        // Ignore storage access issues (private mode, blocked, etc.)
+    }
+
+    // Keep input in sync if another component captures email
+    window.addEventListener(EMAIL_SYNC_EVENT, (e: Event) => {
+        const detailEmail = (e as CustomEvent)?.detail?.email as string | undefined;
+        if (!detailEmail || !input) return;
+        input.value = detailEmail;
+    });
 
     if (form) {
         form.addEventListener("submit", async (e) => {
@@ -107,6 +125,16 @@ const { class: classProp } = Astro.props;
                 const data = await response.json();
 
                 if (response.ok) {
+                    // Persist + broadcast email so other components (packages gate) unlock
+                    try {
+                        localStorage.setItem(EMAIL_STORAGE_KEY, email);
+                    } catch {
+                        // Ignore storage access issues
+                    }
+                    window.dispatchEvent(
+                        new CustomEvent(EMAIL_SYNC_EVENT, { detail: { email } }),
+                    );
+
                     // Update success message
                     if (successEmail) successEmail.textContent = email;
 

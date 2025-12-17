@@ -366,11 +366,14 @@ function PackageSection({ title, subtitle, packages, columns = 3, compact = fals
 
 export interface SponsoringPackagesProps {
   className?: string;
+  /** If true (default), packages are gated behind an email capture form. */
+  requireEmail?: boolean;
 }
 
 const EMAIL_STORAGE_KEY = "sbr_sponsor_email";
+const EMAIL_SYNC_EVENT = "sbr:sponsor-email";
 
-export function SponsoringPackages({ className }: SponsoringPackagesProps) {
+export function SponsoringPackages({ className, requireEmail = true }: SponsoringPackagesProps) {
   const [email, setEmail] = React.useState("");
   const [hasEmail, setHasEmail] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -380,149 +383,7 @@ export function SponsoringPackages({ className }: SponsoringPackagesProps) {
   // API endpoint - can be configured via environment variable
   const API_URL = import.meta.env.PUBLIC_SPONSOR_EMAIL_API_URL || "http://localhost:3001";
 
-  // Check if email exists in localStorage on mount
-  React.useEffect(() => {
-    const storedEmail = localStorage.getItem(EMAIL_STORAGE_KEY);
-    if (storedEmail) {
-      setHasEmail(true);
-    }
-    setIsLoading(false);
-  }, []);
-
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setEmailError("");
-    setIsSubmitting(true);
-
-    if (!email.trim()) {
-      setEmailError("Please enter your email address");
-      setIsSubmitting(false);
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      setEmailError("Please enter a valid email address");
-      setIsSubmitting(false);
-      return;
-    }
-
-    try {
-      // Send email to API
-      const response = await fetch(`${API_URL}/api/store-sponsor-email`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim() }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to store email');
-      }
-
-      // Store email in localStorage for client-side persistence
-      localStorage.setItem(EMAIL_STORAGE_KEY, email.trim());
-      setHasEmail(true);
-    } catch (error) {
-      console.error('Error storing email:', error);
-      // Still allow access even if API fails (graceful degradation)
-      // Store in localStorage as fallback
-      localStorage.setItem(EMAIL_STORAGE_KEY, email.trim());
-      setHasEmail(true);
-      // Optionally show a warning that email might not have been saved
-      // setEmailError("Email saved locally, but server sync failed. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  // Show loading state while checking localStorage
-  if (isLoading) {
-    return (
-      <section
-        className={cn(
-          "w-full bg-background text-foreground py-20 px-4 md:px-8",
-          className
-        )}
-      >
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="text-muted-foreground">Loading...</div>
-        </div>
-      </section>
-    );
-  }
-
-  // Show email capture form if no email is stored
-  if (!hasEmail) {
-    return (
-      <section
-        className={cn(
-          "w-full text-foreground py-20 px-4 md:px-8 relative",
-          className
-        )}
-      >
-        <div className="inset-0 absolute z-0 translate-y-[150px] lg:translate-y-[200px] rounded-2xl overflow-hidden">
-          <img src={SBROrangeWaveBG.src} alt="SynBio Reactor Summit 2026" className="w-full h-full min-w-[800px] object-cover object-top z-0" />
-        </div>
-        <div className="max-w-2xl mx-auto z-10 relative">
-          <Card className="border-primary/30">
-            <CardHeader className="text-center pt-8">
-              <div className="flex justify-center mb-4">
-                <div className="rounded-full bg-primary/10 p-4">
-                  <Lock className="w-8 h-8 text-primary" />
-                </div>
-              </div>
-              <CardTitle className="text-3xl mb-2">Access Sponsorship Packages</CardTitle>
-              <CardDescription className="text-base">
-                Enter your email address to view our exclusive sponsorship opportunities for SynBioReactor 2026
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email Address
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="your.email@example.com"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      setEmailError("");
-                    }}
-                    className={cn(
-                      emailError && "border-destructive"
-                    )}
-                    required
-                    disabled={isSubmitting}
-                  />
-                  {emailError && (
-                    <p className="text-sm text-destructive mt-2">{emailError}</p>
-                  )}
-                </div>
-                <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-                  {isSubmitting ? "Processing..." : "View Packages"}
-                </Button>
-                <p className="text-xs text-muted-foreground text-center">
-                  By providing your email address, you agree to receive updates and information about SynBioReactor 2026. You can unsubscribe at any time.
-                </p>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-    );
-  }
-
-  // Show packages if email is stored
-  return (
+  const PackagesContent = (
     <section
       className={cn(
         "w-full bg-background text-foreground py-20 px-4 md:px-8",
@@ -613,6 +474,184 @@ export function SponsoringPackages({ className }: SponsoringPackagesProps) {
       </div>
     </section>
   );
+
+  // If gating is disabled, always show packages (no email form).
+  if (!requireEmail) return PackagesContent;
+
+  const validateEmail = (emailToValidate: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(emailToValidate);
+  };
+
+  const storeEmailAndUnlock = React.useCallback(
+    async (rawEmail: string) => {
+      const trimmed = rawEmail.trim();
+      if (!trimmed) {
+        setEmailError("Please enter your email address");
+        return;
+      }
+
+      if (!validateEmail(trimmed)) {
+        setEmailError("Please enter a valid email address");
+        return;
+      }
+
+      setIsSubmitting(true);
+      setEmailError("");
+      setEmail(trimmed);
+
+      try {
+        // Send email to API (best effort)
+        const response = await fetch(`${API_URL}/api/store-sponsor-email`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: trimmed }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Failed to store email");
+      } catch (error) {
+        console.error("Error storing email:", error);
+        // Graceful degradation: still unlock via localStorage
+      } finally {
+        try {
+          localStorage.setItem(EMAIL_STORAGE_KEY, trimmed);
+        } catch {
+          // Ignore storage access issues
+        }
+        setHasEmail(true);
+        setIsSubmitting(false);
+      }
+    },
+    [API_URL],
+  );
+
+  // Check if email exists in localStorage on mount
+  React.useEffect(() => {
+    try {
+      const storedEmail = localStorage.getItem(EMAIL_STORAGE_KEY);
+      if (storedEmail) {
+        setEmail(storedEmail);
+        setHasEmail(true);
+      }
+    } catch {
+      // Ignore storage access issues
+    }
+    setIsLoading(false);
+  }, []);
+
+  // Unlock immediately if flyer component captures an email
+  React.useEffect(() => {
+    const onSync = (e: Event) => {
+      const detailEmail = (e as CustomEvent)?.detail?.email as string | undefined;
+      if (!detailEmail) return;
+      void storeEmailAndUnlock(detailEmail);
+    };
+
+    window.addEventListener(EMAIL_SYNC_EVENT, onSync);
+    return () => window.removeEventListener(EMAIL_SYNC_EVENT, onSync);
+  }, [storeEmailAndUnlock]);
+
+  // Also react to localStorage changes (e.g. other component writes key)
+  React.useEffect(() => {
+    const onStorage = (e: StorageEvent) => {
+      if (e.key !== EMAIL_STORAGE_KEY) return;
+      if (!e.newValue) return;
+      setEmail(e.newValue);
+      setHasEmail(true);
+    };
+
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    void storeEmailAndUnlock(email);
+  };
+
+  // Show loading state while checking localStorage
+  if (isLoading) {
+    return (
+      <section
+        className={cn(
+          "w-full bg-background text-foreground py-20 px-4 md:px-8",
+          className
+        )}
+      >
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="text-muted-foreground">Loading...</div>
+        </div>
+      </section>
+    );
+  }
+
+  // Show email capture form if no email is stored
+  if (!hasEmail) {
+    return (
+      <section
+        className={cn(
+          "w-full text-foreground py-20 px-4 md:px-8 relative",
+          className
+        )}
+      >
+        <div className="inset-0 absolute z-0 translate-y-[150px] lg:translate-y-[200px] rounded-2xl overflow-hidden">
+          <img src={SBROrangeWaveBG.src} alt="SynBio Reactor Summit 2026" className="w-full h-full min-w-[800px] object-cover object-top z-0" />
+        </div>
+        <div className="max-w-2xl mx-auto z-10 relative">
+          <Card className="border-primary/30">
+            <CardHeader className="text-center pt-8">
+              <div className="flex justify-center mb-4">
+                <div className="rounded-full bg-primary/10 p-4">
+                  <Lock className="w-8 h-8 text-primary" />
+                </div>
+              </div>
+              <CardTitle className="text-3xl mb-2">Access Sponsorship Packages</CardTitle>
+              <CardDescription className="text-base">
+                Enter your email address to view our exclusive sponsorship opportunities for SynBioReactor 2026
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    Email Address
+                  </label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="your.email@example.com"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      setEmailError("");
+                    }}
+                    className={cn(
+                      emailError && "border-destructive"
+                    )}
+                    required
+                    disabled={isSubmitting}
+                  />
+                  {emailError && (
+                    <p className="text-sm text-destructive mt-2">{emailError}</p>
+                  )}
+                </div>
+                <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                  {isSubmitting ? "Processing..." : "View Packages"}
+                </Button>
+                <p className="text-xs text-muted-foreground text-center">
+                  By providing your email address, you agree to receive updates and information about SynBioReactor 2026. You can unsubscribe at any time.
+                </p>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    );
+  }
+
+  // Show packages if email is stored
+  return PackagesContent;
 }
 
 export default SponsoringPackages;

@@ -3,9 +3,10 @@ import SponsoringPackagesComponent from "@/components/ui/sponsoring-packages.tsx
 
 interface Props {
   class?: string;
+  requireEmail?: boolean;
 }
 
-const { class: classProp } = Astro.props;
+const { class: classProp, requireEmail = true } = Astro.props;
 ---
 
-<SponsoringPackagesComponent client:load className={classProp} />
+<SponsoringPackagesComponent client:load className={classProp} requireEmail={requireEmail} />
