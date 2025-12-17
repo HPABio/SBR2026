@@ -19,6 +19,11 @@ export default defineConfig({
   vite: {
       plugins: [tailwindcss()],
       assetsInclude: ['**/*.glb'],
+      optimizeDeps: {
+        // Fix intermittent dev-only 504 "Outdated Optimize Dep" for Rapier dynamic import.
+        // This makes sure the wasm/js shim is prebundled deterministically.
+        include: ['@dimforge/rapier3d-compat'],
+      },
       resolve: {
         // Prevent multiple React copies (fixes "Invalid hook call" in islands)
         dedupe: ['react', 'react-dom'],

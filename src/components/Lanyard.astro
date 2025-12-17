@@ -1,12 +1,21 @@
 ---
-import LanyardUI from '@/components/ui/Lanyard.tsx';
+import LanyardUI from '@/components/ui/Lanyard';
 
-// IMPORTANT:
-// - Keep `src/assets/lanyard/card.glb` and `src/assets/lanyard/lanyard.png` in place (imported by the React component).
-// - Vite needs `assetsInclude: ['**/*.glb']` (configured in `astro.config.mjs`).
-// - If TypeScript complains about `.glb`/`.png` or `meshline`, add module declarations (see `src/global.d.ts`).
-
-const { position = [0, 0, 20], gravity = [0, -40, 0], fov, transparent } = Astro.props;
+const {
+  className,
+  cameraPosition = [0, 0, 13],
+  gravity = [0, -40, 0],
+  fov = 25,
+  transparent = true,
+} = Astro.props;
 ---
 
-<LanyardUI client:only="react" position={position} gravity={gravity} fov={fov} transparent={transparent} />
+<LanyardUI
+  client:only="react"
+  className={className}
+  cameraPosition={cameraPosition}
+  gravity={gravity}
+  fov={fov}
+  transparent={transparent}
+/>
+

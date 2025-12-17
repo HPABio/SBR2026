@@ -23,7 +23,6 @@
     "@smoothui": "https://smoothui.dev/r/{name}.json",
     "@blocks": "https://blocks.so/r/{name}.json",
     "@spectrumui": "https://ui.spectrumhq.in/r/{name}.json",
-    "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
-    "@react-bits": "https://reactbits.dev/r/{name}.json"
+    "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json"
   }
 }
