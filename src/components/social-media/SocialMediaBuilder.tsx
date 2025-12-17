@@ -360,6 +360,7 @@ export function SocialMediaBuilder({
               key={field.id}
               field={field}
               value={formData[field.id]}
+              stageAspectRatioValue={getAspectRatioValue(aspectRatio)}
               onChange={(value) => handleFieldChange(field.id, value)}
               onImageUpload={(file) => handleImageUpload(field.id, file)}
               onImageSettingsUpdate={(settings) => handleImageSettingsUpdate(field.id, settings)}
@@ -456,6 +457,7 @@ function getDefaultFormData(template: SocialTemplate): TemplateData {
 interface FieldInputProps {
   field: FieldSchema;
   value: string | boolean | ImageFieldData | undefined;
+  stageAspectRatioValue: number;
   onChange: (value: string | boolean | ImageFieldData) => void;
   onImageUpload: (file: File) => void;
   onImageSettingsUpdate: (settings: Partial<ImageFieldData>) => void;
@@ -466,6 +468,7 @@ interface FieldInputProps {
 function FieldInput({
   field,
   value,
+  stageAspectRatioValue,
   onChange,
   onImageUpload,
   onImageSettingsUpdate,
@@ -473,6 +476,31 @@ function FieldInput({
   onActivateImage,
 }: FieldInputProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const cropAspect = (() => {
+    // Derive a numeric crop aspect ratio from schema hints like "1:1", "3:4", "16:9".
+    // Used only as a fallback initial crop ratio if no container ratio is provided.
+    const hint = field.aspectHint?.trim();
+    if (!hint) return undefined;
+    const match = hint.match(/^(\d+(?:\.\d+)?)\s*:\s*(\d+(?:\.\d+)?)$/);
+    if (!match) return undefined;
+    const w = Number(match[1]);
+    const h = Number(match[2]);
+    if (!Number.isFinite(w) || !Number.isFinite(h) || w <= 0 || h <= 0) return undefined;
+    return w / h;
+  })();
+
+  const initialCropAspect = (() => {
+    if (field.type !== 'image') return undefined;
+    if (field.useStageAspectForInitialCrop) {
+      // For full-bleed backgrounds: match the current stage aspect ratio.
+      return stageAspectRatioValue;
+    }
+    if (typeof field.initialCropAspectRatio === 'number' && Number.isFinite(field.initialCropAspectRatio) && field.initialCropAspectRatio > 0) {
+      return field.initialCropAspectRatio;
+    }
+    return cropAspect;
+  })();
 
   if (field.type === 'checkbox') {
     return (
@@ -515,6 +543,8 @@ function FieldInput({
             onUpdate={onImageSettingsUpdate}
             isActive={isActiveImage}
             onActivate={onActivateImage}
+            initialCropAspect={initialCropAspect}
+            defaultCropShape={field.defaultCropShape}
           />
         )}
       </div>

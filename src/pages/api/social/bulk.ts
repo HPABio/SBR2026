@@ -10,7 +10,7 @@ import type { APIRoute } from 'astro';
  *   "format": "png" | "jpeg",
  *   "quality": 0.92,
  *   "items": [
- *     { "fileName": "image1", "templateId": "im-attending-sbr2026", "data": {...} },
+ *     { "fileName": "image1", "templateId": "ticket-drop", "data": {...} },
  *     ...
  *   ]
  * }

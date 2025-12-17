@@ -9,16 +9,20 @@
 
 export * from './types';
 
-import { ImAttendingTemplate } from './ImAttendingTemplate';
 import { SpeakerAnnouncementTemplate } from './SpeakerAnnouncementTemplate';
+import { QuoteSpotlightTemplate } from './QuoteSpotlightTemplate';
+import { SessionPromoTemplate } from './SessionPromoTemplate';
+import { TicketDropTemplate } from './TicketDropTemplate';
 import type { SocialTemplate } from './types';
 
 /**
  * All available templates
  */
 export const templates: SocialTemplate[] = [
-  ImAttendingTemplate,
   SpeakerAnnouncementTemplate,
+  QuoteSpotlightTemplate,
+  SessionPromoTemplate,
+  TicketDropTemplate,
 ];
 
 /**
@@ -36,5 +40,7 @@ export function getDefaultTemplate(): SocialTemplate {
 }
 
 // Re-export individual templates for direct imports
-export { ImAttendingTemplate } from './ImAttendingTemplate';
 export { SpeakerAnnouncementTemplate } from './SpeakerAnnouncementTemplate';
+export { QuoteSpotlightTemplate } from './QuoteSpotlightTemplate';
+export { SessionPromoTemplate } from './SessionPromoTemplate';
+export { TicketDropTemplate } from './TicketDropTemplate';

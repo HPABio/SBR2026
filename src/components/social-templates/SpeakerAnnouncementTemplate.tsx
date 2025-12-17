@@ -82,15 +82,14 @@ function SpeakerAnnouncementComponent({ data, stageWidth }: TemplateComponentPro
             alt="Speaker"
             crossOrigin="anonymous"
             style={{
-              // Apply crop by scaling and positioning the image
               position: 'absolute',
-              width: `${100 / (photo.crop.width / 100)}%`,
-              height: `${100 / (photo.crop.height / 100)}%`,
-              left: `${-photo.crop.x / (photo.crop.width / 100)}%`,
-              top: `${-photo.crop.y / (photo.crop.height / 100)}%`,
-              // Apply additional zoom and offset on top of crop
-              transform: `scale(${photo.zoom}) translate(${photo.offsetX}%, ${photo.offsetY}%)`,
-              transformOrigin: 'center center',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              transform: `translate(${photo.offsetX}%, ${photo.offsetY}%) scale(${photo.zoom})`,
+              transformOrigin: '50% 50%',
               filter: photo.grayscale ? 'grayscale(100%)' : 'none',
             }}
           />
@@ -237,6 +236,8 @@ export const SpeakerAnnouncementTemplate: SocialTemplate = {
       label: 'Speaker Photo',
       type: 'image',
       aspectHint: '1:1',
+      initialCropAspectRatio: 1,
+      defaultCropShape: 'circle',
       maxSize: 10 * 1024 * 1024,
     },
     {

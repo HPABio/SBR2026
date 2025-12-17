@@ -21,6 +21,22 @@ export interface FieldSchema {
   maxLength?: number;
   /** For image fields: aspect ratio hint (e.g., "1:1", "16:9") */
   aspectHint?: string;
+  /**
+   * For image fields: initial crop aspect ratio to match the target container.
+   * This is only used to set the starting crop box; the user can freely adjust afterwards.
+   */
+  initialCropAspectRatio?: number;
+  /**
+   * For image fields: use the current stage aspect ratio as initial crop ratio.
+   * Useful for full-bleed background images that fill the stage.
+   */
+  useStageAspectForInitialCrop?: boolean;
+  /**
+   * For image fields: default crop shape in the crop UI.
+   * - "square": standard rectangular crop
+   * - "circle": circular crop (forces 1:1 and outputs PNG with transparent corners)
+   */
+  defaultCropShape?: 'square' | 'circle';
 }
 
 /**

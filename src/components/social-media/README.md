@@ -27,8 +27,10 @@ Navigate to `/social-media` on the site to access the generator:
 
 | Template | Description | Fields |
 |----------|-------------|--------|
-| I'm Attending SBR2026 | Classic attendee announcement | Photo, Name, Affiliation, Headline, Website, Quote |
 | Speaker Announcement | Speaker spotlight card | Photo, Name, Title, Organization, Talk Title, Date |
+| Quote Spotlight | Portrait + bold quote layout | Photo, Quote, Name, Role, Website |
+| Session Promo | Headline + speaker + time/location | Photo, Tag, Headline, Speaker, Time, Location |
+| Ticket Drop | High-contrast ticket announcement | Background image, Headline, Subheadline, Price, CTA, URL |
 
 ## API Reference
 
@@ -77,14 +79,14 @@ Content-Type: application/json
     },
     {
       "fileName": "attendee-john",
-      "templateId": "im-attending-sbr2026",
+      "templateId": "ticket-drop",
       "data": {
-        "firstName": "John",
-        "lastName": "Smith",
-        "affiliation": "BioTech Inc",
-        "slogan": "i'm attending",
-        "showLogo": true,
-        "uppercase": true
+        "headline": "Tickets are live",
+        "subhead": "Early bird available for a limited time",
+        "price": "from €99",
+        "cta": "Get yours now",
+        "url": "synbioreactor.de",
+        "showLogo": true
       }
     }
   ]
@@ -117,7 +119,7 @@ Returns `application/zip` containing:
   "totalItems": 2,
   "items": [
     { "fileName": "speaker-jane-doe.png", "templateId": "speaker-announcement", "status": "success" },
-    { "fileName": "attendee-john.png", "templateId": "im-attending-sbr2026", "status": "success" }
+    { "fileName": "ticket-drop.png", "templateId": "ticket-drop", "status": "success" }
   ]
 }
 ```
@@ -172,7 +174,6 @@ export const MyTemplate: SocialTemplate = {
 import { MyTemplate } from './MyTemplate';
 
 export const templates: SocialTemplate[] = [
-  ImAttendingTemplate,
   SpeakerAnnouncementTemplate,
   MyTemplate, // Add here
 ];
@@ -220,8 +221,10 @@ src/
 │   │   └── index.ts
 │   └── social-templates/
 │       ├── types.ts                 # TypeScript definitions
-│       ├── ImAttendingTemplate.tsx  # Template 1
-│       ├── SpeakerAnnouncementTemplate.tsx # Template 2
+│       ├── SpeakerAnnouncementTemplate.tsx # Template 1
+│       ├── QuoteSpotlightTemplate.tsx      # Template 2
+│       ├── SessionPromoTemplate.tsx        # Template 3
+│       ├── TicketDropTemplate.tsx          # Template 4
 │       └── index.ts                 # Template registry
 ├── pages/
 │   ├── social-media.astro           # Public UI page

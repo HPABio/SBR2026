@@ -1,15 +1,24 @@
-import { useState, useRef, useCallback } from 'react';
-import ReactCrop, { type Crop, type PixelCrop, centerCrop, makeAspectCrop } from 'react-image-crop';
-import 'react-image-crop/dist/ReactCrop.css';
+import { useCallback, useMemo, useState } from 'react';
 import type { ImageFieldData } from '../social-templates';
+import {
+  ImageCrop,
+  ImageCropApply,
+  ImageCropContent,
+  ImageCropReset,
+} from '@/components/kibo-ui/image-crop';
 
 interface EditableImageFrameProps {
   imageData: ImageFieldData;
   onUpdate: (settings: Partial<ImageFieldData>) => void;
   isActive: boolean;
   onActivate: () => void;
-  /** Restrict crop aspect ratio (e.g., 1 for square) */
-  cropAspect?: number;
+  /**
+   * Initial crop aspect ratio (e.g. to match the container).
+   * The user can freely adjust the crop ratio afterwards (unless circular crop is enabled).
+   */
+  initialCropAspect?: number;
+  /** Default crop shape for the UI. */
+  defaultCropShape?: 'square' | 'circle';
 }
 
 /**
@@ -20,71 +29,35 @@ export function EditableImageFrame({
   onUpdate,
   isActive,
   onActivate,
-  cropAspect,
+  initialCropAspect,
+  defaultCropShape = 'square',
 }: EditableImageFrameProps) {
   const [showCropper, setShowCropper] = useState(false);
-  const [crop, setCrop] = useState<Crop>();
-  const [completedCrop, setCompletedCrop] = useState<PixelCrop>();
-  const imgRef = useRef<HTMLImageElement>(null);
+  const [circularCrop, setCircularCrop] = useState(defaultCropShape === 'circle');
 
-  // Initialize crop when image loads
-  const onImageLoad = useCallback(
-    (e: React.SyntheticEvent<HTMLImageElement>) => {
-      const { width, height } = e.currentTarget;
+  const cropFile = useMemo(() => {
+    if (!imageData.src) return null;
 
-      // Create a centered crop
-      const initialCrop = centerCrop(
-        makeAspectCrop(
-          {
-            unit: '%',
-            width: 90,
-          },
-          cropAspect || 1,
-          width,
-          height
-        ),
-        width,
-        height
-      );
+    // We expect data URLs (uploaded via FileReader or produced by canvas).
+    // Convert to File so the Kibo ImageCrop component can read it.
+    if (!imageData.src.startsWith('data:')) return null;
 
-      // #region agent log
-      console.log('[DEBUG-E] Image loaded, setting initial crop', { initialCrop, imgWidth: width, imgHeight: height });
-      // #endregion
-      setCrop(initialCrop);
-    },
-    [cropAspect]
-  );
+    const match = imageData.src.match(/^data:([^;]+);base64,(.+)$/);
+    if (!match) return null;
 
-  // Apply crop
-  const handleApplyCrop = useCallback(() => {
-    // #region agent log
-    console.log('[DEBUG-A,B,E] handleApplyCrop called', { hasCompletedCrop: !!completedCrop, completedCrop, hasImgRef: !!imgRef.current, cropState: crop });
-    // #endregion
-    if (!completedCrop || !imgRef.current) {
-      // #region agent log
-      console.log('[DEBUG-A,B] Early return - missing data', { hasCompletedCrop: !!completedCrop, hasImgRef: !!imgRef.current });
-      // #endregion
-      return;
+    const mimeType = match[1] || 'image/png';
+    const base64 = match[2];
+
+    try {
+      const binary = atob(base64);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+      const name = imageData.fileName || 'image.png';
+      return new File([bytes], name, { type: mimeType });
+    } catch {
+      return null;
     }
-
-    const img = imgRef.current;
-    const scaleX = img.naturalWidth / img.width;
-    const scaleY = img.naturalHeight / img.height;
-
-    // Convert pixel crop to percentage
-    const cropData = {
-      x: (completedCrop.x * scaleX / img.naturalWidth) * 100,
-      y: (completedCrop.y * scaleY / img.naturalHeight) * 100,
-      width: (completedCrop.width * scaleX / img.naturalWidth) * 100,
-      height: (completedCrop.height * scaleY / img.naturalHeight) * 100,
-    };
-
-    // #region agent log
-    console.log('[DEBUG-C] Calling onUpdate with cropData', { cropData, imgNaturalWidth: img.naturalWidth, imgWidth: img.width });
-    // #endregion
-    onUpdate({ crop: cropData });
-    setShowCropper(false);
-  }, [completedCrop, onUpdate, crop]);
+  }, [imageData.src, imageData.fileName]);
 
   // Handle zoom change
   const handleZoomChange = useCallback(
@@ -138,44 +111,82 @@ export function EditableImageFrame({
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
           <div className="max-h-[90vh] max-w-[90vw] overflow-auto rounded-lg bg-background p-4">
             <h4 className="mb-3 text-lg font-semibold">Crop Image</h4>
-            <div className="max-h-[60vh] overflow-auto">
-              <ReactCrop
-                crop={crop}
-                onChange={(c) => setCrop(c)}
-                onComplete={(c) => {
-                  // #region agent log
-                  console.log('[DEBUG-A,E] ReactCrop onComplete fired', { completedCrop: c });
-                  // #endregion
-                  setCompletedCrop(c);
+            {!cropFile ? (
+              <p className="text-sm text-muted-foreground">
+                Cropper needs an uploaded image (data URL). Please re-upload the image.
+              </p>
+            ) : (
+              <ImageCrop
+                // Freeform ratio by default; circular crop forces 1:1.
+                aspect={circularCrop ? 1 : undefined}
+                // Initial crop box should match the target container ratio.
+                initialAspect={circularCrop ? 1 : initialCropAspect}
+                circularCrop={circularCrop}
+                file={cropFile}
+                maxImageSize={10 * 1024 * 1024}
+                onCrop={(croppedSrc) => {
+                  // After cropping, we store the cropped pixels in src and reset
+                  // positioning/zoom so user controls behave predictably.
+                  onUpdate({
+                    src: croppedSrc,
+                    crop: { x: 0, y: 0, width: 100, height: 100 },
+                    zoom: 1,
+                    offsetX: 0,
+                    offsetY: 0,
+                  });
+                  setShowCropper(false);
                 }}
-                aspect={cropAspect}
               >
-                <img
-                  ref={imgRef}
-                  src={imageData.src}
-                  alt="Crop preview"
-                  onLoad={onImageLoad}
-                  style={{ maxHeight: '60vh', maxWidth: '100%' }}
-                  crossOrigin="anonymous"
-                />
-              </ReactCrop>
-            </div>
-            <div className="mt-4 flex gap-3">
-              <button
-                type="button"
-                onClick={handleApplyCrop}
-                className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
-              >
-                Apply Crop
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowCropper(false)}
-                className="rounded-md border border-border bg-background px-4 py-2 text-sm font-semibold"
-              >
-                Cancel
-              </button>
-            </div>
+                <div className="max-h-[60vh] overflow-auto">
+                  <ImageCropContent className="max-h-[60vh] max-w-full" />
+                </div>
+                <div className="mt-4 flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setCircularCrop(false)}
+                    className={[
+                      'rounded-md border px-4 py-2 text-sm font-semibold',
+                      !circularCrop ? 'bg-primary text-primary-foreground border-primary' : 'bg-background border-border',
+                    ].join(' ')}
+                  >
+                    Square
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCircularCrop(true)}
+                    className={[
+                      'rounded-md border px-4 py-2 text-sm font-semibold',
+                      circularCrop ? 'bg-primary text-primary-foreground border-primary' : 'bg-background border-border',
+                    ].join(' ')}
+                  >
+                    Round
+                  </button>
+                  <ImageCropApply asChild>
+                    <button
+                      type="button"
+                      className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
+                    >
+                      Apply Crop
+                    </button>
+                  </ImageCropApply>
+                  <ImageCropReset asChild>
+                    <button
+                      type="button"
+                      className="rounded-md border border-border bg-background px-4 py-2 text-sm font-semibold"
+                    >
+                      Reset
+                    </button>
+                  </ImageCropReset>
+                  <button
+                    type="button"
+                    onClick={() => setShowCropper(false)}
+                    className="rounded-md border border-border bg-background px-4 py-2 text-sm font-semibold"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </ImageCrop>
+            )}
           </div>
         </div>
       )}
@@ -191,16 +202,11 @@ export function EditableImageFrame({
             alt="Preview"
             crossOrigin="anonymous"
             style={{
-              // Apply crop by scaling and positioning the image
-              // The image is scaled to show only the crop region
-              position: 'absolute',
-              width: `${100 / (imageData.crop.width / 100)}%`,
-              height: `${100 / (imageData.crop.height / 100)}%`,
-              left: `${-imageData.crop.x / (imageData.crop.width / 100)}%`,
-              top: `${-imageData.crop.y / (imageData.crop.height / 100)}%`,
-              // Apply additional zoom and offset on top of crop
-              transform: `scale(${imageData.zoom}) translate(${imageData.offsetX}%, ${imageData.offsetY}%)`,
-              transformOrigin: 'center center',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              transform: `translate(${imageData.offsetX}%, ${imageData.offsetY}%) scale(${imageData.zoom})`,
+              transformOrigin: '50% 50%',
               filter: imageData.grayscale ? 'grayscale(100%)' : 'none',
             }}
           />
