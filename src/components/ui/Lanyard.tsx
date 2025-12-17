@@ -7,20 +7,22 @@ import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
-const VERCEL_TAG_GLB =
-  'https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/5huRVDzcoDwnbgrKUo1Lzs/53b6dd7d6b4ffcdbd338fa60265949e1/tag.glb';
+const VERCEL_TAG_GLB = 'src/assets/lanyard/model/tag.glb';
+  // 'https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/5huRVDzcoDwnbgrKUo1Lzs/53b6dd7d6b4ffcdbd338fa60265949e1/tag.glb';
 
 const VERCEL_BAND_JPG =
   'https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg';
 
 // Your local file is the *badge* texture (card), not the lanyard strap.
 import badgeTextureImport from '@/assets/lanyard/vercel-ship-badge-texture.avif';
+import badgeTextureImport2 from '@/assets/lanyard/Badge.avif';
+import badgeTextureImport3 from '@/assets/lanyard/model/SBR2026Badge2.png';
 
 // In Astro, static image imports are often ImageMetadata objects (with a `.src`).
 // Normalize to a URL string for three/drei loaders.
 const BADGE_TEXTURE_URL: string =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ((badgeTextureImport as any)?.src as string) ?? (badgeTextureImport as unknown as string);
+  ((badgeTextureImport3 as any)?.src as string) ?? (badgeTextureImport3 as unknown as string);
 
 useGLTF.preload(VERCEL_TAG_GLB);
 useTexture.preload(VERCEL_BAND_JPG);
