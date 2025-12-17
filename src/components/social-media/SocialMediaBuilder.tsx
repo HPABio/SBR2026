@@ -125,12 +125,19 @@ export function SocialMediaBuilder({
   // Handle image settings update
   const handleImageSettingsUpdate = useCallback(
     (fieldId: string, settings: Partial<ImageFieldData>) => {
+      // #region agent log
+      console.log('[DEBUG-C] handleImageSettingsUpdate received', { fieldId, settings });
+      // #endregion
       setFormData((prev) => {
         const current = prev[fieldId] as ImageFieldData | undefined;
         if (!current) return prev;
+        const updated = { ...current, ...settings };
+        // #region agent log
+        console.log('[DEBUG-C] Merged image data', { fieldId, updatedCrop: updated.crop });
+        // #endregion
         return {
           ...prev,
-          [fieldId]: { ...current, ...settings },
+          [fieldId]: updated,
         };
       });
     },

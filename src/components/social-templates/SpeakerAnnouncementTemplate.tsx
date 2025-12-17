@@ -82,14 +82,15 @@ function SpeakerAnnouncementComponent({ data, stageWidth }: TemplateComponentPro
             alt="Speaker"
             crossOrigin="anonymous"
             style={{
+              // Apply crop by scaling and positioning the image
               position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: `${50 + photo.offsetX}% ${50 + photo.offsetY}%`,
-              transform: `scale(${photo.zoom})`,
+              width: `${100 / (photo.crop.width / 100)}%`,
+              height: `${100 / (photo.crop.height / 100)}%`,
+              left: `${-photo.crop.x / (photo.crop.width / 100)}%`,
+              top: `${-photo.crop.y / (photo.crop.height / 100)}%`,
+              // Apply additional zoom and offset on top of crop
+              transform: `scale(${photo.zoom}) translate(${photo.offsetX}%, ${photo.offsetY}%)`,
+              transformOrigin: 'center center',
               filter: photo.grayscale ? 'grayscale(100%)' : 'none',
             }}
           />

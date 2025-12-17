@@ -152,11 +152,15 @@ function ImAttendingComponent({ data, stageWidth }: TemplateComponentProps) {
             alt="Portrait"
             crossOrigin="anonymous"
             style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: `${50 + portrait.offsetX}% ${50 + portrait.offsetY}%`,
-              transform: `scale(${portrait.zoom})`,
+              // Apply crop by scaling and positioning the image
+              position: 'absolute',
+              width: `${100 / (portrait.crop.width / 100)}%`,
+              height: `${100 / (portrait.crop.height / 100)}%`,
+              left: `${-portrait.crop.x / (portrait.crop.width / 100)}%`,
+              top: `${-portrait.crop.y / (portrait.crop.height / 100)}%`,
+              // Apply additional zoom and offset on top of crop
+              transform: `scale(${portrait.zoom}) translate(${portrait.offsetX}%, ${portrait.offsetY}%)`,
+              transformOrigin: 'center center',
               filter: portrait.grayscale ? 'grayscale(100%)' : 'none',
             }}
           />

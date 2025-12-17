@@ -47,6 +47,9 @@ export function EditableImageFrame({
         height
       );
 
+      // #region agent log
+      console.log('[DEBUG-E] Image loaded, setting initial crop', { initialCrop, imgWidth: width, imgHeight: height });
+      // #endregion
       setCrop(initialCrop);
     },
     [cropAspect]
@@ -54,7 +57,15 @@ export function EditableImageFrame({
 
   // Apply crop
   const handleApplyCrop = useCallback(() => {
-    if (!completedCrop || !imgRef.current) return;
+    // #region agent log
+    console.log('[DEBUG-A,B,E] handleApplyCrop called', { hasCompletedCrop: !!completedCrop, completedCrop, hasImgRef: !!imgRef.current, cropState: crop });
+    // #endregion
+    if (!completedCrop || !imgRef.current) {
+      // #region agent log
+      console.log('[DEBUG-A,B] Early return - missing data', { hasCompletedCrop: !!completedCrop, hasImgRef: !!imgRef.current });
+      // #endregion
+      return;
+    }
 
     const img = imgRef.current;
     const scaleX = img.naturalWidth / img.width;
@@ -68,9 +79,12 @@ export function EditableImageFrame({
       height: (completedCrop.height * scaleY / img.naturalHeight) * 100,
     };
 
+    // #region agent log
+    console.log('[DEBUG-C] Calling onUpdate with cropData', { cropData, imgNaturalWidth: img.naturalWidth, imgWidth: img.width });
+    // #endregion
     onUpdate({ crop: cropData });
     setShowCropper(false);
-  }, [completedCrop, onUpdate]);
+  }, [completedCrop, onUpdate, crop]);
 
   // Handle zoom change
   const handleZoomChange = useCallback(
@@ -128,7 +142,12 @@ export function EditableImageFrame({
               <ReactCrop
                 crop={crop}
                 onChange={(c) => setCrop(c)}
-                onComplete={(c) => setCompletedCrop(c)}
+                onComplete={(c) => {
+                  // #region agent log
+                  console.log('[DEBUG-A,E] ReactCrop onComplete fired', { completedCrop: c });
+                  // #endregion
+                  setCompletedCrop(c);
+                }}
                 aspect={cropAspect}
               >
                 <img
@@ -170,13 +189,20 @@ export function EditableImageFrame({
           <img
             src={imageData.src}
             alt="Preview"
-            className="h-full w-full object-cover"
+            crossOrigin="anonymous"
             style={{
-              objectPosition: `${50 + imageData.offsetX}% ${50 + imageData.offsetY}%`,
-              transform: `scale(${imageData.zoom})`,
+              // Apply crop by scaling and positioning the image
+              // The image is scaled to show only the crop region
+              position: 'absolute',
+              width: `${100 / (imageData.crop.width / 100)}%`,
+              height: `${100 / (imageData.crop.height / 100)}%`,
+              left: `${-imageData.crop.x / (imageData.crop.width / 100)}%`,
+              top: `${-imageData.crop.y / (imageData.crop.height / 100)}%`,
+              // Apply additional zoom and offset on top of crop
+              transform: `scale(${imageData.zoom}) translate(${imageData.offsetX}%, ${imageData.offsetY}%)`,
+              transformOrigin: 'center center',
               filter: imageData.grayscale ? 'grayscale(100%)' : 'none',
             }}
-            crossOrigin="anonymous"
           />
         </div>
       </div>
