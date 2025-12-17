@@ -8,20 +8,40 @@ const testimonialModules = import.meta.glob<{ default: ImageMetadata }>(
   { eager: true },
 );
 
+function stripImageExtensions(filename: string) {
+  let base = filename;
+  // Handle odd cases like "foo.jpg.png" by stripping repeatedly.
+  for (;;) {
+    const next = base.replace(/\.(jpeg|jpg|png|gif|svg)$/i, "");
+    if (next === base) return base;
+    base = next;
+  }
+}
+
 // --- TYPE DEFINITIONS ---
 interface Testimonial {
   imgSrc: string;
   alt: string;
 }
 
-const allTestimonials: Testimonial[] = Object.entries(testimonialModules).map(([path, mod]) => {
-  // Basic filename extraction for alt text
-  const filename = path.split('/').pop()?.split('.')[0] || "Team member";
-  return {
-    imgSrc: mod.default.src,
-    alt: filename.charAt(0).toUpperCase() + filename.slice(1).replace(/-/g, ' ')
-  };
-});
+const allTestimonials: Testimonial[] = Object.entries(testimonialModules)
+  .map(([path, mod]) => {
+    const filename = path.split('/').pop() ?? path;
+    const base = stripImageExtensions(filename);
+    const match = base.match(/^(\d+)\)\s*(.+)$/);
+    const order = match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
+    const rawName = match ? match[2] : base;
+    const alt = rawName.replace(/[_-]/g, " ").replace(/\s+/g, " ").trim();
+
+    return {
+      order,
+      imgSrc: mod.default.src,
+      alt,
+    };
+  })
+  .sort((a, b) => a.order - b.order || a.alt.localeCompare(b.alt))
+  // drop helper field
+  .map(({ imgSrc, alt }) => ({ imgSrc, alt }));
 
 interface AnimatedTestimonialGridProps {
   testimonials?: Testimonial[];

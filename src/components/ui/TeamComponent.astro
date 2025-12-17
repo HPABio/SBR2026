@@ -12,7 +12,33 @@ const portraits = import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/imagesTeam/*.{jpeg,jpg,png,gif,svg}",
     { eager: true },
 );
-const allPortraits = Object.values(portraits).map((portrait) => portrait.default);
+
+function stripImageExtensions(filename: string) {
+    let base = filename;
+    // Handle odd cases like "foo.jpg.png" by stripping repeatedly.
+    for (;;) {
+        const next = base.replace(/\.(jpeg|jpg|png|gif|svg)$/i, "");
+        if (next === base) return base;
+        base = next;
+    }
+}
+
+const team = Object.entries(portraits)
+    .map(([path, mod]) => {
+        const filename = path.split("/").pop() ?? path;
+        const base = stripImageExtensions(filename);
+        const match = base.match(/^(\d+)\)\s*(.+)$/);
+        const order = match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
+        const rawName = match ? match[2] : base;
+        const name = rawName.replaceAll("_", " ").trim();
+
+        return {
+            order,
+            name,
+            src: mod.default,
+        };
+    })
+    .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
 
 ---
 
@@ -27,160 +53,24 @@ const allPortraits = Object.values(portraits).map((portrait) => portrait.default
             </h2>
         </div>
         <div class="mx-auto mt-12 flex max-w-lg flex-wrap justify-center gap-3">
-            <a
-                href=""
-                target="_blank"
-                title="Raoul Polder"
-                class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
-            >
-                <Image
-                    alt="Raoul Polder"
-                    src={allPortraits[0]}
-                    loading="lazy"
-                    width={120}
-                    height={120}
-                />
-            </a>
-            <a
-                href=""
-                target="_blank"
-                title="Méschac Irung"
-                class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
-            >
-                <Image
-                    alt="John Doe"
-                    src={allPortraits[1]}
-                    loading="lazy"
-                    width={120}
-                    height={120}
-                />
-            </a>
-            <a
-                href=""
-                target="_blank"
-                title="Méschac Irung"
-                class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
-            >
-                <Image
-                    alt="John Doe"
-                    src={allPortraits[2]}
-                    loading="lazy"
-                    width={120}
-                    height={120}
-                />
-            </a>
-            <a
-                href=""
-                target="_blank"
-                title="Méschac Irung"
-                class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
-            >
-                <Image
-                    alt="John Doe"
-                    src={allPortraits[3]}
-                    loading="lazy"
-                    width={120}
-                    height={120}
-                />
-            </a>
-            <a
-                href=""
-                target="_blank"
-                title="Méschac Irung"
-                class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
-            >
-                <Image
-                    alt="John Doe"
-                    src={allPortraits[4]}
-                    loading="lazy"
-                    width={120}
-                    height={120}
-                />
-            </a>
-            <a
-                href=""
-                target="_blank"
-                title="Méschac Irung"
-                class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
-            >
-                <Image
-                    alt="John Doe"
-                    src={allPortraits[5]}
-                    loading="lazy"
-                    width={120}
-                    height={120}
-                />
-            </a>
-            <a
-                href=""
-                target="_blank"
-                title="Méschac Irung"
-                class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
-            >
-                <Image
-                    alt="John Doe"
-                    src={allPortraits[6]}
-                    loading="lazy"
-                    width={120}
-                    height={120}
-                />
-            </a>
-            <a
-                href=""
-                target="_blank"
-                title="Méschac Irung"
-                class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
-            >
-                <Image
-                    alt="John Doe"
-                    src={allPortraits[7]}
-                    loading="lazy"
-                    width={120}
-                    height={120}
-                />
-            </a>
-            <a
-                href=""
-                target="_blank"
-                title="Méschac Irung"
-                class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
-            >
-                <Image
-                    alt="John Doe"
-                    src={allPortraits[8]}
-                    loading="lazy"
-                    width={120}
-                    height={120}
-                />
-            </a>
-            <a
-                href=""
-                target="_blank"
-                title="Méschac Irung"
-                class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
-            >
-                <Image
-                    alt="John Doe"
-                    src={allPortraits[9]}
-                    loading="lazy"
-                    width={120}
-                    height={120}
-                />
-            </a>
-            <a
-                href=""
-                target="_blank"
-                title="Méschac Irung"
-                class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
-            >
-                <Image
-                    alt="John Doe"
-                    src={allPortraits[10]}
-                    loading="lazy"
-                    width={120}
-                    height={120}
-                />
-            </a>
+            {
+                team.map((member) => (
+                    <a
+                        href=""
+                        target="_blank"
+                        title={member.name}
+                        class="size-16 rounded-full border *:size-full *:rounded-full *:object-cover"
+                    >
+                        <Image
+                            alt={member.name}
+                            src={member.src}
+                            loading="lazy"
+                            width={120}
+                            height={120}
+                        />
+                    </a>
+                ))
+            }
         </div>
     </div>
 </section>
