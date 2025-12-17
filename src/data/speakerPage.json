@@ -1,7 +1,7 @@
 [
     {
     "name": "Lukas Gaats",
-    "role": "SPEAKER",
+    "role": "PANELIST",
     "dateTime": "12:15",
     "room": "Betonhalle",
     "category": "AI& SynBio",
@@ -9,10 +9,11 @@
     "company": "More Science, Wet Lab Genie",
     "sessionId": "A2",
     "sessionDescription": "",
-    "sessionType": "Panel Discussion"},
+    "sessionType": "Panel Discussion"
+  },
     {
     "name": "Feilun Wu",
-    "role": "SPEAKER",
+    "role": "PANELIST",
     "dateTime": "12:15",
     "room": "Betonhalle",
     "category": "AI& SynBio",
@@ -20,7 +21,8 @@
     "company": "More Science, Wet Lab Genie",
     "sessionId": "A2",
     "sessionDescription": "",
-    "sessionType": "Panel Discussion"},
+    "sessionType": "Panel Discussion"
+  },
     {
     "name": "Maximilian Bode",
     "role": "SPEAKER",
@@ -31,7 +33,8 @@
     "company": "biocompile",
     "sessionId": "A3",
     "sessionDescription": "",
-    "sessionType": "Fire Side Chat"},
+    "sessionType": "Fire Side Chat"
+  },
     {
     "name": "Massimo Portincaso",
     "role": "SPEAKER",
@@ -42,10 +45,11 @@
     "company": "Arsenal Bioyard",
     "sessionId": "A4",
     "sessionDescription": "",
-    "sessionType": "Fire Side Chat"},
+    "sessionType": "Fire Side Chat"
+  },
     {
     "name": "Ioannis Zampetakis",
-    "role": "SPEAKER",
+    "role": "PANELIST",
     "dateTime": "17:15",
     "room": "Betonhalle",
     "category": "BioDefense",
@@ -53,10 +57,11 @@
     "company": "solenamaterials, modSynthesis",
     "sessionId": "D2",
     "sessionDescription": "",
-    "sessionType": "Panel Discussion"},
+    "sessionType": "Panel Discussion"
+  },
     {
     "name": "James MacDonald",
-    "role": "SPEAKER",
+    "role": "PANELIST",
     "dateTime": "17:15",
     "room": "Betonhalle",
     "category": "BioDefense",
@@ -64,10 +69,11 @@
     "company": "solenamaterials, modSynthesis",
     "sessionId": "D2",
     "sessionDescription": "",
-    "sessionType": "Panel Discussion"},
+    "sessionType": "Panel Discussion"
+  },
     {
     "name": "Felix Ernst",
-    "role": "SPEAKER",
+    "role": "HOST",
     "dateTime": "16:30",
     "room": "Kino",
     "category": "BioDefense",
@@ -75,7 +81,8 @@
     "company": "GASB",
     "sessionId": "E2",
     "sessionDescription": "",
-    "sessionType": "Workshop"},
+    "sessionType": "Workshop"
+  },
     {
     "name": "Dr. Andreas Worberg",
     "role": "SPEAKER",
@@ -86,7 +93,8 @@
     "company": "DTU",
     "sessionId": "G1",
     "sessionDescription": "",
-    "sessionType": "Talks"},
+    "sessionType": "K"
+  },
     {
     "name": "Prateek Mahalwar",
     "role": "SPEAKER",
@@ -97,7 +105,8 @@
     "company": "Bioweg",
     "sessionId": "P1",
     "sessionDescription": "",
-    "sessionType": "Keynote"},
+    "sessionType": "Keynote"
+  },
     {
     "name": "Maximilian Weber",
     "role": "SPEAKER",
@@ -108,7 +117,8 @@
     "company": "Colipy",
     "sessionId": "S2",
     "sessionDescription": "",
-    "sessionType": "Fire Side Chat"},
+    "sessionType": "Fire Side Chat"
+  },
     {
     "name": "Andreas Heyl",
     "role": "SPEAKER",
@@ -119,7 +129,8 @@
     "company": "Heyl Consulting",
     "sessionId": "S4",
     "sessionDescription": "",
-    "sessionType": "Fire Side Chat"},
+    "sessionType": "Fire Side Chat"
+  },
     {
     "name": "Hendrik Cooper",
     "role": "HOST",
@@ -130,7 +141,8 @@
     "company": "BioCentra + Nucleate",
     "sessionId": "SBWC1",
     "sessionDescription": "",
-    "sessionType": "Workshop"},
+    "sessionType": "Workshop"
+  },
     {
     "name": "Stefan Hristov",
     "role": "HOST",
@@ -141,7 +153,8 @@
     "company": "BioCentra + Nucleate",
     "sessionId": "SBWC2",
     "sessionDescription": "",
-    "sessionType": "Workshop"},
+    "sessionType": "Workshop"
+  },
     {
     "name": "Alexander Pattberg",
     "role": "HOST",
@@ -152,7 +165,8 @@
     "company": "BioCentra + Nucleate",
     "sessionId": "SBWC3",
     "sessionDescription": "",
-    "sessionType": "Workshop"},
+    "sessionType": "Workshop"
+  },
     {
     "name": "Thibault Geoui",
     "role": "SPEAKER",
@@ -163,7 +177,8 @@
     "company": "Venabili Labs",
     "sessionId": "W5",
     "sessionDescription": "",
-    "sessionType": "Fire Side Chat"},
+    "sessionType": "Fire Side Chat"
+  },
     {
     "name": "Max Richly",
     "role": "SPEAKER",
@@ -174,10 +189,11 @@
     "company": "Boston Consulting Group - BCG",
     "sessionId": "W6",
     "sessionDescription": "",
-    "sessionType": "Fire Side Chat"},
+    "sessionType": "Fire Side Chat"
+  },
         {
           "name": "Lukas Gaats",
-          "role": "SPEAKER",
+          "role": "PANELIST",
           "dateTime": "12:15",
           "room": "Betonhalle",
           "category": "AI& SynBio",
@@ -190,7 +206,7 @@
         },
         {
           "name": "Feilun Wu",
-          "role": "SPEAKER",
+          "role": "PANELIST",
           "dateTime": "12:15",
           "room": "Betonhalle",
           "category": "AI& SynBio",
@@ -229,7 +245,7 @@
         },
         {
           "name": "Ioannis Zampetakis",
-          "role": "SPEAKER",
+          "role": "PANELIST",
           "dateTime": "17:15",
           "room": "Betonhalle",
           "category": "BioDefense",
@@ -242,7 +258,7 @@
         },
         {
           "name": "James MacDonald",
-          "role": "SPEAKER",
+          "role": "PANELIST",
           "dateTime": "17:15",
           "room": "Betonhalle",
           "category": "BioDefense",
@@ -255,7 +271,7 @@
         },
         {
           "name": "Felix Ernst",
-          "role": "SPEAKER",
+          "role": "HOST",
           "dateTime": "16:30",
           "room": "Kino",
           "category": "BioDefense",
@@ -320,7 +336,7 @@
         {
           "name": "Ann-Kristin Müller",
           "role": "HOST",
-          "dateTime": "10:30",
+          "dateTime": "10:HOST",
           "room": "Atelier",
           "category": "Break Out Session",
           "title": "An Introduction to the German Start Up SynBio Ecosystem",
