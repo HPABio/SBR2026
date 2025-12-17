@@ -84,6 +84,24 @@ export const POST: APIRoute = async ({ request }) => {
     );
   } catch (error) {
     console.error('Error sending emails:', error);
+
+    const err = error as any;
+    const isAuthError =
+      err?.code === 'EAUTH' ||
+      err?.responseCode === 535 ||
+      (typeof err?.message === 'string' && err.message.includes('BadCredentials'));
+
+    if (isAuthError) {
+      return new Response(
+        JSON.stringify({
+          error: 'Email service authentication failed',
+          message:
+            'Gmail rejected the login. Verify GMAIL_USER and GMAIL_APP_PASSWORD (must be a Gmail App Password, not your normal password).',
+        }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     return new Response(
       JSON.stringify({ 
         error: 'Failed to send emails',

@@ -115,6 +115,17 @@ const { class: classProp } = Astro.props;
             btn.disabled = true;
             btn.innerHTML = "Sending...";
 
+            // Persist + broadcast immediately so gated content can unlock
+            // (email sending may still fail if server credentials are misconfigured)
+            try {
+                localStorage.setItem(EMAIL_STORAGE_KEY, email);
+            } catch {
+                // Ignore storage access issues
+            }
+            window.dispatchEvent(
+                new CustomEvent(EMAIL_SYNC_EVENT, { detail: { email } }),
+            );
+
             try {
                 const response = await fetch('/api/request-flyer', {
                     method: 'POST',
@@ -125,16 +136,6 @@ const { class: classProp } = Astro.props;
                 const data = await response.json();
 
                 if (response.ok) {
-                    // Persist + broadcast email so other components (packages gate) unlock
-                    try {
-                        localStorage.setItem(EMAIL_STORAGE_KEY, email);
-                    } catch {
-                        // Ignore storage access issues
-                    }
-                    window.dispatchEvent(
-                        new CustomEvent(EMAIL_SYNC_EVENT, { detail: { email } }),
-                    );
-
                     // Update success message
                     if (successEmail) successEmail.textContent = email;
 
@@ -149,7 +150,7 @@ const { class: classProp } = Astro.props;
                     }, 300);
                 } else {
                     // Handle error
-                    alert(data.error || 'Failed to send request. Please try again.');
+                    alert(data.error || data.message || 'Failed to send request. Please try again.');
                     btn.disabled = false;
                     btn.innerHTML = originalText;
                 }
