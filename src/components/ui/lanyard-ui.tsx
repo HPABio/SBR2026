@@ -1,5 +1,5 @@
 'use client';
-import { Suspense, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
 import {
@@ -8,41 +8,31 @@ import {
   Physics,
   RigidBody,
   useRopeJoint,
-  useSphericalJoint
+  useSphericalJoint,
 } from '@react-three/rapier';
+import type { RigidBodyProps } from '@react-three/rapier';
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 import * as THREE from 'three';
 
 // replace with your own imports, see the usage snippet for details
-import cardGLBUrl from './card.glb?url';
-import lanyardUrl from './lanyard.png?url';
+import cardGLB from '@/assets/lanyard/card.glb';
+import lanyard from '@/assets/lanyard/lanyard.png';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
-// `extend()` registers these at runtime, but TS needs JSX typings (R3F v9 uses `ThreeElements`).
-declare module '@react-three/fiber' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  interface ThreeElements {
-    meshLineGeometry: any;
-    meshLineMaterial: any;
-  }
-}
-
-interface LanyardProps {
+interface lanyardUiComponentProps {
   position?: [number, number, number];
   gravity?: [number, number, number];
   fov?: number;
   transparent?: boolean;
-  className?: string;
 }
 
-export default function Lanyard({
+export default function lanyardUiComponent({
   position = [0, 0, 30],
   gravity = [0, -40, 0],
   fov = 20,
-  transparent = true,
-  className = ''
-}: LanyardProps) {
+  transparent = true
+}: lanyardUiComponentProps) {
   const [isMobile, setIsMobile] = useState<boolean>(() => typeof window !== 'undefined' && window.innerWidth < 768);
 
   useEffect(() => {
@@ -52,52 +42,47 @@ export default function Lanyard({
   }, []);
 
   return (
-    <div
-      className={`relative z-0 w-full h-full min-h-[420px] md:min-h-[520px] flex items-center justify-center ${className}`}
-    >
+    <div className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center">
       <Canvas
-        className="h-full w-full"
         camera={{ position, fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
         <ambientLight intensity={Math.PI} />
-        <Suspense fallback={null}>
-          <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
-            <Band isMobile={isMobile} />
-          </Physics>
-          <Environment blur={0.75}>
-            <Lightformer
-              intensity={2}
-              color="white"
-              position={[0, -1, 5]}
-              rotation={[0, 0, Math.PI / 3]}
-              scale={[100, 0.1, 1]}
-            />
-            <Lightformer
-              intensity={3}
-              color="white"
-              position={[-1, -1, 1]}
-              rotation={[0, 0, Math.PI / 3]}
-              scale={[100, 0.1, 1]}
-            />
-            <Lightformer
-              intensity={3}
-              color="white"
-              position={[1, 1, 1]}
-              rotation={[0, 0, Math.PI / 3]}
-              scale={[100, 0.1, 1]}
-            />
-            <Lightformer
-              intensity={10}
-              color="white"
-              position={[-10, 0, 14]}
-              rotation={[0, Math.PI / 2, Math.PI / 3]}
-              scale={[100, 10, 1]}
-            />
-          </Environment>
-        </Suspense>
+        <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
+          <Band isMobile={isMobile} />
+        </Physics>
+        <Environment blur={0.75}>
+          <Lightformer
+            intensity={2}
+            color="white"
+            position={[0, -1, 5]}
+            rotation={[0, 0, Math.PI / 3]}
+            scale={[100, 0.1, 1]}
+          />
+          <Lightformer
+            intensity={3}
+            color="white"
+            position={[-1, -1, 1]}
+            rotation={[0, 0, Math.PI / 3]}
+            scale={[100, 0.1, 1]}
+          />
+          <Lightformer
+            intensity={3}
+            color="white"
+            position={[1, 1, 1]}
+            rotation={[0, 0, Math.PI / 3]}
+            scale={[100, 0.1, 1]}
+          />
+          <Lightformer
+            intensity={10}
+            color="white"
+            position={[-10, 0, 14]}
+            rotation={[0, Math.PI / 2, Math.PI / 3]}
+            scale={[100, 10, 1]}
+          />
+        </Environment>
       </Canvas>
     </div>
   );
@@ -124,14 +109,15 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
   const dir = new THREE.Vector3();
 
   const segmentProps: any = {
+    type: 'dynamic' as RigidBodyProps['type'],
     canSleep: true,
     colliders: false,
     angularDamping: 4,
     linearDamping: 4
   };
 
-  const { nodes, materials } = useGLTF(cardGLBUrl) as any;
-  const texture = useTexture(lanyardUrl);
+  const { nodes, materials } = useGLTF(cardGLB) as any;
+  const texture = useTexture(lanyard as unknown as string);
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()])
@@ -194,21 +180,21 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
   return (
     <>
       <group position={[0, 4, 0]}>
-        <RigidBody ref={fixed} {...segmentProps} type="fixed" />
-        <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps} type="dynamic">
+        <RigidBody ref={fixed} {...segmentProps} type={'fixed' as RigidBodyProps['type']} />
+        <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps} type={'dynamic' as RigidBodyProps['type']}>
           <BallCollider args={[0.1]} />
         </RigidBody>
-        <RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps} type="dynamic">
+        <RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps} type={'dynamic' as RigidBodyProps['type']}>
           <BallCollider args={[0.1]} />
         </RigidBody>
-        <RigidBody position={[1.5, 0, 0]} ref={j3} {...segmentProps} type="dynamic">
+        <RigidBody position={[1.5, 0, 0]} ref={j3} {...segmentProps} type={'dynamic' as RigidBodyProps['type']}>
           <BallCollider args={[0.1]} />
         </RigidBody>
         <RigidBody
           position={[2, 0, 0]}
           ref={card}
           {...segmentProps}
-          type={dragged ? 'kinematicPosition' : 'dynamic'}
+          type={dragged ? ('kinematicPosition' as RigidBodyProps['type']) : ('dynamic' as RigidBodyProps['type'])}
         >
           <CuboidCollider args={[0.8, 1.125, 0.01]} />
           <group

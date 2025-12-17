@@ -3,6 +3,7 @@
 import type { Props as NAMESectionProps } from 'astro';
 import SBRTitleLogo from "@/assets/SBR-LogoTitle.png";
 import SBRFavicon from "@/assets/SBR2026-Favicon.png";
+import QRCodeComponent from '@/components/QRCodeComponent.astro';
 
 interface SpeakerData {
 	name: string;
@@ -58,14 +59,14 @@ if (speaker) {
 ---
 <section class={`relative py-16 bg-black ${classes}`}>
 
-	<div class="flex flex-col items-center justify-center p-8">
+	<div class="flex flex-col items-center justify-center px-4">
 		<div class="group [perspective:1200px]">
 			<div class="relative w-[280px] h-[380px] transition-transform duration-700 ease-out [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
 				<!-- Front -->
 				<div class="absolute inset-0 flex flex-col [backface-visibility:hidden]">
 					<div class="relative w-[280px] h-[190px] bg-white rounded-t-2xl rounded-b-lg shadow-lg overflow-hidden flex flex-col justify-end p-4 text-gray-800">
 						<!-- Icon at top -->
-						<div class="absolute top-4 right-4 aspect-square w-20 flex justify-end rounded-full border-4 border-background">
+						<div class="absolute top-4 right-4 aspect-square w-18 flex justify-end rounded-full border-4 border-background">
 							<img src={session.image} alt={session.title} class="object-cover" />
 						</div>
 						<div class="absolute top-8 left-4 w-1/2">
@@ -74,8 +75,7 @@ if (speaker) {
 
 						<!-- Role Section -->
 						<div class="flex items-center px-2 text-xl font-semibold gap-1 mb-2">
-							<p>{user.name}</p>
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+							<svg xmlns="http://www.w3.org/w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="text-[#F08A22]">
 								<path
 									fill="none"
 									stroke="currentColor"
@@ -85,6 +85,7 @@ if (speaker) {
 									d="m15 10l-4 4l-2-2m4.246-8.541l1.221 1.04c.308.262.69.42 1.092.453l1.6.128a1.92 1.92 0 0 1 1.761 1.76l.127 1.6c.033.403.192.786.454 1.093l1.04 1.22a1.92 1.92 0 0 1 0 2.492l-1.04 1.221c-.262.308-.421.69-.453 1.093l-.128 1.6a1.92 1.92 0 0 1-1.76 1.761l-1.6.128a1.92 1.92 0 0 0-1.093.452l-1.221 1.04a1.92 1.92 0 0 1-2.492 0l-1.22-1.04a1.92 1.92 0 0 0-1.094-.452l-1.6-.128a1.92 1.92 0 0 1-1.76-1.762l-.128-1.599a1.92 1.92 0 0 0-.453-1.092l-1.04-1.222a1.92 1.92 0 0 1 0-2.49l1.04-1.222c.263-.308.42-.69.452-1.093l.128-1.599A1.92 1.92 0 0 1 6.842 5.08l1.598-.127A1.92 1.92 0 0 0 9.533 4.5l1.221-1.04a1.92 1.92 0 0 1 2.492 0"
 								></path>
 							</svg>
+							<p>{user.name}</p>
 						</div>
 
 						<!-- session Info -->
@@ -112,8 +113,9 @@ if (speaker) {
 
 						<!-- Bottom Section with QR and Room Info -->
 						<div class="flex w-full">
-							<div class="w-1/2 py-2 px-3 text-gray-500">
-								<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+							<div class="w-1/2 py-0 px-3 text-gray-500 opacity-50 -mt-1">
+                                <QRCodeComponent class="w-full h-full" />
+								<!-- <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
 									<path d="M10.725 2.97249e-07H9.9V0.825H10.725V2.97249e-07Z"></path>
 									<path d="M11.55 0.825H10.725V1.65H11.55V0.825Z"></path>
 									<path d="M9.9 4.125L9.075 4.125V4.95H9.9V4.125Z"></path>
@@ -188,7 +190,7 @@ if (speaker) {
 									<path d="M8.25 17.325V16.5H6.6V15.675H5.775V16.5H4.125L4.125 15.675H2.475V14.85H1.65V16.5H2.475V17.325H6.6V18.15H7.425V17.325H8.25Z"></path>
 									<path d="M0 0L5.775 2.97249e-07V5.775H2.97249e-07L0 0ZM4.95 4.95V0.825L0.825 0.825L0.825 4.95H4.95Z"></path>
 									<path d="M1.65 1.65V4.125H4.125V1.65H1.65Z"></path>
-								</svg>
+								</svg> -->
 							</div>
 							<div class="flex flex-col w-1/2 text-[8px]">
 								<div class="py-1">

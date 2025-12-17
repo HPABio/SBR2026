@@ -23,7 +23,7 @@ export default function QRCodeWrapper({
         <QRCode value={value} pixelSize={pixelSize} errorCorrectionLevel={errorCorrectionLevel}>
             <QRCodeFrame>
                 <QRCodePattern />
-                <QRCodeOverlay size="lg" className="bg-primary border-4 inset-shadow-2xs">
+                <QRCodeOverlay size="lg" className="hidden bg-primary border-4 inset-shadow-2xs">
                     <svg
                         width="200"
                         height="200"
@@ -40,7 +40,7 @@ export default function QRCodeWrapper({
                     </svg>
                 </QRCodeOverlay>
             </QRCodeFrame>
-            <QRCodeDownloadTrigger />
+            {/* <QRCodeDownloadTrigger /> */}
         </QRCode>
     );
 }

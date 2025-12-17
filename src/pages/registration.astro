@@ -6,15 +6,15 @@ import SBROrangeWaveBG from '@/assets/ExportWP/bgImages/SBR_OrangeWave_BG.png';
 import Navigation from '@/components/Navigation.astro';
 import SwapCardRegistration from '@/components/SwapCardRegistration-iFrame.astro';
 import Image from 'astro/components/Image.astro';
-import Lanyard from '@/components/Lanyard';
+import Lanyard from '@/components/Lanyard.astro';
 ---
 
 
 
 <Layout content={{ title: "SynBio Reactor Summit 2026" }}>
 	<Navigation />
-	<main class="w-full h-full relative overflow-hidden">
-			<div class="absolute bottom-0 w-screen min-w-[1200px] h-3/4 z-0 overflow-hidden translate-y-[100px]">
+	<main class="w-full h-full relative overflow-visible">
+			<div class="absolute bottom-0 w-screen min-w-[1200px] h-3/4 z-0 overflow-visible translate-y-[100px]">
 				<Image src={SBROrangeWaveBG} alt="SBR Orange Wave" class="object-cover" />
 			</div>
 			<div class="relative w-full h-full flex flex-col justify-center items-center pt-32 pb-36 px-6 md:px-10">
@@ -22,13 +22,13 @@ import Lanyard from '@/components/Lanyard';
 					<p class="font-quicksand text-xl font-thin text-muted-foreground tracking-widest -mt-1">Register for SynBio Reactor Summit 2026</p>
 				</h1>
 
-				<div class="absolute top-28 right-6 xl:right-10 xl:w-[30%] w-full max-w-[520px] h-[520px] md:h-[640px] z-20 bg-black/10 backdrop-blur-sm rounded-2xl ring-1 ring-white/15 overflow-hidden">
-					<Lanyard client:visible className="w-full h-full" />
+				<div class="absolute top-28 right-6 xl:right-10 xl:w-[30%] w-full max-w-[520px] h-[520px] md:h-[640px] z-20 bg-black/10 backdrop-blur-sm rounded-2xl ring-1 ring-white/15 overflow-visible">
+					<Lanyard transparent />
 				</div>
 
 				
 				<div class="relative w-full sm:w-full mx-auto z-10 p-4 mt-12 ">
-					<iframe src="https://www.tickettailor.com/checkout/view-event/id/5878107/chk/516f/?modal_widget=true&widget=true&trackingConsent=1" style="border: none; width: 100%; height: 100%; min-height: 1200px;" class="overflow-hidden rounded-lg mx-auto block"></iframe>
+					<iframe src="https://www.tickettailor.com/checkout/view-event/id/5878107/chk/516f/?modal_widget=true&widget=true&trackingConsent=1" style="border: none; width: 100%; height: 100%; min-height: 1200px;" class="overflow-visible rounded-lg mx-auto block"></iframe>
 				</div>
 			</div>
 			<!-- INSERT_YOUR_CODE -->

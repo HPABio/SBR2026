@@ -1,6 +1,14 @@
 ---
+import type { Props as QRCodeComponentProps } from 'astro';
+interface Props extends QRCodeComponentProps {
+  class?: string;
+}
+const { class: classProp, className } = Astro.props;
+const classes = classProp || className || "";
+
 import QRCodeWrapper from './QRCodeWrapper';
 ---
-
-<QRCodeWrapper client:load value={Astro.url.toString()} />
+<section class={`relative w-full h-full flex items-center justify-center ${classes}`}>
+    <QRCodeWrapper client:load value={Astro.url.toString()} />
+</section>
 

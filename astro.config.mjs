@@ -18,6 +18,11 @@ export default defineConfig({
   }),
   vite: {
       plugins: [tailwindcss()],
+      assetsInclude: ['**/*.glb'],
+      resolve: {
+        // Prevent multiple React copies (fixes "Invalid hook call" in islands)
+        dedupe: ['react', 'react-dom'],
+      },
 	},
 
   integrations: [
