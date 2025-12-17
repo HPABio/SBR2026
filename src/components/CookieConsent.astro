@@ -3,6 +3,8 @@
 import 'vanilla-cookieconsent/dist/cookieconsent.css';
 
 ---
+<section class="cc-settings-fab-container absolute bottom-0 right-0 w-full h-full flex justify-end items-end">
+
 
 <script>
 	import { openCookiePreferences, runCookieConsent } from './cookie-consent-init';
@@ -76,3 +78,191 @@ import 'vanilla-cookieconsent/dist/cookieconsent.css';
 		height: 28px;
 	}
 </style>
+
+<style is:global>
+	/* ---- Vanilla CookieConsent UI theme (matches `app/globals.css`) ---- */
+	#cc-main {
+		/* Core colors */
+		--tg: #2bf438;
+		--cc-bg: color-mix(in oklch, var(--card) 92%, transparent);
+		--cc-primary-color: var(--foreground);
+		--cc-secondary-color: var(--muted-foreground);
+		--cc-separator-border-color: color-mix(in oklch, var(--muted-foreground) 55%, var(--background));
+
+		/* Buttons */
+		--cc-btn-primary-bg: var(--primary);
+		--cc-btn-primary-color: var(--primary-foreground);
+		--cc-btn-primary-border-color: color-mix(in oklch, var(--primary) 70%, var(--border));
+		--cc-btn-primary-hover-bg: var(--background);
+		--cc-btn-primary-hover-color: var(--primary);
+		--cc-btn-primary-hover-border-color: color-mix(in oklch, var(--primary) 85%, black);
+
+		--cc-btn-secondary-bg: transparent;
+		--cc-btn-secondary-color: var(--muted-foreground);
+		--cc-btn-secondary-border-color: color-mix(in oklch, var(--primary) 45%, var(--border));
+		--cc-btn-secondary-hover-bg: color-mix(in oklch, var(--secondary) 55%, transparent);
+		--cc-btn-secondary-hover-color: var(--primary);
+		--cc-btn-secondary-hover-border-color: color-mix(in oklch, var(--muted-foreground) 55%, var(--background));
+
+		/* Category accordion blocks (preferences modal) */
+		--cc-cookie-category-block-bg: color-mix(in oklch, var(--background) 92%, var(--card));
+		--cc-toggle-readonly-bg: var(--background);
+		--cc-cookie-category-block-bg-hover: color-mix(in oklch, var(--background) 82%, var(--card));
+		--cc-cookie-category-block-border: color-mix(in oklch, var(--muted-foreground) 55%, var(--background));
+		--cc-cookie-category-expanded-block-hover-bg: color-mix(in oklch, var(--muted-foreground) 50%, var(--background));
+
+		--cc-cookie-category-block-hover-bg: var(--black);
+		--cc-cookie-category-block-hover-border: var(--primary);
+
+		/* Toggles */
+		--cc-toggle-off-bg: color-mix(in oklch, var(--background) 80%, var(--border));
+		--cc-toggle-on-bg: var(--primary);
+		/* knob (the circle) */
+		--cc-toggle-knob-bg: var(--background);
+		--cc-toggle-readonly-knob-bg: var(--primary);
+		--cc-pm-toggle-border-radius: 4em;
+		--cc-toggle-enabled-icon-color: var(--background);
+		--cc-toggle-readonly-knob-icon-color: var(--background);
+		--cc-toggle-knob-icon-color: var(--primary);
+		/* keep per-state vars too (some versions use these) */
+		--cc-toggle-off-knob-bg: var(--primary);
+		--cc-toggle-on-knob-bg: var(--background);
+		--cc-toggle-off-icon-color: color-mix(in oklch, var(--foreground) 50%, var(--muted));
+		--cc-toggle-on-icon-color: var(--primary);
+
+		/* Overlay */
+		--cc-overlay-bg: color-mix(in oklch, var(--background) 65%, black);
+		--cc-overlay-blur: 12px;
+	}
+
+
+	/* Consent box + preferences modal: glassy card, crisp border, better spacing */
+	#cc-main .cm,
+	#cc-main .pm {
+		border-radius: var(--radius);
+		border: 1px solid color-mix(in oklch, var(--muted-foreground) 45%, var(--background));
+		background: color-mix(in oklch, var(--card) 88%, transparent);
+		backdrop-filter: blur(14px);
+		box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+	}
+
+	#cc-main .cm__btn--secondary {
+		border: 1px solid color-mix(in oklch, var(--muted-foreground) 45%, var(--background));
+	}
+	
+	#cc-main > div.pm-wrapper.cc--anim > div.pm.pm--box > div.pm__footer > div:nth-child(2) > button {
+	border: 1px solid var(--primary);
+	color: var(--primary);
+}
+	#cc-main .cm__btn--close {
+		background: var(--background);
+		border: 1px solid color-mix(in oklch, var(--muted-foreground) 45%, var(--background));
+		color: var(--primary);
+		margin: 12px;
+	}
+	#cc-main .cm__btn--close svg {
+		stroke: var(--primary);
+	}
+	#cc-main .cm__btn--close:hover {
+		background: var(--primary);
+		color: var(--background);
+	}
+		
+	#cc-main .cm__footer {
+		background: var(--background);
+		border-top: 1px solid color-mix(in oklch, var(--muted-foreground) 45%, var(--background));
+	}
+	#cc-main .cm__footer a {
+		color: var(--muted-foreground);
+	}
+	#cc-main .cm__footer a:hover {
+		color: var(--primary);
+	}
+	#cc-main .cm__title,
+	#cc-main .pm__title {
+		letter-spacing: -0.02em;
+	}
+
+	#cc-main .cm__desc,
+	#cc-main .pm__desc,
+	#cc-main .pm__section-desc {
+		color: var(--muted-foreground);
+		line-height: 1.5;
+	}
+
+	#cc-main .cm__btn,
+	#cc-main .pm__btn {
+		border-radius: calc(var(--radius) - 2px);
+		font-weight: 600;
+		transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease;
+	}
+
+	#cc-main .cm__btn:hover,
+	#cc-main .pm__btn:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+	}
+
+	#cc-main .cm__btn:focus-visible,
+	#cc-main .pm__btn:focus-visible,
+	#cc-main .cm__close-btn:focus-visible,
+	#cc-main .pm__close-btn:focus-visible,
+	#cc-main .pm__toggle:focus-visible {
+		outline: 2px solid var(--primary);
+		outline-offset: 2px;
+	}
+
+	/* Preferences sections: use background for surfaces + primary for chrome */
+	#cc-main .pm__section {
+		background: color-mix(in oklch, var(--) 92%, var(--card));
+		border-color: color-mix(in oklch, var(--muted-foreground) 55%, var(--background));
+	}
+#cc-main .pm__section-toggles > div:nth-child(1) > div.pm__section-title-wrapper > label {
+	outline-color: var(--muted-foreground);
+	outline-offset: 3px;
+	outline-width: 1.5px;
+	outline-style: solid;
+}
+#cc-main .pm__section-toggles > div:nth-child(2) > div.pm__section-title-wrapper > label {
+	outline-color: var(--primary);
+	outline-offset: 3px;
+	outline-width: 1.5px;
+	outline-style: solid;
+}
+
+	/* Accordion arrow (left circular control) */
+	#cc-main .pm__section-arrow {
+		width: 34px;
+		height: 34px;
+		border-radius: 9999px;
+		border: 1px solid var(--muted-foreground);
+		background: transparent;
+		color: var(--primary);
+		display: grid;
+		place-items: center;
+	}
+
+	#cc-main .pm__section--expandable .pm__section-arrow svg {
+		width: 16px;
+		height: 16px;
+		stroke: currentColor;
+	}
+
+	/* Accordion header focus (the blue outline in your screenshot) */
+	#cc-main .pm__section-btn:focus-visible,
+	#cc-main .pm__section-btn:focus-visible * {
+		outline: 2px solid var(--primary) !important;
+		outline-offset: 2px;
+	}
+
+	/* Make links match accent */
+	#cc-main a,
+	#cc-main .cc-link {
+		color: var(--primary);
+	}
+	#cc-main a:hover,
+	#cc-main .cc-link:hover {
+		color: color-mix(in oklch, var(--primary) 100%, var(--background));
+	}
+</style>
+</section>

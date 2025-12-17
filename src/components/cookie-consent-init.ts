@@ -1,4 +1,5 @@
 import * as CookieConsent from 'vanilla-cookieconsent';
+import SBRFavicon from '@/assets/SBR2026-Favicon.png';
 
 type ConsentCookie = { categories: string[] };
 
@@ -17,6 +18,20 @@ export function runCookieConsent() {
 
 	(CookieConsent as any).run({
 		revision: 0,
+		guiOptions: {
+			consentModal: {
+				layout: 'box',
+				position: 'bottom right',
+				equalWeightButtons: true,
+				flipButtons: false
+			},
+			preferencesModal: {
+				layout: 'box',
+				position: 'right',
+				equalWeightButtons: true,
+				flipButtons: false
+			}
+		},
 		categories: {
 			necessary: {
 				enabled: true,
@@ -52,18 +67,18 @@ export function runCookieConsent() {
 			translations: {
 				en: {
 					consentModal: {
-						title: 'We use cookies',
+						title: `<img src="${SBRFavicon.src}" alt="SynBio Reactor Logo" class="w-7 h-7 inline-block mr-1" />Help Us Improve!`,
 						description:
-							'This website uses cookies to enhance your browsing experience and analyze site traffic. You can choose to accept or reject non-essential cookies.',
-						acceptAllBtn: 'Accept all',
-						acceptNecessaryBtn: 'Reject all',
-						showPreferencesBtn: 'Manage preferences',
+							'We use cookies to enhance your browsing experience by analyzing site traffic and learning about our audience. You can change your mind and reject non-essential cookies at any time.',
+						acceptAllBtn: 'Accept Default',
+						// acceptNecessaryBtn: 'Reject all',
+						showPreferencesBtn: 'Manage settings',
 						closeIconLabel: 'Close',
-						footer: '<a href="#privacy-policy">Privacy Policy</a>'
+						footer: `<a href="#privacy-policy">Privacy Policy</a>`
 					},
 					preferencesModal: {
 						title: 'Cookie preferences',
-						acceptAllBtn: 'Accept all',
+						acceptAllBtn: 'Accept Default',
 						acceptNecessaryBtn: 'Reject all',
 						savePreferencesBtn: 'Save preferences',
 						closeIconLabel: 'Close',
@@ -92,21 +107,6 @@ export function runCookieConsent() {
 							}
 						]
 					}
-				}
-			}
-		},
-		theme: {
-			light: {
-				primary: '#000000',
-				secondary: '#f1d600',
-				text: '#ffffff',
-				textSecondary: '#cccccc',
-				bg: '#000000',
-				bgSecondary: '#1a1a1a',
-				border: '#333333',
-				overlay: {
-					bg: 'rgba(0, 0, 0, 0.8)',
-					blur: '5px'
 				}
 			}
 		},
