@@ -26,6 +26,8 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=8080
+      # URL for Playwright to load the render page from the web container
+      - WEB_RENDER_ORIGIN=http://web:4321
     expose:
       - "8080"
     healthcheck:
@@ -33,4 +35,6 @@ services:
       interval: 10s
       timeout: 3s
       retries: 10
-      start_period: 10s
+      start_period: 15s
+    # Playwright needs more shared memory
+    shm_size: '1gb'

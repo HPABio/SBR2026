@@ -1,0 +1,109 @@
+---
+/**
+ * Headless render route for social cards
+ * 
+ * This page is designed to be loaded by Playwright in the render-service.
+ * It exposes window.__renderSocialCard(payload) which:
+ * 1. Loads the specified template
+ * 2. Applies the provided data
+ * 3. Renders to PNG/JPEG using html-to-image
+ * 4. Returns a data URL
+ * 
+ * No site chrome - just the render stage.
+ */
+import { SocialMediaBuilder } from '@/components/social-media';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Social Card Renderer</title>
+    
+    <!-- Load fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      html, body {
+        background: #000;
+        min-height: 100vh;
+      }
+      
+      #render-container {
+        padding: 20px;
+      }
+      
+      /* Hide any scrollbars during render */
+      body.rendering {
+        overflow: hidden;
+      }
+      
+      /* Ensure images are loaded with CORS */
+      img {
+        crossorigin: anonymous;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="render-container">
+      <SocialMediaBuilder 
+        client:load 
+        headless={true}
+      />
+    </div>
+    
+    <script>
+      // Extend window interface for TypeScript
+      declare global {
+        interface Window {
+          __socialCardReady: boolean;
+          __renderSocialCard: (payload: {
+            templateId: string;
+            data: Record<string, unknown>;
+            format?: 'png' | 'jpeg';
+            quality?: number;
+          }) => Promise<string>;
+        }
+      }
+      
+      // Signal that the page is ready for rendering
+      window.__socialCardReady = false;
+      
+      // Wait for fonts and component to load
+      async function waitForReady() {
+        // Wait for fonts
+        if (document.fonts) {
+          await document.fonts.ready;
+        }
+        
+        // Wait for the stage element
+        let attempts = 0;
+        while (!document.getElementById('social-card-stage') && attempts < 50) {
+          await new Promise(r => setTimeout(r, 100));
+          attempts++;
+        }
+        
+        // Wait for __renderSocialCard to be defined
+        attempts = 0;
+        while (typeof window.__renderSocialCard !== 'function' && attempts < 50) {
+          await new Promise(r => setTimeout(r, 100));
+          attempts++;
+        }
+        
+        window.__socialCardReady = true;
+      }
+      
+      waitForReady();
+    </script>
+  </body>
+</html>

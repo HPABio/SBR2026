@@ -7,7 +7,7 @@
     "category": "AI& SynBio",
     "title": "Self Driving Labs",
     "company": "More Science, Wet Lab Genie",
-    "sessionTitle": "A2",
+    "sessionId": "A2",
     "sessionDescription": "",
     "sessionType": "Panel Discussion"},
     {
@@ -18,7 +18,7 @@
     "category": "AI& SynBio",
     "title": "Self Driving Labs",
     "company": "More Science, Wet Lab Genie",
-    "sessionTitle": "A2",
+    "sessionId": "A2",
     "sessionDescription": "",
     "sessionType": "Panel Discussion"},
     {
@@ -29,7 +29,7 @@
     "category": "AI& SynBio",
     "title": "Accelerating Research",
     "company": "biocompile",
-    "sessionTitle": "A3",
+    "sessionId": "A3",
     "sessionDescription": "",
     "sessionType": "Fire Side Chat"},
     {
@@ -40,7 +40,7 @@
     "category": "AI& SynBio",
     "title": "Scaling x AI",
     "company": "Arsenal Bioyard",
-    "sessionTitle": "A4",
+    "sessionId": "A4",
     "sessionDescription": "",
     "sessionType": "Fire Side Chat"},
     {
@@ -51,7 +51,7 @@
     "category": "BioDefense",
     "title": "Defense Technologies",
     "company": "solenamaterials, modSynthesis",
-    "sessionTitle": "D2",
+    "sessionId": "D2",
     "sessionDescription": "",
     "sessionType": "Panel Discussion"},
     {
@@ -62,7 +62,7 @@
     "category": "BioDefense",
     "title": "Defense Technologies",
     "company": "solenamaterials, modSynthesis",
-    "sessionTitle": "D2",
+    "sessionId": "D2",
     "sessionDescription": "",
     "sessionType": "Panel Discussion"},
     {
@@ -73,7 +73,7 @@
     "category": "BioDefense",
     "title": "Mastering Your Message: How to Craft a Compelling Presentation Pitch",
     "company": "GASB",
-    "sessionTitle": "E2",
+    "sessionId": "E2",
     "sessionDescription": "",
     "sessionType": "Workshop"},
     {
@@ -84,7 +84,7 @@
     "category": "BioEconomy",
     "title": "Green Chemistry: its approach and recent developments",
     "company": "DTU",
-    "sessionTitle": "G1",
+    "sessionId": "G1",
     "sessionDescription": "",
     "sessionType": "Talks"},
     {
@@ -95,7 +95,7 @@
     "category": "BioEconomy",
     "title": "Raw Materials",
     "company": "Bioweg",
-    "sessionTitle": "P1",
+    "sessionId": "P1",
     "sessionDescription": "",
     "sessionType": "Keynote"},
     {
@@ -106,7 +106,7 @@
     "category": "BioEconomy",
     "title": "Gasfermentation technologies",
     "company": "Colipy",
-    "sessionTitle": "S2",
+    "sessionId": "S2",
     "sessionDescription": "",
     "sessionType": "Fire Side Chat"},
     {
@@ -117,7 +117,7 @@
     "category": "BioEconomy",
     "title": "Scaling product to market",
     "company": "Heyl Consulting",
-    "sessionTitle": "S4",
+    "sessionId": "S4",
     "sessionDescription": "",
     "sessionType": "Fire Side Chat"},
     {
@@ -128,7 +128,7 @@
     "category": "Break Out Session",
     "title": "SBWC Session 1",
     "company": "BioCentra + Nucleate",
-    "sessionTitle": "SBWC1",
+    "sessionId": "SBWC1",
     "sessionDescription": "",
     "sessionType": "Workshop"},
     {
@@ -139,7 +139,7 @@
     "category": "Break Out Session",
     "title": "SBWC Session 2",
     "company": "BioCentra + Nucleate",
-    "sessionTitle": "SBWC2",
+    "sessionId": "SBWC2",
     "sessionDescription": "",
     "sessionType": "Workshop"},
     {
@@ -150,7 +150,7 @@
     "category": "Break Out Session",
     "title": "SBWC Session 3",
     "company": "BioCentra + Nucleate",
-    "sessionTitle": "SBWC3",
+    "sessionId": "SBWC3",
     "sessionDescription": "",
     "sessionType": "Workshop"},
     {
@@ -161,7 +161,7 @@
     "category": "Break Out Session",
     "title": "Don't just network when you need it!",
     "company": "Venabili Labs",
-    "sessionTitle": "W5",
+    "sessionId": "W5",
     "sessionDescription": "",
     "sessionType": "Fire Side Chat"},
     {
@@ -172,7 +172,7 @@
     "category": "Wildcard",
     "title": "TBD",
     "company": "Boston Consulting Group - BCG",
-    "sessionTitle": "W6",
+    "sessionId": "W6",
     "sessionDescription": "",
     "sessionType": "Fire Side Chat"},
         {
@@ -184,7 +184,7 @@
           "title": "Self Driving Labs",
           "company": "More Science, Wet Lab Genie",
           "companyDomain": "morescience.co, wetlabgenie.com",
-          "sessionTitle": "A2",
+          "sessionId": "A2",
           "sessionDescription": "",
           "sessionType": "Panel Discussion"
         },
@@ -197,7 +197,7 @@
           "title": "Self Driving Labs",
           "company": "More Science, Wet Lab Genie",
           "companyDomain": "morescience.co, wetlabgenie.com",
-          "sessionTitle": "A2",
+          "sessionId": "A2",
           "sessionDescription": "",
           "sessionType": "Panel Discussion"
         },
@@ -210,7 +210,7 @@
           "title": "Accelerating Research",
           "company": "biocompile",
           "companyDomain": "biocompile.com",
-          "sessionTitle": "A3",
+          "sessionId": "A3",
           "sessionDescription": "",
           "sessionType": "Fire Side Chat"
         },
@@ -223,7 +223,7 @@
           "title": "Scaling x AI",
           "company": "Arsenal Bioyard",
           "companyDomain": "arsenalbioyard.com", 
-          "sessionTitle": "A4",
+          "sessionId": "A4",
           "sessionDescription": "",
           "sessionType": "Fire Side Chat"
         },
@@ -236,7 +236,7 @@
           "title": "Defense Technologies",
           "company": "solenamaterials, modSynthesis",
           "companyDomain": "solenamaterials.com, modsynthesis.com",
-          "sessionTitle": "D2",
+          "sessionId": "D2",
           "sessionDescription": "",
           "sessionType": "Panel Discussion"
         },
@@ -249,7 +249,7 @@
           "title": "Defense Technologies",
           "company": "solenamaterials, modSynthesis",
           "companyDomain": "solenamaterials.com, modsynthesis.com",
-          "sessionTitle": "D2",
+          "sessionId": "D2",
           "sessionDescription": "",
           "sessionType": "Panel Discussion"
         },
@@ -274,7 +274,7 @@
           "title": "Green Chemistry: its approach and recent developments",
           "company": "DTU",
           "companyDomain": "dtu.dk",
-          "sessionTitle": "G1",
+          "sessionId": "G1",
           "sessionDescription": "",
           "sessionType": "Talks"
         },
@@ -287,7 +287,7 @@
           "title": "Raw Materials",
           "company": "Bioweg",
           "companyDomain": "bioweg.com",
-          "sessionTitle": "P1",
+          "sessionId": "P1",
           "sessionDescription": "",
           "sessionType": "Keynote"
         },
@@ -300,7 +300,7 @@
           "title": "Gasfermentation technologies",
           "company": "Colipy",
           "companyDomain": "colipy.com",
-          "sessionTitle": "S2",
+          "sessionId": "S2",
           "sessionDescription": "",
           "sessionType": "Fire Side Chat"
         },
@@ -313,7 +313,7 @@
           "title": "Scaling product to market",
           "company": "Heyl Consulting",
           "companyDomain": "heylconsulting.com",
-          "sessionTitle": "S4",
+          "sessionId": "S4",
           "sessionDescription": "",
           "sessionType": "Fire Side Chat"
         },
@@ -326,7 +326,7 @@
           "title": "An Introduction to the German Start Up SynBio Ecosystem",
           "company": "Biolabs Heidelberg",
           "companyDomain": "biolabs.com",
-          "sessionTitle": "SBWC1",
+          "sessionId": "SBWC1",
           "sessionDescription": "",
           "sessionType": "Workshop"
         },
@@ -339,7 +339,7 @@
           "title": "'Don't just network when you need it!'",
           "company": "Venabili Labs",
           "companyDomain": "venabililabs.com",
-          "sessionTitle": "W5",
+          "sessionId": "W5",
           "sessionDescription": "",
           "sessionType": "Fire Side Chat"
         },
@@ -352,7 +352,7 @@
           "title": "TBD",
           "company": "Boston Consulting Group - BCG",
           "companyDomain": "bcg.com",
-          "sessionTitle": "W6",
+          "sessionId": "W6",
           "sessionDescription": "",
           "sessionType": "Fire Side Chat"
         }
