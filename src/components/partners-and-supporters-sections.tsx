@@ -1,9 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Building2, Users2, Link2, Rocket, Unplug, Linkedin, Twitter, Instagram, Link } from "lucide-react"
+import { Building2, Users2, Link2, Rocket, Unplug, Linkedin, Twitter, Instagram, Link, Search } from "lucide-react"
 import { ExportPng } from "@/components/export-png"
 
 import partnersLogoList from "@/data/partnersLogoList.json"
+import ticketTailorExport_Dec18th from "@/data/ticketTailorExport_Dec18th.json" with { type: "json" }
+const attendingCompanies = ticketTailorExport_Dec18th.attendees
 
 // Logos
 import SPRIND from "@/assets/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg"
@@ -522,20 +524,75 @@ export default function PartnersAndSupportersSections() {
             ))}
           </div>
 
-          <div className="hidden md:grid-cols-2 lg:grid-cols-3 gap-4 px-14">
-            {partners.map((collaborator, index) => (
-              <Card key={index} className="bg-card border-border hover:border-primary/50 transition-colors">
-                <CardContent className="pt-4 pb-4">
-                  <div className="space-y-1">
-                    <h3 className="font-bold text-lg">{collaborator.name}</h3>
-                    <p className="text-sm text-muted-foreground">{collaborator.description}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
       </section>
+
+
+
+      {/* who you gonna see at SBR2026 */}
+      <section className="py-20 px-4 lg:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center space-y-6 pb-16 px-14">
+            <div className="inline-block">
+              <Badge 
+                variant="outline" 
+                className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} p-1 px-2 border-muted-foreground/40 text-muted-foreground group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider`}>
+                <Search className="w-5 h-5 text-primary scale-x-[-1] mr-2" /> Who is coming?
+              </Badge>
+            </div>
+            <div className="space-y-2 flex flex-col items-center justify-center">
+              <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">
+                Sneak a peek at <br/>
+                <span className="text-8xl"><span className="text-primary">Who</span>'s coming?</span>
+                <p className="ml-2 font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
+                  Check out the companies attending the summit
+                </p>
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 sm:grid-cols-4 sm:gap-6 gap-2 gap-y-8 w-full max-w-5xl mx-auto mt-24 sm:px-14 px-4">
+            {attendingCompanies.map((attendee, index) => ( attendee.ignore !== "yes" && (
+              <Card
+                key={index}
+                className="bg-card hover:bg-black border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
+                aspect-video max-w-[250px] group sm:p-4 p-1 relative"
+              >
+                <div className="bg-primary w-[90%] h-[90%] absolute top-1 left-2 z-10 opacity-0 mix-blend-multiply group-hover:opacity-100 transition-opacity duration-300" />
+                <a href={`https://${attendee.domain}`} className="">
+                  <ExportPng key={index} exportKey="attendingCompanies" name={attendee.name || attendee.domain.split(".")[0].toUpperCase()} index={index}>
+                  <CardContent id={`${attendee.domain.split(".")[0].toUpperCase()} Logo`} className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden bac">
+                    <img
+                      src={attendee.logoNA || `https://img.logo.dev/${attendee.domain}?token=pk_RfMRuwDLQme4qwss9CJbiA&format=webp&retina=true`}
+                      alt={attendee.name || attendee.domain.split(".")[0].toUpperCase()}
+                      className={`w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity 
+                      saturate-[0] brightness-[1] contrast-[2] mix-blend-screen ${attendee.imageClasses}`}
+                    /> 
+                    {/* Company name badge */}
+                    <Badge 
+                      variant="outline"
+                      className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} flex absolute max-w-[95%] w-fit bg-card sm:-bottom-4 -bottom-2 sm:left-4 left-1 p-1 px-2 border-[0.5px]
+                      border-muted-foreground/30 group-hover:border-primary group-hover:border text-wrap items-center justify-center
+                      text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider
+                      text-[0.3rem] sm:text-[0.6rem]`}
+                    >
+                      <p className="text-wrap">{attendee.name || attendee.domain.split(".")[0].toUpperCase()}</p>
+                    </Badge>
+                  </CardContent>
+                  </ExportPng>
+                </a>
+              </Card>
+            )))}
+          </div>
+
+          
+        </div>
+      </section>
+
+
+
+
+
 
       {/* Connectors - show when you got at least three connectors */}
       <section className="py-20 px-4 lg:px-8 bg-card/30 hidden">
