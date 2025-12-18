@@ -47,12 +47,28 @@ import PartnersAndSupportersSections from "@/components/partners-and-supporters-
 			<QRCodeComponent />
 		</div> -->
 
-		<div class="w-full flex justify-center mb-32 relative bg-black overflow-hidden">
-			<LogoMarquee class="absolute top-0 left-0 right-0 w-full h-fit px-44 " />
-			<BetonhalleTeaser />
+		<div class="w-full flex justify-center pb-44 relative bg-black overflow-hidden">
+			<div class="z-10 relative">
+				<BetonhalleTeaser />
+			</div>
+			<div class="absolute w-full h-[400px] bottom-0 left-0 z-10 pointer-events-none">
+				<Image
+				src={BlackWaveDevider}
+				alt="SynBio Reactor Summit 2026"
+				class="h-full w-full object-fit"
+				/>
+			</div>
 		</div>
-
-		<div class="w-full flex justify-center mb-32">
+		
+		<div class="relative w-full flex justify-center mb-32">
+			<div class="absolute w-full h-[400px] -top-[100px] left-0 z-5 pointer-events-none">
+				<Image
+				src={BlackWaveDevider}
+				alt="SynBio Reactor Summit 2026"
+				class="h-full w-full object-fit rotate-180"
+				/>
+			</div>
+			<LogoMarquee class="absolute top-0 left-0 right-0 w-full h-fit 2xl:px-44 px-14 -translate-y-[70%] z-10" />
 			<FeatureSection class="" />
 		</div>
 

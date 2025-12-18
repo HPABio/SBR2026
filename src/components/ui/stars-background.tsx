@@ -8,21 +8,25 @@ import { cn } from "@/lib/utils";
 import { motion, useMotionValue, useSpring, type SpringOptions, type Transition } from "framer-motion";
 
 interface StarsBackgroundProps {
+    interactive?: boolean;
     factor?: number;
     speed?: number;
     transition?: SpringOptions;
     starColor?: string;
     particleSize?: number;
+    bgColor?: string;
     className?: string;
     children?: React.ReactNode;
 }
 
 export const StarsBackground = ({
+    interactive = false,
     factor = 0.05,
     speed = 50,
     transition = { stiffness: 50, damping: 20 },
     starColor = "#fff",
     particleSize = 5,
+    bgColor = "bg-[radial-gradient(ellipse_at_bottom,#F49B2B_0%,#ff7700_70%,#ff7700_100%)]",
     className,
     children,
 }: StarsBackgroundProps) => {
@@ -85,10 +89,10 @@ export const StarsBackground = ({
                 "relative size-full max-w-9xl mx-auto overflow-hidden bg-primary ",
                 className
             )}
-            onMouseMove={handleMouseMove}
+            onMouseMove={interactive ? handleMouseMove : undefined}
         >
             <motion.div style={{ x: springX, y: springY }}
-            className="max-w-9xl mx-auto w-full h-full bg-[radial-gradient(ellipse_at_bottom,#F49B2B_0%,#ff7700_70%,#ff7700_100%)] mt-12"
+            className={`max-w-9xl mx-auto w-full h-full ${bgColor} mt-12`}
             >
                 {/* Star Layer 1 */}
                 <motion.div

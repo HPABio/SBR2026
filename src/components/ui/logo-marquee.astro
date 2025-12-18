@@ -17,7 +17,7 @@ const logos = import.meta.glob<{ default: ImageMetadata }>(
 const logoImages = Object.values(logos).map((logo) => logo.default);
 ---
 
-<section class={`z-30 ${classes}`}>
+<section class={`z-0 ${classes}`}>
     <div class=" flex flex-col items-center justify-center">
         <div
         class="mx-auto flex h-full w-full  items-center justify-center
