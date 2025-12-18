@@ -209,6 +209,23 @@
   },
     {
       "ignore":"",
+      "name":"Stealth Mode Biotech",
+      "domain":"stealthmodebiotech.com",
+      "description":"",
+      "imageClasses":" contrast-[1] brightness-[140%] scale-[1.1]",
+      "logoNA": "./src/assets/logos/Stealth Biotech 2.jpg"
+
+  },
+    {
+      "ignore":"",
+      "name":"Colipi",
+      "domain":"colipi.com",
+      "description":"",
+      "imageClasses":" contrast-[2] brightness-[90%] scale-[2.7]"
+
+  },
+    {
+      "ignore":"",
       "name":"Imperial College London",
       "domain":"imperial.ac.uk",
       "description":"",
@@ -257,7 +274,7 @@
   },
     {
       "ignore":"",
-      "name":"bbeu",
+      "name":"BB EU",
       "domain":"bbeu.org",
       "description":"",
       "imageClasses":" contrast-[4] brightness-[70%] scale-[1.7] invert"
