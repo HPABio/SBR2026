@@ -456,6 +456,15 @@
   },
     {
       "ignore":"",
+      "name":"Biocatalyst Foundation",
+      "domain":"biocatalyst.eu",
+      "description":"",
+      "imageClasses":"contrast-[6] brightness-[160%] scale-[1.6]",
+      "logoNA": "./src/assets/logos/BiocatalystFoundation_Logo_white.png"
+
+  },
+    {
+      "ignore":"",
       "name":"endostix",
       "domain":"endostix.com",
       "description":"",

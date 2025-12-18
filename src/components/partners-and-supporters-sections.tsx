@@ -542,8 +542,8 @@ export default function PartnersAndSupportersSections() {
             </div>
             <div className="space-y-2 flex flex-col items-center justify-center">
               <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">
-                Sneak a peek at <br/>
-                <span className="text-8xl"><span className="text-primary">Who</span>'s coming?</span>
+                Meet People from <br/>
+                <span className="text-8xl"><span className="text-primary">companies</span> like</span>
                 <p className="ml-2 font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
                   Check out the companies attending the summit
                 </p>
