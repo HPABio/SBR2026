@@ -2,6 +2,7 @@
 import { SiteVerification, GoogleTagmanager } from '@digi4care/astro-google-tagmanager';
 import '../styles/global.css';
 import SBRFavicon from '@/assets/SBR2026-Favicon.png';
+import OgImage from '@/assets/Other/socialMedia/WebsiteLinkPreview_SBR2026_small.png';
 import ScreenSizeDEVTOOL from '@/components/ui/ScreenSizeDEVTOOL.astro';
 import Footer from '@/components/Footer.astro';
 import CookieConsent from '@/components/CookieConsent.astro';
@@ -15,7 +16,13 @@ interface MainProps {
 }
 
 const { content = {} }: MainProps = Astro.props;
-const title = content.title || "SynBio Reactor Summit 2026";
+const title = content.title || 'SynBio Reactor Summit 2026';
+const description =
+	content.description || "Berlin's premier synthetic biology startup and investor summit";
+
+// Absolute URLs are important for OpenGraph/Twitter cards.
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
+const ogImageUrl = Astro.site ? new URL(OgImage.src, Astro.site).href : OgImage.src;
 ---
 
 <html lang="en">
@@ -33,22 +40,38 @@ const title = content.title || "SynBio Reactor Summit 2026";
 		{!import.meta.env.DEV && (
 			<>
 				<SiteVerification id="synbioreactor-de" />
-				<script is:inline>
-					window.gtag('set', 'linker', { domains: ['tickettailor.com'] });
-				</script>
-				<GoogleTagmanager id="G-QFBMRL8F28" domain="https://www.googletagmanager.com" container="gtag/js" />
+				<GoogleTagmanager id="G-QFBMRL8F28" domain="https://www.googletagmanager.com" container="gtag/js" linkerDomains={['tickettailor.com']} />
 			</>
 		)}
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href={SBRFavicon.src} />
 		<meta name="generator" content={Astro.generator} />
-		<title>SynBio Reactor Summit 2026</title>
-		<meta name="description" content="Berlin's premier synthetic biology startup and investor summit" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalUrl} />
+
+		<!-- OpenGraph -->
+		<meta property="og:site_name" content="SynBio Reactor Summit" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:image:alt" content="SynBio Reactor Summit 2026 link preview" />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="800" />
+		<meta property="og:image:height" content="501" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageUrl} />
+		<meta name="twitter:image:alt" content="SynBio Reactor Summit 2026 link preview" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Anton&family=Anton+SC&family=Boldonse&display=swap" rel="stylesheet">
-		<title>{title}</title>
 	</head>
 	<body>
 		{import.meta.env.DEV && <ScreenSizeDEVTOOL />}
