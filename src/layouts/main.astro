@@ -1,5 +1,5 @@
 ---
-import { SiteVerification, GoogleTagmanager } from '@digi4care/astro-google-tagmanager';
+import { SiteVerification, GoogleTagmanager, GoogleTagmanagerNoscript } from '@digi4care/astro-google-tagmanager';
 import '../styles/global.css';
 import SBRFavicon from '@/assets/SBR2026-Favicon.png';
 import OgImage from '@/assets/Other/socialMedia/WebsiteLinkPreview_SBR2026_small.png';
@@ -27,20 +27,10 @@ const ogImageUrl = Astro.site ? new URL(OgImage.src, Astro.site).href : OgImage.
 
 <html lang="en">
 	<head>
-		<!-- Bootstrap gtag so calls (e.g. consent updates) don't error -->
-		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			window.gtag =
-				window.gtag ||
-				function () {
-					window.dataLayer.push(arguments);
-				};
-		</script>
-
 		{!import.meta.env.DEV && (
 			<>
 				<SiteVerification id="synbioreactor-de" />
-				<GoogleTagmanager id="G-QFBMRL8F28" domain="https://www.googletagmanager.com" container="gtag/js" linkerDomains={['tickettailor.com']} />
+				<GoogleTagmanager id="G-QFBMRL8F28" domain="https://www.googletagmanager.com" container="gtm.js" linkerDomains={['tickettailor.com', 'linkedin.com', 'app.swapcard.com']} />
 			</>
 		)}
 		<meta charset="utf-8" />
@@ -74,6 +64,7 @@ const ogImageUrl = Astro.site ? new URL(OgImage.src, Astro.site).href : OgImage.
 		<link href="https://fonts.googleapis.com/css2?family=Anton&family=Anton+SC&family=Boldonse&display=swap" rel="stylesheet">
 	</head>
 	<body>
+		{!import.meta.env.DEV && <GoogleTagmanagerNoscript id="G-QFBMRL8F28" domain="https://www.googletagmanager.com" />}
 		{import.meta.env.DEV && <ScreenSizeDEVTOOL />}
 		<slot />
 		<Footer />
