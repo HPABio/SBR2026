@@ -1,6 +1,5 @@
 ---
 import SBRFavicon from "@/assets/SBR2026-Favicon.png";
-import { LinkedinInsight } from '@digi4care/astro-google-tagmanager';
 
 const links = [
   { title: "About", href: "/about" },
@@ -150,6 +149,4 @@ const currentYear = new Date().getFullYear();
       © {currentYear} GASB - German Association for Synthetic Biology, All rights reserved
     </span>
   </div>
-  
-    {!import.meta.env.DEV && <LinkedinInsight partnerId="8343954" />}
 </footer>

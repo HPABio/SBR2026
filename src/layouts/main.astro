@@ -1,5 +1,5 @@
 ---
-import { SiteVerification, GoogleTagmanager, GoogleTagmanagerNoscript } from '@digi4care/astro-google-tagmanager';
+import { SiteVerification, GoogleTagmanager, GoogleTagmanagerNoscript, LinkedinInsight } from '@digi4care/astro-google-tagmanager';
 import '../styles/global.css';
 import SBRFavicon from '@/assets/SBR2026-Favicon.png';
 import OgImage from '@/assets/Other/socialMedia/WebsiteLinkPreview_SBR2026_small.png';
@@ -69,5 +69,6 @@ const ogImageUrl = Astro.site ? new URL(OgImage.src, Astro.site).href : OgImage.
 		<slot />
 		<Footer />
 		<CookieConsent />
+		{!import.meta.env.DEV && <LinkedinInsight partnerId="8343954" />}
 	</body>
 </html>
