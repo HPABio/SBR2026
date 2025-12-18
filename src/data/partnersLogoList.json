@@ -1,10 +1,10 @@
 { "partnersLogoList": 
     {
-        "SPRIN-D": "@/assets/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg",
-        "GASB": "@/assets/partners-logos/LinkedIn-Thumbnails/GASB_Logo_white.png",
-        "BIOCENTRA": "@/assets/partners-logos/LinkedIn-Thumbnails/BioCentra-biocentra-eu.jpeg",
-        "VOSSIUS": "@/assets/partners-logos/LinkedIn-Thumbnails/VOSSIUS-vossiusandpartner.jpeg",
-        "BioCircular": "@/assets/partners-logos/dummyLogos/biocircular-logo.jpg",
+        "SPRIN-D": "@/assets/logos/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg",
+        "GASB": "@/assets/logos/partners-logos/LinkedIn-Thumbnails/GASB_Logo_white.png",
+        "BIOCENTRA": "@/assets/logos/partners-logos/LinkedIn-Thumbnails/BioCentra-biocentra-eu.jpeg",
+        "VOSSIUS": "@/assets/logos/partners-logos/LinkedIn-Thumbnails/VOSSIUS-vossiusandpartner.jpeg",
+        "BioCircular": "@/assets/logos/partners-logos/dummyLogos/biocircular-logo.jpg",
         "Biocompile": "@/assets/logos/Sponsors/Biocompile_Logo_white.png",
         "BrightBiotech": "@/assets/logos/Sponsors/BrightBiotech_Logo.png",
         "UniteLabs": "@/assets/logos/Sponsors/UniteLabs_Logo.png",

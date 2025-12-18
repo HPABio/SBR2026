@@ -8,10 +8,10 @@ import ticketTailorExport_Dec18th from "@/data/ticketTailorExport_Dec18th.json" 
 const attendingCompanies = ticketTailorExport_Dec18th.attendees
 
 // Logos
-import SPRIND from "@/assets/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg"
-import BIOCENTRA from "@/assets/partners-logos/LinkedIn-Thumbnails/BioCentra-biocentra-eu.jpeg"
-import VOSSIUS from "@/assets/partners-logos/LinkedIn-Thumbnails/VOSSIUS-vossiusandpartner.jpeg"
-import BioCircular from "@/assets/partners-logos/dummyLogos/biocircular-logo.jpg"
+import SPRIND from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg"
+import BIOCENTRA from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/BioCentra-biocentra-eu.jpeg"
+import VOSSIUS from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/VOSSIUS-vossiusandpartner.jpeg"
+import BioCircular from "@/assets/logos/partners-logos/dummyLogos/biocircular-logo.jpg"
 import GASB_Logo from "@/assets/GASB_Logo_white.png"
 import GASB_Logo_Black from "@/assets/GASB_Logo_black-round.png"
 import Biocompile from "@/assets/logos/Sponsors/Biocompile_Logo_white.png"
@@ -20,11 +20,11 @@ import UniteLabs from "@/assets/logos/Sponsors/UniteLabs_Logo.png"
 import CordenBiochem from "@/assets/logos/Sponsors/CordenBiochem_Logo.png"
 import Nucleate from "@/assets/logos/Nucleate_Logo.png"
 import BiocatalystFoundation from "@/assets/logos/BiocatalystFoundation_Logo_white.png"
-import LSTNBerlin from "@/assets/partners-logos/LinkedIn-Thumbnails/Life_Sciences_Tech_Network_-_Berlin-lifesciencestechnetwork-berlin.jpeg"
+import LSTNBerlin from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/Life_Sciences_Tech_Network_-_Berlin-lifesciencestechnetwork-berlin.jpeg"
 // import FoodLabs from "@/assets/logos/FoodLabs_Logo.png"
 // import BiocatalystFoundation from "@/assets/logos/Biocatalyst_Foundation_Logo.png"
 // import BCG from "@/assets/logos/Boston_Consulting_Group_(BCG)-boston-consulting-group"
-import BCG from "@/assets/partners-logos/LinkedIn-Thumbnails/BCG_Boston_Consulting_Group_white.jpeg"
+import BCG from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/BCG_Boston_Consulting_Group_white.jpeg"
 // import Mimotype from "@/assets/logos/Mimotype_Logo.png"
 
 const logoNA = "https://img.freepik.com/premium-vector/available-allowed-icon-concept_313674-31214.jpg"
@@ -374,7 +374,7 @@ export default function PartnersAndSupportersSections() {
                 <CardContent className="pt-6 pb-6">
                   <div className="flex items-center justify-center h-24">
                     <img
-                      src={sponsor.logo.src || "@/assets/partners-logos/placeholder.svg"}
+                      src={sponsor.logo.src || "@/assets/logos/partners-logos/placeholder.svg"}
                       alt={sponsor.name}
                       className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity"
                     />
@@ -424,7 +424,7 @@ export default function PartnersAndSupportersSections() {
                     <Link className="w-8 h-8 absolute my-auto left-2 text-transparent group-hover:text-black group-hover:scale-150 transition-all duration-300" />
                     SBR2026</Badge>
                   </a> */}
-                  <img src={advisor.image.src || "@/assets/partners-logos/placeholder.svg"} alt={advisor.name} 
+                  <img src={advisor.image.src || ""} alt={advisor.name} 
                   className="w-full h-full object-contain absolute bottom-0 left-1/4 
                   bg-conic-10 from-primary via-transparent to-transparent pointer-events-none" />
                   <CardContent className="h-full group">
