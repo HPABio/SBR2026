@@ -1,4 +1,11 @@
 ---
+import type { Props as PitchTeaserProps } from 'astro';
+interface Props extends PitchTeaserProps {
+  class?: string;
+}
+const { class: classProp, className } = Astro.props;
+const classes = classProp || className || "";
+
 import NanoBananaImg from "@/assets/ExportWP/venue/BetonhalleWelcomeSBR2026-NanoBanana.jpeg";
 import BubbleButton from "@/components/ui/BubbleButton.astro";
 import LaurelWreath from "@/components/ui/LaurelWreath.astro";
@@ -7,10 +14,10 @@ import WinnerLaurel from "@/components/ui/winner-laurel.astro";
 
 <!-- Container -->
 <section
-    class="relative w-full min-h-screen lg:min-h-[1000px] px-4 md:px-12 mt-32 flex flex-col items-center justify-center overflow-hidden">
+    class="relative w-full min-h-screen lg:min-h-[1000px] px-4 md:px-12 mt-0 flex flex-col items-center justify-center overflow-hidden">
     <!-- Content Container -->
     <div
-        class="max-w-sm sm:max-w-lg lg:max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10 mb-32 -mt-32"
+        class={`max-w-sm sm:max-w-lg lg:max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10 mb-32 -mt-32 ${classes}`}
     >
         <!-- Text Side -->
         <div
@@ -22,9 +29,9 @@ import WinnerLaurel from "@/components/ui/winner-laurel.astro";
                     <h2
                         class="text-4xl md:text-7xl lg:text-6xl font-anton font-black uppercase tracking-tight text-left lg:text-right"
                     >
-                        Looking for a<br class="" />chance <br class="lg:hidden" />
-                        <span class="text-[#F49B2B] text-8xl lg:text-6xl">to pitch
-                        </span>?
+                        Here's your chance<br class="" />
+                        <span class=" text-9xl">to<span class="text-[#F49B2B]"> pitch </span>!</span>
+                        </span>
                         <p class="lg:hidden block text-base text-muted-foreground capitalize tracking-widest
                         font-quicksand font-thin max-w-md leading-none text-left lg:text-right mt-2">
                             Take the stage and showcase your innovation.

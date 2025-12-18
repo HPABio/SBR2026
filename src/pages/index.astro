@@ -18,6 +18,7 @@ import { TeamSection2 } from "@/components/TeamSection2.tsx";
 import { GradientBars } from "@/components/ui/gradient-bars.tsx";
 import { StarsBackground } from "@/components/ui/stars-background.tsx";
 
+
 //Section Import
 import HomeHero from "@/components/HomeHero.astro";
 import FeatureSection from "@/components/FeatureSection.astro";
@@ -37,7 +38,6 @@ import PartnersAndSupportersSections from "@/components/partners-and-supporters-
 	<Navigation />
 	<main class="pt-16">
 		<HomeHero />
-		<FeatureSection class="hidden" />
 
 		<!-- <div class="w-full flex justify-center mt-32 hidden">
 			<TicketVisual />
@@ -47,39 +47,25 @@ import PartnersAndSupportersSections from "@/components/partners-and-supporters-
 			<QRCodeComponent />
 		</div> -->
 
-		<div class="w-full flex justify-center mb-32">
+		<div class="w-full flex justify-center mb-32 relative bg-black overflow-hidden">
+			<LogoMarquee class="absolute top-0 left-0 right-0 w-full h-fit px-44 " />
 			<BetonhalleTeaser />
 		</div>
 
 		<div class="w-full flex justify-center mb-32">
+			<FeatureSection class="" />
+		</div>
+
+		<div class="w-full flex justify-center pb-32 xl:pb-60 ">
 			<SwapCardSection />
 		</div>
 
-		<div class="relative w-full flex justify-center pb-32">
-			<div class="absolute w-full h-full my-auto opacity-1">
-				<Image
-					src={TakeTheStage}
-					alt="SynBio Reactor Summit 2026"
-					class="h-full w-full object-cover"
-				/>
-			</div>
-			<div
-				class="absolute top-0 mx-auto h-full w-[90%] bg-linear-to-b from-background via-transparent to-background"
-			>
-			</div>
-			<div
-				class="absolute top-0 mx-auto h-full w-[90%] bg-linear-to-r from-background via-transparent to-background"
-			>
-			</div>
+		<div class="relative w-full h-full flex items-end justify-center mb-0 bg-background">
 			<GradientBars
 			client:visible
-			className="w-screen h-full mt-0 mx-auto absolute bottom-0 left-0 z-10"
+			className="w-screen h-full mt-0 mx-auto absolute top-0 left-0 z-10"
 			/>
-			<div
-				class="absolute bottom-0 left-0 right-0 h-96 w-full bg-[radial-gradient(ellipse_at_bottom,_#FFFFFF00_0%,_#FFFFFF00_90%,_#ff7700_100%)] z-10 rotate-180"
-			>
-			</div>
-			<PitchTeaser />
+			<PitchTeaser class=""/>
 		</div>
 
 		<div class="relative w-full h-full flex items-center justify-center 

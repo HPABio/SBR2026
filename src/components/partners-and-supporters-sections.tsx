@@ -181,6 +181,7 @@ export default function PartnersAndSupportersSections() {
     { name: "FoodLabs",domain:"foodlabs.com", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.5]"},
     { name: "Biocatalyst Foundation", logoNA:BiocatalystFoundation.src, description: "Commercialization Support", link:"dummy", imageClasses:"brightness-[1] scale-[1.5]"},
     { name: "Boston Consulting Group",domain:"bcg.com", description: "", link:"dummy", imageClasses:"contrast-[10] scale-[1.8] "},
+    { name: "Chemstars",domain:"chemstars.com", description: "", link:"dummy", imageClasses:"scale-[1.5]"},
     // { name: "Mimotype",domain:"mimotype.org", description: "", link:"dummy", imageClasses:"invert"},
 
     // { name: "Vossius", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
@@ -194,21 +195,6 @@ export default function PartnersAndSupportersSections() {
     // { name: "Volksbank", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
     // { name: "WFBB", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
     // { name: "Promega", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
-  ]
-  
-  
-  
-  
-  const silverSponsors = [
-    { name: "BioCircular ", logo: BioCircular, link:"dummy", imageClasses:""},
-    { name: "BioCircular ", logo: BioCircular, link:"dummy", imageClasses:""},
-    { name: "BioCircular ", logo: BioCircular, link:"dummy", imageClasses:""},
-    { name: "BioCircular ", logo: BioCircular, link:"dummy", imageClasses:""},
-    { name: "BioCircular ", logo: BioCircular, link:"dummy", imageClasses:""},
-    { name: "BioCircular ", logo: BioCircular, link:"dummy", imageClasses:""},
-    { name: "BioCircular ", logo: BioCircular, link:"dummy", imageClasses:""},
-    { name: "BioCircular ", logo: BioCircular, link:"dummy", imageClasses:""},
-    
   ]
   
   const connectors = [

@@ -11,34 +11,43 @@ const { class: classProp, className } = Astro.props;
 const classes = classProp || className || "";
 
 const logos = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/logos/*.{jpeg,jpg,png,gif,svg}",
+    "/src/assets/logos/partners/*/*.{jpeg,jpg,png,gif,svg}",
     { eager: true },
 );
 const logoImages = Object.values(logos).map((logo) => logo.default);
 ---
 
-<section class={`relative bg-black ${classes}`}>
-    <div class="py-8 flex flex-col items-center justify-center">
+<section class={`z-30 ${classes}`}>
+    <div class=" flex flex-col items-center justify-center">
         <div
-        class="mx-auto flex h-full w-full max-w-2xl lg:max-w-5xl items-center justify-center overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [mask-size:100%_100%] [mask-repeat:no-repeat] px-6"
+        class="mx-auto flex h-full w-full  items-center justify-center
+        [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [mask-size:100%_100%] [mask-repeat:no-repeat] 
+        px-6"
         >
         <div>
-            <Marquee className="[--gap:80px]" client:visible>
+            <Marquee className="[--gap:40px] py-10" client:visible speed="slow" pauseOnHover>
                 {
                         logoImages.map((logo) => (
+                            <div class="relative bg-black">
                             <Image
                                 src={logo}
-                                alt="Company Logo"
-                                height={80}
-                                class="mx-8 h-20 md:h-32 w-auto object-contain grayscale opacity-70 hover:opacity-100 transition-opacity"
-                            />
+                                alt={logo.src.split("/").pop()?.split(".")[0] || "Company Logo"}
+                                class="relative mx-8 h-20 md:h-32 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity mix-blend-screen contrast-[150%] brightness-[150%]"/>
+                                <div class="absolute inset-0 flex flex-col items-center justify-end opacity-0 hover:opacity-100">
+                                    <p class="w-fit h-fit text-primary text-lg font-quicksand font-light uppercase tracking-wide
+                                    transition-opacity duration-300 z-20 translate-y-10 text-nowrap">
+                                        {logo.src.split("/").pop()?.split(".")[0].split("_")[1].split("-").join(" ")}</p>
+                                    <div class="absolute w-[80%] h-full top-0 left-1/2 -translate-x-1/2 bg-primary mix-blend-multiply"/>
+                                </div>
+                            </div>
+
                         ))
                     }
                 </Marquee>
             </div>
         </div>
-        <h1 class="mt-10 px-12 text-muted-foreground text-center text-sm font-medium">
+        <!-- <h1 class="mt-10 px-12 text-muted-foreground text-center text-sm font-medium">
             Trusted by biotechs most creative companies.
-        </h1>
+        </h1> -->
     </div>
 </section>
