@@ -11,7 +11,7 @@ interface GradientBarsProps {
 export const GradientBars = ({
     className = "w-full h-full",
     bars = 20,
-  colors = ['#ff7700', 'transparent'],
+  colors = ['#ff7700', '#f6870090', 'transparent'],
 }: GradientBarsProps) => {
   const gradientStyle = `linear-gradient(to top, ${colors.join(', ')})`;
   return (
