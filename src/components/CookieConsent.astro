@@ -7,17 +7,23 @@ import 'vanilla-cookieconsent/dist/cookieconsent.css';
 
 
 <script>
+	// Import the functions used to control the cookie consent popup and preferences
 	import { openCookiePreferences, runCookieConsent } from './cookie-consent-init';
 	
+	// Ensure this code runs only in the browser (not during SSR)
 	if (typeof window !== 'undefined') {
+		// Wait for the window to fully load before setting up consent and event listeners
 		window.addEventListener('load', function () {
+			// Initialize or run the vanilla-cookieconsent popup logic
 			runCookieConsent();
 
+			// Find the floating action button for cookie settings by its ID
 			const btn = document.getElementById('cc-settings-fab');
 			if (btn) {
+				// Add a click handler to the FAB to open the cookie preferences dialog
 				btn.addEventListener('click', (e) => {
-					e.preventDefault();
-					openCookiePreferences();
+					e.preventDefault(); // Prevent default button behavior
+					openCookiePreferences(); // Show the cookie preferences modal
 				});
 			}
 		});

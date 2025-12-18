@@ -29,8 +29,25 @@ const ogImageUrl = Astro.site ? new URL(OgImage.src, Astro.site).href : OgImage.
 	<head>
 		{!import.meta.env.DEV && (
 			<>
-				<SiteVerification id="synbioreactor-de" />
-				<GoogleTagmanager id="G-QFBMRL8F28" domain="https://www.googletagmanager.com" container="gtm.js" linkerDomains={['tickettailor.com', 'linkedin.com', 'app.swapcard.com']} />
+				<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-QFBMRL8F28"></script>
+				<script is:inline>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('consent', 'default', {
+				'ad_storage': 'denied',
+				'ad_user_data': 'denied',
+				'ad_personalization': 'denied',
+				'analytics_storage': 'denied'
+				});
+				gtag('consent', 'update', {
+				'ad_storage': 'granted',
+				'ad_user_data': 'granted',
+				'ad_personalization': 'granted',
+				'analytics_storage': 'granted'
+				});
+				gtag('config', 'G-QFBMRL8F28');
+				</script>				
 			</>
 		)}
 		<meta charset="utf-8" />
@@ -71,11 +88,11 @@ const ogImageUrl = Astro.site ? new URL(OgImage.src, Astro.site).href : OgImage.
 		<CookieConsent />
 		{!import.meta.env.DEV &&
 			<>
-			<script type="text/javascript">
+			<script is:inline type="text/javascript">
 			_linkedin_partner_id = "8343954";
 			window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
 			window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-			</script><script type="text/javascript">
+			</script><script is:inline type="text/javascript">
 			(function(l) {
 			if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
 			window.lintrk.q=[]}

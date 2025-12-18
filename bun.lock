@@ -10,7 +10,6 @@
         "@astrojs/node": "^9.5.1",
         "@astrojs/react": "4.4.2",
         "@astrojs/sitemap": "^3.6.0",
-        "@digi4care/astro-google-tagmanager": "^1.6.0",
         "@hookform/resolvers": "^5.2.2",
         "@radix-ui/react-accordion": "1.2.12",
         "@radix-ui/react-alert-dialog": "1.1.15",
@@ -225,8 +224,6 @@
     "@capsizecss/unpack": ["@capsizecss/unpack@3.0.1", "", { "dependencies": { "fontkit": "^2.0.2" } }, "sha512-8XqW8xGn++Eqqbz3e9wKuK7mxryeRjs4LOHLxbh2lwKeSbuNR4NFifDZT4KzvjU6HMOPbiNTsWpniK5EJfTWkg=="],
 
     "@date-fns/tz": ["@date-fns/tz@1.4.1", "", {}, "sha512-P5LUNhtbj6YfI3iJjw5EL9eUAG6OitD0W3fWQcpQjDRc/QIsL0tRNuO1PcDvPccWL1fSTXXdE1ds+l95DV/OFA=="],
-
-    "@digi4care/astro-google-tagmanager": ["@digi4care/astro-google-tagmanager@1.6.0", "", { "peerDependencies": { "astro": "^1.2.1 || ^2.0.0 || ^3.0.0-beta.0 || ^3.0.0 || ^4.0.0 || ^5.0.0" } }, "sha512-xBEYnswcLPNDu62zRGh8W8hbRW97nK02O+SyellcopT4/NMkevygrvxv49xl0ZQeBd6dfJpwbktlBYDJDaRvWg=="],
 
     "@dimforge/rapier3d-compat": ["@dimforge/rapier3d-compat@0.19.2", "", {}, "sha512-AZHL1jqUF55QJkJyU1yKeh4ImX2J93bVLIezT1+o0FZqTix6O06MOaqpKoJ4MmbDCsoZmwO+qc471/SDMDm2AA=="],
 
