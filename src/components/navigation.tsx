@@ -9,7 +9,7 @@ export function Navigation() {
             <div className="w-10 h-10 rounded-full bg-card border-2 border-primary flex items-center justify-center">
               <div className="w-6 h-6 rounded-full bg-primary" />
             </div>
-            <span className="font-bold text-lg">SynBio Reactor</span>
+            <span className="font-bold text-lg">SynBioReactor</span>
           </a>
 
           <div className="hidden md:flex items-center gap-6">

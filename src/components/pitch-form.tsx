@@ -29,7 +29,7 @@ export function PitchForm() {
       <CardHeader>
         <CardTitle className="text-2xl text-balance">Apply to Pitch</CardTitle>
         <CardDescription className="text-muted-foreground">
-          Fill out the form below to apply for a pitching slot at SynBio Reactor Summit 2026
+          Fill out the form below to apply for a pitching slot at SynBioReactor Summit 2026
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -36,7 +36,7 @@ export function getAdminEmailTemplate(userEmail) {
                 New Sponsoring Flyer Request
               </h1>
               <p style="margin: 0 0 30px 0; font-size: 16px; line-height: 1.6; color: ${COLORS.muted};">
-                Someone has requested the sponsoring flyer for the SynBio Reactor Summit.
+                Someone has requested the sponsoring flyer for the SynBioReactor Summit.
               </p>
               <div style="background-color: ${COLORS.background}; border-radius: 8px; padding: 20px; margin: 30px 0; border: 1px solid ${COLORS.border};">
                 <p style="margin: 0 0 10px 0; font-size: 14px; color: ${COLORS.muted}; text-transform: uppercase; letter-spacing: 0.5px;">
@@ -53,7 +53,7 @@ export function getAdminEmailTemplate(userEmail) {
           </tr>
         </table>
         <p style="margin: 20px 0 0 0; font-size: 12px; color: ${COLORS.muted}; text-align: center;">
-          SynBio Reactor Summit
+          SynBioReactor Summit
         </p>
       </td>
     </tr>
@@ -87,7 +87,7 @@ export function getUserEmailTemplate(flyerUrl) {
                 Thank You for Your Interest!
               </h1>
               <p style="margin: 0 0 20px 0; font-size: 16px; line-height: 1.6; color: ${COLORS.muted};">
-                We're thrilled that you're interested in sponsoring the <strong style="color: ${COLORS.text};">SynBio Reactor Summit</strong>. Your support helps us bring together the brightest minds in synthetic biology.
+                We're thrilled that you're interested in sponsoring the <strong style="color: ${COLORS.text};">SynBioReactor Summit</strong>. Your support helps us bring together the brightest minds in synthetic biology.
               </p>
               <p style="margin: 0 0 30px 0; font-size: 16px; line-height: 1.6; color: ${COLORS.muted};">
                 Below you'll find your download link for our detailed sponsorship packages and opportunities. We've carefully crafted sponsorship options that provide excellent visibility and engagement opportunities for your organization.
@@ -101,17 +101,17 @@ export function getUserEmailTemplate(flyerUrl) {
                 If you have any questions about sponsorship opportunities or would like to discuss a custom package, please don't hesitate to reach out to us at <a href="mailto:sbr@ga-sb.de" style="color: ${COLORS.primary}; text-decoration: none;">sbr@ga-sb.de</a>.
               </p>
               <p style="margin: 20px 0 0 0; font-size: 14px; line-height: 1.6; color: ${COLORS.muted};">
-                We look forward to partnering with you and making the SynBio Reactor Summit an unforgettable experience.
+                We look forward to partnering with you and making the SynBioReactor Summit an unforgettable experience.
               </p>
               <p style="margin: 30px 0 0 0; font-size: 14px; line-height: 1.6; color: ${COLORS.muted};">
                 Best regards,<br>
-                <strong style="color: ${COLORS.text};">The SynBio Reactor Summit Team</strong>
+                <strong style="color: ${COLORS.text};">The SynBioReactor Summit Team</strong>
               </p>
             </td>
           </tr>
         </table>
         <p style="margin: 20px 0 0 0; font-size: 12px; color: ${COLORS.muted}; text-align: center;">
-          SynBio Reactor Summit
+          SynBioReactor Summit
         </p>
       </td>
     </tr>

@@ -5,7 +5,7 @@ import { ExportPng } from "@/components/export-png"
 
 import partnersLogoList from "@/data/partnersLogoList.json"
 import ticketTailorExport_Dec18th from "@/data/ticketTailorExport_Dec18th.json" with { type: "json" }
-const attendingCompanies = ticketTailorExport_Dec18th.attendees
+const attendingCompanies = ticketTailorExport_Dec18th.attendees as { ignore: string; name: string; domain: string; description: string; imageClasses: string; logoNA: string }[]
 
 // Logos
 import SPRIND from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg"
@@ -179,9 +179,10 @@ export default function PartnersAndSupportersSections() {
     { name: "Nucleate",domain:"nucleate.org", description: "Sustainability Partner", link:"dummy", imageClasses:"scale-[1.5]"},
     { name: "Amino Collective",domain:"aminocollective.com", description: "Startup Community", link:"dummy", imageClasses:"scale-[1.7]"},
     { name: "FoodLabs",domain:"foodlabs.com", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.5]"},
+    { name: "Ginkgo Bioworks",domain:"ginkgobioworks.com", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.5]"},
     { name: "Biocatalyst Foundation", logoNA:BiocatalystFoundation.src, description: "Commercialization Support", link:"dummy", imageClasses:"brightness-[1] scale-[1.5]"},
     { name: "Boston Consulting Group",domain:"bcg.com", description: "", link:"dummy", imageClasses:"contrast-[10] scale-[1.8] "},
-    { name: "Chemstars",domain:"chemstars.com", description: "", link:"dummy", imageClasses:"scale-[1.5]"},
+    { name: "Chemstars",domain:"chemstars.de", description: "", link:"dummy", imageClasses:"scale-[1.5] invert contrast-[4] brightness-[70%]"},
     // { name: "Mimotype",domain:"mimotype.org", description: "", link:"dummy", imageClasses:"invert"},
 
     // { name: "Vossius", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
@@ -259,12 +260,12 @@ export default function PartnersAndSupportersSections() {
 
           <div className="flex flex-row justify-between items-center mx-auto w-fit max-w-screen sm:max-w-5xl gap-2 sm:gap-10 sm:px-14">
             {mainSponsors.map((sponsor, index) => (
+              <ExportPng key={index} exportKey="mainSponsors" name={sponsor.name} index={index}>
               <Card
                   className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
                   md:h-36 aspect-video max-w-[250px] group md:p-4 p-1 relative"
                 >
                   <a href={sponsor.link} className="">
-              <ExportPng key={index} exportKey="mainSponsors" name={sponsor.name} index={index}>
                     <CardContent className="flex items-center justify-center h-full w-full aspect-video  p-0 rounded-lg overflow-hidden">
                       <img
                         src={
@@ -288,19 +289,19 @@ export default function PartnersAndSupportersSections() {
                         {sponsor.name}
                       </Badge>
                     </CardContent>
-              </ExportPng>
                   </a>
                 </Card>
+              </ExportPng>
             ))}
           </div>
           <div className="grid grid-cols-4 md:gap-6 gap-2 w-full max-w-5xl mx-auto mt-24 md:px-14">
             {supportingSponsors.map((supSponsor, index) => (
+              <ExportPng key={index} exportKey="supportingSponsors" name={supSponsor.name} index={index}>
               <Card
                   className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
                   aspect-video max-w-[250px] group sm:p-4 p-1 relative"
                 >
                   <a href={supSponsor.link} className="">
-              <ExportPng key={index} exportKey="supportingSponsors" name={supSponsor.name} index={index}>
                     <CardContent className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden">
                       <img
                         src={
@@ -324,9 +325,9 @@ export default function PartnersAndSupportersSections() {
                         {supSponsor.name}
                       </Badge>
                     </CardContent>
-              </ExportPng>
                   </a>
                 </Card>
+              </ExportPng>
             ))}
           </div>
         </div>
@@ -470,7 +471,7 @@ export default function PartnersAndSupportersSections() {
                 Thanks to our <br/>
                 <span className="text-8xl text-primary">Partners</span>
                 <p className="font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
-                  for amplifying our overall impact
+                  Speakers, Exhibitors and Amplifiers 
                 </p>
               </h2>
             </div>
@@ -539,6 +540,7 @@ export default function PartnersAndSupportersSections() {
 
           <div className="grid grid-cols-3 sm:grid-cols-4 sm:gap-6 gap-2 gap-y-8 w-full max-w-5xl mx-auto mt-24 sm:px-14 px-4">
             {attendingCompanies.map((attendee, index) => ( attendee.ignore !== "yes" && (
+              <ExportPng key={index} exportKey="attendingCompanies" name={attendee.name || attendee.domain.split(".")[0].toUpperCase()} index={index}>
               <Card
                 key={index}
                 className="bg-card hover:bg-black border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
@@ -546,10 +548,9 @@ export default function PartnersAndSupportersSections() {
               >
                 <div className="bg-primary w-[90%] h-[90%] absolute top-1 left-2 z-10 opacity-0 mix-blend-multiply group-hover:opacity-100 transition-opacity duration-300" />
                 <a href={`https://${attendee.domain}`} className="">
-                  <ExportPng key={index} exportKey="attendingCompanies" name={attendee.name || attendee.domain.split(".")[0].toUpperCase()} index={index}>
                   <CardContent id={`${attendee.domain.split(".")[0].toUpperCase()} Logo`} className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden bac">
                     <img
-                      src={attendee.logoNA || `https://img.logo.dev/${attendee.domain}?token=pk_RfMRuwDLQme4qwss9CJbiA&format=webp&retina=true`}
+                      src={ attendee.logoNA || `https://img.logo.dev/${attendee.domain}?token=pk_RfMRuwDLQme4qwss9CJbiA&format=webp&retina=true`}
                       alt={attendee.name || attendee.domain.split(".")[0].toUpperCase()}
                       className={`w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity 
                       saturate-[0] brightness-[1] contrast-[2] mix-blend-screen ${attendee.imageClasses}`}
@@ -565,9 +566,9 @@ export default function PartnersAndSupportersSections() {
                       <p className="text-wrap">{attendee.name || attendee.domain.split(".")[0].toUpperCase()}</p>
                     </Badge>
                   </CardContent>
-                  </ExportPng>
                 </a>
               </Card>
+            </ExportPng>
             )))}
           </div>
 

@@ -284,7 +284,7 @@ export default function PartnersPage() {
               <div className="w-8 h-8 rounded-full bg-card border-2 border-primary flex items-center justify-center">
                 <div className="w-4 h-4 rounded-full bg-primary" />
               </div>
-              <span className="font-bold">SynBio Reactor Summit 2026</span>
+              <span className="font-bold">SynBioReactor Summit 2026</span>
             </div>
             <div className="text-sm text-muted-foreground">© 2026 GASB - German Association for Synthetic Biology</div>
           </div>

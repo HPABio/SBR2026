@@ -160,7 +160,7 @@ export function BenefitsSection() {
         <div className="hidden 2xl:block relative w-full h-[1vw]"/>
         {/* <div className="text-center space-y-4 mb-16">
           <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold font-anton uppercase text-balance">
-            Pitch at <span className="text-primary">SynBio Reactor</span>{" "}!
+            Pitch at <span className="text-primary">SynBioReactor</span>{" "}!
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl md:max-w-4xl mx-auto text-balance">
             Join the fast-growing synthetic biology startup ecosystem 
@@ -346,7 +346,7 @@ export function Footer() {
             <div className="w-8 h-8 rounded-full bg-card border-2 border-primary flex items-center justify-center">
               <div className="w-4 h-4 rounded-full bg-primary" />
             </div>
-            <span className="font-bold">SynBio Reactor Summit 2026</span>
+            <span className="font-bold">SynBioReactor Summit 2026</span>
           </div>
           <div className="text-sm text-muted-foreground">© 2026 GASB - German Association for Synthetic Biology</div>
         </div>

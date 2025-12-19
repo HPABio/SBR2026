@@ -82,7 +82,7 @@ export default function PitchingPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-balance">
-              Why Pitch at <span className="text-primary">SynBio Reactor?</span>
+              Why Pitch at <span className="text-primary">SynBioReactor?</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
               Join Europe's fasgrowing synthetic biology startup ecosystem
@@ -264,7 +264,7 @@ export default function PitchingPage() {
               <div className="w-8 h-8 rounded-full bg-card border-2 border-primary flex items-center justify-center">
                 <div className="w-4 h-4 rounded-full bg-primary" />
               </div>
-              <span className="font-bold">SynBio Reactor Summit 2026</span>
+              <span className="font-bold">SynBioReactor Summit 2026</span>
             </div>
             <div className="text-sm text-muted-foreground">© 2026 GASB - German Association for Synthetic Biology</div>
           </div>

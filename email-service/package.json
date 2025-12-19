@@ -2,7 +2,7 @@
   "name": "sbr-email-service",
   "version": "1.0.0",
   "type": "module",
-  "description": "Standalone email service for SynBio Reactor Summit sponsoring flyer requests",
+  "description": "Standalone email service for SynBioReactor Summit sponsoring flyer requests",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

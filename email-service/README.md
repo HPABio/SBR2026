@@ -1,6 +1,6 @@
 # SBR Email Service
 
-Standalone email service for handling sponsoring flyer requests for the SynBio Reactor Summit.
+Standalone email service for handling sponsoring flyer requests for the SynBioReactor Summit.
 
 ## Setup
 

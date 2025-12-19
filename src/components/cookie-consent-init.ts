@@ -67,7 +67,7 @@ export function runCookieConsent() {
 			translations: {
 				en: {
 					consentModal: {
-						title: `<img src="${SBRFavicon.src}" alt="SynBio Reactor Logo" class="w-7 h-7 inline-block mr-1" />Help Us Improve!`,
+						title: `<img src="${SBRFavicon.src}" alt="SynBioReactor Logo" class="w-7 h-7 inline-block mr-1" />Help Us Improve!`,
 						description:
 							'We use cookies to enhance your browsing experience by analyzing site traffic and learning about our audience. You can change your mind and reject non-essential cookies at any time.',
 						acceptAllBtn: 'Accept Default',

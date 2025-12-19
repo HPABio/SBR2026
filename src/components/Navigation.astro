@@ -2,7 +2,7 @@
 import SBRFavicon from "@/assets/SBR2026-Favicon.png";
 
 import BubbleButton from '@/components/ui/BubbleButton.astro';
-// Navigation component for SynBio Reactor Summit
+// Navigation component for SynBioReactor Summit
 const currentPath = Astro.url.pathname;
 
 const isActive = (path: string) => {
@@ -25,7 +25,7 @@ const getLinkClasses = (path: string) => {
       <a href="/" class="flex items-center gap-2">
         <img 
           src={SBRFavicon.src} 
-          alt="SynBio Reactor Logo" 
+          alt="SynBioReactor Logo" 
           class="w-10 h-10"
         />
         <span class="hidden lg:block font-bold text-2xl font-anton uppercase"> #SBR2026</span>

@@ -58,7 +58,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Send admin notification email
     const adminMailOptions = {
-      from: `"SynBio Reactor Summit" <${gmailUser}>`,
+      from: `"SynBioReactor Summit" <${gmailUser}>`,
       to: adminEmail,
       subject: 'New Sponsoring Flyer Request',
       html: adminEmailHtml,
@@ -66,9 +66,9 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Send user confirmation email
     const userMailOptions = {
-      from: `"SynBio Reactor Summit" <${gmailUser}>`,
+      from: `"SynBioReactor Summit" <${gmailUser}>`,
       to: email,
-      subject: 'Your Sponsoring Flyer - SynBio Reactor Summit',
+      subject: 'Your Sponsoring Flyer - SynBioReactor Summit',
       html: userEmailHtml,
     };
 

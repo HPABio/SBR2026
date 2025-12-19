@@ -70,7 +70,7 @@ app.post('/api/request-flyer', async (req, res) => {
 
     // Send admin notification email
     const adminMailOptions = {
-      from: `"SynBio Reactor Summit" <${gmailUser}>`,
+      from: `"SynBioReactor Summit" <${gmailUser}>`,
       to: adminEmail,
       subject: 'New Sponsoring Flyer Request',
       html: adminEmailHtml,
@@ -78,9 +78,9 @@ app.post('/api/request-flyer', async (req, res) => {
 
     // Send user confirmation email
     const userMailOptions = {
-      from: `"SynBio Reactor Summit" <${gmailUser}>`,
+      from: `"SynBioReactor Summit" <${gmailUser}>`,
       to: email,
-      subject: 'Your Sponsoring Flyer - SynBio Reactor Summit',
+      subject: 'Your Sponsoring Flyer - SynBioReactor Summit',
       html: userEmailHtml,
     };
 

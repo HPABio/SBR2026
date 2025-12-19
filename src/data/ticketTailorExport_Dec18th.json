@@ -9,6 +9,21 @@
   },
     {
       "ignore":"",
+      "name":"Mimotype",
+      "domain":"mimotype.org",
+      "description":"",
+      "imageClasses":"brightness-[1] contrast-[2] scale-[1.1] invert"
+  },
+    {
+      "ignore":"",
+      "name":"WePlanet",
+      "domain":"weplanet.org",
+      "description":"",
+      "imageClasses":"contrast-[9] brightness-[65%] scale-[1.3] invert"
+
+  },
+    {
+      "ignore":"",
       "name":"lunarventures",
       "domain":"lunarventures.eu",
       "description":"",
@@ -28,7 +43,7 @@
       "name":"hoffmanneitle",
       "domain":"hoffmanneitle.com",
       "description":"",
-      "imageClasses":"invert contrast-[2]"
+      "imageClasses":"invert contrast-[4] brightness-[70%] scale-[1.6]"
 
   },
     {
@@ -45,14 +60,6 @@
       "domain":"gmail.com",
       "description":"",
       "imageClasses":"invert contrast-[2]"
-
-  },
-    {
-      "ignore":"",
-      "name":"Fraunhofer IPMS",
-      "domain":"ipms.fraunhofer.de",
-      "description":"",
-      "imageClasses":"contrast-[8] brightness-[70%] scale-[0.9] invert"
 
   },
     {
@@ -185,10 +192,26 @@
   },
     {
       "ignore":"",
+      "name":"Ginkgo Bioworks",
+      "domain":"ginkgobioworks.com",
+      "description":"",
+      "imageClasses":"contrast-[10] brightness-[60%] scale-[1] invert"
+
+  },
+    {
+      "ignore":"",
       "name":"vossius",
       "domain":"vossius.eu",
       "description":"",
       "imageClasses":"contrast-[10] brightness-[60%] scale-[1.8] [mask-image:radial-gradient(circle,black_0%,black_35%,transparent_10%)]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Fraunhofer IPMS",
+      "domain":"ipms.fraunhofer.de",
+      "description":"",
+      "imageClasses":"contrast-[8] brightness-[70%] scale-[0.9] invert"
 
   },
     {
@@ -567,7 +590,7 @@
       "domain":"renatrix-bio.com",
       "description":"",
       "imageClasses":"invert contrast-[2]",
-      "logoNA": "https://wixmp-fe53c9ff592a4da924211f23.wixmp.com/users/8dc6b40b-91ff-478e-b1c6-79f5ba34cad1/design-previews/03f76ab8-0699-4015-b2cd-d0a39b455f5e/1765440935549-transparentThumbnail.png"
+      "logoNA": "./src/assets/logos/Renatrix_Logo.png"
 
   },
     {

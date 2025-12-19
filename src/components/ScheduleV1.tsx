@@ -618,7 +618,7 @@ const day2Schedule = {
       tags: ["Awards", "All Levels", "Celebration"],
       type: "keynote",
       description:
-        "Judges announce the winners of the SynBio Reactor Startup Pitching Competition. Awards ceremony followed by winner presentations.",
+        "Judges announce the winners of the SynBioReactor Startup Pitching Competition. Awards ceremony followed by winner presentations.",
     },
     "Silent Green A": {
       title: "Fireside Chat: Lessons from Failed Startups",
@@ -745,7 +745,7 @@ export default function ScheduleComponent() {
               <span className="text-sm font-mono text-primary uppercase tracking-wider">Event Schedule</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-balance leading-tight">
-              <span className="text-primary">SYNBIO REACTOR</span>
+              <span className="text-primary">SynBioReactor</span>
               <br />
               <span className="text-foreground">2026 SCHEDULE</span>
             </h1>
@@ -945,7 +945,7 @@ export default function ScheduleComponent() {
               <div className="w-8 h-8 rounded-full bg-card border-2 border-primary flex items-center justify-center">
                 <div className="w-4 h-4 rounded-full bg-primary" />
               </div>
-              <span className="font-bold">SynBio Reactor Summit 2026</span>
+              <span className="font-bold">SynBioReactor Summit 2026</span>
             </div>
             <div className="text-sm text-muted-foreground">© 2026 GASB - German Association for Synthetic Biology</div>
           </div>
