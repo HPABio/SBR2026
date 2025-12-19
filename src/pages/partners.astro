@@ -3,6 +3,7 @@ import Layout from "@/layouts/main.astro";
 import React from 'react';
 import Navigation from '@/components/Navigation.astro';
 import PartnersAndSupportersSections from '@/components/partners-and-supporters-sections.tsx';
+import PartnersAndSupportersSectionsMobile from '@/components/partners-and-supporters-sections-mobile.tsx';
 ---
 
 
@@ -10,7 +11,14 @@ import PartnersAndSupportersSections from '@/components/partners-and-supporters-
 	<Navigation />
 	
 	<main class="pt-16 w-screen overflow-hidden">
-		<PartnersAndSupportersSections client:load />
+		<div class="hidden md:block">
+			<PartnersAndSupportersSections client:load />
+		</div>
+		
+		<div class="block md:hidden">
+			<PartnersAndSupportersSectionsMobile client:load/>
+		</div>
+
 	</main>
 </Layout>
 

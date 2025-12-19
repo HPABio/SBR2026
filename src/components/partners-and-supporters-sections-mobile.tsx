@@ -1,0 +1,657 @@
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Building2, Users2, Link2, Rocket, Unplug, Linkedin, Twitter, Instagram, Link, Search } from "lucide-react"
+import { ExportPng } from "@/components/export-png"
+
+import partnersLogoList from "@/data/partnersLogoList.json"
+import ticketTailorExport_Dec18th from "@/data/ticketTailorExport_Dec18th.json" with { type: "json" }
+const attendingCompanies = ticketTailorExport_Dec18th.attendees as { ignore: string; name: string; domain: string; description: string; imageClasses: string; logoNA: string }[]
+
+// Logos
+import SPRIND from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg"
+import BIOCENTRA from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/BioCentra-biocentra-eu.jpeg"
+import VOSSIUS from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/VOSSIUS-vossiusandpartner.jpeg"
+import BioCircular from "@/assets/logos/partners-logos/dummyLogos/biocircular-logo.jpg"
+import GASB_Logo from "@/assets/GASB_Logo_white.png"
+import GASB_Logo_Black from "@/assets/GASB_Logo_black-round.png"
+import Biocompile from "@/assets/logos/Sponsors/Biocompile_Logo_white.png"
+import BrightBiotech from "@/assets/logos/Sponsors/BrightBiotech_Logo.png"
+import UniteLabs from "@/assets/logos/Sponsors/UniteLabs_Logo.png"
+import CordenBiochem from "@/assets/logos/Sponsors/CordenBiochem_Logo.png"
+import Nucleate from "@/assets/logos/Nucleate_Logo.png"
+import BiocatalystFoundation from "@/assets/logos/BiocatalystFoundation_Logo_white.png"
+import LSTNBerlin from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/Life_Sciences_Tech_Network_-_Berlin-lifesciencestechnetwork-berlin.jpeg"
+// import FoodLabs from "@/assets/logos/FoodLabs_Logo.png"
+// import BiocatalystFoundation from "@/assets/logos/Biocatalyst_Foundation_Logo.png"
+// import BCG from "@/assets/logos/Boston_Consulting_Group_(BCG)-boston-consulting-group"
+import BCG from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/BCG_Boston_Consulting_Group_white.jpeg"
+// import Mimotype from "@/assets/logos/Mimotype_Logo.png"
+
+const logoNA = "https://img.freepik.com/premium-vector/available-allowed-icon-concept_313674-31214.jpg"
+
+
+//People
+import AdrianFriedrich from "@/assets/ExportWP/advisors/Advisor_AF_.png"
+import IrisLam from "@/assets/ExportWP/advisors/Advisor_IL_.png"
+import KathrinBrenker from "@/assets/ExportWP/advisors/Advisor_KB_.png"
+import MaxLebeau from "@/assets/ExportWP/advisors/Advisor_ML_.png"
+import HendrikCooper from "@/assets/ExportWP/advisors/SBR-Advisor-HC.png"
+import NicolasKrink from "@/assets/ExportWP/advisors/SBR-Advisor-NK.png"
+import PatrickRose from "@/assets/ExportWP/advisors/SBR-Advisor-PR.png"
+
+
+export default function PartnersAndSupportersSections() {
+  const mainSponsors = [
+    {
+      name: "SPRIN-D",
+      domain: "sprind.org",
+      logoNA: SPRIND.src,
+      description: "",
+      link: "https://www.sprind.org/",
+      imageClasses: "brightness-[1.2] contrast-[3] scale-[1.8]",
+    },
+    {
+      name: "BIOCENTRA",
+      domain: "",
+      logoNA: BIOCENTRA.src,
+      description: "",
+      link: "dummy ",
+      imageClasses: "brightness-[95%] contrast-[2] scale-[1.6] saturate-[0] -translate-y-1 invert",
+    },
+    {
+      name: "TWIST",
+      domain: "twistbioscience.com",
+      description: "",
+      link: "https://twistbioscience.com/",
+      imageClasses: "brightness-[1] contrast-[3] scale-[1.25]",
+    },
+    // { name: "VOSSIUS", logo: VOSSIUS, link:"https://www.vossius.eu/en/" },
+  ]
+  const supportingSponsors = [
+    {
+      name: "Corden Biochem",
+      domain: "cordenbiochem.com",
+      logoNA: CordenBiochem.src,
+      description: "",
+      link: "https://www.cordenbiochem.com/",
+      imageClasses: "brightness-[2] contrast-[3] scale-[1]",
+    },
+    {
+      name: "UniteLabs",
+      domain: "unitelabs.io",
+      logoNA: UniteLabs.src,
+      description: "",
+      link: "https://www.unitelabs.io/",
+      imageClasses: "brightness-[70%] contrast-[3] scale-[1.05] invert",
+    },
+    {
+      name: "Bright Biotech",
+      domain: "brightbiotech.co.uk",
+      logoNA: BrightBiotech.src,
+      description: "",
+      link: "https://www.brightbiotech.co.uk/",
+      imageClasses: "brightness-[1.1] contrast-[3] scale-[1.25] invert",
+    },
+    {
+      name: "biocompile",
+      domain: "biocompile.com",
+      logoNA: Biocompile.src,
+      description: "",
+      link: "https://www.biocompile.com/",
+      imageClasses: "brightness-[1.1] contrast-[3] scale-[1]",
+    },
+  ]
+
+  const advisoryBoard = [
+    { name: "Patrick Rose",
+      image: PatrickRose,
+      link:"dummy",
+      company:"SPRIN-D",
+      logo: SPRIND,
+      linkedIn :"",
+      twitterX: "",
+      instagram: "",
+      },
+  { name: "Nicolas Krink",
+      image: NicolasKrink,
+      link:"dummy",
+      company:"Biohalo",
+      logo: BioCircular,
+      linkedIn :"",
+      twitterX: "",
+      instagram: "",
+      },
+  { name: "Max Lebeau",
+      image: MaxLebeau,
+      link:"dummy",
+      company:"Angel Investor",
+      logo: BioCircular,
+      linkedIn :"",
+      twitterX: "",
+      instagram: "",
+      },
+  { name: "Kathrin Brenker",
+      image: KathrinBrenker,
+      link:"dummy",
+      company:"OptoBiolabs",
+      logo: BioCircular,
+      linkedIn :"",
+      twitterX: "",
+      instagram: "",
+      },
+  { name: "Adrian Friedrich",
+      image: AdrianFriedrich,
+      link:"dummy",
+      company:"FoodLabs",
+      logo: BioCircular,
+      linkedIn :"",
+      twitterX: "",
+      instagram: "",
+      },
+      { name: "Hendrik Cooper",
+      image: HendrikCooper,
+      link:"dummy",
+      company:"BioCentra",
+      logo: BioCircular,
+      linkedIn :"",
+      twitterX: "",
+      instagram: "",
+      },
+      { name: "Iris Lam",
+      image: IrisLam,
+      link:"dummy",
+      company:"Stealth Mode Biotech",
+      logo: BioCircular,
+      linkedIn :"https://www.linkedin.com/in/iris-lam-053050175/",
+      twitterX: "https://x.com/IrisLam_",
+      instagram: "https://www.instagram.com/iris.lam/",
+      },
+  ]
+  
+  // { name: "Massimo Porticasso", logo: MassimoPorticasso, link:"dummy", imageClasses:""},
+  // { name: "Andreas Worberg", logo: AndreasWorberg, link:"dummy", imageClasses:""},
+  // { name: "Andreas Heyl", logo: AndreasHeyl, link:"dummy", imageClasses:""},
+  
+  const partners = [
+    { name: "Biolabs",domain:"biolabs.io", description: "Pan-European Network", link:"dummy", imageClasses:"invert scale-[2] contrast-[4]"},
+    { name: "Berlin Partner GmbH",domain:"berlin-partner.de", description: "Innovation Accelerator", link:"dummy", imageClasses:"invert scale-[1.2]"},
+    { name: "LSTN Berlin", logoNA:LSTNBerlin.src, description: "Industry Connection", link:"dummy", imageClasses:"translate-y-0 brightness-[1.8] contrast-[4] scale-[1.3] "},
+    { name: "Nucleate",domain:"nucleate.org", description: "Sustainability Partner", link:"dummy", imageClasses:"scale-[1.5]"},
+    { name: "Amino Collective",domain:"aminocollective.com", description: "Startup Community", link:"dummy", imageClasses:"scale-[1.7]"},
+    { name: "FoodLabs",domain:"foodlabs.com", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.5]"},
+    { name: "Mimotype",domain:"mimotype.org", description: "", link:"dummy", imageClasses:"invert"},
+    { name: "DBFZ",domain:"dbfz.de", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.2] invert contrast-[9] brightness-[63%]"},
+    { name: "Biocatalyst Foundation", logoNA:BiocatalystFoundation.src, description: "Commercialization Support", link:"dummy", imageClasses:"brightness-[1] scale-[1.5]"},
+    { name: "Boston Consulting Group",domain:"bcg.com", description: "", link:"dummy", imageClasses:"contrast-[10] scale-[1.8] "},
+    { name: "Chemstars",domain:"chemstars.de", description: "", link:"dummy", imageClasses:"scale-[1.5] invert contrast-[4] brightness-[70%]"},
+    // { name: "Ginkgo Bioworks",domain:"ginkgobioworks.com", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.5]"},
+
+    // { name: "Vossius", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
+    // { name: "CDD Vault", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
+    // { name: "Provolute", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
+    // { name: "Xynabio", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
+    // { name: "SPRIND", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
+    // { name: "Idealab", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
+    // { name: "Innovationsbank Berlin", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
+    // { name: "Sparkasse", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
+    // { name: "Volksbank", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
+    // { name: "WFBB", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
+    // { name: "Promega", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
+  ]
+  
+  const connectors = [
+    { name: "Dr. Sarah Weber", role: "Biotech Investment Expert", link:"dummy", imageClasses:""},
+    { name: "Prof. Michael Schmidt", role: "Synthetic Biology Pioneer", link:"dummy", imageClasses:""},
+    { name: "Anna Hoffmann", role: "Industry Relations", link:"dummy", imageClasses:""},
+    { name: "Dr. Thomas Klein", role: "Research Translation", link:"dummy", imageClasses:""},
+    { name: "Lisa Müller", role: "Startup Ecosystem Builder", link:"dummy", imageClasses:""},
+    { name: "Dr. Andreas Berg", role: "Innovation Advisor", link:"dummy", imageClasses:""},
+  ]
+
+
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 lg:px-8 bg-card/30">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center space-y-6">
+            <div className="inline-block group">
+              <Badge 
+                variant="outline" 
+                className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} p-1 px-2 border-muted-foreground/40 text-muted-foreground group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider`}>
+                Partner Program
+              </Badge>
+            </div>
+            <div className="space-y-2 flex flex-col items-center justify-center">
+                <h2 className="w-full max-w-[22rem] sm:max-w-xl text-2xl sm:text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left leading-[0.95] break-words text-balance">
+                  Our Network of <br/>
+                  <span className="block text-5xl sm:text-6xl md:text-8xl text-primary leading-none">Supporters</span>
+                </h2>
+                <p className="ml-1 font-quicksand text-muted-foreground max-w-[22rem] sm:max-w-xl font-light text-xs sm:text-sm md:text-md text-left tracking-[0.18em] sm:tracking-widest text-balance">
+                  sponsors, partners, and other contributors
+                </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Main Sponsors */}
+      <section className="py-20 px-4 lg:px-8 bg-card/30">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center space-y-4 mb-16 flex flex-col items-center justify-center">
+            {/* <div className="flex justify-center items-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-sm font-semibold text-primary uppercase tracking-wider">Gold Tier</span> 
+              </div>
+            </div> */}
+            <h2 className="w-full max-w-[22rem] sm:max-w-xl text-2xl sm:text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left leading-[0.95] break-words text-balance relative">
+                <Badge 
+                  variant="outline" 
+                  className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} absolute p-1 px-2 top-4 sm:top-8 left-1/2 -translate-x-1/2 border-muted-foreground/40 text-muted-foreground 
+                group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider text-center text-[0.6rem] sm:text-xs`}>
+                <Rocket className="w-5 h-5 text-primary" />Thanks to</Badge> 
+              <br/>Our main <br/>
+              <span className="block text-5xl sm:text-6xl md:text-8xl text-primary leading-none">Sponsors</span>
+            </h2>
+            <p className="font-quicksand text-muted-foreground max-w-[22rem] sm:max-w-xl font-light text-xs sm:text-sm md:text-md text-left tracking-[0.18em] sm:tracking-widest text-balance">
+              supporting this years summit
+            </p>
+          </div>
+
+          <div className="flex flex-row justify-between items-center mx-auto w-fit max-w-screen sm:max-w-5xl gap-2 sm:gap-10 sm:px-14">
+            {mainSponsors.map((sponsor, index) => (
+              <ExportPng key={index} exportKey="mainSponsors" name={sponsor.name} index={index}>
+              <Card
+                  className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
+                  md:h-36 aspect-video max-w-[250px] group md:p-4 p-1 relative"
+                >
+                  <a href={sponsor.link} className="">
+                    <CardContent className="flex items-center justify-center h-full w-full aspect-video  p-0 rounded-lg overflow-hidden">
+                      <img
+                        src={
+                          sponsor.logoNA ||
+                          (sponsor.domain
+                            ? `https://img.logo.dev/${sponsor.domain}?token=pk_RfMRuwDLQme4qwss9CJbiA&format=webp&retina=true`
+                            : logoNA)
+                        }
+                        alt={sponsor.name}
+                        className={`w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity 
+                        saturate-[0] brightness-[1] contrast-[1] mix-blend-screen ${sponsor.imageClasses || ""}`}
+                      />
+                      {/* Company name badge */}
+                      <Badge
+                        variant="outline"
+                        className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} absolute -bottom-4 md:left-4 left-2 p-1 px-2 bg-black/50 
+                        border-muted-foreground/30 group-hover:border-primary 
+                        text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider 
+                        text-[0.5rem] sm:text-[0.8rem]`}
+                      >
+                        {sponsor.name}
+                      </Badge>
+                    </CardContent>
+                  </a>
+                </Card>
+              </ExportPng>
+            ))}
+          </div>
+          <div className="grid grid-cols-4 md:gap-6 gap-2 w-full max-w-5xl mx-auto mt-24 md:px-14">
+            {supportingSponsors.map((supSponsor, index) => (
+              <ExportPng key={index} exportKey="supportingSponsors" name={supSponsor.name} index={index}>
+              <Card
+                  className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
+                  aspect-video max-w-[250px] group sm:p-4 p-1 relative"
+                >
+                  <a href={supSponsor.link} className="">
+                    <CardContent className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden">
+                      <img
+                        src={
+                          supSponsor.logoNA ||
+                          (supSponsor.domain
+                            ? `https://img.logo.dev/${supSponsor.domain}?token=pk_RfMRuwDLQme4qwss9CJbiA&format=webp&retina=true`
+                            : logoNA)
+                        }
+                        alt={supSponsor.name}
+                        className={`w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity 
+                        saturate-[0] brightness-[1] contrast-[1] mix-blend-screen ${supSponsor.imageClasses || ""}`}
+                      />
+                      {/* Company name badge */}
+                      <Badge
+                        variant="outline"
+                        className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} absolute bg-card -bottom-2 md:-bottom-4 md:left-4 left-1 p-1 px-2 border-[0.5px] 
+                        border-muted-foreground/30 group-hover:border-primary group-hover:border
+                        text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider
+                        text-[0.4rem] sm:text-[0.6rem]`}
+                      >
+                        {supSponsor.name}
+                      </Badge>
+                    </CardContent>
+                  </a>
+                </Card>
+              </ExportPng>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Silver Sponsors */}
+      {/* TODO: hide silver tier */}
+      {/* <section className="py-20 px-4 lg:px-8 hidden">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center space-y-4 mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border">
+              <div className="w-2 h-2 rounded-full bg-muted-foreground" />
+              <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Silver Tier</span>
+            </div>
+            <div className="space-y-2 flex flex-col items-center justify-center">
+                <h2 className="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">Info Flyer for<br/>
+                    <span className="text-8xl text-primary">Silver Tier</span>
+                    <p className="font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
+                      Organizations championing synthetic biology advancement
+                    </p>
+                    </h2>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {silverSponsors.map((sponsor, index) => (
+              <Card
+                key={index}
+                className="bg-card border-border hover:border-primary/50 transition-all hover:shadow-md"
+              >
+                <CardContent className="pt-6 pb-6">
+                  <div className="flex items-center justify-center h-24">
+                    <img
+                      src={sponsor.logo.src || "@/assets/logos/partners-logos/placeholder.svg"}
+                      alt={sponsor.name}
+                      className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* Advisory Board */}
+      <section className="py-20 px-4 lg:px-8 bg-card/30">
+        <div className="container mx-auto max-w-6xl">
+
+          <div className="text-center space-y-6 pb-16 ">
+            <div className="inline-block">
+            <Badge 
+              variant="outline" 
+              className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} p-1 px-2 border-muted-foreground/40 text-muted-foreground group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider`}>
+              <Users2 className="w-5 h-5 text-primary" />Advisory Board
+              </Badge>
+            </div>
+            <div className="space-y-2 flex flex-col items-center justify-center">
+              <h2 className="w-full max-w-[22rem] sm:max-w-xl text-2xl sm:text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left leading-[0.95] break-words text-balance">
+                Meet our <br/>
+                <span className="block text-5xl sm:text-6xl md:text-8xl text-primary leading-none">Advisors</span>
+              </h2>
+              <p className="font-quicksand text-muted-foreground max-w-[22rem] sm:max-w-xl font-light text-xs sm:text-sm md:text-md text-left tracking-[0.18em] sm:tracking-widest text-balance">
+                Supporting us with their expertise and insights
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 gap-x-14 sm:px-14 px-4 max-w-xl md:max-w-4xl lg:max-w-5xl 2xl:max-w-6xl mx-auto">
+            {advisoryBoard.map((advisor, index) => {
+              return (
+                <Card
+                  key={index}
+                  className="bg-card border-border hover:border-primary/50 transition-all hover:shadow-md relative overflow-hidden pb-0"
+                  > 
+                  {/* <a href={advisor.link} target="_blank" rel="noopener noreferrer" >
+                    <Badge 
+                      variant="outline" 
+                      className="hidden relative border-muted-foreground text-muted-foreground font-anton uppercase tracking-wider opacity-75 text-center 
+                    hover:pl-6 hover:text-black hover:bg-primary hover:border-black hover:font-black transition-all duration-300 group-hover:scale-110 group">
+                    <Link className="w-8 h-8 absolute my-auto left-2 text-transparent group-hover:text-black group-hover:scale-150 transition-all duration-300" />
+                    SBR2026</Badge>
+                  </a> */}
+                  <img src={advisor.image.src || ""} alt={advisor.name} 
+                  className="w-full h-full object-contain absolute bottom-0 left-1/4 
+                  bg-conic-10 from-primary via-transparent to-transparent pointer-events-none" />
+                  <CardContent className="h-full group">
+                    <div className="flex items-start h-full">
+                      <div className="flex flex-col justify-between items-start space-y-4 h-full">
+                        <h3 className="lg:w-1/3 2xl:w-full text-xl sm:text-2xl lg:text-3xl font-anton font-bold leading-tight break-words">
+                          {advisor.name}
+                          <p className="text-xs sm:text-sm text-muted-foreground font-quicksand font-light">{advisor.company}</p>
+                        </h3>
+                      <div className="inline-flex items-center mt-2 gap-2 py-1.5 rounded-lg">
+                        {/* social media icons and links */}
+                        <div className="inline-flex items-center gap-3 p-0.5 text-muted-foreground pb-2">
+
+                          {/* Weblink */}
+                          {/* <a href={advisor.linkedIn} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                            <Link className="w-5 h-5" />
+                          </a> */}
+
+                          {/* LinkedIn */}
+                          <a href={advisor.linkedIn} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                            <Linkedin className="w-5 h-5 text-primary/70 hover:fill-primary" />
+                          </a>
+
+                          {/* Twitter */}
+                          <a href={advisor.twitterX} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                            <Twitter className="w-5 h-5 opacity-70 hover:opacity-100 hover:fill-current/30" />
+                          </a>
+
+                          {/* Instagram */}
+                          {/* <a href={advisor.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                            <Instagram className="w-5 h-5" />
+                          </a> */}
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                  </CardContent>
+                </Card>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ecosystem partners */}
+      <section className="py-20 px-4 lg:px-8 bg-card/30">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center space-y-6 pb-16 px-14">
+            <div className="inline-block">
+              <Badge 
+                variant="outline" 
+                className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} p-1 px-2 border-muted-foreground/40 text-muted-foreground group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider`}>
+                <Unplug className="w-5 h-5 text-primary" />Ecosystem Partners
+              </Badge>
+            </div>
+            <div className="space-y-2 flex flex-col items-center justify-center">
+              <h2 className="w-full max-w-[22rem] sm:max-w-xl text-2xl sm:text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left leading-[0.95] break-words text-balance">
+                Thanks to our <br/>
+                <span className="block text-5xl sm:text-6xl md:text-8xl text-primary leading-none">Partners</span>
+              </h2>
+              <p className="font-quicksand text-muted-foreground max-w-[22rem] sm:max-w-xl font-light text-xs sm:text-sm md:text-md text-left tracking-[0.18em] sm:tracking-widest text-balance">
+                Speakers, Exhibitors and Amplifiers
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 sm:grid-cols-4 sm:gap-6 gap-2 gap-y-8 w-full max-w-5xl mx-auto mt-24 sm:px-14 px-4">
+            {partners.map((partner, index) => (
+              <Card
+                key={index}
+                className="bg-card hover:bg-black border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
+                aspect-video max-w-[250px] group sm:p-4 p-1 relative"
+              >
+                <div className="bg-primary w-[90%] h-[90%] absolute top-1 left-2 z-10 opacity-0 mix-blend-multiply group-hover:opacity-100 transition-opacity duration-300" />
+                <a href={partner.link} className="">
+                  <ExportPng key={index} exportKey="partners" name={partner.name} index={index}>
+                  <CardContent id={`${partner.name} Logo`} className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden bac">
+                    <img
+                      src={partner.logoNA || `https://img.logo.dev/${partner.domain}?token=pk_RfMRuwDLQme4qwss9CJbiA&format=webp&retina=true`}
+                      alt={partner.name}
+                      className={`w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity 
+                      saturate-[0] brightness-[1] contrast-[2] mix-blend-screen ${partner.imageClasses}`}
+                    />
+                    {/* Company name badge */}
+                    <Badge 
+                      variant="outline"
+                      className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} flex absolute max-w-[95%] w-fit bg-card sm:-bottom-4 -bottom-2 sm:left-4 left-1 p-1 px-2 border-[0.5px]
+                      border-muted-foreground/30 group-hover:border-primary group-hover:border text-wrap items-center justify-center
+                      text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider
+                      text-[0.3rem] sm:text-[0.6rem]`}
+                    >
+                      <p className="text-wrap">{partner.name}</p>
+                    </Badge>
+                  </CardContent>
+                  </ExportPng>
+                </a>
+              </Card>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+
+
+      {/* who you gonna see at SBR2026 */}
+      <section className="py-20 px-4 lg:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center space-y-6 pb-16 px-14">
+            <div className="inline-block">
+              <Badge 
+                variant="outline" 
+                className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} p-1 px-2 border-muted-foreground/40 text-muted-foreground group-hover:border-primary group-hover:text-primary font-mono uppercase tracking-wider`}>
+                <Search className="w-5 h-5 text-primary scale-x-[-1] mr-2" /> Who is coming?
+              </Badge>
+            </div>
+            <div className="space-y-2 flex flex-col items-center justify-center">
+              <h2 className="w-full max-w-[22rem] sm:max-w-xl text-2xl sm:text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left leading-[0.95] break-words text-balance">
+                Meet People from <br/>
+                <span className="block text-5xl sm:text-6xl md:text-8xl leading-none">
+                  <span className="text-primary">companies</span> like
+                </span>
+              </h2>
+              <p className="ml-1 font-quicksand text-muted-foreground max-w-[22rem] sm:max-w-xl font-light text-xs sm:text-sm md:text-md text-left tracking-[0.18em] sm:tracking-widest text-balance">
+                Check out the companies attending the summit
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 sm:grid-cols-4 sm:gap-6 gap-2 gap-y-8 w-full max-w-5xl mx-auto mt-24 sm:px-14 px-4">
+            {attendingCompanies.map((attendee, index) => ( attendee.ignore !== "yes" && (
+              <ExportPng key={index} exportKey="attendingCompanies" name={attendee.name || attendee.domain.split(".")[0].toUpperCase()} index={index}>
+              <Card
+                key={index}
+                className="bg-card hover:bg-black border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
+                aspect-video max-w-[250px] group sm:p-4 p-1 relative"
+              >
+                <div className="bg-primary w-[90%] h-[90%] absolute top-1 left-2 z-10 opacity-0 mix-blend-multiply group-hover:opacity-100 transition-opacity duration-300" />
+                <a href={`https://${attendee.domain}`} className="">
+                  <CardContent id={`${attendee.domain.split(".")[0].toUpperCase()} Logo`} className="flex items-center justify-center h-full w-full aspect-video p-0 rounded-lg overflow-hidden bac">
+                    <img
+                      src={ attendee.logoNA || `https://img.logo.dev/${attendee.domain}?token=pk_RfMRuwDLQme4qwss9CJbiA&format=webp&retina=true`}
+                      alt={attendee.name || attendee.domain.split(".")[0].toUpperCase()}
+                      className={`w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity 
+                      saturate-[0] brightness-[1] contrast-[2] mix-blend-screen ${attendee.imageClasses}`}
+                    /> 
+                    {/* Company name badge */}
+                    <Badge 
+                      variant="outline"
+                      className={`${import.meta.env.PUBLIC_EXPORT_COMPONENT_PNGS === "true" ? "hidden" : ""} flex absolute max-w-[95%] w-fit bg-card sm:-bottom-4 -bottom-2 sm:left-4 left-1 p-1 px-2 border-[0.5px]
+                      border-muted-foreground/30 group-hover:border-primary group-hover:border text-wrap items-center justify-center
+                      text-muted-foreground group-hover:text-primary font-mono uppercase tracking-wider
+                      text-[0.3rem] sm:text-[0.6rem]`}
+                    >
+                      <p className="text-wrap">{attendee.name || attendee.domain.split(".")[0].toUpperCase()}</p>
+                    </Badge>
+                  </CardContent>
+                </a>
+              </Card>
+            </ExportPng>
+            )))}
+          </div>
+
+          
+        </div>
+      </section>
+
+
+
+
+
+
+      {/* Connectors - show when you got at least three connectors */}
+      <section className="py-20 px-4 lg:px-8 bg-card/30 hidden">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center space-y-4 mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+              <Link2 className="w-5 h-5 text-primary" />
+              <span className="text-sm font-semibold text-primary uppercase tracking-wider">Connectors</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Key <span className="text-primary">Connectors</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Individuals bridging startups, investors, and industry
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {connectors.map((connector, index) => (
+              <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all group">
+                <CardContent className="pt-6 pb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 rounded-full bg-primary/20 flex-shrink-0 group-hover:bg-primary/30 transition-colors" />
+                    <div className="space-y-1">
+                      <h3 className="font-bold text-lg">{connector.name}</h3>
+                      <p className="text-sm text-muted-foreground">{connector.role}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 lg:px-8">
+        <div className="container mx-auto max-w-4xl">
+          <Card className="bg-linear-to-br from-card to-card/50 border-primary/30">
+            <CardContent className="pt-12 pb-12 text-center space-y-6">
+              <h2 className="text-3xl md:text-4xl text-balance uppercase">
+                <span className="text-primary font-bold ">Help Us</span> spread the word!
+              </h2>
+              <p className="text-lg text-muted-foreground font-quicksand font-light text-balance max-w-4xl mx-auto">
+                <span className="font-bold">Share the event online with your networks</span> - either via social media channels or via for your accessable email lists.
+                Send us a message to let us know about your effort and get listed here as one of our connectors.
+                If you are interested in becoming a partner or sponsor, please contact us - we still have some vacancies left for organizations and individuals.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a
+                  href="mailto:sbr@ga-sb.de"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground hover:bg-transparent hover:text-primary hover:border-primary hover:border-2 font-semibold text-lg rounded-lg transition-colors"
+                >
+                  Get Info
+                </a>
+                <a
+                  href="/sponsoring"
+                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-border hover:bg-card hover:text-primary hover:border-primary font-semibold text-lg rounded-lg transition-colors bg-transparent"
+                >
+                  Become a Sponsor
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    </>
+  )
+}
+
