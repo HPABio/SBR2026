@@ -179,11 +179,12 @@ export default function PartnersAndSupportersSections() {
     { name: "Nucleate",domain:"nucleate.org", description: "Sustainability Partner", link:"dummy", imageClasses:"scale-[1.5]"},
     { name: "Amino Collective",domain:"aminocollective.com", description: "Startup Community", link:"dummy", imageClasses:"scale-[1.7]"},
     { name: "FoodLabs",domain:"foodlabs.com", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.5]"},
-    { name: "Ginkgo Bioworks",domain:"ginkgobioworks.com", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.5]"},
+    { name: "Mimotype",domain:"mimotype.org", description: "", link:"dummy", imageClasses:"invert"},
+    { name: "DBFZ",domain:"dbfz.de", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.2] invert contrast-[9] brightness-[63%]"},
     { name: "Biocatalyst Foundation", logoNA:BiocatalystFoundation.src, description: "Commercialization Support", link:"dummy", imageClasses:"brightness-[1] scale-[1.5]"},
     { name: "Boston Consulting Group",domain:"bcg.com", description: "", link:"dummy", imageClasses:"contrast-[10] scale-[1.8] "},
     { name: "Chemstars",domain:"chemstars.de", description: "", link:"dummy", imageClasses:"scale-[1.5] invert contrast-[4] brightness-[70%]"},
-    // { name: "Mimotype",domain:"mimotype.org", description: "", link:"dummy", imageClasses:"invert"},
+    // { name: "Ginkgo Bioworks",domain:"ginkgobioworks.com", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.5]"},
 
     // { name: "Vossius", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
     // { name: "CDD Vault", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
@@ -211,7 +212,7 @@ export default function PartnersAndSupportersSections() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 lg:px-8">
+      <section className="pt-32 pb-20 px-4 lg:px-8 bg-card/30">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-6">
             <div className="inline-block group">
@@ -456,7 +457,7 @@ export default function PartnersAndSupportersSections() {
       </section>
 
       {/* ecosystem partners */}
-      <section className="py-20 px-4 lg:px-8">
+      <section className="py-20 px-4 lg:px-8 bg-card/30">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-6 pb-16 px-14">
             <div className="inline-block">

@@ -432,6 +432,14 @@
   },
     {
       "ignore":"",
+      "name":"DBFZ",
+      "domain":"dbfz.de",
+      "description":"",
+      "imageClasses":"contrast-[9] brightness-[63%] scale-[1] invert"
+
+  },
+    {
+      "ignore":"",
       "name":"Nucleus Capital",
       "domain":"nucleus-capital.com",
       "description":"",
