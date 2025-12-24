@@ -424,6 +424,14 @@
   },
     {
       "ignore":"",
+      "name":"[iito]",
+      "domain":"life-sciences-europe.com",
+      "description":"",
+      "imageClasses":"invert contrast-[4] brightness-[250%] scale-[1.5]"
+
+  },
+    {
+      "ignore":"",
       "name":"ZEDAT - Freie Universität Berlin",
       "domain":"zedat.fu-berlin.de",
       "description":"",

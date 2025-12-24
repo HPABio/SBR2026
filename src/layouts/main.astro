@@ -26,29 +26,17 @@ const ogImageUrl = Astro.site ? new URL(OgImage.src, Astro.site).href : OgImage.
 
 <html lang="en">
 	<head>
-		{!import.meta.env.DEV && (
+		{!import.meta.env.DEV &&
 			<>
-				<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-QFBMRL8F28"></script>
-				<script is:inline>
-				window.dataLayer = window.dataLayer || [];
-				function gtag(){dataLayer.push(arguments);}
-				gtag('js', new Date());
-				gtag('consent', 'default', {
-				'ad_storage': 'denied',
-				'ad_user_data': 'denied',
-				'ad_personalization': 'denied',
-				'analytics_storage': 'denied'
-				});
-				gtag('consent', 'update', {
-				'ad_storage': 'granted',
-				'ad_user_data': 'granted',
-				'ad_personalization': 'granted',
-				'analytics_storage': 'granted'
-				});
-				gtag('config', 'G-QFBMRL8F28');
-				</script>				
+			<!-- Google Tag Manager -->
+			<script is:inline type="text/javascript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-K7TV5ND7');</script>
+			<!-- End Google Tag Manager -->
 			</>
-		)}
+		}
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href={SBRFavicon.src} />
