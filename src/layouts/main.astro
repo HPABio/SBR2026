@@ -72,7 +72,7 @@ const ogImageUrl = Astro.site ? new URL(OgImage.src, Astro.site).href : OgImage.
 		<slot />
 		<Footer />
 		<CookieConsent />
-		{!import.meta.env.DEV &&
+		<!-- {!import.meta.env.DEV &&
 			<>
 			<script is:inline type="text/javascript">
 			_linkedin_partner_id = "8343954";
@@ -92,6 +92,6 @@ const ogImageUrl = Astro.site ? new URL(OgImage.src, Astro.site).href : OgImage.
 			<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=8343954&fmt=gif" />
 			</noscript>
 			</>
-		}
+		} -->
 	</body>
 </html>
