@@ -12,6 +12,7 @@ import SPRIND from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/SPRIND_-_B
 import BIOCENTRA from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/BioCentra-biocentra-eu.jpeg"
 import VOSSIUS from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/VOSSIUS-vossiusandpartner.jpeg"
 import BioCircular from "@/assets/logos/partners-logos/dummyLogos/biocircular-logo.jpg"
+import BIO_DEUTSCHLAND from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/BIO_Deutschland_e._V.-bio-deutschland-e.-v..jpeg"
 import GASB_Logo from "@/assets/GASB_Logo_white.png"
 import GASB_Logo_Black from "@/assets/GASB_Logo_black-round.png"
 import Biocompile from "@/assets/logos/Sponsors/Biocompile_Logo_white.png"
@@ -65,6 +66,14 @@ export default function PartnersAndSupportersSections() {
       link: "https://twistbioscience.com/",
       imageClasses: "brightness-[1] contrast-[3] scale-[1.25]",
     },
+    {
+      name: "VOSSIUS",
+      domain: "",
+      description: "",
+      link: "dummy",
+      logoNA: VOSSIUS.src,
+      imageClasses:"contrast-[10] brightness-[60%] scale-[1.8] [mask-image:radial-gradient(circle,black_0%,black_35%,transparent_10%)]"
+    },
     // { name: "VOSSIUS", logo: VOSSIUS, link:"https://www.vossius.eu/en/" },
   ]
   const supportingSponsors = [
@@ -90,6 +99,13 @@ export default function PartnersAndSupportersSections() {
       logoNA: BrightBiotech.src,
       description: "",
       link: "https://www.brightbiotech.co.uk/",
+      imageClasses: "brightness-[1.1] contrast-[3] scale-[1.25] invert",
+    },
+    {
+      name: "Mimotype",
+      domain: "mimotype.org",
+      description: "",
+      link: "https://www.mimotype.org/",
       imageClasses: "brightness-[1.1] contrast-[3] scale-[1.25] invert",
     },
     {
@@ -184,7 +200,9 @@ export default function PartnersAndSupportersSections() {
     { name: "Biocatalyst Foundation", logoNA:BiocatalystFoundation.src, description: "Commercialization Support", link:"dummy", imageClasses:"brightness-[1] scale-[1.5]"},
     { name: "Boston Consulting Group",domain:"bcg.com", description: "", link:"dummy", imageClasses:"contrast-[10] scale-[1.8] "},
     { name: "Chemstars",domain:"chemstars.de", description: "", link:"dummy", imageClasses:"scale-[1.5] invert contrast-[4] brightness-[70%]"},
-    // { name: "Ginkgo Bioworks",domain:"ginkgobioworks.com", description: "Commercialization Support", link:"dummy", imageClasses:"scale-[1.5]"},
+    { name: "BioDeutschland", logoNA:BIO_DEUTSCHLAND.src, description: "", link:"https://www.biodeutschland.org/", imageClasses:"scale-[1.5] invert contrast-[4] brightness-[70%]"},
+    { name: "World Bio Markets",domain:"worldbiomarkets.com", description: "", link:"https://www.worldbiomarkets.com/", imageClasses:"scale-[1] contrast-[3] brightness-[110%]"},
+    { name: "Ginkgo Bioworks",domain:"ginkgobioworks.com", description: "Commercialization Support", link:"dummy", imageClasses:"contrast-[10] brightness-[60%] scale-[1] invert"},
 
     // { name: "Vossius", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
     // { name: "CDD Vault", logo: BioCircular, description: "", link:"dummy", imageClasses:""},
@@ -259,12 +277,12 @@ export default function PartnersAndSupportersSections() {
                     </h2>
           </div>
 
-          <div className="flex flex-row justify-between items-center mx-auto w-fit max-w-screen sm:max-w-5xl gap-2 sm:gap-10 sm:px-14">
+          <div className="grid grid-cols-2 justify-between items-center mx-auto w-fit max-w-screen sm:max-w-5xl gap-2 sm:gap-10 sm:px-14">
             {mainSponsors.map((sponsor, index) => (
               <ExportPng key={index} exportKey="mainSponsors" name={sponsor.name} index={index}>
               <Card
                   className="bg-card border-[0.8px] border-muted-foreground/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20 
-                  md:h-36 aspect-video max-w-[250px] group md:p-4 p-1 relative"
+                  md:h-40 aspect-video max-w-[350px] group md:p-4 p-1 relative"
                 >
                   <a href={sponsor.link} className="">
                     <CardContent className="flex items-center justify-center h-full w-full aspect-video  p-0 rounded-lg overflow-hidden">
@@ -295,7 +313,7 @@ export default function PartnersAndSupportersSections() {
               </ExportPng>
             ))}
           </div>
-          <div className="grid grid-cols-4 md:gap-6 gap-2 w-full max-w-5xl mx-auto mt-24 md:px-14">
+          <div className="grid grid-cols-2 justify-between items-center mx-auto w-fit max-w-screen sm:max-w-5xl gap-2 sm:gap-10 sm:px-14 mt-24">
             {supportingSponsors.map((supSponsor, index) => (
               <ExportPng key={index} exportKey="supportingSponsors" name={supSponsor.name} index={index}>
               <Card

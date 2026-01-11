@@ -192,14 +192,6 @@
   },
     {
       "ignore":"",
-      "name":"Ginkgo Bioworks",
-      "domain":"ginkgobioworks.com",
-      "description":"",
-      "imageClasses":"contrast-[10] brightness-[60%] scale-[1] invert"
-
-  },
-    {
-      "ignore":"",
       "name":"vossius",
       "domain":"vossius.eu",
       "description":"",
