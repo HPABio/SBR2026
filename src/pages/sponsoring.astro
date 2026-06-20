@@ -3,172 +3,62 @@ import Layout from "@/layouts/main.astro";
 import Navigation from "@/components/Navigation.astro";
 import SponsoringFlyer from "@/components/SponsoringFlyer.astro";
 import SponsoringPackages from "@/components/SponsoringPackages.astro";
-import OtherSponsors from "@/components/ui/other-sponsors.tsx";
 import TeamComponent from "@/components/ui/TeamComponent.astro";
+
+const isDev = import.meta.env.DEV;
 ---
 
 <Layout>
 	<Navigation />
 
 	<main class="pt-16">
-			
-			<SponsoringFlyer />
-			<!-- <OtherSponsors /> -->
-			<div id="sponsoring-packages-container" class="hidden">
-				<SponsoringPackages requireEmail={false} />
-			</div>
-			<script>
-				const EMAIL_STORAGE_KEY = "sbr_sponsor_email";
-				const EMAIL_SYNC_EVENT = "sbr:sponsor-email";
-
-				const packagesContainer = document.querySelector(
-					"#sponsoring-packages-container",
-				);
-
-				const showPackages = () => {
-					if (!packagesContainer) return;
-					packagesContainer.classList.remove("hidden");
-				};
-
-				// If the user already provided email previously, unlock immediately.
-				try {
-					const storedEmail = localStorage.getItem(EMAIL_STORAGE_KEY);
-					if (storedEmail) showPackages();
-				} catch {
-					// Ignore storage access issues (private mode, blocked, etc.)
-				}
-
-				// Unlock immediately after successful flyer request
-				window.addEventListener(EMAIL_SYNC_EVENT, () => showPackages());
-			</script>
-			<section class="hidden py-20 px-4 lg:px-8">
-				<div class="container mx-auto max-w-4xl">
-					<div class="text-center space-y-4 mb-12">
-						<h1 class="text-4xl md:text-5xl font-bold text-balance">
-							<span class="text-primary">Sponsor</span> the Summit
-						</h1>
-						<p class="text-xl text-muted-foreground text-balance">
-							Support the next generation of synthetic biology
-							innovation
-						</p>
-					</div>
-
-					<div class="prose prose-invert max-w-none space-y-6">
-						<p class="text-lg text-muted-foreground">
-							By sponsoring the SynBioReactor Summit 2026, you're
-							investing in the future of synthetic biology. Your
-							support enables us to bring together the brightest
-							minds in the field and create opportunities for
-							groundbreaking innovations.
-						</p>
-
-						<h2 class="text-2xl font-bold mt-8 mb-4">
-							Sponsorship Tiers
-						</h2>
-
-						<div class="space-y-6">
-							<div class="border border-border rounded-lg p-6">
-								<h3 class="text-xl font-bold mb-2 text-primary">
-									Platinum Sponsor
-								</h3>
-								<ul
-									class="list-disc list-inside space-y-2 text-muted-foreground"
-								>
-									<li>
-										Premium booth location at the summit
-									</li>
-									<li>Keynote speaking opportunity</li>
-									<li>
-										Logo placement on all marketing
-										materials
-									</li>
-									<li>VIP access to all events</li>
-									<li>10 complimentary tickets</li>
-								</ul>
-							</div>
-
-							<div class="border border-border rounded-lg p-6">
-								<h3 class="text-xl font-bold mb-2 text-primary">
-									Gold Sponsor
-								</h3>
-								<ul
-									class="list-disc list-inside space-y-2 text-muted-foreground"
-								>
-									<li>Exhibition booth at the summit</li>
-									<li>Workshop hosting opportunity</li>
-									<li>
-										Logo placement on website and program
-									</li>
-									<li>Access to networking events</li>
-									<li>5 complimentary tickets</li>
-								</ul>
-							</div>
-
-							<div class="border border-border rounded-lg p-6">
-								<h3 class="text-xl font-bold mb-2 text-primary">
-									Silver Sponsor
-								</h3>
-								<ul
-									class="list-disc list-inside space-y-2 text-muted-foreground"
-								>
-									<li>Logo placement on website</li>
-									<li>Social media recognition</li>
-									<li>Access to networking events</li>
-									<li>2 complimentary tickets</li>
-								</ul>
-							</div>
-						</div>
-
-						<h2 class="text-2xl font-bold mt-8 mb-4">
-							Why Sponsor?
-						</h2>
-						<ul
-							class="list-disc list-inside space-y-2 text-muted-foreground"
-						>
-							<li>
-								Connect with the most promising synthetic
-								biology startups
-							</li>
-							<li>
-								Build brand awareness in the synthetic biology
-								community
-							</li>
-							<li>
-								Access to exclusive networking opportunities
-							</li>
-							<li>
-								Support innovation and entrepreneurship in
-								synthetic biology
-							</li>
-							<li>
-								Position your organization as a leader in the
-								field
-							</li>
-						</ul>
-
-						<h2 class="text-2xl font-bold mt-8 mb-4">
-							Custom Sponsorship Packages
-						</h2>
-						<p class="text-muted-foreground">
-							We also offer custom sponsorship packages tailored
-							to your organization's specific needs and goals.
-							Contact us to discuss how we can create a
-							sponsorship package that works for you.
-						</p>
-
-						<div class="mt-8">
-							<a
-								href="mailto:sbr@ga-sb.de"
-								class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm transition-all bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary font-semibold px-6 py-3"
-							>
-								Become a Sponsor
-							</a>
-						</div>
-					</div>
+		<SponsoringFlyer />
+		{
+			isDev && (
+				<div class="px-4 md:px-8 mt-4 flex justify-end">
+					<a
+						href="http://localhost:3001/admin/offers-admin.html"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm transition-all bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary font-semibold px-4 py-2"
+					>
+						Open Sponsor Admin
+					</a>
 				</div>
-			</section>
-			<div class=" w-full flex flex-col justify-center mb-32">
-				<TeamComponent />
-			</div>
-		</main>
+			)
+		}
+		<div id="sponsoring-packages-container" class="hidden">
+			<SponsoringPackages hideGate={true} />
+		</div>
+		<script>
+			const OFFER_STORAGE_KEY = "sbr_sponsor_offer";
+			const CODE_SYNC_EVENT = "sbr:sponsor-code";
+
+			const packagesContainer = document.querySelector(
+				"#sponsoring-packages-container",
+			);
+
+			const showPackages = () => {
+				if (!packagesContainer) return;
+				packagesContainer.classList.remove("hidden");
+			};
+
+			try {
+				const storedOffer = localStorage.getItem(OFFER_STORAGE_KEY);
+				if (storedOffer) showPackages();
+			} catch {
+				// Ignore storage access issues
+			}
+
+			window.addEventListener(CODE_SYNC_EVENT, () => showPackages());
+
+			window.addEventListener("sbr:sponsor-signout", () => {
+				if (!packagesContainer) return;
+				packagesContainer.classList.add("hidden");
+			});
+		</script>
+		<div class="w-full flex flex-col justify-center mb-32">
+			<TeamComponent />
+		</div>
+	</main>
 </Layout>

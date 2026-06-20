@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Offers Admin</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            padding: 1.5rem;
+            line-height: 1.5;
+        }
+        .container { max-width: 1280px; margin: 0 auto; }
+        h1, h2, h3 { color: #fff; }
+        h1 { margin-bottom: 0.5rem; }
+        .controls, .panel, .offer-card {
+            background: #1a1a1a;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            border: 1px solid #333;
+        }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .input-group { margin-bottom: 0.75rem; }
+        label { display: block; margin-bottom: 0.35rem; color: #ccc; font-size: 0.85rem; }
+        input, textarea, select {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+        textarea { min-height: 72px; resize: vertical; }
+        input:focus, textarea:focus { outline: none; border-color: #f49b2b; }
+        button {
+            background: #f49b2b;
+            color: #111;
+            border: none;
+            padding: 0.6rem 1.1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 0.4rem;
+            margin-top: 0.4rem;
+        }
+        button:hover { background: #e08a1a; }
+        button.secondary { background: #333; color: #fff; }
+        button.secondary:hover { background: #444; }
+        button.danger { background: #dc3545; color: #fff; }
+        button.danger:hover { background: #c82333; }
+        .message { padding: 0.75rem 1rem; border-radius: 4px; margin-bottom: 1rem; display: none; }
+        .message.error { background: #dc3545; color: #fff; display: block; }
+        .message.success { background: #28a745; color: #fff; display: block; }
+        .hidden { display: none !important; }
+
+        /* Layout builder */
+        .layout-builder {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+            gap: 1rem;
+            margin-top: 0.75rem;
+            align-items: start;
+        }
+        .layout-panel {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 0.75rem;
+            min-height: 320px;
+        }
+        .layout-panel h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #f49b2b;
+            margin-bottom: 0.5rem;
+        }
+        .layout-panel p.hint {
+            font-size: 0.7rem;
+            color: #777;
+            margin-bottom: 0.6rem;
+        }
+
+        /* Compact package cards (admin only) */
+        .package-pool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            justify-content: flex-start;
+            align-content: flex-start;
+        }
+        .pkg-card {
+            width: 118px;
+            min-height: 148px;
+            display: flex;
+            flex-direction: column;
+            padding: 0.45rem 0.4rem;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #0d0d0d;
+            cursor: grab;
+            user-select: none;
+            transition: border-color 0.15s, background 0.15s, transform 0.1s;
+            font-size: 0.62rem;
+            line-height: 1.35;
+        }
+        .pkg-card:hover { border-color: #555; }
+        .pkg-card.selected {
+            border-color: #f49b2b;
+            background: #1a1408;
+            box-shadow: 0 0 0 1px #f49b2b33;
+        }
+        .pkg-card.dragging { opacity: 0.45; transform: scale(0.96); }
+        .pkg-card.in-section { cursor: grab; }
+        .pkg-card-name {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.2rem;
+            line-height: 1.25;
+        }
+        .pkg-card-desc {
+            color: #888;
+            flex: 1;
+            margin-bottom: 0.35rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .pkg-card-price {
+            margin-top: auto;
+        }
+        .pkg-card-price input {
+            padding: 0.25rem 0.3rem;
+            font-size: 0.65rem;
+            text-align: center;
+        }
+        .pkg-card-price .custom-label {
+            display: block;
+            text-align: center;
+            color: #999;
+            font-size: 0.62rem;
+            padding: 0.2rem 0;
+        }
+        .pkg-card-default {
+            color: #666;
+            font-size: 0.58rem;
+            text-align: center;
+            margin-top: 0.15rem;
+        }
+
+        /* Section slots */
+        .section-list { display: flex; flex-direction: column; gap: 0.55rem; }
+        .section-row {
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .section-row.disabled { opacity: 0.45; }
+        .section-row.disabled .section-dropzone { pointer-events: none; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            padding: 0.4rem 0.55rem;
+            background: #141414;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .section-header label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin: 0;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #ddd;
+            cursor: pointer;
+        }
+        .section-header input[type="checkbox"] {
+            width: auto;
+            accent-color: #f49b2b;
+        }
+        .section-count {
+            font-size: 0.62rem;
+            color: #666;
+        }
+        .section-dropzone {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            padding: 0.45rem;
+            min-height: 72px;
+            align-content: flex-start;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .section-dropzone.drag-over {
+            background: #1a1408;
+            outline: 1px dashed #f49b2b;
+            outline-offset: -2px;
+        }
+        .section-dropzone.empty::after {
+            content: 'Drop packages here';
+            color: #555;
+            font-size: 0.65rem;
+            width: 100%;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .section-dropzone.empty.drag-over::after { color: #f49b2b; }
+
+        .offer-card h3 { margin-bottom: 0.25rem; }
+        .offer-meta { color: #999; font-size: 0.85rem; margin-bottom: 0.75rem; }
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.45rem;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            margin-right: 0.4rem;
+        }
+        .badge.active { background: #28a74533; color: #7dffb0; }
+        .badge.inactive { background: #dc354533; color: #ff9aa5; }
+        .offer-actions { margin-top: 0.75rem; }
+
+        @media (max-width: 900px) {
+            .layout-builder { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sponsor Offers Admin</h1>
+        <p style="color:#999; margin-bottom: 1.25rem; font-size: 0.9rem;">
+            Create tailored sponsorship packages. Select options on the left, drag them into sections on the right.
+        </p>
+
+        <div class="controls">
+            <div class="grid-2">
+                <div class="input-group">
+                    <label for="apiUrl">API URL</label>
+                    <input type="text" id="apiUrl" value="http://localhost:3001">
+                </div>
+                <div class="input-group">
+                    <label for="secret">Admin Secret</label>
+                    <input type="password" id="secret" placeholder="Enter admin secret">
+                </div>
+            </div>
+            <button onclick="loadOffers()">Load Offers</button>
+            <button class="secondary" onclick="startCreate()">New Offer</button>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <div id="editor" class="panel hidden">
+            <h2 id="editorTitle" style="margin-bottom: 0.75rem;">Create Offer</h2>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label for="companyName">Company Name</label>
+                    <input type="text" id="companyName" placeholder="Acme Biotech">
+                </div>
+                <div class="input-group">
+                    <label for="accessCode">Access Code</label>
+                    <input type="text" id="accessCode" placeholder="company123">
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="offerTitle">Custom Title (optional)</label>
+                <input type="text" id="offerTitle" placeholder="Your Sponsorship Offer for SynBioReactor 2026">
+            </div>
+            <div class="input-group">
+                <label for="offerMessage">Personal Message (optional)</label>
+                <textarea id="offerMessage" placeholder="We put together this package specifically for your team..."></textarea>
+            </div>
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" id="offerActive" checked style="width:auto; margin-right:0.35rem;">
+                    Active (code can be used)
+                </label>
+            </div>
+
+            <h3 style="font-size:0.95rem; margin: 0.75rem 0 0.5rem;">Package Layout</h3>
+            <div class="layout-builder">
+                <div class="layout-panel">
+                    <h4>Available Packages</h4>
+                    <p class="hint">Click to select · set price · drag into a section →</p>
+                    <div id="packagePool" class="package-pool"></div>
+                </div>
+                <div class="layout-panel">
+                    <h4>Page Sections</h4>
+                    <p class="hint">Toggle sections on/off · drop packages where they belong</p>
+                    <div id="sectionList" class="section-list"></div>
+                </div>
+            </div>
+
+            <div style="margin-top: 0.75rem;">
+                <button onclick="saveOffer()">Save Offer</button>
+                <button class="secondary" onclick="cancelEdit()">Cancel</button>
+            </div>
+        </div>
+
+        <div id="offersList"></div>
+    </div>
+
+    <script>
+        let catalog = [];
+        let offers = [];
+        let editingId = null;
+
+        /** @type {Map<string, { price: number|string, selected: boolean }>} */
+        let itemState = new Map();
+
+        /** @type {{ id: string, enabled: boolean, packageIds: string[] }[]} */
+        let sectionLayout = [];
+
+        const sectionOrder = ['main', 'visibility', 'program', 'digital', 'video', 'scholarship'];
+
+        const categoryLabels = {
+            main: 'Main Package',
+            visibility: 'On-Site Visibility',
+            program: 'Own the Spotlight',
+            digital: 'Digital Visibility',
+            video: 'Be Remembered',
+            scholarship: 'Award a Scholarship',
+        };
+
+        function getApiUrl() {
+            return document.getElementById('apiUrl').value || 'http://localhost:3001';
+        }
+
+        function getSecret() {
+            return document.getElementById('secret').value;
+        }
+
+        function showMessage(text, type = 'error') {
+            const el = document.getElementById('message');
+            el.className = `message ${type}`;
+            el.textContent = text;
+            setTimeout(() => { el.className = 'message'; }, 5000);
+        }
+
+        async function ensureCatalog() {
+            if (catalog.length) return;
+            const response = await fetch(`${getApiUrl()}/api/sponsoring-catalog`);
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || 'Failed to load catalog');
+            catalog = data.catalog;
+        }
+
+        function formatPrice(price) {
+            return price === 'custom' ? 'Custom' : `€${Number(price).toLocaleString()}`;
+        }
+
+        function defaultLayoutFromItems(selectedItems) {
+            const grouped = Object.fromEntries(sectionOrder.map((id) => [id, []]));
+            for (const item of selectedItems) {
+                const pkg = catalog.find((entry) => entry.id === item.packageId);
+                if (pkg) grouped[pkg.category].push(item.packageId);
+            }
+            return sectionOrder.map((id) => ({
+                id,
+                enabled: grouped[id].length > 0,
+                packageIds: grouped[id],
+            }));
+        }
+
+        function initEditorState(selectedItems = [], layout = null) {
+            itemState = new Map();
+            for (const pkg of catalog) {
+                const existing = selectedItems.find((item) => item.packageId === pkg.id);
+                itemState.set(pkg.id, {
+                    selected: !!existing,
+                    price: existing ? existing.price : pkg.defaultPrice,
+                });
+            }
+
+            if (layout?.sections?.length) {
+                sectionLayout = sectionOrder.map((id) => {
+                    const section = layout.sections.find((entry) => entry.id === id);
+                    const selectedIds = new Set(
+                        selectedItems.map((item) => item.packageId),
+                    );
+                    return {
+                        id,
+                        enabled: section?.enabled ?? false,
+                        packageIds: (section?.packageIds || []).filter((pid) => selectedIds.has(pid)),
+                    };
+                });
+            } else {
+                sectionLayout = defaultLayoutFromItems(selectedItems);
+            }
+
+            syncLayoutWithSelection();
+            renderLayoutBuilder();
+        }
+
+        function syncLayoutWithSelection() {
+            const selectedIds = new Set(
+                [...itemState.entries()]
+                    .filter(([, state]) => state.selected)
+                    .map(([id]) => id),
+            );
+
+            for (const section of sectionLayout) {
+                section.packageIds = section.packageIds.filter((id) => selectedIds.has(id));
+            }
+
+            for (const id of selectedIds) {
+                const placed = sectionLayout.some((section) => section.packageIds.includes(id));
+                if (!placed) {
+                    const pkg = catalog.find((entry) => entry.id === id);
+                    const target = sectionLayout.find((section) => section.id === (pkg?.category || 'visibility'));
+                    if (target && !target.packageIds.includes(id)) {
+                        target.packageIds.push(id);
+                        target.enabled = true;
+                    }
+                }
+            }
+        }
+
+        function renderPackageCard(pkg, context) {
+            const state = itemState.get(pkg.id) || { selected: false, price: pkg.defaultPrice };
+            const priceField = pkg.defaultPrice === 'custom'
+                ? '<span class="custom-label">Custom</span>'
+                : `<input type="number" min="0" step="50" placeholder="€" value="${state.price === 'custom' ? '' : state.price}" ${state.selected ? '' : 'disabled'} onclick="event.stopPropagation()" oninput="updatePrice('${pkg.id}', this.value)">`;
+
+            return `
+                <div
+                    class="pkg-card ${state.selected ? 'selected' : ''} ${context === 'section' ? 'in-section' : ''}"
+                    data-id="${pkg.id}"
+                    draggable="${state.selected ? 'true' : 'false'}"
+                    role="button"
+                    tabindex="0"
+                    onclick="onCardClick(event, '${pkg.id}')"
+                    onkeydown="onCardKeydown(event, '${pkg.id}')"
+                    ondragstart="onDragStart(event, '${pkg.id}')"
+                    ondragend="onDragEnd(event)"
+                >
+                    <div class="pkg-card-name">${pkg.name}</div>
+                    <div class="pkg-card-desc">${pkg.description}</div>
+                    <div class="pkg-card-price">${priceField}</div>
+                    <div class="pkg-card-default">Default: ${formatPrice(pkg.defaultPrice)}</div>
+                </div>
+            `;
+        }
+
+        function renderLayoutBuilder() {
+            const pool = document.getElementById('packagePool');
+            const sectionList = document.getElementById('sectionList');
+            if (!pool || !sectionList) return;
+
+            pool.innerHTML = catalog.map((pkg) => renderPackageCard(pkg, 'pool')).join('');
+
+            sectionList.innerHTML = sectionLayout.map((section) => {
+                const cards = section.packageIds
+                    .map((id) => catalog.find((entry) => entry.id === id))
+                    .filter(Boolean)
+                    .map((pkg) => renderPackageCard(pkg, 'section'))
+                    .join('');
+
+                return `
+                    <div class="section-row ${section.enabled ? '' : 'disabled'}" data-section="${section.id}">
+                        <div class="section-header">
+                            <label>
+                                <input type="checkbox" ${section.enabled ? 'checked' : ''} onchange="toggleSection('${section.id}', this.checked)">
+                                ${categoryLabels[section.id] || section.id}
+                            </label>
+                            <span class="section-count">${section.packageIds.length} pkg${section.packageIds.length === 1 ? '' : 's'}</span>
+                        </div>
+                        <div
+                            class="section-dropzone ${section.packageIds.length ? '' : 'empty'}"
+                            data-section="${section.id}"
+                            ondragover="onDragOver(event)"
+                            ondragleave="onDragLeave(event)"
+                            ondrop="onDrop(event, '${section.id}')"
+                        >${cards}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleSelection(id, selected) {
+            const state = itemState.get(id);
+            if (!state) return;
+            state.selected = selected;
+            if (selected && state.price === undefined) {
+                const pkg = catalog.find((entry) => entry.id === id);
+                state.price = pkg?.defaultPrice ?? 0;
+            }
+            if (!selected) {
+                for (const section of sectionLayout) {
+                    section.packageIds = section.packageIds.filter((pid) => pid !== id);
+                }
+            }
+            syncLayoutWithSelection();
+            renderLayoutBuilder();
+        }
+
+        function onCardClick(event, id) {
+            if (event.target.closest('input')) return;
+            const state = itemState.get(id);
+            toggleSelection(id, !state?.selected);
+        }
+
+        function onCardKeydown(event, id) {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            onCardClick(event, id);
+        }
+
+        function updatePrice(id, value) {
+            const state = itemState.get(id);
+            if (!state) return;
+            if (!state.selected) toggleSelection(id, true);
+            state.price = value === '' ? '' : Number(value);
+        }
+
+        function toggleSection(sectionId, enabled) {
+            const section = sectionLayout.find((entry) => entry.id === sectionId);
+            if (section) section.enabled = enabled;
+            renderLayoutBuilder();
+        }
+
+        let draggedId = null;
+
+        function onDragStart(event, id) {
+            const state = itemState.get(id);
+            if (!state?.selected) {
+                event.preventDefault();
+                return;
+            }
+            draggedId = id;
+            event.dataTransfer.effectAllowed = 'move';
+            event.dataTransfer.setData('text/plain', id);
+            event.currentTarget.classList.add('dragging');
+        }
+
+        function onDragEnd(event) {
+            event.currentTarget.classList.remove('dragging');
+            draggedId = null;
+            document.querySelectorAll('.section-dropzone.drag-over').forEach((el) => {
+                el.classList.remove('drag-over');
+            });
+        }
+
+        function onDragOver(event) {
+            event.preventDefault();
+            event.dataTransfer.dropEffect = 'move';
+            event.currentTarget.classList.add('drag-over');
+        }
+
+        function onDragLeave(event) {
+            if (!event.currentTarget.contains(event.relatedTarget)) {
+                event.currentTarget.classList.remove('drag-over');
+            }
+        }
+
+        function onDrop(event, sectionId) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('drag-over');
+            const id = event.dataTransfer.getData('text/plain') || draggedId;
+            if (!id) return;
+
+            for (const section of sectionLayout) {
+                section.packageIds = section.packageIds.filter((pid) => pid !== id);
+            }
+
+            const target = sectionLayout.find((entry) => entry.id === sectionId);
+            if (target) {
+                target.packageIds.push(id);
+                target.enabled = true;
+            }
+
+            renderLayoutBuilder();
+        }
+
+        function getSelectedItems() {
+            const items = [];
+            for (const [packageId, state] of itemState.entries()) {
+                if (!state.selected) continue;
+                const pkg = catalog.find((entry) => entry.id === packageId);
+                if (!pkg) continue;
+
+                if (pkg.defaultPrice === 'custom') {
+                    items.push({ packageId, price: 'custom' });
+                    continue;
+                }
+
+                const price = typeof state.price === 'number' ? state.price : Number(state.price);
+                if (!Number.isFinite(price) || price < 0) {
+                    throw new Error(`Please enter a valid price for ${pkg.name}`);
+                }
+                items.push({ packageId, price });
+            }
+            return items;
+        }
+
+        function getLayoutPayload() {
+            return {
+                sections: sectionLayout.map((section) => ({
+                    id: section.id,
+                    enabled: section.enabled,
+                    packageIds: [...section.packageIds],
+                })),
+            };
+        }
+
+        async function startCreate() {
+            try {
+                await ensureCatalog();
+            } catch (error) {
+                showMessage(error.message);
+                return;
+            }
+            editingId = null;
+            document.getElementById('editorTitle').textContent = 'Create Offer';
+            document.getElementById('companyName').value = '';
+            document.getElementById('accessCode').value = '';
+            document.getElementById('offerTitle').value = '';
+            document.getElementById('offerMessage').value = '';
+            document.getElementById('offerActive').checked = true;
+            initEditorState([]);
+            document.getElementById('editor').classList.remove('hidden');
+        }
+
+        async function startEdit(offer) {
+            try {
+                await ensureCatalog();
+            } catch (error) {
+                showMessage(error.message);
+                return;
+            }
+            editingId = offer.id;
+            document.getElementById('editorTitle').textContent = 'Edit Offer';
+            document.getElementById('companyName').value = offer.companyName;
+            document.getElementById('accessCode').value = offer.code;
+            document.getElementById('offerTitle').value = offer.title || '';
+            document.getElementById('offerMessage').value = offer.message || '';
+            document.getElementById('offerActive').checked = offer.active !== false;
+            initEditorState(offer.items, offer.layout);
+            document.getElementById('editor').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function cancelEdit() {
+            editingId = null;
+            document.getElementById('editor').classList.add('hidden');
+        }
+
+        async function saveOffer() {
+            const secret = getSecret();
+            if (!secret) {
+                showMessage('Please enter admin secret');
+                return;
+            }
+
+            try {
+                const items = getSelectedItems();
+                if (!items.length) {
+                    throw new Error('Select at least one sponsoring option');
+                }
+
+                const payload = {
+                    companyName: document.getElementById('companyName').value.trim(),
+                    code: document.getElementById('accessCode').value.trim(),
+                    title: document.getElementById('offerTitle').value.trim(),
+                    message: document.getElementById('offerMessage').value.trim(),
+                    active: document.getElementById('offerActive').checked,
+                    items,
+                    layout: getLayoutPayload(),
+                };
+
+                const url = editingId
+                    ? `${getApiUrl()}/api/admin/sponsor-offers/${editingId}?secret=${encodeURIComponent(secret)}`
+                    : `${getApiUrl()}/api/admin/sponsor-offers?secret=${encodeURIComponent(secret)}`;
+
+                const response = await fetch(url, {
+                    method: editingId ? 'PUT' : 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-admin-secret': secret,
+                    },
+                    body: JSON.stringify(payload),
+                });
+
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error || 'Failed to save offer');
+
+                showMessage(editingId ? 'Offer updated' : 'Offer created', 'success');
+                cancelEdit();
+                await loadOffers(false);
+            } catch (error) {
+                showMessage(error.message);
+            }
+        }
+
+        async function deleteOffer(id) {
+            const secret = getSecret();
+            if (!secret) {
+                showMessage('Please enter admin secret');
+                return;
+            }
+            if (!confirm('Delete this offer? The access code will stop working.')) return;
+
+            try {
+                const response = await fetch(`${getApiUrl()}/api/admin/sponsor-offers/${id}?secret=${encodeURIComponent(secret)}`, {
+                    method: 'DELETE',
+                    headers: { 'x-admin-secret': secret },
+                });
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error || 'Failed to delete offer');
+                showMessage('Offer deleted', 'success');
+                await loadOffers(false);
+            } catch (error) {
+                showMessage(error.message);
+            }
+        }
+
+        function renderOffersList() {
+            const container = document.getElementById('offersList');
+            if (!offers.length) {
+                container.innerHTML = '<div class="panel">No offers yet. Create one to get started.</div>';
+                return;
+            }
+
+            container.innerHTML = offers.map((offer) => `
+                <div class="offer-card">
+                    <h3>${offer.companyName}</h3>
+                    <div class="offer-meta">
+                        <span class="badge ${offer.active !== false ? 'active' : 'inactive'}">${offer.active !== false ? 'Active' : 'Inactive'}</span>
+                        Code: <strong>${offer.code}</strong> · ${offer.items.length} option(s)
+                    </div>
+                    ${offer.title ? `<p style="font-size:0.9rem;">${offer.title}</p>` : ''}
+                    <ul style="margin-top:0.6rem; padding-left: 1.1rem; color:#bbb; font-size:0.85rem;">
+                        ${offer.items.map((item) => {
+                            const pkg = catalog.find((entry) => entry.id === item.packageId);
+                            return `<li>${pkg?.name || item.packageId}: ${formatPrice(item.price)}</li>`;
+                        }).join('')}
+                    </ul>
+                    <div class="offer-actions">
+                        <button class="secondary" onclick='startEdit(${JSON.stringify(offer).replace(/'/g, "&#39;")})'>Edit</button>
+                        <button class="danger" onclick="deleteOffer('${offer.id}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function loadOffers(showSuccess = true) {
+            const secret = getSecret();
+            if (!secret) {
+                showMessage('Please enter admin secret');
+                return;
+            }
+
+            try {
+                await ensureCatalog();
+                const response = await fetch(`${getApiUrl()}/api/admin/sponsor-offers?secret=${encodeURIComponent(secret)}`, {
+                    headers: { 'x-admin-secret': secret },
+                });
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error || 'Failed to load offers');
+                offers = data.offers;
+                renderOffersList();
+                if (showSuccess) showMessage('Offers loaded', 'success');
+            } catch (error) {
+                showMessage(error.message);
+            }
+        }
+
+        window.toggleSection = toggleSection;
+        window.onCardClick = onCardClick;
+        window.onCardKeydown = onCardKeydown;
+        window.updatePrice = updatePrice;
+        window.onDragStart = onDragStart;
+        window.onDragEnd = onDragEnd;
+        window.onDragOver = onDragOver;
+        window.onDragLeave = onDragLeave;
+        window.onDrop = onDrop;
+        window.startCreate = startCreate;
+        window.startEdit = startEdit;
+        window.cancelEdit = cancelEdit;
+        window.saveOffer = saveOffer;
+        window.deleteOffer = deleteOffer;
+        window.loadOffers = loadOffers;
+    </script>
+</body>
+</html>

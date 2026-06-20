@@ -11,274 +11,121 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Check, Users, Eye, Award, Video, Megaphone, MapPin, Ticket, Gift, Mic, Star, Mail, Linkedin, Lock } from "lucide-react";
+import {
+  Check,
+  Eye,
+  Video,
+  Megaphone,
+  MapPin,
+  Ticket,
+  Gift,
+  Mic,
+  Star,
+  Mail,
+  Linkedin,
+  Lock,
+  KeyRound,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
-import SBROrangeWaveBG from '@/assets/ExportWP/bgImages/SBR_OrangeWave_BG.png';
+import SBROrangeWaveBG from "@/assets/ExportWP/bgImages/SBR_OrangeWave_BG.png";
+import {
+  sponsoringCatalog,
+  categoryLabels,
+  categorySubtitles,
+  getCatalogPackage,
+  resolveOfferLayout,
+  type CatalogPackage,
+  type OfferSectionLayout,
+  type SponsorOffer,
+  type SponsorOfferItem,
+} from "@/data/sponsoring-catalog";
 
-// Types
 export interface PackageFeature {
   label: string;
 }
 
-export interface SponsorPackage {
-  id: string;
-  name: string;
-  description: string;
+export interface SponsorPackage extends Omit<CatalogPackage, "defaultPrice"> {
   price: number | string;
-  priceNote?: string;
-  discount?: string;
-  availability?: string;
-  features: PackageFeature[];
-  highlighted?: boolean;
   icon?: React.ReactNode;
-  category: "main" | "visibility" | "program" | "digital" | "video" | "scholarship";
 }
 
-// Package Data
-export const sponsorshipPackages: SponsorPackage[] = [
-  // Main Package
-  {
-    id: "basic",
-    name: "Basic Sponsorship",
-    description: "Get started with essential visibility and networking",
-    price: 1000,
-    priceNote: "excl. taxes",
-    discount: "GASB members receive 20% off",
-    category: "main",
-    highlighted: true,
-    icon: <Star className="w-6 h-6" />,
-    features: [
-      { label: "Featured in marketing materials and newsletter" },
-      { label: "Share your promotional material (incl. company roll-up)" },
-      { label: "1 free SynBioReactor ticket" },
-      { label: "Access to exclusive lunch & speakers lounge" },
-      { label: "May bring up to 2 guests to lounge" },
-    ],
-  },
-];
-
-export const visibilityPackages: SponsorPackage[] = [
-  {
-    id: "booth-regular-small",
-    name: "Sponsor Booth (2×2m)",
-    description: "Regular booth space at the event",
-    price: 1500,
-    availability: "12 available",
-    category: "visibility",
-    icon: <MapPin className="w-5 h-5" />,
-    features: [
-      { label: "2 × 2 meter booth space" },
-      { label: "Prime location at the event" },
-    ],
-  },
-  {
-    id: "booth-regular-large",
-    name: "Sponsor Booth (4×2m)",
-    description: "Large booth space for maximum impact",
-    price: 2500,
-    availability: "6 available",
-    category: "visibility",
-    icon: <MapPin className="w-5 h-5" />,
-    features: [
-      { label: "4 × 2 meter booth space" },
-      { label: "Premium location at the event" },
-    ],
-  },
-  {
-    id: "booth-startup",
-    name: "Startup Booth",
-    description: "Perfect for early-stage companies",
-    price: 500,
-    availability: "12 available",
-    category: "visibility",
-    icon: <MapPin className="w-5 h-5" />,
-    features: [
-      { label: "Space for branded roll-up" },
-      { label: "Table provided" },
-    ],
-  },
-  {
-    id: "event-banner",
-    name: "Event Banner",
-    description: "Large banner display at the venue",
-    price: 800,
-    availability: "4 available",
-    category: "visibility",
-    icon: <Eye className="w-5 h-5" />,
-    features: [
-      { label: "Large banner display" },
-      { label: "High visibility placement" },
-    ],
-  },
-  // {
-  //   id: "branded-carpet",
-  //   name: "Branded Carpet",
-  //   description: "Custom carpet with your logo",
-  //   price: 800,
-  //   availability: "4 available",
-  //   category: "visibility",
-  //   icon: <Eye className="w-5 h-5" />,
-  //   features: [
-  //     { label: "Custom carpet with logo" },
-  //     { label: "Placed in high-traffic location" },
-  //   ],
-  // },
-  {
-    id: "branded-lanyard",
-    name: "Branded Lanyard + Badge",
-    description: "Your brand on every attendee",
-    price: 1200,
-    availability: "1 available",
-    highlighted: true,
-    category: "visibility",
-    icon: <Ticket className="w-5 h-5" />,
-    features: [
-      { label: "Brand the lanyards worn by every attendee" },
-      { label: "Brand the badges worn by every attendee" },
-    ],
-  },
-];
-
-export const programPackages: SponsorPackage[] = [
-  {
-    id: "branded-session",
-    name: "Host a Branded Session",
-    description: "Lead a workshop or fireside chat",
-    price: 1500,
-    discount: "Startups get 50% off",
-    availability: "6 available",
-    category: "program",
-    icon: <Mic className="w-5 h-5" />,
-    features: [
-      { label: "Workshop or fireside chat format" },
-      { label: "Up to 80 participants" },
-      { label: "Full content control" },
-    ],
-  },
-  {
-    id: "branded-session-addon",
-    name: "Pre-Lunch Session Slot",
-    description: "Extended visibility add-on",
-    price: 2000,
-    availability: "1 available",
-    highlighted: true,
-    category: "program",
-    icon: <Mic className="w-5 h-5" />,
-    features: [
-      { label: "Schedule session before exclusive lunch" },
-      { label: "Maximum visibility and engagement" },
-      { label: "Premium time slot" },
-    ],
-  },
-  {
-    id: "main-stage-talk",
-    name: "Main Stage Expert Talk",
-    description: "Address the entire audience",
-    price: 2500,
-    discount: "Startups get 50% off",
-    availability: "3 available",
-    category: "program",
-    icon: <Megaphone className="w-5 h-5" />,
-    features: [
-      { label: "Content-driven presentation" },
-      { label: "Speak to entire audience" },
-      { label: "Main stage presence" },
-    ],
-  },
-];
-
-export const digitalPackages: SponsorPackage[] = [
-  {
-    id: "newsletter-promo",
-    name: "Newsletter Promo Space",
-    description: "Featured in our newsletter",
-    price: 800,
-    availability: "5 available",
-    category: "digital",
-    icon: <Mail className="w-5 h-5" />,
-    features: [
-      { label: "Dedicated space in SynBioReactor newsletter" },
-      { label: "Reach our engaged subscriber base" },
-    ],
-  },
-  {
-    id: "linkedin-marketing",
-    name: "Personalized LinkedIn Marketing",
-    description: "Targeted social media exposure",
-    price: 800,
-    category: "digital",
-    icon: <Linkedin className="w-5 h-5" />,
-    features: [
-      { label: "Tailored posts for your brand" },
-      { label: "Shared with ~3000 SynBio enthusiasts" },
-    ],
-  },
-];
-
-export const videoPackages: SponsorPackage[] = [
-  {
-    id: "aftermovie",
-    name: "Aftermovie Feature",
-    description: "Be part of our official aftermovie",
-    price: 1500,
-    availability: "1 available",
-    highlighted: true,
-    category: "video",
-    icon: <Video className="w-5 h-5" />,
-    features: [
-      { label: "Brand feature in official aftermovie" },
-      { label: "Long-lasting visibility" },
-      { label: "Shared across all channels" },
-    ],
-  },
-  {
-    id: "personal-reel",
-    name: "Personal SynBioReactor Reel",
-    description: "Custom short video for your company",
-    price: 1000,
-    availability: "3 available",
-    category: "video",
-    icon: <Video className="w-5 h-5" />,
-    features: [
-      { label: "Custom short video highlighting your company" },
-      { label: "Shared on our social media" },
-      { label: "Professional production" },
-    ],
-  },
-];
-
-export const scholarshipPackage: SponsorPackage = {
-  id: "scholarship",
-  name: "Award a Scholarship",
-  description: "Support the next generation of scientists",
-  price: "Custom",
-  category: "scholarship",
-  icon: <Gift className="w-5 h-5" />,
-  features: [
-    { label: "Support young entrepreneurs, students, or PhD students" },
-    { label: "Receive CVs, applications, and contact details" },
-    { label: "Ability to choose scholarship recipients" },
-    { label: "Recipients get free ticket + €150 travel credit" },
-  ],
+const packageIcons: Record<string, React.ReactNode> = {
+  basic: <Star className="w-6 h-6" />,
+  "booth-regular-small": <MapPin className="w-5 h-5" />,
+  "booth-regular-large": <MapPin className="w-5 h-5" />,
+  "booth-startup": <MapPin className="w-5 h-5" />,
+  "event-banner": <Eye className="w-5 h-5" />,
+  "branded-lanyard": <Ticket className="w-5 h-5" />,
+  "branded-session": <Mic className="w-5 h-5" />,
+  "branded-session-addon": <Mic className="w-5 h-5" />,
+  "main-stage-talk": <Megaphone className="w-5 h-5" />,
+  "newsletter-promo": <Mail className="w-5 h-5" />,
+  "linkedin-marketing": <Linkedin className="w-5 h-5" />,
+  aftermovie: <Video className="w-5 h-5" />,
+  "personal-reel": <Video className="w-5 h-5" />,
+  scholarship: <Gift className="w-5 h-5" />,
 };
 
-// Components
+function catalogToPackage(
+  catalogItem: CatalogPackage,
+  priceOverride?: number | "custom",
+): SponsorPackage {
+  const { defaultPrice, ...rest } = catalogItem;
+  return {
+    ...rest,
+    price: priceOverride ?? defaultPrice,
+    icon: packageIcons[catalogItem.id],
+  };
+}
+
+function buildPackagesFromOffer(offer: SponsorOffer): SponsorPackage[] {
+  return offer.items
+    .map((item) => {
+      const catalogItem = getCatalogPackage(item.packageId);
+      if (!catalogItem) return null;
+      return catalogToPackage(catalogItem, item.price);
+    })
+    .filter((pkg): pkg is SponsorPackage => pkg !== null);
+}
+
+function packagesFromSection(
+  section: OfferSectionLayout,
+  packagesById: Map<string, SponsorPackage>,
+): SponsorPackage[] {
+  return section.packageIds
+    .map((id) => packagesById.get(id))
+    .filter((pkg): pkg is SponsorPackage => pkg !== undefined);
+}
+
+function centeredGridClass(count: number, columns: 2 | 3 | 4) {
+  if (count === 1) return "max-w-sm";
+  if (count === 2) return "max-w-sm sm:max-w-[calc(50%-0.75rem)]";
+  if (columns === 2) return "max-w-sm sm:max-w-[calc(50%-0.75rem)]";
+  if (columns === 4) return "max-w-sm sm:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(25%-0.75rem)]";
+  return "max-w-sm sm:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33.333%-0.75rem)]";
+}
+
 interface PackageCardProps {
   pkg: SponsorPackage;
   compact?: boolean;
+  companyName?: string;
 }
 
-function PackageCard({ pkg, compact = false }: PackageCardProps) {
+function PackageCard({ pkg, compact = false, companyName }: PackageCardProps) {
+  const subject = companyName
+    ? `Sponsorship Inquiry (${companyName}): ${pkg.name}`
+    : `Sponsorship Inquiry: ${pkg.name}`;
+
   return (
     <Card
       className={cn(
         "relative border border-muted rounded-xl transition-all hover:shadow-lg hover:border-primary/30 h-full flex flex-col",
-        pkg.highlighted && "border-primary ring-1 ring-primary/30"
+        pkg.highlighted && "border-primary ring-1 ring-primary/30",
       )}
     >
       {pkg.highlighted && (
         <div className="absolute -top-3 left-0 right-0 mx-auto w-fit bg-primary text-primary-foreground text-xs px-3 py-1 rounded-full font-medium">
-          Popular
+          Included
         </div>
       )}
 
@@ -325,7 +172,7 @@ function PackageCard({ pkg, compact = false }: PackageCardProps) {
           className="w-full mt-6"
           asChild
         >
-          <a href="mailto:sbr@ga-sb.de?subject=Sponsorship Inquiry: {pkg.name}">
+          <a href={`mailto:sbr@ga-sb.de?subject=${encodeURIComponent(subject)}`}>
             Inquire Now
           </a>
         </Button>
@@ -340,130 +187,152 @@ interface PackageSectionProps {
   packages: SponsorPackage[];
   columns?: 2 | 3 | 4;
   compact?: boolean;
+  companyName?: string;
 }
 
-function PackageSection({ title, subtitle, packages, columns = 3, compact = false }: PackageSectionProps) {
-  const gridCols = {
-    2: "sm:grid-cols-2",
-    3: "sm:grid-cols-2 lg:grid-cols-3",
-    4: "sm:grid-cols-2 lg:grid-cols-4",
-  };
+function PackageSection({
+  title,
+  subtitle,
+  packages,
+  columns = 3,
+  compact = false,
+  companyName,
+  showHeader = true,
+}: PackageSectionProps & { showHeader?: boolean }) {
+  if (packages.length === 0) return null;
+
+  const count = packages.length;
 
   return (
-    <div className="mb-16">
-      <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold mb-2">{title}</h3>
-        {subtitle && <p className="text-muted-foreground">{subtitle}</p>}
-      </div>
-      <div className={cn("grid grid-cols-1 gap-6", gridCols[columns])}>
+    <div className="mb-14">
+      {showHeader && (
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-bold mb-2">{title}</h3>
+          {subtitle && <p className="text-muted-foreground">{subtitle}</p>}
+        </div>
+      )}
+      <div className="flex flex-wrap justify-center gap-6">
         {packages.map((pkg) => (
-          <PackageCard key={pkg.id} pkg={pkg} compact={compact} />
+          <div key={pkg.id} className={cn("w-full", centeredGridClass(count, columns))}>
+            <PackageCard
+              pkg={pkg}
+              compact={compact}
+              companyName={companyName}
+            />
+          </div>
         ))}
       </div>
     </div>
   );
 }
 
-export interface SponsoringPackagesProps {
+function TailoredPackagesView({
+  offer,
+  className,
+  onSignOut,
+}: {
+  offer: SponsorOffer;
   className?: string;
-  /** If true (default), packages are gated behind an email capture form. */
-  requireEmail?: boolean;
-}
+  onSignOut?: () => void;
+}) {
+  const packages = buildPackagesFromOffer(offer);
+  const packagesById = new Map(packages.map((pkg) => [pkg.id, pkg]));
+  const layout = resolveOfferLayout(offer);
 
-const EMAIL_STORAGE_KEY = "sbr_sponsor_email";
-const EMAIL_SYNC_EVENT = "sbr:sponsor-email";
+  const activeSections = layout.sections.filter(
+    (section) => section.enabled && section.packageIds.length > 0,
+  );
 
-export function SponsoringPackages({ className, requireEmail = true }: SponsoringPackagesProps) {
-  const [email, setEmail] = React.useState("");
-  const [hasEmail, setHasEmail] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [emailError, setEmailError] = React.useState("");
+  const total =
+    offer.items.reduce((sum, item) => {
+      if (typeof item.price === "number") return sum + item.price;
+      return sum;
+    }, 0) ?? 0;
 
-  // API endpoint - can be configured via environment variable
-  const API_URL = import.meta.env.PUBLIC_SPONSOR_EMAIL_API_URL || "http://localhost:3001";
+  const showSectionHeader = (sectionPackages: SponsorPackage[]) =>
+    activeSections.length > 1 || sectionPackages.length > 1;
 
-  const PackagesContent = (
+  return (
     <section
       className={cn(
-        "w-full bg-background text-foreground py-20 px-4 md:px-8",
-        className
+        "w-full bg-background text-foreground py-12 md:py-16 px-4 md:px-8",
+        className,
       )}
     >
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <Badge className="mb-4">SynBioReactor 2026</Badge>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Sponsorship <span className="text-primary">Packages</span>
+      <div className="max-w-6xl mx-auto">
+        <div className="relative text-center mb-12 md:mb-14">
+          {onSignOut && (
+            <div className="flex justify-end mb-4 md:absolute md:right-0 md:top-0 md:mb-0">
+              <Button variant="ghost" size="sm" onClick={onSignOut}>
+                Use a different code
+              </Button>
+            </div>
+          )}
+          <Badge className="mb-4">Prepared for {offer.companyName}</Badge>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+            {offer.title || (
+              <>
+                Your <span className="text-primary">Sponsorship Offer</span>
+              </>
+            )}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Partner with us to connect with the synthetic biology community and support the next generation of innovators.
-          </p>
+          {offer.message ? (
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              {offer.message}
+            </p>
+          ) : (
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              This package was tailored specifically for {offer.companyName}.
+            </p>
+          )}
+          {total > 0 && (
+            <p className="mt-5 text-base md:text-lg">
+              Total package value:{" "}
+              <span className="font-bold text-primary">€{total.toLocaleString()}</span>
+              <span className="text-sm text-muted-foreground"> (excl. taxes)</span>
+            </p>
+          )}
         </div>
 
-        {/* Basic Package - Featured */}
-        <div className="mb-20">
-          <div className="max-w-xl mx-auto">
-            <PackageCard pkg={sponsorshipPackages[0]} />
-          </div>
+        <div className="space-y-14 md:space-y-16">
+          {activeSections.map((section) => {
+            const sectionPackages = packagesFromSection(section, packagesById);
+            if (sectionPackages.length === 0) return null;
+
+            const columns =
+              section.id === "digital" || section.id === "video"
+                ? 2
+                : section.id === "main" || section.id === "scholarship"
+                  ? 1
+                  : 3;
+
+            const compact = section.id !== "main";
+            const showHeader = showSectionHeader(sectionPackages);
+
+            return (
+              <PackageSection
+                key={section.id}
+                title={categoryLabels[section.id]}
+                subtitle={categorySubtitles[section.id]}
+                packages={sectionPackages}
+                columns={columns as 2 | 3}
+                compact={compact}
+                companyName={offer.companyName}
+                showHeader={showHeader}
+              />
+            );
+          })}
         </div>
 
-        {/* On-Site Visibility */}
-        <PackageSection
-          title="On-Site Visibility"
-          subtitle="Make your brand stand out at the event"
-          packages={visibilityPackages}
-          columns={3}
-          compact
-        />
-
-        {/* Program Participation */}
-        <PackageSection
-          title="Own the Spotlight"
-          subtitle="Lead sessions and engage directly with attendees"
-          packages={programPackages}
-          columns={3}
-          compact
-        />
-
-        {/* Digital Visibility */}
-        <PackageSection
-          title="Digital Visibility"
-          subtitle="Reach our community online"
-          packages={digitalPackages}
-          columns={2}
-          compact
-        />
-
-        {/* Video Exposure */}
-        <PackageSection
-          title="Be Remembered"
-          subtitle="Video exposure that lasts beyond the event"
-          packages={videoPackages}
-          columns={2}
-          compact
-        />
-
-        {/* Scholarship */}
-        <div className="mb-16">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-2">Award a Scholarship</h3>
-            <p className="text-muted-foreground">Invest in the future of synthetic biology</p>
-          </div>
-          <div className="max-w-md mx-auto">
-            <PackageCard pkg={scholarshipPackage} />
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="text-center bg-muted/50 rounded-2xl p-8 md:p-12">
-          <h3 className="text-2xl font-bold mb-4">Custom Sponsorship Packages</h3>
+        <div className="text-center bg-muted/50 rounded-2xl p-8 md:p-12 mt-14">
+          <h3 className="text-2xl font-bold mb-4">Ready to move forward?</h3>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Looking for something specific? We offer custom sponsorship packages tailored to your organization's needs and goals.
+            Contact us to confirm your sponsorship package or discuss any adjustments.
           </p>
           <Button size="lg" asChild>
-            <a href="mailto:sbr@ga-sb.de?subject=Custom Sponsorship Inquiry">
+            <a
+              href={`mailto:sbr@ga-sb.de?subject=${encodeURIComponent(`Sponsorship Offer – ${offer.companyName}`)}`}
+            >
               Contact Us
             </a>
           </Button>
@@ -474,65 +343,101 @@ export function SponsoringPackages({ className, requireEmail = true }: Sponsorin
       </div>
     </section>
   );
+}
 
-  // If gating is disabled, always show packages (no email form).
-  if (!requireEmail) return PackagesContent;
+export interface SponsoringPackagesProps {
+  className?: string;
+  /** When true, code entry is handled elsewhere (e.g. page hero). Only renders the offer when unlocked. */
+  hideGate?: boolean;
+}
 
-  const validateEmail = (emailToValidate: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(emailToValidate);
-  };
+const CODE_STORAGE_KEY = "sbr_sponsor_access_code";
+const OFFER_STORAGE_KEY = "sbr_sponsor_offer";
+const CODE_SYNC_EVENT = "sbr:sponsor-code";
 
-  const storeEmailAndUnlock = React.useCallback(
-    async (rawEmail: string) => {
-      const trimmed = rawEmail.trim();
+function resolveSponsorApiUrl(): string {
+  if (import.meta.env.PUBLIC_SPONSOR_API_URL) {
+    return import.meta.env.PUBLIC_SPONSOR_API_URL;
+  }
+  if (import.meta.env.PUBLIC_SPONSOR_EMAIL_API_URL) {
+    return import.meta.env.PUBLIC_SPONSOR_EMAIL_API_URL;
+  }
+  if (import.meta.env.DEV && typeof window !== "undefined") {
+    return `${window.location.protocol}//${window.location.hostname}:3001`;
+  }
+  return "http://localhost:3001";
+}
+
+export function SponsoringPackages({ className, hideGate = false }: SponsoringPackagesProps) {
+  const [code, setCode] = React.useState("");
+  const [offer, setOffer] = React.useState<SponsorOffer | null>(null);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [codeError, setCodeError] = React.useState("");
+
+  const persistOffer = React.useCallback((accessCode: string, nextOffer: SponsorOffer) => {
+    try {
+      localStorage.setItem(CODE_STORAGE_KEY, accessCode);
+      localStorage.setItem(OFFER_STORAGE_KEY, JSON.stringify(nextOffer));
+    } catch {
+      // Ignore storage access issues
+    }
+    setOffer(nextOffer);
+    setCode(accessCode);
+  }, []);
+
+  const verifyCode = React.useCallback(
+    async (rawCode: string) => {
+      const trimmed = rawCode.trim();
       if (!trimmed) {
-        setEmailError("Please enter your email address");
-        return;
-      }
-
-      if (!validateEmail(trimmed)) {
-        setEmailError("Please enter a valid email address");
+        setCodeError("Please enter your access code");
         return;
       }
 
       setIsSubmitting(true);
-      setEmailError("");
-      setEmail(trimmed);
+      setCodeError("");
 
       try {
-        // Send email to API (best effort)
-        const response = await fetch(`${API_URL}/api/store-sponsor-email`, {
+        const apiUrl = resolveSponsorApiUrl();
+        const response = await fetch(`${apiUrl}/api/verify-sponsor-code`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: trimmed }),
+          body: JSON.stringify({ code: trimmed }),
         });
 
         const data = await response.json();
-        if (!response.ok) throw new Error(data.error || "Failed to store email");
-      } catch (error) {
-        console.error("Error storing email:", error);
-        // Graceful degradation: still unlock via localStorage
-      } finally {
-        try {
-          localStorage.setItem(EMAIL_STORAGE_KEY, trimmed);
-        } catch {
-          // Ignore storage access issues
+        if (!response.ok) {
+          throw new Error(data.error || "Invalid access code");
         }
-        setHasEmail(true);
+
+        persistOffer(trimmed, data.offer as SponsorOffer);
+        window.dispatchEvent(
+          new CustomEvent(CODE_SYNC_EVENT, {
+            detail: { code: trimmed, offer: data.offer },
+          }),
+        );
+      } catch (error) {
+        setCodeError(
+          error instanceof TypeError
+            ? "Could not reach the sponsor API. Check that the API server is running on port 3001."
+            : error instanceof Error
+              ? error.message
+              : "Could not verify access code",
+        );
+      } finally {
         setIsSubmitting(false);
       }
     },
-    [API_URL],
+    [persistOffer],
   );
 
-  // Check if email exists in localStorage on mount
   React.useEffect(() => {
     try {
-      const storedEmail = localStorage.getItem(EMAIL_STORAGE_KEY);
-      if (storedEmail) {
-        setEmail(storedEmail);
-        setHasEmail(true);
+      const storedOffer = localStorage.getItem(OFFER_STORAGE_KEY);
+      const storedCode = localStorage.getItem(CODE_STORAGE_KEY);
+      if (storedOffer && storedCode) {
+        setOffer(JSON.parse(storedOffer) as SponsorOffer);
+        setCode(storedCode);
       }
     } catch {
       // Ignore storage access issues
@@ -540,43 +445,57 @@ export function SponsoringPackages({ className, requireEmail = true }: Sponsorin
     setIsLoading(false);
   }, []);
 
-  // Unlock immediately if flyer component captures an email
   React.useEffect(() => {
     const onSync = (e: Event) => {
-      const detailEmail = (e as CustomEvent)?.detail?.email as string | undefined;
-      if (!detailEmail) return;
-      void storeEmailAndUnlock(detailEmail);
+      const detail = (e as CustomEvent)?.detail as
+        | { code?: string; offer?: SponsorOffer }
+        | undefined;
+      if (!detail?.offer || !detail.code) return;
+      persistOffer(detail.code, detail.offer);
     };
 
-    window.addEventListener(EMAIL_SYNC_EVENT, onSync);
-    return () => window.removeEventListener(EMAIL_SYNC_EVENT, onSync);
-  }, [storeEmailAndUnlock]);
+    window.addEventListener(CODE_SYNC_EVENT, onSync);
+    return () => window.removeEventListener(CODE_SYNC_EVENT, onSync);
+  }, [persistOffer]);
 
-  // Also react to localStorage changes (e.g. other component writes key)
   React.useEffect(() => {
     const onStorage = (e: StorageEvent) => {
-      if (e.key !== EMAIL_STORAGE_KEY) return;
-      if (!e.newValue) return;
-      setEmail(e.newValue);
-      setHasEmail(true);
+      if (e.key === OFFER_STORAGE_KEY && e.newValue) {
+        setOffer(JSON.parse(e.newValue) as SponsorOffer);
+      }
+      if (e.key === CODE_STORAGE_KEY && e.newValue) {
+        setCode(e.newValue);
+      }
     };
 
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    void storeEmailAndUnlock(email);
+    void verifyCode(code);
   };
 
-  // Show loading state while checking localStorage
+  const handleSignOut = () => {
+    try {
+      localStorage.removeItem(CODE_STORAGE_KEY);
+      localStorage.removeItem(OFFER_STORAGE_KEY);
+    } catch {
+      // Ignore storage access issues
+    }
+    setOffer(null);
+    setCode("");
+    setCodeError("");
+    window.dispatchEvent(new CustomEvent("sbr:sponsor-signout"));
+  };
+
   if (isLoading) {
     return (
       <section
         className={cn(
           "w-full bg-background text-foreground py-20 px-4 md:px-8",
-          className
+          className,
         )}
       >
         <div className="max-w-7xl mx-auto text-center">
@@ -586,72 +505,115 @@ export function SponsoringPackages({ className, requireEmail = true }: Sponsorin
     );
   }
 
-  // Show email capture form if no email is stored
-  if (!hasEmail) {
+  if (offer) {
     return (
-      <section
-        className={cn(
-          "w-full text-foreground py-20 px-4 md:px-8 relative",
-          className
-        )}
-      >
-        <div className="inset-0 absolute z-0 translate-y-[150px] lg:translate-y-[200px] rounded-2xl overflow-hidden">
-          <img src={SBROrangeWaveBG.src} alt="SynBioReactor Summit 2026" className="w-full h-full min-w-[800px] object-cover object-top z-0" />
-        </div>
-        <div className="max-w-2xl mx-auto z-10 relative">
-          <Card className="border-primary/30">
-            <CardHeader className="text-center pt-8">
-              <div className="flex justify-center mb-4">
-                <div className="rounded-full bg-primary/10 p-4">
-                  <Lock className="w-8 h-8 text-primary" />
-                </div>
-              </div>
-              <CardTitle className="text-3xl mb-2">Access Sponsorship Packages</CardTitle>
-              <CardDescription className="text-base">
-                Enter your email address to view our exclusive sponsorship opportunities for SynBioReactor 2026
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email Address
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="your.email@example.com"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      setEmailError("");
-                    }}
-                    className={cn(
-                      emailError && "border-destructive"
-                    )}
-                    required
-                    disabled={isSubmitting}
-                  />
-                  {emailError && (
-                    <p className="text-sm text-destructive mt-2">{emailError}</p>
-                  )}
-                </div>
-                <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-                  {isSubmitting ? "Processing..." : "View Packages"}
-                </Button>
-                <p className="text-xs text-muted-foreground text-center">
-                  By providing your email address, you agree to receive updates and information about SynBioReactor 2026. You can unsubscribe at any time.
-                </p>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <TailoredPackagesView
+        offer={offer}
+        className={className}
+        onSignOut={handleSignOut}
+      />
     );
   }
 
-  // Show packages if email is stored
-  return PackagesContent;
+  if (hideGate) {
+    return null;
+  }
+
+  return (
+    <section
+      className={cn(
+        "w-full text-foreground py-20 px-4 md:px-8 relative",
+        className,
+      )}
+    >
+      <div className="inset-0 absolute z-0 translate-y-[150px] lg:translate-y-[200px] rounded-2xl overflow-hidden">
+        <img
+          src={SBROrangeWaveBG.src}
+          alt=""
+          className="w-full h-full min-w-[800px] object-cover object-top z-0"
+        />
+      </div>
+      <div className="max-w-2xl mx-auto z-10 relative">
+        <Card className="border-primary/30">
+          <CardHeader className="text-center pt-8">
+            <div className="flex justify-center mb-4">
+              <div className="rounded-full bg-primary/10 p-4">
+                <Lock className="w-8 h-8 text-primary" />
+              </div>
+            </div>
+            <CardTitle className="text-3xl mb-2">Access Your Sponsorship Offer</CardTitle>
+            <CardDescription className="text-base">
+              Enter the access code we shared with you to view your tailored
+              sponsorship package for SynBioReactor 2026
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="access-code" className="block text-sm font-medium mb-2">
+                  Access Code
+                </label>
+                <div className="relative">
+                  <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <Input
+                    id="access-code"
+                    type="text"
+                    placeholder="Enter your access code"
+                    value={code}
+                    onChange={(e) => {
+                      setCode(e.target.value);
+                      setCodeError("");
+                    }}
+                    className={cn("pl-10", codeError && "border-destructive")}
+                    required
+                    disabled={isSubmitting}
+                    autoComplete="off"
+                  />
+                </div>
+                {codeError && (
+                  <p className="text-sm text-destructive mt-2">{codeError}</p>
+                )}
+              </div>
+              <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                {isSubmitting ? "Verifying..." : "View My Offer"}
+              </Button>
+              <p className="text-xs text-muted-foreground text-center">
+                Don&apos;t have a code yet? Contact us at{" "}
+                <a href="mailto:sbr@ga-sb.de" className="text-primary hover:underline">
+                  sbr@ga-sb.de
+                </a>
+              </p>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
 }
+
+// Re-export catalog helpers for backwards compatibility
+export const sponsorshipPackages = sponsoringCatalog
+  .filter((pkg) => pkg.category === "main")
+  .map((pkg) => catalogToPackage(pkg));
+
+export const visibilityPackages = sponsoringCatalog
+  .filter((pkg) => pkg.category === "visibility")
+  .map((pkg) => catalogToPackage(pkg));
+
+export const programPackages = sponsoringCatalog
+  .filter((pkg) => pkg.category === "program")
+  .map((pkg) => catalogToPackage(pkg));
+
+export const digitalPackages = sponsoringCatalog
+  .filter((pkg) => pkg.category === "digital")
+  .map((pkg) => catalogToPackage(pkg));
+
+export const videoPackages = sponsoringCatalog
+  .filter((pkg) => pkg.category === "video")
+  .map((pkg) => catalogToPackage(pkg));
+
+export const scholarshipPackage = catalogToPackage(
+  sponsoringCatalog.find((pkg) => pkg.id === "scholarship")!,
+);
 
 export default SponsoringPackages;

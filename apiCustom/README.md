@@ -1,22 +1,15 @@
-# SBR Sponsor Email API
+# SBR Sponsor API
 
-API service for storing and exporting sponsor email addresses collected from the sponsorship packages page.
+API service for managing tailored sponsor offers with access codes, plus legacy email collection.
 
 ## Setup
 
 1. **Install dependencies:**
    ```bash
-   npm install
-   # or
    bun install
    ```
 
 2. **Configure environment variables:**
-   - Copy `.env.example` to `.env`
-   - Set a secure `ADMIN_SECRET` for accessing email export endpoints
-   - Configure `ALLOWED_ORIGIN` for CORS (use `*` for development, specific domain for production)
-
-3. **Update `.env` file:**
    ```env
    PORT=3001
    ALLOWED_ORIGIN=*
@@ -25,23 +18,51 @@ API service for storing and exporting sponsor email addresses collected from the
 
 ## Running
 
-**Development:**
 ```bash
-npm run dev
-# or
 bun run dev
 ```
 
-**Production:**
-```bash
-npm start
-# or
-bun start
+Admin UI: `http://localhost:3001/admin/offers-admin.html`
+
+## Sponsor Offers (New)
+
+### POST `/api/verify-sponsor-code`
+
+Public endpoint — verifies an access code and returns the tailored offer.
+
+```json
+{ "code": "company123" }
 ```
 
-## API Endpoints
+### GET `/api/sponsoring-catalog`
 
-### POST `/api/store-sponsor-email`
+Returns all available sponsoring options for the admin UI.
+
+### Admin CRUD (requires `ADMIN_SECRET`)
+
+- `GET /api/admin/sponsor-offers`
+- `POST /api/admin/sponsor-offers`
+- `PUT /api/admin/sponsor-offers/:id`
+- `DELETE /api/admin/sponsor-offers/:id`
+
+**Create offer example:**
+```json
+{
+  "companyName": "Acme Biotech",
+  "code": "company123",
+  "title": "Your Sponsorship Offer",
+  "message": "We put this package together specifically for your team.",
+  "active": true,
+  "items": [
+    { "packageId": "basic", "price": 800 },
+    { "packageId": "booth-regular-small", "price": 1200 }
+  ]
+}
+```
+
+Offers are stored in `data/sponsor-offers.json`.
+
+## Legacy Email Endpoints
 
 Stores a sponsor email address.
 
@@ -139,13 +160,13 @@ A simple HTML admin interface is provided at `admin.html`. Open it in your brows
 
 ## Frontend Integration
 
-The frontend component has been updated to automatically send emails to this API. The API URL can be configured via environment variable:
+Configure the API URL via environment variable:
 
 ```env
-PUBLIC_SPONSOR_EMAIL_API_URL=http://localhost:3001
+PUBLIC_SPONSOR_API_URL=http://localhost:3001
 ```
 
-Or it defaults to `http://localhost:3001` for development.
+On the sponsoring page, sponsors enter their access code to view a tailored package built in the admin UI.
 
 ## Deployment
 

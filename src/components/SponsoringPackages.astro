@@ -3,10 +3,10 @@ import SponsoringPackagesComponent from "@/components/ui/sponsoring-packages.tsx
 
 interface Props {
   class?: string;
-  requireEmail?: boolean;
+  hideGate?: boolean;
 }
 
-const { class: classProp, requireEmail = true } = Astro.props;
+const { class: classProp, hideGate = false } = Astro.props;
 ---
 
-<SponsoringPackagesComponent client:load className={classProp} requireEmail={requireEmail} />
+<SponsoringPackagesComponent client:load className={classProp} hideGate={hideGate} />

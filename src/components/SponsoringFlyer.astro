@@ -11,29 +11,30 @@ const { class: classProp } = Astro.props;
 <section
     class={`relative overflow-hidden rounded-xl border-b border-white/10 ${classProp || ""}`}
 >
-    <!-- Input Form State -->
     <div
-        id="flyer-form-container"
+        id="code-form-container"
         class="relative py-16 bg-black flex flex-col items-center justify-center text-center p-6"
     >
         <div class="space-y-6 max-w-3xl w-full">
             <div class="space-y-2 flex flex-col items-center justify-center">
-                <h2 class="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">Info Flyer for<br/>
-                    <span class="text-8xl text-primary">Sponsors</span>
+                <h2 class="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">
+                    Your Sponsorship<br/>
+                    <span class="text-8xl text-primary">Offer</span>
                     <p class="font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
-                      interested in sponsoring the event?
+                        Enter your access code to view your tailored package
                     </p>
-                    </h2>
+                </h2>
             </div>
 
-            <form id="flyer-form" class="space-y-4 max-w-lg mx-auto">
+            <form id="code-form" class="space-y-4 max-w-lg mx-auto">
                 <div class="space-y-2">
-                    <label for="email-input" class="sr-only">Email</label>
+                    <label for="code-input" class="sr-only">Access Code</label>
                     <input
-                        type="email"
-                        id="email-input"
+                        type="text"
+                        id="code-input"
                         required
-                        placeholder="name@company.com"
+                        placeholder="Enter your access code"
+                        autocomplete="off"
                         class="flex h-11 w-full rounded-md border border-input bg-white/5 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200"
                     />
                 </div>
@@ -41,7 +42,7 @@ const { class: classProp } = Astro.props;
                     type="submit"
                     class="inline-flex h-11 w-full items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                 >
-                    Request Flyer
+                    View My Offer
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -53,111 +54,140 @@ const { class: classProp } = Astro.props;
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         class="ml-2 h-4 w-4"
-                        ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"
-                        ></path></svg
                     >
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
                 </button>
+                <p id="code-error" class="hidden text-sm text-red-400"></p>
             </form>
 
             <p class="text-xs text-muted-foreground text-balance">
-                By requesting the flyer, you agree to receive information about
-                the SynBioReactor Summit.
+                Don&apos;t have a code? Contact us at
+                <a href="mailto:sbr@ga-sb.de" class="text-primary hover:underline">sbr@ga-sb.de</a>
             </p>
         </div>
     </div>
 
-    <!-- Success State (Hidden by default) -->
-    <div id="flyer-success-container" class="hidden absolute inset-0 bg-black">
-        <SponsoringFlyerSuccess email="" />
+    <div id="code-success-container" class="hidden absolute inset-0 bg-black">
+        <SponsoringFlyerSuccess companyName="" />
     </div>
 </section>
 
 <script>
-    const EMAIL_STORAGE_KEY = "sbr_sponsor_email";
-    const EMAIL_SYNC_EVENT = "sbr:sponsor-email";
+    const CODE_STORAGE_KEY = "sbr_sponsor_access_code";
+    const OFFER_STORAGE_KEY = "sbr_sponsor_offer";
+    const CODE_SYNC_EVENT = "sbr:sponsor-code";
 
-    const form = document.querySelector("#flyer-form") as HTMLFormElement;
-    const input = document.querySelector("#email-input") as HTMLInputElement;
-    const formContainer = document.querySelector(
-        "#flyer-form-container",
-    ) as HTMLElement;
-    const successContainer = document.querySelector(
-        "#flyer-success-container",
-    ) as HTMLElement;
-    const successEmail = document.querySelector(
-        ".js-success-email",
-    ) as HTMLElement;
-
-    // Prefill from sponsorship packages gate (if present)
-    try {
-        const storedEmail = localStorage.getItem(EMAIL_STORAGE_KEY);
-        if (storedEmail && input) input.value = storedEmail;
-    } catch {
-        // Ignore storage access issues (private mode, blocked, etc.)
+    function getApiUrl() {
+        if (import.meta.env.PUBLIC_SPONSOR_API_URL) {
+            return import.meta.env.PUBLIC_SPONSOR_API_URL;
+        }
+        if (import.meta.env.PUBLIC_SPONSOR_EMAIL_API_URL) {
+            return import.meta.env.PUBLIC_SPONSOR_EMAIL_API_URL;
+        }
+        if (import.meta.env.DEV) {
+            return `${window.location.protocol}//${window.location.hostname}:3001`;
+        }
+        return "http://localhost:3001";
     }
 
-    // Keep input in sync if another component captures email
-    window.addEventListener(EMAIL_SYNC_EVENT, (e: Event) => {
-        const detailEmail = (e as CustomEvent)?.detail?.email as string | undefined;
-        if (!detailEmail || !input) return;
-        input.value = detailEmail;
+    const form = document.querySelector("#code-form") as HTMLFormElement;
+    const input = document.querySelector("#code-input") as HTMLInputElement;
+    const formContainer = document.querySelector("#code-form-container") as HTMLElement;
+    const successContainer = document.querySelector("#code-success-container") as HTMLElement;
+    const successCompany = document.querySelector(".js-success-company") as HTMLElement;
+    const errorEl = document.querySelector("#code-error") as HTMLElement;
+
+    try {
+        const storedCode = localStorage.getItem(CODE_STORAGE_KEY);
+        const storedOffer = localStorage.getItem(OFFER_STORAGE_KEY);
+        if (storedCode && input) input.value = storedCode;
+        if (storedOffer) {
+            const offer = JSON.parse(storedOffer) as { companyName?: string };
+            if (successCompany && offer.companyName) {
+                successCompany.textContent = offer.companyName;
+            }
+            formContainer.style.opacity = "0";
+            successContainer.classList.remove("hidden");
+        }
+    } catch {
+        // Ignore storage access issues
+    }
+
+    window.addEventListener("sbr:sponsor-signout", () => {
+        successContainer.classList.add("hidden");
+        formContainer.style.opacity = "1";
+        if (input) input.value = "";
+    });
+
+    window.addEventListener(CODE_SYNC_EVENT, (e: Event) => {
+        const detail = (e as CustomEvent)?.detail as
+            | { code?: string; offer?: { companyName?: string } }
+            | undefined;
+        if (!detail?.code || !input) return;
+        input.value = detail.code;
+        if (detail.offer?.companyName && successCompany) {
+            successCompany.textContent = detail.offer.companyName;
+        }
     });
 
     if (form) {
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
-            const email = input.value.trim();
-
+            const code = input.value.trim();
             const btn = form.querySelector("button");
             if (!btn) return;
 
             const originalText = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = "Sending...";
-
-            // Persist + broadcast immediately so gated content can unlock
-            // (email sending may still fail if server credentials are misconfigured)
-            try {
-                localStorage.setItem(EMAIL_STORAGE_KEY, email);
-            } catch {
-                // Ignore storage access issues
-            }
-            window.dispatchEvent(
-                new CustomEvent(EMAIL_SYNC_EVENT, { detail: { email } }),
-            );
+            btn.innerHTML = "Verifying...";
+            errorEl.classList.add("hidden");
 
             try {
-                const response = await fetch('/api/request-flyer', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email }),
+                const apiUrl = getApiUrl();
+                const response = await fetch(`${apiUrl}/api/verify-sponsor-code`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ code }),
                 });
 
                 const data = await response.json();
-
-                if (response.ok) {
-                    // Update success message
-                    if (successEmail) successEmail.textContent = email;
-
-                    // Restore button state before hiding form
-                    btn.disabled = false;
-                    btn.innerHTML = originalText;
-
-                    // Toggle visibility
-                    formContainer.style.opacity = "0";
-                    setTimeout(() => {
-                        successContainer.classList.remove("hidden");
-                    }, 300);
-                } else {
-                    // Handle error
-                    alert(data.error || data.message || 'Failed to send request. Please try again.');
-                    btn.disabled = false;
-                    btn.innerHTML = originalText;
+                if (!response.ok) {
+                    throw new Error(data.error || "Invalid access code");
                 }
+
+                try {
+                    localStorage.setItem(CODE_STORAGE_KEY, code);
+                    localStorage.setItem(OFFER_STORAGE_KEY, JSON.stringify(data.offer));
+                } catch {
+                    // Ignore storage access issues
+                }
+
+                window.dispatchEvent(
+                    new CustomEvent(CODE_SYNC_EVENT, {
+                        detail: { code, offer: data.offer },
+                    }),
+                );
+
+                if (successCompany) {
+                    successCompany.textContent = data.offer.companyName;
+                }
+
+                formContainer.style.opacity = "0";
+                setTimeout(() => {
+                    successContainer.classList.remove("hidden");
+                }, 300);
             } catch (error) {
-                // Handle network error
-                console.error('Error:', error);
-                alert('Network error. Please check your connection and try again.');
+                const message =
+                    error instanceof TypeError
+                        ? "Could not reach the sponsor API. Check that the API server is running on port 3001."
+                        : error instanceof Error
+                          ? error.message
+                          : "Invalid access code";
+                errorEl.textContent = message;
+                errorEl.classList.remove("hidden");
+            } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;
             }
@@ -166,7 +196,7 @@ const { class: classProp } = Astro.props;
 </script>
 
 <style>
-    #flyer-form-container {
+    #code-form-container {
         transition: opacity 0.3s ease-in-out;
     }
 </style>
