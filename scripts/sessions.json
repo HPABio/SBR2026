@@ -1,0 +1,394 @@
+[
+  {
+    "id": "UGxhbm5pbmdfNDMxMTYyMg==",
+    "startTime": "11:00",
+    "endTime": "11:15",
+    "title": "Opening",
+    "description": "",
+    "speakers": [
+      {
+        "name": "Andrea Pönitzsch",
+        "role": "Industry Officer",
+        "company": "GASB",
+        "avatar": "https://static.swapcard.com/public/images/fe1ed4d9034f4184accd62008eb26885.png"
+      }
+    ],
+    "format": "presentation",
+    "room": ""
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUyMg==",
+    "startTime": "11:15",
+    "endTime": "12:00",
+    "title": "Lighthouse Keynote",
+    "description": "P1",
+    "speakers": [
+      {
+        "name": "Prateek Mahalwar",
+        "role": "CEO",
+        "company": "Bioweg",
+        "avatar": "https://static.swapcard.com/public/images/209adc3dd92c4737b64313702751134e.png"
+      }
+    ],
+    "topic": "Upscaling Challenges",
+    "format": "keynote",
+    "room": "Betonhalle (main hall)"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUyMw==",
+    "startTime": "12:00",
+    "endTime": "13:00",
+    "title": "Biomanufacturing in Times of Uncertainty: Building Resiliency not Susainability",
+    "description": "R1",
+    "speakers": [
+      {
+        "name": "Patrick P. Rose",
+        "role": "Innovation Manager",
+        "company": "SPRIND",
+        "avatar": "https://static.swapcard.com/public/images/4d1cd91cc96346b984853025ddd353d9.jpeg"
+      }
+    ],
+    "topic": "Resilient Supply Chains",
+    "format": "panel",
+    "room": "Betonhalle (main hall)"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUyOA==",
+    "startTime": "12:00",
+    "endTime": "12:30",
+    "title": "Scaling x AI",
+    "description": "A4",
+    "speakers": [
+      {
+        "name": "Massimo Portincaso",
+        "role": "Speaker",
+        "company": "Arsenale BioYards",
+        "avatar": "https://static.swapcard.com/public/images/00269e9447ea47f8b08c60e8b22fd0c3.webp"
+      }
+    ],
+    "topic": "AI & SynBio",
+    "format": "presentation",
+    "room": "Betonhalle (main hall)"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUyNQ==",
+    "startTime": "14:00",
+    "endTime": "14:40",
+    "title": "From Data to Decisions: How AI Agents Democratize Bioinformatics and Accelerate R&D",
+    "description": "A2",
+    "speakers": [
+      {
+        "name": "Maximilian Bode",
+        "role": "Speaker",
+        "company": "Biocompile",
+        "avatar": "https://static.swapcard.com/public/images/b8664f98cd7b49bbaee4b63461585636.jpeg"
+      }
+    ],
+    "topic": "AI & SynBio",
+    "format": "presentation",
+    "room": "Fireside Room"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUyNw==",
+    "startTime": "14:00",
+    "endTime": "14:45",
+    "title": "Green Chemistry: its approach and recent development",
+    "description": "G1",
+    "speakers": [
+      {
+        "name": "Andreas Worberg",
+        "role": "Speaker",
+        "company": "",
+        "avatar": "https://static.swapcard.com/public/images/cc6e9847e9364ec0a2bf21a650ee48ad.jpeg"
+      }
+    ],
+    "topic": "Green Chemistry vs. SynBio",
+    "format": "presentation",
+    "room": "Betonhalle (main hall)"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUzMQ==",
+    "startTime": "14:00",
+    "endTime": "15:00",
+    "title": "Enabling Scale-Up: Research and Pilot Facilities for Bioenergy Production (DBFZ - Deutsches Biomasseforschungszentrum)",
+    "description": "S1",
+    "topic": "Upscaling Challenges",
+    "format": "workshop",
+    "room": "Cinema"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUyMQ==",
+    "startTime": "15:00",
+    "endTime": "16:00",
+    "title": "Introduction to the SynBio Founding Landscape (BioLabs Heidelberg)",
+    "description": "E1",
+    "topic": "Break Out Session",
+    "format": "workshop",
+    "room": "Atelier"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzU0NA==",
+    "startTime": "15:00",
+    "endTime": "16:00",
+    "title": "Financing Hardware",
+    "description": "S6",
+    "topic": "Upscaling Challenges",
+    "format": "presentation",
+    "room": "Betonhalle (main hall)"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUyNA==",
+    "startTime": "16:30",
+    "endTime": "17:30",
+    "title": "Mastering Your Message: How to Craft a Compelling Narrative for Your Startup",
+    "description": "E2",
+    "speakers": [
+      {
+        "name": "Felix Ernst",
+        "role": "Speaker",
+        "company": "GASB",
+        "avatar": "https://static.swapcard.com/public/images/a6dd9b5f473a437a85aeaaa1faab370d.webp"
+      }
+    ],
+    "format": "workshop",
+    "room": "Atelier"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUzMg==",
+    "startTime": "16:30",
+    "endTime": "17:15",
+    "title": "Green Chemistry and Synbio: Finding opportunities for collaboration and synergies",
+    "description": "G3",
+    "topic": "Green Chemistry vs. SynBio",
+    "format": "panel",
+    "room": "Betonhalle (main hall)"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUzMw==",
+    "startTime": "17:15",
+    "endTime": "18:00",
+    "title": "Defense Technologies",
+    "description": "D2",
+    "speakers": [
+      {
+        "name": "James MacDonald",
+        "role": "Speaker",
+        "company": "Solena Materials",
+        "avatar": "https://static.swapcard.com/public/images/3cb8622cfabc41af9a9ebc6074546b66.jpeg"
+      },
+      {
+        "name": "Ioannis Zampetakis",
+        "role": "Speaker",
+        "company": "Modern Synthesis",
+        "avatar": "https://static.swapcard.com/public/images/834cff6fc3b94c729586bd007150c93f.jpeg"
+      }
+    ],
+    "topic": "Biodefense",
+    "format": "panel",
+    "room": "Betonhalle (main hall)"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwOTkyNQ==",
+    "startTime": "09:00",
+    "endTime": "11:00",
+    "title": "Pitching Competition",
+    "description": "",
+    "format": "presentation",
+    "room": "Betonhalle (main hall)"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzU0OA==",
+    "startTime": "10:30",
+    "endTime": "11:20",
+    "title": "SBWC Session 1",
+    "description": "SBWC1",
+    "speakers": [
+      {
+        "name": "Hendrik Cooper",
+        "role": "Bio-Initiative Strategist",
+        "company": "BioCentra",
+        "avatar": "https://static.swapcard.com/public/images/9e4f48ac039d46afaac729c072340b76.jpeg"
+      },
+      {
+        "name": "Stefan Hristov",
+        "role": "Nucleate Eco Lead | PhD Student",
+        "company": "Nucleate/Charite",
+        "avatar": "https://static.swapcard.com/public/images/5c04740d81f5401785ad5788a2a5fd9f.jpeg"
+      }
+    ],
+    "topic": "Break Out Session",
+    "format": "workshop",
+    "room": "Atelier"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzU0MQ==",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "title": "Plants and their chloroplasts: a scalable production platform (Bright Biotech)",
+    "description": "S5",
+    "topic": "Upscaling Challenges",
+    "format": "presentation",
+    "room": "Fireside Room"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUzNg==",
+    "startTime": "11:20",
+    "endTime": "12:10",
+    "title": "SBWC Session 2",
+    "description": "SBWC2",
+    "speakers": [
+      {
+        "name": "Hendrik Cooper",
+        "role": "Bio-Initiative Strategist",
+        "company": "BioCentra",
+        "avatar": "https://static.swapcard.com/public/images/9e4f48ac039d46afaac729c072340b76.jpeg"
+      },
+      {
+        "name": "Stefan Hristov",
+        "role": "Nucleate Eco Lead | PhD Student",
+        "company": "Nucleate/Charite",
+        "avatar": "https://static.swapcard.com/public/images/5c04740d81f5401785ad5788a2a5fd9f.jpeg"
+      }
+    ],
+    "topic": "Break Out Session",
+    "format": "workshop",
+    "room": "Atelier"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzU0Mw==",
+    "startTime": "11:30",
+    "endTime": "12:15",
+    "title": "\"Don't just network when you need it!\" (Thibault Geoui)",
+    "description": "W5",
+    "topic": "Break Out Session",
+    "format": "presentation",
+    "room": "Atelier"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUzNQ==",
+    "startTime": "11:50",
+    "endTime": "12:50",
+    "title": "Scaleup Workshop",
+    "description": "S3",
+    "topic": "Upscaling Challenges",
+    "format": "workshop",
+    "room": "Cinema"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUzNw==",
+    "startTime": "12:00",
+    "endTime": "13:00",
+    "title": "Made with Biology Funding Napkin 2025",
+    "description": "W3",
+    "speakers": [
+      {
+        "name": "Maximilian Schwarz",
+        "role": "Speaker",
+        "company": "Nucleus Capital",
+        "avatar": "https://static.swapcard.com/public/images/fdcbed87ca98405e955a9e06bffcbd8d.png"
+      }
+    ],
+    "topic": "Wildcard",
+    "format": "presentation",
+    "room": "Fireside Room"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUzOQ==",
+    "startTime": "12:10",
+    "endTime": "13:00",
+    "title": "SBWC Session 3",
+    "description": "SBWC3",
+    "topic": "Break Out Session",
+    "format": "workshop",
+    "room": "Atelier"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUzNA==",
+    "startTime": "12:15",
+    "endTime": "13:00",
+    "title": "Gasfermentation technologies",
+    "description": "S2",
+    "speakers": [
+      {
+        "name": "Maximilian Webers",
+        "role": "Speaker",
+        "company": "Colipi",
+        "avatar": "https://static.swapcard.com/public/images/db8bb185bee547c28aa8ad86ab3a38c6.jpeg"
+      }
+    ],
+    "topic": "Upscaling Challenges",
+    "format": "presentation",
+    "room": "Fireside Room"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUzOA==",
+    "startTime": "14:00",
+    "endTime": "14:45",
+    "title": "Scaling product to market",
+    "description": "S4",
+    "speakers": [
+      {
+        "name": "Andreas Heyl",
+        "role": "Advisor",
+        "company": "Heyl Consulting",
+        "avatar": "https://static.swapcard.com/public/images/8a8ba5e1f4f049d7bdb155882058546e.jpeg"
+      }
+    ],
+    "topic": "Upscaling Challenges",
+    "format": "presentation",
+    "room": "Fireside Room"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzU0Mg==",
+    "startTime": "14:00",
+    "endTime": "14:50",
+    "title": "SBWC Session 4",
+    "description": "SBWC4",
+    "speakers": [
+      {
+        "name": "Hendrik Cooper",
+        "role": "Bio-Initiative Strategist",
+        "company": "BioCentra",
+        "avatar": "https://static.swapcard.com/public/images/9e4f48ac039d46afaac729c072340b76.jpeg"
+      },
+      {
+        "name": "Stefan Hristov",
+        "role": "Nucleate Eco Lead | PhD Student",
+        "company": "Nucleate/Charite",
+        "avatar": "https://static.swapcard.com/public/images/5c04740d81f5401785ad5788a2a5fd9f.jpeg"
+      }
+    ],
+    "topic": "Break Out Session",
+    "format": "workshop",
+    "room": "Atelier"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzU0Nw==",
+    "startTime": "14:00",
+    "endTime": "15:00",
+    "title": "Economic and Environmental Evaluation Supporting Sustainability Certification (DBFZ - Deutsches Biomasseforschungszentrum)",
+    "description": "W2",
+    "topic": "Wildcard",
+    "format": "workshop",
+    "room": ""
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMwNzUyNg==",
+    "startTime": "14:50",
+    "endTime": "15:35",
+    "title": "The new Resilience Premium?",
+    "description": "R2",
+    "topic": "Resilient Supply Chains",
+    "format": "panel",
+    "room": "Betonhalle (main hall)"
+  },
+  {
+    "id": "UGxhbm5pbmdfNDMxMTYyNQ==",
+    "startTime": "15:40",
+    "endTime": "16:00",
+    "title": "Award Ceremony and Closing",
+    "description": "",
+    "format": "presentation",
+    "room": ""
+  }
+]
