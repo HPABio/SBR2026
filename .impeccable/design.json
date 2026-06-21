@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-21T00:00:00.000Z",
+  "title": "Design System: SynBioReactor Summit 2026",
+  "extensions": {
+    "colorMeta": {
+      "reactor-black": {
+        "role": "neutral",
+        "displayName": "Reactor Black",
+        "canonical": "oklch(0.12 0 0)",
+        "tonalRamp": [
+          "oklch(0.08 0 0)",
+          "oklch(0.10 0 0)",
+          "oklch(0.12 0 0)",
+          "oklch(0.15 0 0)",
+          "oklch(0.18 0 0)",
+          "oklch(0.22 0 0)",
+          "oklch(0.28 0 0)",
+          "oklch(0.35 0 0)"
+        ]
+      },
+      "ink-white": {
+        "role": "neutral",
+        "displayName": "Ink White",
+        "canonical": "oklch(0.98 0 0)",
+        "tonalRamp": [
+          "oklch(0.55 0 0)",
+          "oklch(0.65 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.85 0 0)",
+          "oklch(0.90 0 0)",
+          "oklch(0.94 0 0)",
+          "oklch(0.97 0 0)",
+          "oklch(0.98 0 0)"
+        ]
+      },
+      "synbio-orange": {
+        "role": "primary",
+        "displayName": "SynBio Orange",
+        "canonical": "oklch(0.72 0.15 55)",
+        "tonalRamp": [
+          "oklch(0.35 0.08 55)",
+          "oklch(0.45 0.10 55)",
+          "oklch(0.55 0.12 55)",
+          "oklch(0.62 0.14 55)",
+          "oklch(0.68 0.15 55)",
+          "oklch(0.72 0.15 55)",
+          "oklch(0.78 0.14 55)",
+          "oklch(0.85 0.12 55)"
+        ]
+      },
+      "orange-bright": {
+        "role": "primary",
+        "displayName": "Reactor Bright",
+        "canonical": "oklch(0.75 0.16 55)",
+        "tonalRamp": [
+          "oklch(0.38 0.09 55)",
+          "oklch(0.48 0.11 55)",
+          "oklch(0.58 0.13 55)",
+          "oklch(0.65 0.15 55)",
+          "oklch(0.70 0.16 55)",
+          "oklch(0.75 0.16 55)",
+          "oklch(0.80 0.15 55)",
+          "oklch(0.88 0.13 55)"
+        ]
+      },
+      "surface-card": {
+        "role": "neutral",
+        "displayName": "Surface Card",
+        "canonical": "oklch(0.18 0 0)",
+        "tonalRamp": [
+          "oklch(0.10 0 0)",
+          "oklch(0.12 0 0)",
+          "oklch(0.15 0 0)",
+          "oklch(0.18 0 0)",
+          "oklch(0.22 0 0)",
+          "oklch(0.25 0 0)",
+          "oklch(0.30 0 0)",
+          "oklch(0.38 0 0)"
+        ]
+      },
+      "muted-text": {
+        "role": "neutral",
+        "displayName": "Muted Text",
+        "canonical": "oklch(0.65 0 0)",
+        "tonalRamp": [
+          "oklch(0.25 0 0)",
+          "oklch(0.35 0 0)",
+          "oklch(0.45 0 0)",
+          "oklch(0.55 0 0)",
+          "oklch(0.60 0 0)",
+          "oklch(0.65 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.85 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headlines only — uppercase Anton, clamp max 6rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles, stats, team headers — uppercase Anton."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose, descriptions, forms — DM Sans, 65–75ch max."
+      }
+    },
+    "shadows": [
+      {
+        "name": "glow-hover",
+        "value": "0 0 24px color-mix(in oklab, #F49B2B 35%, transparent)",
+        "purpose": "GlowButton hover — ambient orange bloom."
+      },
+      {
+        "name": "premium-lift",
+        "value": "0 8px 28px color-mix(in oklab, #F49B2B 45%, transparent)",
+        "purpose": "PremiumButton hover — structural lift with brand color."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-standard",
+        "value": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+        "purpose": "Default state transitions on buttons and nav."
+      },
+      {
+        "name": "ease-out-cubic",
+        "value": "cubic-bezier(0.33, 1, 0.68, 1)",
+        "purpose": "BorderGlow pointer tracking and glow animations."
+      },
+      {
+        "name": "duration-fast",
+        "value": "200ms",
+        "purpose": "PremiumButton, shadcn button hover."
+      },
+      {
+        "name": "duration-medium",
+        "value": "500ms",
+        "purpose": "GlowButton border and orb transitions."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Default shadcn CTA — orange fill, dark text.",
+      "html": "<button class=\"ds-btn-primary\">Get Tickets</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 8px 16px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; color: #1e1e1e; background: #F49B2B; border: none; border-radius: 8px; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; } .ds-btn-primary:hover { background: #FE9D00; } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in oklab, #F49B2B 50%, transparent); }"
+    },
+    {
+      "name": "Glow Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Hero CTA with orange border and blurred glow orbs.",
+      "html": "<button class=\"ds-glow-button\">Explore More</button>",
+      "css": ".ds-glow-button { position: relative; display: inline-block; height: 64px; width: 256px; padding: 12px; text-align: left; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; color: #fafafa; background: #2e2e2e; border: 2px solid #F49B2B; border-radius: 12px; overflow: hidden; cursor: pointer; transition: transform 0.5s ease, border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease; } .ds-glow-button::before { content: ''; position: absolute; z-index: 0; width: 40px; height: 40px; right: 8px; top: 8px; border-radius: 9999px; background: #FE9D00; opacity: 0.85; filter: blur(16px); pointer-events: none; transition: all 0.5s ease; } .ds-glow-button:hover { transform: scale(1.05); border-color: #FE9D00; color: #F49B2B; box-shadow: 0 0 24px color-mix(in oklab, #F49B2B 35%, transparent); } .ds-glow-button:hover::before { right: 40px; bottom: -16px; top: auto; filter: blur(8px); background: #F49B2B; }"
+    },
+    {
+      "name": "Premium Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Gradient-framed CTA with dark inner and sparkles icon.",
+      "html": "<button class=\"ds-premium-button\"><span class=\"ds-premium-inner\"><span class=\"ds-premium-label\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.8\" class=\"ds-premium-icon\" aria-hidden=\"true\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z\"/></svg>Sponsor Now</span></span></button>",
+      "css": ".ds-premium-button { display: inline-block; padding: 4px; border-radius: 12px; cursor: pointer; border: none; background: linear-gradient(135deg, #D09A40 0%, #F49B2B 50%, #FE9D00 100%); filter: brightness(1.05); transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease; } .ds-premium-button:hover { transform: scale(1.05); filter: brightness(1.12); box-shadow: 0 8px 28px color-mix(in oklab, #F49B2B 45%, transparent); background: linear-gradient(135deg, #c4882e 0%, #e08a1a 50%, #F49B2B 100%); } .ds-premium-inner { display: block; padding: 8px 24px; border-radius: 8px; backdrop-filter: blur(24px); background: color-mix(in oklab, #1e1e1e 82%, transparent); font-weight: 700; } .ds-premium-label { display: flex; align-items: center; gap: 4px; color: #F49B2B; transition: color 0.2s ease; } .ds-premium-button:hover .ds-premium-label { color: #FE9D00; } .ds-premium-icon { width: 24px; height: 24px; stroke: #F49B2B; } .ds-premium-button:hover .ds-premium-icon { stroke: #FE9D00; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link-active",
+      "description": "Fixed top nav with blur backdrop and orange active state.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-logo\" href=\"#\">#SBR2026</a><div class=\"ds-nav-links\"><a class=\"ds-nav-link ds-nav-link--active\" href=\"#\">Home</a><a class=\"ds-nav-link\" href=\"#\">Partners</a><a class=\"ds-nav-link\" href=\"#\">Sponsoring</a></div></nav>",
+      "css": ".ds-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 32px; background: color-mix(in oklab, #1e1e1e 95%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid #404040; font-family: 'DM Sans', sans-serif; } .ds-nav-logo { font-family: 'Anton', sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; color: #fafafa; text-decoration: none; } .ds-nav-links { display: flex; gap: 24px; } .ds-nav-link { font-size: 14px; color: #a3a3a3; text-decoration: none; transition: color 0.2s ease; } .ds-nav-link:hover { color: #fafafa; } .ds-nav-link--active { color: #FF8800; font-weight: 500; }"
+    },
+    {
+      "name": "Card Surface",
+      "kind": "card",
+      "refersTo": "surface-card",
+      "description": "Default elevated panel on dark background.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Partner Tier</h3><p class=\"ds-card-body\">Visibility across summit materials and stage presence.</p></div>",
+      "css": ".ds-card { background: #2e2e2e; color: #fafafa; border: 1px solid #404040; border-radius: 10px; padding: 24px; } .ds-card-title { font-family: 'Anton', sans-serif; font-size: 1.5rem; font-weight: 400; text-transform: uppercase; margin: 0 0 12px; letter-spacing: -0.02em; } .ds-card-body { font-family: 'DM Sans', sans-serif; font-size: 1rem; line-height: 1.6; color: #a3a3a3; margin: 0; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "surface-muted",
+      "description": "shadcn-style dark input for registration forms.",
+      "html": "<input class=\"ds-input\" type=\"email\" placeholder=\"you@startup.com\" aria-label=\"Email\" />",
+      "css": ".ds-input { display: block; width: 100%; max-width: 320px; height: 36px; padding: 8px 12px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #fafafa; background: #404040; border: 1px solid #404040; border-radius: 8px; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; } .ds-input::placeholder { color: #a3a3a3; } .ds-input:focus-visible { border-color: #F49B2B; box-shadow: 0 0 0 3px color-mix(in oklab, #F49B2B 50%, transparent); }"
+    },
+    {
+      "name": "Display Headline",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "Hero section headline pattern — uppercase Anton with orange accent span.",
+      "html": "<h1 class=\"ds-display\">Meet this year's <span class=\"ds-display-accent\">speakers</span></h1>",
+      "css": ".ds-display { font-family: 'Anton', sans-serif; font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; color: #fafafa; text-wrap: balance; margin: 0; } .ds-display-accent { color: #F49B2B; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Reactor Chamber",
+    "overview": "SynBioReactor's visual system is a dark laboratory under heat — near-black surfaces charged with saturated orange energy at the edges and CTAs. The site should feel like walking into a high-stakes pitch room in Berlin: loud when it needs to be (hero stats, sponsor tiers, ticket buttons), precise everywhere else. Design is the product; sponsors and founders judge the summit by how the interface feels before they read a word.\n\nTypography splits on contrast: Anton shouts in uppercase for display and section headers; DM Sans carries readable body copy and UI labels. Depth comes from glow, border light, and tonal layering on #1e1e1e — not from cream backgrounds or card-on-card nesting. Motion is confident (scale, glow shift, gradient bars) but never gates content behind reveal animations.\n\nThis system explicitly rejects generic SaaS landing pages, corporate institutional dull, over-animated gimmicks, and dry academic layouts — per PRODUCT.md anti-references.",
+    "keyCharacteristics": [
+      "Committed dark canvas with orange accent carrying 30–60% of visual energy on key surfaces",
+      "Uppercase Anton display type at hero scale; body stays in DM Sans at 65–75ch max",
+      "Glow and border-light as the signature depth language (BorderGlow, GlowButton, gradient CTAs)",
+      "shadcn/Radix primitives for forms and dialogs; custom Astro/React components for brand moments",
+      "Sponsors and partners surfaced prominently; CTAs reflect sponsors-first priority"
+    ],
+    "rules": [
+      {
+        "name": "The One Heat Rule",
+        "body": "Orange appears on CTAs, active states, stat highlights, and deliberate accent words — not as ambient wash across entire sections. Full-width orange gradients (e.g. SBWC section) are allowed as hero moments; don't repeat on every block.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dark Floor Rule",
+        "body": "Body background stays near-black. Warmth lives in accent + typography + imagery, not in cream/sand body tints.",
+        "section": "colors"
+      },
+      {
+        "name": "The Anton Ceiling Rule",
+        "body": "Display headings use clamp() with a max of 6rem (~96px). Stats and decorative numerals may go larger (text-[10rem]) but only as isolated graphic elements, not body copy.",
+        "section": "typography"
+      },
+      {
+        "name": "The Uppercase Voice Rule",
+        "body": "Section display type is uppercase Anton. Body and labels are sentence case — never uppercase-tracked eyebrows on every section.",
+        "section": "typography"
+      },
+      {
+        "name": "The Glow-Not-Glass Rule",
+        "body": "Backdrop blur appears on nav and PremiumButton inner surface only. Do not default to frosted glass cards site-wide.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Flat-Until-Hover Rule",
+        "body": "Surfaces are tonally layered at rest. Glow intensifies on hover/focus — never bounce or elastic easing.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the near-black canvas (#1e1e1e) as the default floor — warmth comes from orange accent and imagery.",
+      "Do use Anton uppercase for display headlines and DM Sans for body; cap hero clamp at 6rem.",
+      "Do use glow, border-light, and tonal layering for depth on dark surfaces.",
+      "Do surface sponsor/partner value prominently — design reflects sponsors-first priority from PRODUCT.md.",
+      "Do respect prefers-reduced-motion — crossfade or instant state changes, no bounce/elastic.",
+      "Do verify muted text contrast on dark backgrounds; bump #a3a3a3 toward ink when close to AA threshold."
+    ],
+    "donts": [
+      "Don't use generic SaaS landing page patterns — cream backgrounds, gradient text (background-clip: text), identical icon-card grids, tiny uppercase eyebrows on every section.",
+      "Don't ship corporate institutional dull — safe gray palettes, forgettable layouts, no personality.",
+      "Don't use over-animated gimmicks — bounce/elastic easing, parallax overload, motion that gates content visibility behind reveal classes.",
+      "Don't use dry academic styling — paper-white backgrounds, dense unbroken prose, no visual hierarchy.",
+      "Don't use side-stripe borders (border-left > 1px colored accent on cards or callouts).",
+      "Don't nest cards inside cards.",
+      "Don't default to glassmorphism — blur is for nav and PremiumButton inner only.",
+      "Don't drift toward AI conference site tropes — the dark + orange + glow direction is the anchor; evolve it, don't reboot it."
+    ]
+  }
+}
