@@ -1,0 +1,49 @@
+---
+interface Props {
+  id: string;
+  name?: string;
+  label: string;
+  checked?: boolean;
+  compact?: boolean;
+  class?: string;
+  /** Extra attributes for the native input (e.g. `data-*`, `required`) */
+  inputAttrs?: Record<string, string | boolean | undefined>;
+}
+
+const {
+  id,
+  name,
+  label,
+  checked = false,
+  compact = false,
+  class: className = '',
+  inputAttrs = {},
+} = Astro.props;
+
+const inputAttributes = Object.fromEntries(
+  Object.entries(inputAttrs).filter(([, value]) => value !== false && value !== undefined),
+);
+---
+
+<div class:list={['cbx', 'cbx--elastic', { 'cbx--compact': compact }, className]}>
+  <input
+    id={id}
+    name={name}
+    class="cbx__input"
+    type="checkbox"
+    checked={checked || undefined}
+    {...inputAttributes}
+  />
+  <label class="cbx__label" for={id}>
+    <span class="cbx__box" aria-hidden="true">
+      <svg class="cbx__svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path class="cbx__path" d="M6 12l4 4 8-8"></path>
+      </svg>
+    </span>
+    <span class="cbx__text">{label}</span>
+  </label>
+</div>
+
+<style is:global>
+  @import '../../../apiCustom/css/elastic-checkbox.css';
+</style>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sponsor Offers Admin</title>
+    <link rel="stylesheet" href="css/elastic-checkbox.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -175,19 +176,14 @@
             background: #141414;
             border-bottom: 1px solid #2a2a2a;
         }
-        .section-header label {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin: 0;
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: #ddd;
-            cursor: pointer;
+        .section-header .cbx {
+            flex: 1;
+            min-width: 0;
         }
-        .section-header input[type="checkbox"] {
-            width: auto;
-            accent-color: #f49b2b;
+        .section-header .cbx__text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .section-count {
             font-size: 0.62rem;
@@ -281,10 +277,17 @@
                 <textarea id="offerMessage" placeholder="We put together this package specifically for your team..."></textarea>
             </div>
             <div class="input-group">
-                <label>
-                    <input type="checkbox" id="offerActive" checked style="width:auto; margin-right:0.35rem;">
-                    Active (code can be used)
-                </label>
+                <div class="cbx cbx--elastic">
+                    <input id="offerActive" class="cbx__input" type="checkbox" checked>
+                    <label class="cbx__label" for="offerActive">
+                        <span class="cbx__box" aria-hidden="true">
+                            <svg class="cbx__svg" viewBox="0 0 24 24" aria-hidden="true">
+                                <path class="cbx__path" d="M6 12l4 4 8-8"></path>
+                            </svg>
+                        </span>
+                        <span class="cbx__text">Active (code can be used)</span>
+                    </label>
+                </div>
             </div>
 
             <h3 style="font-size:0.95rem; margin: 0.75rem 0 0.5rem;">Package Layout</h3>
@@ -357,6 +360,24 @@
 
         function formatPrice(price) {
             return price === 'custom' ? 'Custom' : `€${Number(price).toLocaleString()}`;
+        }
+
+        function renderElasticCheckbox({ id, label, checked = false, compact = false, attrs = '' }) {
+            const compactClass = compact ? ' cbx--compact' : '';
+            const checkedAttr = checked ? ' checked' : '';
+            return `
+                <div class="cbx cbx--elastic${compactClass}">
+                    <input id="${id}" class="cbx__input" type="checkbox"${checkedAttr} ${attrs}>
+                    <label class="cbx__label" for="${id}">
+                        <span class="cbx__box" aria-hidden="true">
+                            <svg class="cbx__svg" viewBox="0 0 24 24" aria-hidden="true">
+                                <path class="cbx__path" d="M6 12l4 4 8-8"></path>
+                            </svg>
+                        </span>
+                        <span class="cbx__text">${label}</span>
+                    </label>
+                </div>
+            `;
         }
 
         function defaultLayoutFromItems(selectedItems) {
@@ -469,10 +490,13 @@
                 return `
                     <div class="section-row ${section.enabled ? '' : 'disabled'}" data-section="${section.id}">
                         <div class="section-header">
-                            <label>
-                                <input type="checkbox" ${section.enabled ? 'checked' : ''} onchange="toggleSection('${section.id}', this.checked)">
-                                ${categoryLabels[section.id] || section.id}
-                            </label>
+                            ${renderElasticCheckbox({
+                                id: `section-${section.id}`,
+                                label: categoryLabels[section.id] || section.id,
+                                checked: section.enabled,
+                                compact: true,
+                                attrs: `onchange="toggleSection('${section.id}', this.checked)"`,
+                            })}
                             <span class="section-count">${section.packageIds.length} pkg${section.packageIds.length === 1 ? '' : 's'}</span>
                         </div>
                         <div
