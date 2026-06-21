@@ -1,6 +1,7 @@
 ---
 /**
  * Premium gradient button — adapted from Uiverse.io by ArnavK-09
+ * Colors aligned to SynBioReactor brand (primary #F49B2B)
  */
 interface Props {
   href?: string;
@@ -22,15 +23,6 @@ const {
 } = Astro.props;
 
 const Tag = href ? 'a' : 'button';
-
-const outerClass =
-  'brightness-150 dark:brightness-100 group hover:shadow-lg hover:shadow-yellow-700/60 transition ease-in-out hover:scale-105 p-1 rounded-xl bg-gradient-to-br from-yellow-800 via-yellow-600 to-yellow-800 hover:from-yellow-700 hover:via-yellow-800 hover:to-yellow-600';
-
-const innerClass =
-  'px-6 py-2 backdrop-blur-xl bg-black/80 rounded-lg font-bold w-full h-full';
-
-const labelClass =
-  'group-hover:scale-100 flex items-center group-hover:text-yellow-500 text-yellow-600 gap-1';
 ---
 
 <Tag
@@ -38,17 +30,17 @@ const labelClass =
   type={href ? undefined : type}
   target={href ? target : undefined}
   rel={href ? rel : undefined}
-  class:list={[outerClass, href && 'inline-block', className]}
+  class:list={['premium-button', href && 'premium-button--link', className]}
 >
-  <div class={innerClass}>
-    <div class={labelClass}>
+  <div class="premium-button__inner">
+    <div class="premium-button__label">
       {showIcon && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.8"
-          class="w-6 h-6 stroke-yellow-600 group-hover:stroke-yellow-500 group-hover:stroke-[1.99] shrink-0"
+          class="premium-button__icon"
           aria-hidden="true"
         >
           <path
@@ -62,3 +54,70 @@ const labelClass =
     </div>
   </div>
 </Tag>
+
+<style>
+  .premium-button {
+    display: inline-block;
+    padding: 0.25rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(
+      135deg,
+      #d09a40 0%,
+      var(--primary, #f49b2b) 50%,
+      #fe9d00 100%
+    );
+    filter: brightness(1.05);
+    transition:
+      transform 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out,
+      filter 0.2s ease-in-out;
+  }
+
+  .premium-button--link {
+    text-decoration: none;
+  }
+
+  .premium-button:hover {
+    transform: scale(1.05);
+    filter: brightness(1.12);
+    box-shadow: 0 8px 28px color-mix(in oklab, var(--primary, #f49b2b) 45%, transparent);
+    background: linear-gradient(135deg, #c4882e 0%, #e08a1a 50%, #f49b2b 100%);
+  }
+
+  .premium-button__inner {
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(24px);
+    background: color-mix(in oklab, var(--background, #0a0a0a) 82%, transparent);
+    font-weight: 700;
+    width: 100%;
+    height: 100%;
+  }
+
+  .premium-button__label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--primary, #f49b2b);
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .premium-button:hover .premium-button__label {
+    color: #fe9d00;
+  }
+
+  .premium-button__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    stroke: var(--primary, #f49b2b);
+    transition: stroke 0.2s ease, stroke-width 0.2s ease;
+  }
+
+  .premium-button:hover .premium-button__icon {
+    stroke: #fe9d00;
+    stroke-width: 1.99;
+  }
+</style>

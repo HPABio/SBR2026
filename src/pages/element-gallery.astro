@@ -1,0 +1,8 @@
+---
+import Layout from '@/layouts/main.astro';
+import { ElementGallery as ElementGalleryBoard } from '@/components/component-check/ElementGallery';
+---
+
+<Layout content={{ title: 'Element Gallery', description: 'Captured component thumbnails and metadata.' }}>
+  <ElementGalleryBoard client:load />
+</Layout>

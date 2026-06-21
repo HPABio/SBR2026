@@ -1,9 +1,9 @@
 import * as React from "react"
 import {
   Switch as AriaSwitch,
-  SwitchProps as AriaSwitchProps,
   composeRenderProps,
 } from "react-aria-components"
+import type { SwitchProps as AriaSwitchProps } from "react-aria-components"
 
 import { cn } from "@/lib/utils"
 

@@ -2,6 +2,9 @@
 import Layout from '@/layouts/main.astro';
 import Navigation from '@/components/Navigation.astro';
 import UICompareShowcase from '@/components/UICompareShowcase';
+import GlowButton from '@/components/ui/GlowButton.astro';
+import PremiumButton from '@/components/ui/PremiumButton.astro';
+import ElasticCheckbox from '@/components/ui/ElasticCheckbox.astro';
 ---
 
 <Layout>
@@ -62,6 +65,34 @@ import UICompareShowcase from '@/components/UICompareShowcase';
 							>
 								Contact Us
 							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="border-t border-white/10 py-16 px-4 lg:px-8 bg-black/40">
+				<div class="container mx-auto max-w-4xl">
+					<div class="text-center space-y-3 mb-10">
+						<p class="text-xs font-semibold uppercase tracking-[0.08em] text-white/40">
+							Astro components
+						</p>
+						<h2 class="text-2xl md:text-3xl font-bold text-white">
+							Buttons &amp; Checkbox
+						</h2>
+						<p class="text-sm text-muted-foreground max-w-lg mx-auto">
+							Elastic checkbox, glow button, and premium button — zero client JS.
+						</p>
+					</div>
+
+					<div class="flex flex-col items-center gap-10">
+						<div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-8 w-full">
+							<ElasticCheckbox id="partner-terms" label="I agree to partner terms" />
+							<ElasticCheckbox id="partner-updates" label="Send me program updates" compact />
+						</div>
+
+						<div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-6 w-full">
+							<GlowButton>Explore More</GlowButton>
+							<PremiumButton>Premium Partner</PremiumButton>
 						</div>
 					</div>
 				</div>

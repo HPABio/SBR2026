@@ -15,8 +15,11 @@
 }
 
 .cbx {
-  --saffron: #ff9933;
-  --orange: #ff4500;
+  --cbx-primary: #f49b2b;
+  --cbx-accent: #fe9d00;
+  --cbx-deep: #d09a40;
+  --saffron: var(--cbx-primary);
+  --orange: var(--cbx-accent);
   --ink: #fff;
   --size: 42px;
   --bw: 2.5px;

@@ -1,0 +1,83 @@
+---
+import Layout from '@/layouts/main.astro';
+import { componentRegistry } from '@/data/component-registry';
+import ComponentFrame from '@/components/component-check/ComponentFrame.astro';
+import { ComponentCheckCapture } from '@/components/component-check/ComponentCheckCapture';
+import GlowButton from '@/components/ui/GlowButton.astro';
+import PremiumButton from '@/components/ui/PremiumButton.astro';
+import ElasticCheckbox from '@/components/ui/ElasticCheckbox.astro';
+import {
+  PricingFiveDemo,
+  PricingModuleDemo,
+  BorderGlowDemo,
+  Lab1AppearanceModalDemo,
+  Lab1ActionMenuDemo,
+  Lab1ContextMenuDemo,
+  Lab1TimelineDemo,
+  Lab1ClockDemo,
+  LuminousCardDemo,
+  GradientBarsDemo,
+  GridList02Demo,
+  ShadcnPrimitivesDemo,
+} from '@/components/component-check/demos';
+---
+
+<Layout content={{ title: 'Component Check', description: 'Internal component preview and capture board.' }}>
+  <main class="min-h-screen bg-background pb-28 text-foreground">
+    <section class="border-b border-border/70 px-6 py-10">
+      <div class="mx-auto max-w-[1600px]">
+        <p class="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
+          Internal tooling
+        </p>
+        <h1 class="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
+          Component Check
+        </h1>
+        <p class="mt-3 max-w-3xl text-sm text-muted-foreground md:text-base">
+          Live preview board for collected UI components. Compact items sit up to three per row;
+          full-width sections get their own row. Each frame is captured for the element gallery.
+        </p>
+        <div class="mt-4">
+          <a
+            href="/element-gallery"
+            class="inline-flex items-center rounded-md border border-border px-3 py-1.5 text-xs font-medium transition-colors hover:bg-accent"
+          >
+            View element gallery
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 py-8">
+      <div class="mx-auto grid max-w-none grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {
+          componentRegistry.map((entry) => (
+            <ComponentFrame
+              entry={entry}
+              class={entry.layout === 'full' ? 'col-span-full' : undefined}
+            >
+              {entry.id === 'pricing-five' && <PricingFiveDemo client:visible />}
+              {entry.id === 'pricing-module' && <PricingModuleDemo client:visible />}
+              {entry.id === 'glow-button' && <GlowButton>Explore More</GlowButton>}
+              {entry.id === 'premium-button' && <PremiumButton>Premium Partner</PremiumButton>}
+              {entry.id === 'elastic-checkbox' && (
+                <ElasticCheckbox id={`check-${entry.id}`} label="I agree to partner terms" />
+              )}
+              {entry.id === 'border-glow' && <BorderGlowDemo client:visible />}
+              {entry.id === 'lab1-appearance-modal' && <Lab1AppearanceModalDemo client:visible />}
+              {entry.id === 'lab1-action-menu' && <Lab1ActionMenuDemo client:visible />}
+              {entry.id === 'lab1-context-menu' && <Lab1ContextMenuDemo client:visible />}
+              {entry.id === 'lab1-timeline' && <Lab1TimelineDemo client:visible />}
+              {entry.id === 'lab1-clock' && <Lab1ClockDemo client:visible />}
+              {entry.id === 'luminous-card' && <LuminousCardDemo client:visible />}
+              {entry.id === 'gradient-bars' && <GradientBarsDemo client:visible />}
+              {entry.id === 'grid-list-02' && <GridList02Demo client:visible />}
+              {entry.id === 'shadcn-primitives' && <ShadcnPrimitivesDemo client:visible />}
+            </ComponentFrame>
+          ))
+        }
+      </div>
+    </section>
+
+    <ComponentCheckCapture client:load entries={componentRegistry} />
+  </main>
+</Layout>

@@ -22,16 +22,45 @@
   color: white;
 }
 
+/* Embedded preview (component-check frames, etc.) */
+.lab1-scene--embed {
+  position: relative;
+  isolation: isolate;
+  min-height: 18rem;
+  width: 100%;
+  padding: 2rem;
+  overflow: hidden;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse 420px 280px at 18% 0%, rgb(255 255 255 / 0.065), transparent 70%),
+    radial-gradient(ellipse 420px 280px at 82% 100%, rgb(255 255 255 / 0.040), transparent 70%),
+    #080808;
+}
+
+.lab1-scene--embed > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Global film-grain noise overlay */
-.lab1-scene::before {
+.lab1-scene::before,
+.lab1-scene--embed::before {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
   opacity: 0.075;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
   mix-blend-mode: overlay;
   z-index: 0;
+}
+
+/* Full-page showcase keeps viewport-fixed grain */
+.lab1-scene:not(.lab1-scene--embed)::before {
+  position: fixed;
+  background-size: 220px 220px;
 }
 
 /* ── GLASS CARD ── */
@@ -63,6 +92,8 @@
   pointer-events: none;
   opacity: 0.042;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  background-repeat: repeat;
   z-index: 0;
 }
 

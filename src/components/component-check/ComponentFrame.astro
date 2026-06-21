@@ -1,0 +1,93 @@
+---
+import type { ComponentRegistryEntry, PreviewWidth } from '@/data/component-registry';
+
+interface Props {
+  entry: ComponentRegistryEntry;
+  class?: string;
+}
+
+const { entry, class: className = '' } = Astro.props;
+const tags = entry.tags.join(',');
+const isFull = entry.layout === 'full';
+
+const previewWidthClass: Record<PreviewWidth, string> = {
+  content: 'max-w-3xl',
+  wide: 'max-w-6xl',
+  full: 'max-w-none',
+};
+
+const stageWidth = isFull
+  ? previewWidthClass[entry.previewWidth ?? 'wide']
+  : 'max-w-none';
+---
+
+<article
+  class:list={[
+    'component-frame flex flex-col overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm',
+    isFull && 'component-frame--full',
+    className,
+  ]}
+  data-component-frame
+  data-component-id={entry.id}
+  data-component-name={entry.name}
+  data-component-category={entry.category}
+  data-component-path={entry.path}
+  data-component-type={entry.type}
+  data-component-tags={tags}
+  data-component-description={entry.description}
+  data-component-layout={entry.layout ?? 'compact'}
+>
+  <header class="flex items-start justify-between gap-3 border-b border-border/70 px-4 py-3">
+    <div class="min-w-0">
+      <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
+        {entry.category}
+      </p>
+      <h2 class="truncate text-base font-semibold tracking-tight text-foreground">
+        {entry.name}
+      </h2>
+      <p class="mt-1 line-clamp-2 text-xs text-muted-foreground">
+        {entry.description}
+      </p>
+    </div>
+    <span class="shrink-0 rounded-full border border-border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+      {entry.type}
+    </span>
+  </header>
+
+  <div
+    class:list={[
+      'component-frame__preview flex overflow-hidden bg-background',
+      isFull
+        ? 'justify-center p-6'
+        : 'min-h-56 items-center justify-center p-4',
+    ]}
+    data-component-preview
+  >
+    <div class:list={['component-frame__stage w-full', stageWidth]}>
+      <slot />
+    </div>
+  </div>
+
+  <footer class="border-t border-border/70 px-4 py-3">
+    <div class="flex items-center justify-between gap-3">
+      <p class="truncate font-mono text-[10px] text-muted-foreground">
+        {entry.path}
+      </p>
+      <img
+        data-component-thumb
+        alt={`${entry.name} thumbnail`}
+        class="hidden size-12 rounded-md border border-border object-cover"
+      />
+    </div>
+  </footer>
+</article>
+
+<style>
+  .component-frame {
+    min-height: 100%;
+  }
+
+  .component-frame__stage {
+    margin-inline: auto;
+  }
+</style>
