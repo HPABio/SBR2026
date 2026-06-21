@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/main.astro';
 import Navigation from '@/components/Navigation.astro';
+import UICompareShowcase from '@/components/UICompareShowcase';
 ---
 
 <Layout>
@@ -64,6 +65,10 @@ import Navigation from '@/components/Navigation.astro';
 						</div>
 					</div>
 				</div>
+			</section>
+
+			<section class="border-t border-white/10">
+				<UICompareShowcase client:load />
 			</section>
 		</main>
 </Layout>
