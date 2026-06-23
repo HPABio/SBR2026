@@ -8,6 +8,6 @@ interface Props extends NAMESectionProps {
 const { class: classProp, className } = Astro.props;
 const classes = classProp || className || "";
 ---
-<section class={`relative flex h-full w-full justify-start bg-black ${classes}`}>
+<section class={`relative flex h-full w-full justify-center bg-black ${classes}`}>
   <LookingBackHeadline client:visible />
 </section>

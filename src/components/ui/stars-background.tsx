@@ -22,7 +22,7 @@ interface StarsBackgroundProps {
 
 export const StarsBackground = ({
     interactive = false,
-    factor = 0.05,
+    factor = 0.05, //factor of the mouse movement
     speed = 50,
     transition = { stiffness: 50, damping: 20 },
     starColor = "#fff",
@@ -36,15 +36,21 @@ export const StarsBackground = ({
     const [boxShadow2, setBoxShadow2] = useState("");
     const [boxShadow3, setBoxShadow3] = useState("");
     const shouldReduceMotion = useReducedMotion();
-    const starRange = compact ? 360 : 4000;
+    const starRange = compact ? 900 : 4000;
     const starOffset = starRange / 2;
     const scrollDistance = compact ? 160 : 2000;
     const starLayerClassName = compact
         ? "absolute top-0 left-0 size-full"
         : "absolute top-0 left-1/3 w-screen h-[2000px]";
+    const starParticleClassName = compact
+        ? "absolute top-1/2 left-1/2 bg-transparent rounded-full -translate-x-1/2 -translate-y-1/2"
+        : "absolute bg-transparent rounded-full";
     const duplicateLayerClassName = compact
-        ? "absolute bg-transparent rounded-full top-full"
+        ? "absolute top-1/2 left-1/2 bg-transparent rounded-full -translate-x-1/2"
         : "absolute bg-transparent rounded-full top-[2000px]";
+    const duplicateLayerStyle = compact
+        ? { transform: `translate(-50%, calc(-50% + ${starRange}px))` }
+        : undefined;
     const starCount1 = compact ? 120 : 1000;
     const starCount2 = compact ? 50 : 400;
     const starCount3 = compact ? 25 : 200;
@@ -116,7 +122,7 @@ export const StarsBackground = ({
                     transition={starLayer1Transition}
                 >
                     <div
-                        className="absolute bg-transparent rounded-full"
+                        className={starParticleClassName}
                         style={{
                             width: `${1 * particleSize}px`,
                             height: `${1 * particleSize}px`,
@@ -129,6 +135,7 @@ export const StarsBackground = ({
                             width: `${1 * particleSize}px`,
                             height: `${1 * particleSize}px`,
                             boxShadow: boxShadow1,
+                            ...duplicateLayerStyle,
                         }}
                     />
                 </motion.div>
@@ -140,7 +147,7 @@ export const StarsBackground = ({
                     transition={starLayer2Transition}
                 >
                     <div
-                        className="absolute bg-transparent rounded-full"
+                        className={starParticleClassName}
                         style={{
                             width: `${2 * particleSize}px`,
                             height: `${2 * particleSize}px`,
@@ -153,6 +160,7 @@ export const StarsBackground = ({
                             width: `${2 * particleSize}px`,
                             height: `${2 * particleSize}px`,
                             boxShadow: boxShadow2,
+                            ...duplicateLayerStyle,
                         }}
                     />
                 </motion.div>
@@ -164,7 +172,7 @@ export const StarsBackground = ({
                     transition={starLayer3Transition}
                 >
                     <div
-                        className="absolute bg-transparent rounded-full"
+                        className={starParticleClassName}
                         style={{
                             width: `${3 * particleSize}px`,
                             height: `${3 * particleSize}px`,
@@ -177,6 +185,7 @@ export const StarsBackground = ({
                             width: `${3 * particleSize}px`,
                             height: `${3 * particleSize}px`,
                             boxShadow: boxShadow3,
+                            ...duplicateLayerStyle,
                         }}
                     />
                 </motion.div>
