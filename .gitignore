@@ -29,4 +29,9 @@ pnpm-debug.log*
 package.json.backup
 package.json.temp
 
+# Local trash/archive area. Existing tracked examples remain tracked, but
+# moved services and backend copies stay off GitHub.
+/Archive/legacy-services/
+/Archive/AstroPage/
+
 x^x

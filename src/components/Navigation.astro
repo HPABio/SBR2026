@@ -1,7 +1,6 @@
 ---
 import SBRFavicon from "@/assets/SBR2026-Favicon.png";
 
-import BubbleButton from '@/components/ui/BubbleButton.astro';
 // Navigation component for SynBioReactor Summit
 const currentPath = Astro.url.pathname;
 
@@ -28,7 +27,7 @@ const getLinkClasses = (path: string) => {
           alt="SynBioReactor Logo" 
           class="w-10 h-10"
         />
-        <span class="hidden lg:block font-bold text-2xl font-anton uppercase"> #SBR2026</span>
+        <span class="hidden lg:block font-bold text-2xl font-anton uppercase">SBR 2026 Archive</span>
       </a>
 
       <div class="hidden md:flex items-center gap-6">
@@ -38,23 +37,14 @@ const getLinkClasses = (path: string) => {
         <a href="/timetable" class={getLinkClasses('/timetable')}>
           Time Table
         </a>
-        <a href="/pitchPerfect" class={getLinkClasses('/pitchPerfect')}>
-          Pitching
-        </a>
         <a href="/about" class={`${getLinkClasses('/about')} hidden`}>
           About
-        </a>
-        <a href="https://gasb.de" class={`${getLinkClasses('/gasb')} hidden lg:block`}>
-          GASB
         </a>
         <a
           href="/partners"
           class={getLinkClasses('/partners')}
         >
           Partners
-        </a>
-        <a href="/sponsoring" class={`${getLinkClasses('/sponsoring')} hidden lg:block`}>
-          Sponsoring
         </a>
       </div>
 
@@ -64,20 +54,9 @@ const getLinkClasses = (path: string) => {
         TICKETS
       </button> -->
 
-      <div
-        id={currentPath === '/' ? "nav-ticket-button" : ""}
-        class={currentPath === '/' ? "opacity-0 pointer-events-none transition-opacity duration-300" : ""}
-      >
+      <div>
         <div class="flex items-center gap-3">
-          <BubbleButton
-            text="TICKETS"
-            class="rounded-md"
-            textClass="text-3xl mx-1 font-anton font-black tracking-tight uppercase"
-            iconClass="h-8 fill-black group-hover:fill-white -translate-y-[4px] m-0 ml-0"
-            href="/registration"
-          />
-
-          <!-- Mobile hamburger (right of Tickets) -->
+          <!-- Mobile hamburger -->
           <button
             type="button"
             class="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-md border border-border bg-background/60 hover:bg-background transition-colors"
@@ -140,54 +119,12 @@ const getLinkClasses = (path: string) => {
       <a href="/timetable" class="text-lg font-medium hover:text-primary transition-colors" data-mobile-menu-link>
         Time Table
       </a>
-      <a href="/speakers" class="text-lg font-medium hover:text-primary transition-colors" data-mobile-menu-link>
-        Speakers
-      </a>
-      <a href="/pitchPerfect" class="text-lg font-medium hover:text-primary transition-colors" data-mobile-menu-link>
-        Pitching
-      </a>
       <a href="/partners" class="text-lg font-medium hover:text-primary transition-colors" data-mobile-menu-link>
         Partners
-      </a>
-      <a href="/sponsoring" class="text-lg font-medium hover:text-primary transition-colors" data-mobile-menu-link>
-        Sponsors
       </a>
     </div>
   </div>
 </div>
-
-<script>
-  // Show navigation ticket button when hero ticket button is out of view
-  document.addEventListener('DOMContentLoaded', () => {
-    const heroButton = document.getElementById('hero-ticket-button');
-    const navButton = document.getElementById('nav-ticket-button');
-    
-    if (!heroButton || !navButton) return;
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          // When hero button is NOT intersecting (out of view), show nav button
-          if (!entry.isIntersecting) {
-            navButton.classList.remove('opacity-0', 'pointer-events-none');
-            navButton.classList.add('opacity-100', 'pointer-events-auto');
-          } else {
-            // When hero button is visible, hide nav button
-            navButton.classList.add('opacity-0', 'pointer-events-none');
-            navButton.classList.remove('opacity-100', 'pointer-events-auto');
-          }
-        });
-      },
-      {
-        // Trigger when button is completely out of view
-        threshold: 0,
-        rootMargin: '0px'
-      }
-    );
-    
-    observer.observe(heroButton);
-  });
-</script>
 
 <script>
   // Mobile menu: open/close, close on outside click, ESC, or link click

@@ -1,22 +1,13 @@
 ---
 import type { Props as NAMESectionProps } from 'astro';
-import {GradientBars} from '@/components/ui/gradient-bars.tsx';
+import LookingBackHeadline from "@/components/LookingBackHeadline";
+
 interface Props extends NAMESectionProps {
   class?: string;
 }
 const { class: classProp, className } = Astro.props;
 const classes = classProp || className || "";
 ---
-<section class={`relative h-full ${classes}`}>
-  
-    <div class="container h-[200px] mx-auto max-w-7xl flex items-center justify-center">
-        <h2 class="text-4xl font-bold text-white"></h2>
-    </div>
-    <div class="h-full w-fit mt-auto  flex flex-col items-start justify-center pb-8 my-10 ">
-      <h2
-          class="text-black text-9xl font-anton font-black uppercase tracking-tight clear-both caret-white text-left"
-      >
-          Looking back at
-      </h2>
-  </div>
+<section class={`relative flex h-full w-full justify-start bg-black ${classes}`}>
+  <LookingBackHeadline client:visible />
 </section>

@@ -5,7 +5,7 @@ import React, {
     useCallback,
 } from "react";
 import { cn } from "@/lib/utils";
-import { motion, useMotionValue, useSpring, type SpringOptions, type Transition } from "framer-motion";
+import { motion, useMotionValue, useReducedMotion, useSpring, type SpringOptions, type Transition } from "framer-motion";
 
 interface StarsBackgroundProps {
     interactive?: boolean;
@@ -17,6 +17,7 @@ interface StarsBackgroundProps {
     bgColor?: string;
     className?: string;
     children?: React.ReactNode;
+    compact?: boolean;
 }
 
 export const StarsBackground = ({
@@ -29,26 +30,40 @@ export const StarsBackground = ({
     bgColor = "bg-[radial-gradient(ellipse_at_bottom,#F49B2B_0%,#ff7700_70%,#ff7700_100%)]",
     className,
     children,
+    compact = false,
 }: StarsBackgroundProps) => {
     const [boxShadow1, setBoxShadow1] = useState("");
     const [boxShadow2, setBoxShadow2] = useState("");
     const [boxShadow3, setBoxShadow3] = useState("");
+    const shouldReduceMotion = useReducedMotion();
+    const starRange = compact ? 360 : 4000;
+    const starOffset = starRange / 2;
+    const scrollDistance = compact ? 160 : 2000;
+    const starLayerClassName = compact
+        ? "absolute top-0 left-0 size-full"
+        : "absolute top-0 left-1/3 w-screen h-[2000px]";
+    const duplicateLayerClassName = compact
+        ? "absolute bg-transparent rounded-full top-full"
+        : "absolute bg-transparent rounded-full top-[2000px]";
+    const starCount1 = compact ? 120 : 1000;
+    const starCount2 = compact ? 50 : 400;
+    const starCount3 = compact ? 25 : 200;
 
     const generateStars = useCallback((count: number, color: string) => {
         const shadows: string[] = [];
         for (let i = 0; i < count; i++) {
-            const x = Math.floor(Math.random() * 4000) - 2000;
-            const y = Math.floor(Math.random() * 4000) - 2000;
+            const x = Math.floor(Math.random() * starRange) - starOffset;
+            const y = Math.floor(Math.random() * starRange) - starOffset;
             shadows.push(`${x}px ${y}px ${color}`);
         }
         return shadows.join(", ");
-    }, []);
+    }, [starOffset, starRange]);
 
     useEffect(() => {
-        setBoxShadow1(generateStars(1000, starColor));
-        setBoxShadow2(generateStars(400, starColor));
-        setBoxShadow3(generateStars(200, starColor));
-    }, [starColor, generateStars]);
+        setBoxShadow1(generateStars(starCount1, starColor));
+        setBoxShadow2(generateStars(starCount2, starColor));
+        setBoxShadow3(generateStars(starCount3, starColor));
+    }, [starColor, generateStars, starCount1, starCount2, starCount3]);
 
     const offsetX = useMotionValue(0);
     const offsetY = useMotionValue(0);
@@ -92,12 +107,12 @@ export const StarsBackground = ({
             onMouseMove={interactive ? handleMouseMove : undefined}
         >
             <motion.div style={{ x: springX, y: springY }}
-            className={`max-w-9xl mx-auto w-full h-full ${bgColor} mt-12`}
+            className={cn("max-w-9xl mx-auto w-full h-full", bgColor, compact ? "" : "mt-12")}
             >
                 {/* Star Layer 1 */}
                 <motion.div
-                    className="absolute top-0 left-1/3 w-screen h-[2000px]"
-                    animate={{ y: [0, -2000] }}
+                    className={starLayerClassName}
+                    animate={shouldReduceMotion ? { y: 0 } : { y: [0, -scrollDistance] }}
                     transition={starLayer1Transition}
                 >
                     <div
@@ -109,7 +124,7 @@ export const StarsBackground = ({
                         }}
                     />
                     <div
-                        className="absolute bg-transparent rounded-full top-[2000px]"
+                        className={duplicateLayerClassName}
                         style={{
                             width: `${1 * particleSize}px`,
                             height: `${1 * particleSize}px`,
@@ -120,8 +135,8 @@ export const StarsBackground = ({
 
                 {/* Star Layer 2 */}
                 <motion.div
-                    className="absolute top-0 left-0 left-1/3 w-screen h-[2000px]"
-                    animate={{ y: [0, -2000] }}
+                    className={starLayerClassName}
+                    animate={shouldReduceMotion ? { y: 0 } : { y: [0, -scrollDistance] }}
                     transition={starLayer2Transition}
                 >
                     <div
@@ -133,7 +148,7 @@ export const StarsBackground = ({
                         }}
                     />
                     <div
-                        className="absolute bg-transparent rounded-full top-[2000px]"
+                        className={duplicateLayerClassName}
                         style={{
                             width: `${2 * particleSize}px`,
                             height: `${2 * particleSize}px`,
@@ -144,8 +159,8 @@ export const StarsBackground = ({
 
                 {/* Star Layer 3 */}
                 <motion.div
-                    className="absolute top-0 left-0 w-full h-[2000px]"
-                    animate={{ y: [0, -2000] }}
+                    className={starLayerClassName}
+                    animate={shouldReduceMotion ? { y: 0 } : { y: [0, -scrollDistance] }}
                     transition={starLayer3Transition}
                 >
                     <div
@@ -157,7 +172,7 @@ export const StarsBackground = ({
                         }}
                     />
                     <div
-                        className="absolute bg-transparent rounded-full top-[2000px]"
+                        className={duplicateLayerClassName}
                         style={{
                             width: `${3 * particleSize}px`,
                             height: `${3 * particleSize}px`,

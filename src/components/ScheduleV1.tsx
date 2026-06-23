@@ -1,6 +1,5 @@
 "use client"
 
-import { Navigation } from "@/components/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -735,8 +734,6 @@ export default function ScheduleComponent() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
-
       {/* Hero Section */}
       <section className="pt-32 pb-12 px-4 lg:px-8">
         <div className="container mx-auto max-w-7xl">
@@ -921,36 +918,6 @@ export default function ScheduleComponent() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-4 lg:px-8">
-        <div className="container mx-auto max-w-4xl text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-balance">Ready to Join Us?</h2>
-          <p className="text-lg text-muted-foreground text-balance">
-            Secure your spot at Berlin's premier synthetic biology summit
-          </p>
-          <Button
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg px-8"
-          >
-            Get Tickets
-          </Button>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-4 lg:px-8 border-t border-border">
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-card border-2 border-primary flex items-center justify-center">
-                <div className="w-4 h-4 rounded-full bg-primary" />
-              </div>
-              <span className="font-bold">SynBioReactor Summit 2026</span>
-            </div>
-            <div className="text-sm text-muted-foreground">© 2026 GASB - German Association for Synthetic Biology</div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

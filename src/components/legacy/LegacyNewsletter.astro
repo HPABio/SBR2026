@@ -1,0 +1,19 @@
+---
+import NewsletterSignup from "./NewsletterSignup";
+---
+
+<section id="newsletter" class="w-screen bg-black px-4 py-24 lg:px-8">
+  <div class="container mx-auto grid max-w-5xl gap-8 rounded-[2rem] border border-white/10 bg-card/60 p-8 md:grid-cols-[0.9fr_1.1fr] md:p-12">
+    <div>
+      <p class="font-quicksand text-sm uppercase tracking-[0.35em] text-primary">Newsletter</p>
+      <h2 class="mt-4 font-anton text-5xl font-black uppercase leading-none tracking-tight text-white md:text-6xl">
+        Stay in the loop.
+      </h2>
+      <p class="mt-5 font-quicksand text-base font-light leading-relaxed tracking-widest text-muted-foreground">
+        Leave your email for SynBioReactor and GASB community updates.
+      </p>
+    </div>
+
+    <NewsletterSignup client:load />
+  </div>
+</section>

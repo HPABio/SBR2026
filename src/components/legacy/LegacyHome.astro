@@ -1,0 +1,23 @@
+---
+import LegacyHero from "./LegacyHero.astro";
+import LegacyPhotoGallery from "./LegacyPhotoGallery.astro";
+import LegacyVideoRecap from "./LegacyVideoRecap.astro";
+import LegacyProgramSummary from "./LegacyProgramSummary.astro";
+import LegacyPitchSummary from "./LegacyPitchSummary.astro";
+import LegacyAttendeeLinks from "./LegacyAttendeeLinks.astro";
+import LegacyNewsletter from "./LegacyNewsletter.astro";
+import SBWCSection from "@/components/SBWCSection.astro";
+---
+
+<main class="overflow-hidden bg-black">
+  <LegacyHero />
+  <div class="relative flex w-full justify-center bg-black px-4 pt-20">
+    <SBWCSection />
+  </div>
+  <LegacyVideoRecap />
+  <LegacyPhotoGallery />
+  <LegacyProgramSummary />
+  <LegacyPitchSummary />
+  <LegacyAttendeeLinks />
+  <LegacyNewsletter />
+</main>

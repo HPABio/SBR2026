@@ -1,0 +1,33 @@
+---
+const highlights = [
+  "Founder and investor conversations around scaling synthetic biology ventures.",
+  "Keynotes, panels, and fireside chats across biomanufacturing, resilience, and market building.",
+  "Hands-on workshops and community sessions connecting startups, industry, academia, and policy.",
+];
+---
+
+<section class="w-screen bg-background px-4 py-24 lg:px-8">
+  <div class="container mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+    <div>
+      <p class="font-quicksand text-sm uppercase tracking-[0.35em] text-primary">Program recap</p>
+      <h2 class="mt-4 font-anton text-5xl font-black uppercase leading-none tracking-tight text-foreground md:text-7xl">
+        Two days of startup x investor momentum
+      </h2>
+    </div>
+
+    <div class="space-y-8">
+      <p class="font-quicksand text-lg font-light leading-relaxed tracking-widest text-muted-foreground">
+        SBR 2026 centered on the practical questions synthetic biology ventures face after the first breakthrough: how teams scale, finance, partner, and manufacture in a changing European landscape.
+      </p>
+      <div class="grid gap-4 md:grid-cols-3">
+        {highlights.map((highlight) => (
+          <article class="rounded-3xl border border-white/10 bg-card/70 p-6">
+            <p class="font-quicksand text-sm font-light leading-relaxed tracking-widest text-muted-foreground">
+              {highlight}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

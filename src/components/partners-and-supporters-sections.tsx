@@ -4,8 +4,8 @@ import { Building2, Users2, Link2, Rocket, Unplug, Linkedin, Twitter, Instagram,
 import { ExportPng } from "@/components/export-png"
 
 import partnersLogoList from "@/data/partnersLogoList.json"
-import ticketTailorExport_Dec18th from "@/data/ticketTailorExport_Dec18th.json" with { type: "json" }
-const attendingCompanies = ticketTailorExport_Dec18th.attendees as { ignore: string; name: string; domain: string; description: string; imageClasses: string; logoNA: string }[]
+import attendeeCompaniesExport from "@/data/attendee-companies-dec18.json" with { type: "json" }
+const attendingCompanies = attendeeCompaniesExport.attendees as { ignore: string; name: string; domain: string; description: string; imageClasses: string; logoNA: string }[]
 
 // Logos
 import SPRIND from "@/assets/logos/partners-logos/LinkedIn-Thumbnails/SPRIND_-_Bundesagentur_für_Sprunginnovationen-sprind.jpeg"
@@ -653,12 +653,6 @@ export default function PartnersAndSupportersSections() {
                   className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground hover:bg-transparent hover:text-primary hover:border-primary hover:border-2 font-semibold text-lg rounded-lg transition-colors"
                 >
                   Get Info
-                </a>
-                <a
-                  href="/sponsoring"
-                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-border hover:bg-card hover:text-primary hover:border-primary font-semibold text-lg rounded-lg transition-colors bg-transparent"
-                >
-                  Become a Sponsor
                 </a>
               </div>
             </CardContent>

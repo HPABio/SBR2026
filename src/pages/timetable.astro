@@ -1,46 +1,34 @@
 ---
 import Layout from "@/layouts/main.astro";
-// Component Imports
 import Navigation from "@/components/Navigation.astro";
 import ScheduleComponent from "@/components/ScheduleV1.tsx";
 import { V0EventSchedule } from "@/components/V0event-schedule.tsx";
-import SwapCardAgenda from "@/components/SwapCardAgenda-iFrame.astro";
-import SwapCardLogoWhite from "@/assets/SwapCard/swapcard_LogoWhite.png";
-import SwapCardLogoNoText from "@/assets/SwapCard/swapcard-logoNoTextWhite.png";
-import SBRFavicon from "@/assets/SBR2026-Favicon-1-60x60.png";
-import { Image } from "astro:assets";
 ---
 
 
-<Layout>
+<Layout content={{
+	title: "SBR 2026 Program Archive",
+	description: "The archived SynBioReactor Summit 2026 program with two custom timetable views prepared for review.",
+}}>
 	<Navigation />
-	<main class="pt-16 flex flex-col justify-center bg-[#121212]">
-		<!-- <ScheduleComponent client:load /> -->
-		<div class="w-full flex flex-col items-center justify-center mb-32 px-4 md:px-14">
-			<div class="space-y-2 flex flex-col items-center justify-center pt-24 lg:pt-44 mb-12">
-				<h2 class="w-fit text-3xl font-anton font-black md:text-6xl lg:text-7xl tracking-tight uppercase text-left">
-					<a
-					class=""
-					href="https://app.swapcard.com/event/synbioreactor-summit-sbr2026"
-					>
-					<Image
-					src={SwapCardLogoNoText}
-					alt="SynBioReactor Summit 2026"
-					class="md:w-32 w-20"
-					/>
-				</a>
-					SynBioReactor <br/>
-					<span class="text-8xl text-primary">Time Table</span>
-				<p class="ml-2 font-quicksand text-muted-foreground max-w-3xl font-light text-sm md:text-md text-left tracking-widest">
-					Search and book your favorite sessions.
-				</p>
-			</h2>
+	<main class="flex min-h-screen flex-col justify-center bg-[#121212] px-4 pt-32 md:px-14">
+		<div class="mx-auto mb-16 w-full max-w-5xl">
+			<p class="font-quicksand text-sm uppercase tracking-[0.35em] text-primary">
+				Program archive
+			</p>
+			<h1 class="mt-4 font-anton text-5xl font-black uppercase leading-none tracking-tight text-white md:text-8xl">
+				SBR 2026 Time Table
+			</h1>
+			<p class="mt-6 max-w-3xl font-quicksand text-base font-light leading-relaxed tracking-widest text-muted-foreground">
+				The live event platform has been unplugged. Two custom timetable versions are mounted below as hidden review options.
+			</p>
 		</div>
-		<SwapCardAgenda />
-	</div>
-		
-			<!-- <div class="w-full flex flex-col justify-center mb-32">
-				<V0EventSchedule />
-			</div> -->
-		</main>
+
+		<div class="hidden" id="schedule-v1">
+			<ScheduleComponent client:load />
+		</div>
+		<div class="hidden" id="schedule-v0">
+			<V0EventSchedule client:load />
+		</div>
+	</main>
 </Layout>
