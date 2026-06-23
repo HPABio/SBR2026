@@ -8,12 +8,11 @@ export default function LookingBackHeadline() {
             <span className="">Looking back at
 
             <StarsBackground
-              compact 
               speed={30}
               particleSize={8}
               starColor="orange"
               bgColor="bg-[radial-gradient(ellipse_at_bottom,#F49B2B_0%,#ff7700_70%,#ff7700_100%)]"
-              className="w-full mx-auto top-0 absolute mix-blend-multiply size-full"
+              className="absolute inset-0 mx-auto w-full mix-blend-multiply"
             />
             </span>
         </span>
