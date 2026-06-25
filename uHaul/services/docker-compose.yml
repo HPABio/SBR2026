@@ -1,0 +1,35 @@
+services:
+  sponsor-api:
+    build:
+      context: ./sponsor-api
+      dockerfile: Dockerfile
+    environment:
+      PORT: ${SPONSOR_API_PORT:-3001}
+      ADMIN_SECRET: ${ADMIN_SECRET}
+      ALLOWED_ORIGIN: ${ALLOWED_ORIGIN:-*}
+      DATA_DIR: /app/data
+    volumes:
+      - sponsor-data:/app/data
+    ports:
+      - "${SPONSOR_API_PORT:-3001}:3001"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "bun",
+          "-e",
+          "const res = await fetch('http://localhost:3001/health'); if (!res.ok) process.exit(1)",
+        ]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
+  # Future backend tools can be added as sibling services here.
+  # analytics-api:
+  #   build: ./analytics-api
+  #   environment:
+  #     PORT: 3002
+
+volumes:
+  sponsor-data:

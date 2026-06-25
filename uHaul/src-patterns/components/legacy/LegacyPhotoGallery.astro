@@ -1,0 +1,40 @@
+---
+import AudienceSBR1 from "@/assets/ExportWP/photos/AudienceSBR1.jpg";
+import AudienceSBR2 from "@/assets/ExportWP/photos/AudienceSBR2.jpg";
+import AudienceSBR3 from "@/assets/ExportWP/photos/AudienceSBR3.jpg";
+import BetonhalleWelcome from "@/assets/ExportWP/venue/BetonhalleWelcomeSBR2026-NanoBanana.jpeg";
+
+const photos = [
+  { src: BetonhalleWelcome, alt: "The Silent Green Betonhalle prepared for the SynBioReactor Summit" },
+  { src: AudienceSBR1, alt: "SynBioReactor Summit attendees during a main stage session" },
+  { src: AudienceSBR2, alt: "Audience members following a SynBioReactor Summit talk" },
+  { src: AudienceSBR3, alt: "SynBioReactor Summit community gathering in Berlin" },
+];
+---
+
+<section class="w-screen bg-black px-4 py-20 lg:px-8">
+  <div class="container mx-auto max-w-7xl">
+    <div class="mb-10 max-w-3xl">
+      <p class="font-quicksand text-sm uppercase tracking-[0.35em] text-primary">Selected moments</p>
+      <h2 class="mt-4 font-anton text-5xl font-black uppercase leading-none tracking-tight text-white md:text-7xl">
+        A few scenes from the summit
+      </h2>
+      <p class="mt-5 font-quicksand text-base font-light leading-relaxed tracking-widest text-muted-foreground">
+        A compact look back at the rooms, conversations, and community energy that shaped SBR 2026.
+      </p>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-4">
+      {photos.map((photo, index) => (
+        <figure class={index === 0 ? "md:col-span-2 md:row-span-2" : ""}>
+          <img
+            src={photo.src.src}
+            alt={photo.alt}
+            loading="lazy"
+            class="h-full min-h-64 w-full rounded-3xl border border-white/10 object-cover"
+          />
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

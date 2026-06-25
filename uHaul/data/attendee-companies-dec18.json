@@ -1,0 +1,620 @@
+{
+  "attendees": [
+    {
+      "ignore":"",
+      "name":"GASB e.V.",
+      "domain":"ga-sb.de",
+      "description":"",
+      "imageClasses":"contrast-[4] brightness-[70%] scale-[1.1] invert"
+  },
+    {
+      "ignore":"",
+      "name":"Mimotype",
+      "domain":"mimotype.org",
+      "description":"",
+      "imageClasses":"brightness-[1] contrast-[2] scale-[1.1] invert"
+  },
+    {
+      "ignore":"",
+      "name":"WePlanet",
+      "domain":"weplanet.org",
+      "description":"",
+      "imageClasses":"contrast-[9] brightness-[65%] scale-[1.3] invert"
+
+  },
+    {
+      "ignore":"",
+      "name":"lunarventures",
+      "domain":"lunarventures.eu",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Gelly Bio",
+      "domain":"gelly.bio",
+      "description":"",
+      "imageClasses":"contrast-[6] brightness-[80%] scale-[1.2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"hoffmanneitle",
+      "domain":"hoffmanneitle.com",
+      "description":"",
+      "imageClasses":"invert contrast-[4] brightness-[70%] scale-[1.6]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Fraunhofer IME",
+      "domain":"ime.fraunhofer.de",
+      "description":"",
+      "imageClasses":"contrast-[8] brightness-[70%] scale-[0.9] invert"
+
+  },
+    {
+      "ignore":"yes",
+      "name":"gmail",
+      "domain":"gmail.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"sprind",
+      "domain":"sprind.org",
+      "description":"",
+      "imageClasses":"contrast-[2] [mask-image:radial-gradient(circle,black_0%,black_45%,transparent_10%)] scale-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"salvetherapeutic",
+      "domain":"salvetherapeutics.onmicrosoft.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"bii",
+      "domain":"bii.dk",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"insperanto",
+      "domain":"insperanto.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2] scale-[1.8]"
+
+  },
+    {
+      "ignore":"",
+      "name":"fondacosynbio",
+      "domain":"fondacosynbio.eu",
+      "description":"",
+      "imageClasses":" contrast-[2] scale-[1.1]"
+
+  },
+    {
+      "ignore":"",
+      "name":"bfab",
+      "domain":"bfab.bio",
+      "description":"",
+      "imageClasses":"contrast-[4] brightness-[70%] scale-[1.2] invert"
+
+  },
+    {
+      "ignore":"",
+      "name":"insempra",
+      "domain":"insempra.bio",
+      "description":"",
+      "imageClasses":"contrast-[6] brightness-[70%] scale-[2.2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Electrochaea",
+      "domain":"electrochaea.com",
+      "description":"",
+      "imageClasses":"contrast-[3] brightness-[102%] scale-[1.1] invert"
+
+  },
+    {
+      "ignore":"",
+      "name":"biosustain.dtu",
+      "domain":"biosustain.dtu.dk",
+      "description":"",
+      "imageClasses":"invert contrast-[4] scale-[1.1] brightness-[70%]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Uni Potsdam",
+      "domain":"uni-potsdam.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"HU Berlin",
+      "domain":"hu-berlin.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Charite",
+      "domain":"charite.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2] scale-[1.4]"
+
+  },
+    {
+      "ignore":"yes",
+      "name":"me",
+      "domain":"me.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Leibniz INM - Institute for New Materials",
+      "domain":"leibniz-inm.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2] scale-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Unveil",
+      "domain":"unveil.bio",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"posteo",
+      "domain":"posteo.de",
+      "description":"",
+      "imageClasses":" contrast-[18] brightness-[62%] scale-[1.5] "
+
+  },
+    {
+      "ignore":"",
+      "name":"vossius",
+      "domain":"vossius.eu",
+      "description":"",
+      "imageClasses":"contrast-[10] brightness-[60%] scale-[1.8] [mask-image:radial-gradient(circle,black_0%,black_35%,transparent_10%)]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Fraunhofer IPMS",
+      "domain":"ipms.fraunhofer.de",
+      "description":"",
+      "imageClasses":"contrast-[8] brightness-[70%] scale-[0.9] invert"
+
+  },
+    {
+      "ignore":"",
+      "name":"valleydao",
+      "domain":"valleydao.bio",
+      "description":"",
+      "imageClasses":" contrast-[3] brightness-[90%] scale-[1.3]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Max Planck Institute of Molecular Cell Biology and Genetics",
+      "domain":"mpi-marburg.mpg.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Stealth Mode Biotech",
+      "domain":"stealthmodebiotech.com",
+      "description":"",
+      "imageClasses":" contrast-[1] brightness-[140%] scale-[1.1]",
+      "logoNA": "./src/assets/logos/Stealth Biotech 2.jpg"
+
+  },
+    {
+      "ignore":"",
+      "name":"Colipi",
+      "domain":"colipi.com",
+      "description":"",
+      "imageClasses":" contrast-[2] brightness-[90%] scale-[2.7]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Imperial College London",
+      "domain":"imperial.ac.uk",
+      "description":"",
+      "imageClasses":" contrast-[10] brightness-[60%] scale-[1.3]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Nucleate",
+      "domain":"nucleate.org",
+      "description":"",
+      "imageClasses":"contrast-[2] scale-[1.8]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Heyl Consulting",
+      "domain":"heyl.online",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"KU Leuven",
+      "domain":"kuleuven.be",
+      "description":"",
+      "imageClasses":"contrast-[8] brightness-[65%] scale-[1.9] "
+
+  },
+    {
+      "ignore":"yes",
+      "name":"gmx",
+      "domain":"gmx.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"yes",
+      "name":"web",
+      "domain":"web.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"BB EU",
+      "domain":"bbeu.org",
+      "description":"",
+      "imageClasses":" contrast-[4] brightness-[70%] scale-[1.7] invert"
+
+  },
+    {
+      "ignore":"",
+      "name":"catalyze-group",
+      "domain":"catalyze-group.com",
+      "description":"",
+      "imageClasses":" contrast-[4] brightness-[70%] scale-[1.3] "
+
+  },
+    {
+      "ignore":"",
+      "name":"Fraunhofer IZI BB",
+      "domain":"izi-bb.fraunhofer.de",
+      "description":"",
+      "imageClasses":"contrast-[8] brightness-[70%] scale-[0.9] invert"
+
+  },
+    {
+      "ignore":"yes",
+      "name":"Hotmail",
+      "domain":"hotmail.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"optobiolabs",
+      "domain":"optobiolabs.com",
+      "description":"",
+      "imageClasses":"invert contrast-[1] scale-[1.6]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Arsenale Bioyards",
+      "domain":"arsenale.bio",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"HTW Berlin",
+      "domain":"student.htw-berlin.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2] scale-[1.6]"
+
+  },
+    {
+      "ignore":"",
+      "name":"TU Darmstadt",
+      "domain":"tu-darmstadt.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Cambridge University",
+      "domain":"cam.ac.uk",
+      "description":"",
+      "imageClasses":"contrast-[3] brightness-[120%] scale-[1.5] invert"
+
+  },
+    {
+      "ignore":"",
+      "name":"Greene B.T.",
+      "domain":"greenebt.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Anchimo",
+      "domain":"anchimo.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"TU Dresden",
+      "domain":"tu-dresden.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2] scale-[1.1]"
+
+  },
+    {
+      "ignore":"",
+      "name":"MDC - Berlin",
+      "domain":"mdc-berlin.de",
+      "description":"",
+      "imageClasses":"contrast-[4] brightness-[70%] scale-[1.3]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Cellugy",
+      "domain":"cellugy.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"CAU - Uni Kiel",
+      "domain":"tf.uni-kiel.de",
+      "description":"",
+      "imageClasses":" contrast-[2] scale-[2]"
+  },
+    {
+      "ignore":"",
+      "name":"Zazventures",
+      "domain":"zazventures.com",
+      "description":"",
+      "imageClasses":" contrast-[5] brightness-[120%] scale-[1.3]"
+
+  },
+    {
+      "ignore":"",
+      "name":"[iito]",
+      "domain":"life-sciences-europe.com",
+      "description":"",
+      "imageClasses":"invert contrast-[4] brightness-[250%] scale-[1.5]"
+
+  },
+    {
+      "ignore":"",
+      "name":"ZEDAT - Freie Universität Berlin",
+      "domain":"zedat.fu-berlin.de",
+      "description":"",
+      "imageClasses":"invert contrast-[4] brightness-[250%] scale-[1.5]"
+
+  },
+    {
+      "ignore":"",
+      "name":"DBFZ",
+      "domain":"dbfz.de",
+      "description":"",
+      "imageClasses":"contrast-[9] brightness-[63%] scale-[1] invert"
+
+  },
+    {
+      "ignore":"",
+      "name":"Nucleus Capital",
+      "domain":"nucleus-capital.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2] brightness-[120%] scale-[1.3]"
+
+  },
+    {
+      "ignore":"yes",
+      "name":"FoodLabs",
+      "domain":"foodlabs.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"yes",
+      "name":"Biocompile",
+      "domain":"biocompile.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Molecule",
+      "domain":"molecule.to",
+      "description":"",
+      "imageClasses":"contrast-[9] brightness-[57%] scale-[1.3]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Bio-Phenolics",
+      "domain":"bio-phenolics.co.jp",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Ailurus",
+      "domain":"ailurus.bio",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"yes",
+      "name":"live",
+      "domain":"live.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"igem",
+      "domain":"igem.org",
+      "description":"",
+      "imageClasses":"contrast-[6] brightness-[160%]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Biocatalyst Foundation",
+      "domain":"biocatalyst.eu",
+      "description":"",
+      "imageClasses":"contrast-[6] brightness-[160%] scale-[1.6]",
+      "logoNA": "./src/assets/logos/BiocatalystFoundation_Logo_white.png"
+
+  },
+    {
+      "ignore":"",
+      "name":"endostix",
+      "domain":"endostix.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"connectomix",
+      "domain":"connectomix.bio",
+      "description":"",
+      "imageClasses":"invert contrast-[2] scale-[1.1]",
+      "logoNA": null
+
+  },
+    {
+      "ignore":"yes",
+      "name":"icloud",
+      "domain":"icloud.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"TU Munich",
+      "domain":"tum.de",
+      "description":"",
+      "imageClasses":"contrast-[3] brightness-[80%] scale-[1.6]"
+
+  },
+    {
+      "ignore":"",
+      "name":"TU Berlin",
+      "domain":"tu-berlin.de",
+      "description":"",
+      "imageClasses":"invert contrast-[3] brightness-[80%]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Max Planck Society",
+      "domain":"biochem.mpg.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Evonik",
+      "domain":"evonik.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"corteva",
+      "domain":"corteva.com",
+      "description":"",
+      "imageClasses":"contrast-[2] scale-[1.3] invert"
+
+  },
+    {
+      "ignore":"yes",
+      "name":"helgen",
+      "domain":"helgen.bio",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"yes",
+      "name":"timonschneider",
+      "domain":"timonschneider.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"renatrix-bio",
+      "domain":"renatrix-bio.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]",
+      "logoNA": "./src/assets/logos/Renatrix_Logo.png"
+
+  },
+    {
+      "ignore":"",
+      "name":"recircle",
+      "domain":"recircle.com",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+
+  },
+    {
+      "ignore":"",
+      "name":"Uni Marburg",
+      "domain":"students.uni-marburg.de",
+      "description":"",
+      "imageClasses":"invert contrast-[2]"
+  }
+]
+}
