@@ -167,6 +167,107 @@
       "images": [],
       "imageUrls": [],
       "speakers": []
+    },
+    {
+      "title": "Scaling product to market",
+      "beginsAt": "14:00",
+      "endsAt": "14:45",
+      "description": "S4",
+      "metadata": [
+        "Fireside Room",
+        "Presentation"
+      ],
+      "tags": [
+        "Upscaling Challenges"
+      ],
+      "images": [
+        "Andreas Heyl"
+      ],
+      "imageUrls": [
+        "https://static.swapcard.com/public/images/8a8ba5e1f4f049d7bdb155882058546e.jpeg"
+      ],
+      "speakers": [
+        {
+          "name": "Andreas Heyl",
+          "organization": "Heyl Consulting"
+        }
+      ]
+    },
+    {
+      "title": "SynBio World Cafe - Session 4",
+      "beginsAt": "14:00",
+      "endsAt": "14:50",
+      "description": "SBWC4",
+      "metadata": [
+        "Atelier",
+        "Workshop"
+      ],
+      "tags": [
+        "Break Out Session"
+      ],
+      "images": [
+        "Hendrik Cooper",
+        "Stefan Hristov"
+      ],
+      "imageUrls": [
+        "https://static.swapcard.com/public/images/9e4f48ac039d46afaac729c072340b76.jpeg",
+        "https://static.swapcard.com/public/images/5c04740d81f5401785ad5788a2a5fd9f.jpeg"
+      ],
+      "speakers": [
+        {
+          "name": "Hendrik Cooper",
+          "organization": "BioCentra"
+        },
+        {
+          "name": "Stefan Hristov",
+          "organization": "Nucleate/Charite"
+        }
+      ]
+    },
+    {
+      "title": "Economic and Environmental Evaluation Supporting Sustainability Certification",
+      "beginsAt": "14:00",
+      "endsAt": "15:00",
+      "description": "W2",
+      "metadata": [
+        "Workshop"
+      ],
+      "tags": [
+        "Wildcard"
+      ],
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
+    },
+    {
+      "title": "The new Resilience Premium?",
+      "beginsAt": "14:50",
+      "endsAt": "15:35",
+      "description": "R2",
+      "metadata": [
+        "Betonhalle (main hall)",
+        "Panel Discussion"
+      ],
+      "tags": [
+        "Resilient Supply Chains"
+      ],
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
+    },
+    {
+      "title": "Award Ceremony and Closing",
+      "beginsAt": "15:40",
+      "endsAt": "16:00",
+      "description": "",
+      "metadata": [
+        "Betonhalle (main hall)",
+        "Presentation"
+      ],
+      "tags": [],
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
     }
   ],
   "day2": [

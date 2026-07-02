@@ -1,5 +1,4 @@
 ---
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
     MapPin,
@@ -7,10 +6,11 @@ import {
     Presentation,
     MessageCircle,
     Wrench,
-    Linkedin,
     Globe,
     Coffee,
+    Star
 } from "lucide-react";
+import scheduleData from "../data/swapcard_plannings.json";
 
 type SessionFormat =
     | "keynote"
@@ -18,28 +18,27 @@ type SessionFormat =
     | "workshop"
     | "panel"
     | "discussion"
-    | "networking";
+    | "networking"
+    | "other";
 
-interface Speaker {
-    name: string;
-    role: string;
-    company: string;
-    avatar: string;
-    linkedIn?: string;
+interface ParsedSpeaker {
+  name: string;
+  organization?: string;
+  imageUrl?: string;
 }
 
-interface Session {
-    id: string;
-    startTime: string;
-    endTime: string;
-    title: string;
-    description?: string;
-    speakers?: Speaker[];
-    topic?: string;
-    format: SessionFormat;
-    room: string;
-    isBreak?: boolean;
-    sponsors?: string[];
+interface ParsedSession {
+  id: string;
+  startTime: string;
+  endTime: string;
+  title: string;
+  description?: string;
+  room: string;
+  format: SessionFormat;
+  formatOriginal?: string;
+  tags: string[];
+  speakers: ParsedSpeaker[];
+  isBreak?: boolean;
 }
 
 const formatIcons: Record<SessionFormat, any> = {
@@ -49,577 +48,326 @@ const formatIcons: Record<SessionFormat, any> = {
     panel: Users,
     discussion: MessageCircle,
     networking: Coffee,
+    other: Star,
 };
 
-const formatLabels: Record<SessionFormat, string> = {
-    keynote: "Keynote",
-    presentation: "Presentation",
-    workshop: "Workshop",
-    panel: "Panel",
-    discussion: "Discussion",
-    networking: "Networking",
-};
+function parseFormat(formatStr?: string): SessionFormat {
+  if (!formatStr) return "other";
+  const s = formatStr.toLowerCase();
+  if (s.includes("keynote")) return "keynote";
+  if (s.includes("panel")) return "panel";
+  if (s.includes("workshop")) return "workshop";
+  if (s.includes("discussion") || s.includes("chat")) return "discussion";
+  if (s.includes("talk") || s.includes("presentation")) return "presentation";
+  if (s.includes("networking") || s.includes("party") || s.includes("break")) return "networking";
+  return "other";
+}
 
-const companyLogos: Record<string, string> = {
-    "Bergside LLC": "🏔️",
-    Flowbite: "🌊",
-    Meta: "Ⓜ️",
-    Amazon: "📦",
-    Bioweg: "🧬",
-    Google: "🔍",
-    Microsoft: "🪟",
-};
+function processData(dayData: any[]): ParsedSession[] {
+  return dayData.map((raw, idx) => {
+    let room = "TBA";
+    let formatStr = "";
 
-const morningSessions: Session[] = [
-    {
-        id: "1",
-        startTime: "07:00",
-        endTime: "08:00",
-        title: "Opening Remarks",
-        description:
-            "Welcoming attendees, introducing the purpose of the event, and set the tone for the rest of the proceedings.",
-        speakers: [
-            {
-                name: "Jese Leos",
-                role: "CEO & Co-Founder",
-                company: "Bergside LLC",
-                avatar: "/professional-man-suit.png",
-                linkedIn: "https://linkedin.com",
-            },
-        ],
-        topic: "Welcome",
-        format: "keynote",
-        room: "Main Hall",
-    },
-    {
-        id: "2",
-        startTime: "08:00",
-        endTime: "09:00",
-        title: "Bergside LLC: Controlling the Video Traffic Flows",
-        description:
-            "With an open scripting format for video manipulation, you can publish your own movie smarter.",
-        speakers: [
-            {
-                name: "Lana Byrd",
-                role: "Video Engineer",
-                company: "Bergside LLC",
-                avatar: "/professional-woman-glasses.png",
-                linkedIn: "https://linkedin.com",
-            },
-        ],
-        topic: "Video Tech",
-        format: "presentation",
-        room: "Room A",
-    },
-    {
-        id: "3",
-        startTime: "10:00",
-        endTime: "11:00",
-        title: "Flowbite - An Open Framework for Forensic Watermarking",
-        description:
-            "Start developing with an open-source library of over 450+ UI components, sections, and pages.",
-        speakers: [
-            {
-                name: "Micheal Gough",
-                role: "CTO",
-                company: "Flowbite",
-                avatar: "/man-with-beard-tech.jpg",
-                linkedIn: "https://linkedin.com",
-            },
-            {
-                name: "Karen Nelson",
-                role: "React Developer",
-                company: "Flowbite",
-                avatar: "/woman-developer-smiling.jpg",
-                linkedIn: "https://linkedin.com",
-            },
-        ],
-        topic: "Open Source",
-        format: "workshop",
-        room: "Workshop Room 1",
-    },
-    {
-        id: "4",
-        startTime: "11:00",
-        endTime: "11:30",
-        title: "Coffee & Networking",
-        isBreak: true,
-        format: "networking",
-        room: "Lobby",
-        sponsors: ["Spotify", "Microsoft", "Slack", "Salesforce"],
-    },
-    {
-        id: "5",
-        startTime: "11:15",
-        endTime: "12:15",
-        title: "Lighthouse Keynote",
-        description:
-            "Scaling challenges and solutions for modern biotech startups.",
-        speakers: [
-            {
-                name: "Prateek Mahalwar",
-                role: "CEO",
-                company: "Bioweg",
-                avatar: "/indian-professional-man.png",
-                linkedIn: "https://linkedin.com",
-            },
-        ],
-        topic: "Scale Up",
-        format: "keynote",
-        room: "Betonhalle (Main Hall)",
-    },
-];
+    if (raw.metadata && raw.metadata.length > 0) {
+      room = raw.metadata[0];
+      if (raw.metadata.length > 1) {
+        formatStr = raw.metadata[1];
+      }
+    }
 
-const afternoonSessions: Session[] = [
+    const isBreak = raw.title.toLowerCase().includes("break") || raw.title.toLowerCase().includes("afterparty") || raw.title.toLowerCase().includes("coffee");
+
+    const parsedSpeakers: ParsedSpeaker[] = [];
+    
+    if (raw.speakers && raw.speakers.length > 0) {
+      raw.speakers.forEach((s: any) => parsedSpeakers.push({ name: s.name, organization: s.organization }));
+    }
+    
+    if (raw.images && raw.images.length > 0) {
+      raw.images.forEach((imgName: string, i: number) => {
+        if (!parsedSpeakers.find((s) => s.name === imgName)) {
+           parsedSpeakers.push({
+              name: imgName,
+              imageUrl: raw.imageUrls ? raw.imageUrls[i] : undefined
+           });
+        }
+      });
+    }
+
+    return {
+      id: `session-${idx}`,
+      startTime: raw.beginsAt || "TBA",
+      endTime: raw.endsAt || "TBA",
+      title: raw.title,
+      description: raw.description || undefined,
+      room,
+      format: parseFormat(formatStr),
+      formatOriginal: formatStr || (isBreak ? "Networking" : undefined),
+      tags: raw.tags || [],
+      speakers: parsedSpeakers,
+      isBreak,
+    };
+  });
+}
+
+function splitIntoMorningAndAfternoon(sessions: ParsedSession[]) {
+    const morning: ParsedSession[] = [];
+    const afternoon: ParsedSession[] = [];
+    
+    sessions.forEach(session => {
+        const hour = parseInt(session.startTime.split(":")[0]);
+        if (!isNaN(hour) && hour < 13) {
+            morning.push(session);
+        } else {
+            afternoon.push(session);
+        }
+    });
+    
+    return { morning, afternoon };
+}
+
+const day1Data = processData(scheduleData.day1);
+const day2Data = processData(scheduleData.day2);
+
+const days = [
     {
-        id: "6",
-        startTime: "13:00",
-        endTime: "14:00",
-        title: "Women in Streaming Media Networking",
-        description:
-            "Our mission is to increase diversity and give more visibility to women leaders in the streaming media industry.",
-        speakers: [
-            {
-                name: "Leslie Livingston",
-                role: "CEO & Co-Founder",
-                company: "Meta",
-                avatar: "/professional-woman-executive.png",
-                linkedIn: "https://linkedin.com",
-            },
-        ],
-        topic: "Diversity",
-        format: "panel",
-        room: "Room B",
+        title: "Day 1 - Wednesday",
+        date: "October 28, 2026",
+        data: splitIntoMorningAndAfternoon(day1Data)
     },
     {
-        id: "7",
-        startTime: "14:00",
-        endTime: "15:00",
-        title: "Exploring the Balance Between Customer Acquisition and Retention",
-        description:
-            "It is easier and also cheaper to retain existing customers than onboard new ones.",
-        speakers: [
-            {
-                name: "Helene Engels",
-                role: "Senior VP",
-                company: "Amazon",
-                avatar: "/woman-executive-blonde.jpg",
-                linkedIn: "https://linkedin.com",
-            },
-            {
-                name: "Roberta Casas",
-                role: "Head Designer",
-                company: "Amazon",
-                avatar: "/latina-designer.png",
-                linkedIn: "https://linkedin.com",
-            },
-        ],
-        topic: "Growth",
-        format: "discussion",
-        room: "Room C",
-    },
-    {
-        id: "8",
-        startTime: "15:00",
-        endTime: "15:30",
-        title: "Coffee Break",
-        isBreak: true,
-        format: "networking",
-        room: "Lobby",
-        sponsors: ["Spotify", "Microsoft", "Slack", "Salesforce"],
-    },
-    {
-        id: "9",
-        startTime: "15:30",
-        endTime: "16:00",
-        title: "Flowbite - An Open Framework for Forensic Watermarking",
-        description:
-            "Start developing with an open-source library of over 450+ UI components, sections, and pages.",
-        speakers: [
-            {
-                name: "Micheal Gough",
-                role: "CTO",
-                company: "Flowbite",
-                avatar: "/man-with-beard-tech.jpg",
-                linkedIn: "https://linkedin.com",
-            },
-        ],
-        topic: "Open Source",
-        format: "presentation",
-        room: "Room A",
-    },
+        title: "Day 2 - Thursday",
+        date: "October 29, 2026",
+        data: splitIntoMorningAndAfternoon(day2Data)
+    }
 ];
 ---
 
 <div class="w-full h-full min-h-screen bg-background py-12 px-4">
-    <div class="max-w-6xl mx-auto">
-        {/* Header */}
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-foreground mb-2">Wednesday</h1>
-            <p class="text-lg text-muted-foreground mb-4">October 27, 2023</p>
-            <Badge variant="outline" className="text-sm">
-                <Globe className="h-3.5 w-3.5 mr-1.5" />
-                Central Standard Time (GMT-6)
-            </Badge>
-        </div>
-
-        {/* Schedule Grid */}
-        <div class="grid md:grid-cols-2 gap-12">
-            {/* Morning Column */}
+    <div class="max-w-6xl mx-auto space-y-24">
+        {days.map(day => (
             <div>
-                <h2
-                    class="text-2xl font-semibold text-foreground mb-8 text-center"
-                >
-                    Morning
-                </h2>
-                <div class="space-y-6">
-                    {
-                        morningSessions.map((session) => {
-                            const Icon = formatIcons[session.format];
-                            return (
-                                <div class="flex gap-4">
-                                    {session.isBreak ? (
-                                        <>
-                                            <div class="w-24 shrink-0 text-sm text-muted-foreground pt-1">
-                                                <div>
-                                                    {session.startTime} -{" "}
-                                                    {session.endTime}
-                                                </div>
-                                            </div>
-                                            <div class="flex-1 bg-muted/50 rounded-lg p-4">
-                                                <h3 class="font-semibold text-foreground text-lg">
-                                                    {session.title}
-                                                </h3>
-                                                {session.sponsors && (
-                                                    <div class="mt-3">
-                                                        <p class="text-sm text-muted-foreground mb-2">
-                                                            Sponsors:
-                                                        </p>
-                                                        <div class="flex flex-wrap gap-3">
-                                                            {session.sponsors.map(
-                                                                (sponsor) => (
-                                                                    <Badge
-                                                                        variant="secondary"
-                                                                        className="bg-background/80 text-foreground"
-                                                                    >
-                                                                        {
-                                                                            sponsor
-                                                                        }
-                                                                    </Badge>
-                                                                ),
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <div class="w-24 shrink-0 text-sm text-muted-foreground pt-1">
-                                                <div>
-                                                    {session.startTime} -{" "}
-                                                    {session.endTime}
-                                                </div>
-                                            </div>
-                                            <div class="flex-1 border-l-2 border-primary/20 pl-4 pb-6">
-                                                <h3 class="font-semibold text-foreground text-lg leading-tight">
-                                                    {session.title}
-                                                </h3>
-                                                {session.description && (
-                                                    <p class="text-sm text-muted-foreground mt-2 leading-relaxed">
-                                                        {session.description}
-                                                    </p>
-                                                )}
+                {/* Header */}
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-foreground mb-2">{day.title}</h1>
+                    <p class="text-lg text-muted-foreground mb-4">{day.date}</p>
+                    <Badge variant="outline" className="text-sm">
+                        <Globe className="h-3.5 w-3.5 mr-1.5" />
+                        Central European Time (CET)
+                    </Badge>
+                </div>
 
-                                                {session.speakers?.map(
-                                                    (speaker) => (
+                {/* Schedule Grid */}
+                <div class="grid md:grid-cols-2 gap-12">
+                    {/* Morning Column */}
+                    <div>
+                        <h2 class="text-2xl font-semibold text-foreground mb-8 text-center">
+                            Morning
+                        </h2>
+                        <div class="space-y-6">
+                            {day.data.morning.map((session) => {
+                                const Icon = formatIcons[session.format];
+                                return (
+                                    <div class="flex gap-4">
+                                        {session.isBreak ? (
+                                            <>
+                                                <div class="w-24 shrink-0 text-sm text-muted-foreground pt-1">
+                                                    <div>
+                                                        {session.startTime} - {session.endTime}
+                                                    </div>
+                                                </div>
+                                                <div class="flex-1 bg-muted/50 rounded-lg p-4">
+                                                    <h3 class="font-semibold text-foreground text-lg">
+                                                        {session.title}
+                                                    </h3>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <div class="w-24 shrink-0 text-sm text-muted-foreground pt-1">
+                                                    <div>
+                                                        {session.startTime} - {session.endTime}
+                                                    </div>
+                                                </div>
+                                                <div class="flex-1 border-l-2 border-primary/20 pl-4 pb-6">
+                                                    <h3 class="font-semibold text-foreground text-lg leading-tight">
+                                                        {session.title}
+                                                    </h3>
+                                                    {session.description && (
+                                                        <p class="text-sm text-muted-foreground mt-2 leading-relaxed whitespace-pre-wrap" set:html={session.description} />
+                                                    )}
+
+                                                    {session.speakers?.map((speaker) => (
                                                         <div class="flex items-center gap-3 mt-3">
-                                                            <Avatar className="h-10 w-10 border-2 border-muted">
-                                                                <AvatarImage
+                                                            <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-muted bg-muted">
+                                                                <img
                                                                     src={
-                                                                        speaker.avatar ||
+                                                                        speaker.imageUrl ||
                                                                         "/placeholder.svg"
                                                                     }
-                                                                    alt={
-                                                                        speaker.name
-                                                                    }
+                                                                    alt={speaker.name}
+                                                                    class="aspect-square size-full object-cover relative z-10"
+                                                                    onerror="this.style.display='none'"
                                                                 />
-                                                                <AvatarFallback>
+                                                                <div class="absolute inset-0 flex items-center justify-center rounded-full bg-muted font-medium text-muted-foreground text-xs z-0">
                                                                     {speaker.name
-                                                                        .split(
-                                                                            " ",
-                                                                        )
-                                                                        .map(
-                                                                            (
-                                                                                n,
-                                                                            ) =>
-                                                                                n[0],
-                                                                        )
-                                                                        .join(
-                                                                            "",
-                                                                        )}
-                                                                </AvatarFallback>
-                                                            </Avatar>
+                                                                        .split(" ")
+                                                                        .map((n) => n[0])
+                                                                        .join("")}
+                                                                </div>
+                                                            </div>
                                                             <div class="flex-1 min-w-0">
                                                                 <div class="flex items-center gap-2">
                                                                     <span class="font-medium text-foreground">
-                                                                        {
-                                                                            speaker.name
-                                                                        }
-                                                                    </span>
-                                                                    {speaker.linkedIn && (
-                                                                        <a
-                                                                            href={
-                                                                                speaker.linkedIn
-                                                                            }
-                                                                            target="_blank"
-                                                                            rel="noopener noreferrer"
-                                                                            class="text-sky-500 hover:text-sky-400 transition-colors"
-                                                                        >
-                                                                            <Linkedin className="h-4 w-4" />
-                                                                        </a>
-                                                                    )}
-                                                                </div>
-                                                                <div class="flex items-center gap-1.5 text-sm text-muted-foreground">
-                                                                    <span>
-                                                                        {
-                                                                            speaker.role
-                                                                        }
-                                                                    </span>
-                                                                    <span class="text-muted-foreground/50">
-                                                                        at
-                                                                    </span>
-                                                                    <span class="flex items-center gap-1">
-                                                                        <span class="text-xs">
-                                                                            {companyLogos[
-                                                                                speaker
-                                                                                    .company
-                                                                            ] ||
-                                                                                "🏢"}
-                                                                        </span>
-                                                                        <span>
-                                                                            {
-                                                                                speaker.company
-                                                                            }
-                                                                        </span>
+                                                                        {speaker.name}
                                                                     </span>
                                                                 </div>
+                                                                {speaker.organization && (
+                                                                    <div class="flex items-center gap-1.5 text-sm text-muted-foreground">
+                                                                        <span class="text-muted-foreground/50">
+                                                                            at
+                                                                        </span>
+                                                                        <span class="flex items-center gap-1">
+                                                                            <span class="text-xs">🏢</span>
+                                                                            <span>{speaker.organization}</span>
+                                                                        </span>
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                         </div>
-                                                    ),
-                                                )}
+                                                    ))}
 
-                                                <div class="flex flex-wrap items-center gap-2 mt-4">
-                                                    <div class="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/50 px-2.5 py-1.5 rounded-md">
-                                                        <MapPin className="h-3.5 w-3.5" />
-                                                        <span>
-                                                            {session.room}
-                                                        </span>
-                                                    </div>
-                                                    <div class="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/50 px-2.5 py-1.5 rounded-md">
-                                                        <Icon className="h-3.5 w-3.5" />
-                                                        <span>
-                                                            {
-                                                                formatLabels[
-                                                                    session
-                                                                        .format
-                                                                ]
-                                                            }
-                                                        </span>
-                                                    </div>
-                                                    {session.topic && (
-                                                        <Badge className="bg-primary text-primary-foreground text-xs">
-                                                            {session.topic}
-                                                        </Badge>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </>
-                                    )}
-                                </div>
-                            );
-                        })
-                    }
-                </div>
-            </div>
-
-            {/* Afternoon Column */}
-            <div>
-                <h2
-                    class="text-2xl font-semibold text-foreground mb-8 text-center"
-                >
-                    Afternoon
-                </h2>
-                <div class="space-y-6">
-                    {
-                        afternoonSessions.map((session) => {
-                            const Icon = formatIcons[session.format];
-                            return (
-                                <div class="flex gap-4">
-                                    {session.isBreak ? (
-                                        <>
-                                            <div class="w-24 shrink-0 text-sm text-muted-foreground pt-1">
-                                                <div>
-                                                    {session.startTime} -{" "}
-                                                    {session.endTime}
-                                                </div>
-                                            </div>
-                                            <div class="flex-1 bg-muted/50 rounded-lg p-4">
-                                                <h3 class="font-semibold text-foreground text-lg">
-                                                    {session.title}
-                                                </h3>
-                                                {session.sponsors && (
-                                                    <div class="mt-3">
-                                                        <p class="text-sm text-muted-foreground mb-2">
-                                                            Sponsors:
-                                                        </p>
-                                                        <div class="flex flex-wrap gap-3">
-                                                            {session.sponsors.map(
-                                                                (sponsor) => (
-                                                                    <Badge
-                                                                        variant="secondary"
-                                                                        className="bg-background/80 text-foreground"
-                                                                    >
-                                                                        {
-                                                                            sponsor
-                                                                        }
-                                                                    </Badge>
-                                                                ),
-                                                            )}
+                                                    <div class="flex flex-wrap items-center gap-2 mt-4">
+                                                        <div class="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/50 px-2.5 py-1.5 rounded-md">
+                                                            <MapPin className="h-3.5 w-3.5" />
+                                                            <span>{session.room}</span>
                                                         </div>
+                                                        {session.formatOriginal && (
+                                                            <div class="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/50 px-2.5 py-1.5 rounded-md">
+                                                                <Icon className="h-3.5 w-3.5" />
+                                                                <span>{session.formatOriginal}</span>
+                                                            </div>
+                                                        )}
+                                                        {session.tags.map((tag: string) => (
+                                                            <Badge className="bg-primary/10 text-primary hover:bg-primary/20 border-0 text-xs">
+                                                                {tag}
+                                                            </Badge>
+                                                        ))}
                                                     </div>
-                                                )}
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <div class="w-24 shrink-0 text-sm text-muted-foreground pt-1">
-                                                <div>
-                                                    {session.startTime} -{" "}
-                                                    {session.endTime}
                                                 </div>
-                                            </div>
-                                            <div class="flex-1 border-l-2 border-primary/20 pl-4 pb-6">
-                                                <h3 class="font-semibold text-foreground text-lg leading-tight">
-                                                    {session.title}
-                                                </h3>
-                                                {session.description && (
-                                                    <p class="text-sm text-muted-foreground mt-2 leading-relaxed">
-                                                        {session.description}
-                                                    </p>
-                                                )}
+                                            </>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
 
-                                                {session.speakers?.map(
-                                                    (speaker) => (
+                    {/* Afternoon Column */}
+                    <div>
+                        <h2 class="text-2xl font-semibold text-foreground mb-8 text-center">
+                            Afternoon
+                        </h2>
+                        <div class="space-y-6">
+                            {day.data.afternoon.map((session) => {
+                                const Icon = formatIcons[session.format];
+                                return (
+                                    <div class="flex gap-4">
+                                        {session.isBreak ? (
+                                            <>
+                                                <div class="w-24 shrink-0 text-sm text-muted-foreground pt-1">
+                                                    <div>
+                                                        {session.startTime} - {session.endTime}
+                                                    </div>
+                                                </div>
+                                                <div class="flex-1 bg-muted/50 rounded-lg p-4">
+                                                    <h3 class="font-semibold text-foreground text-lg">
+                                                        {session.title}
+                                                    </h3>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <div class="w-24 shrink-0 text-sm text-muted-foreground pt-1">
+                                                    <div>
+                                                        {session.startTime} - {session.endTime}
+                                                    </div>
+                                                </div>
+                                                <div class="flex-1 border-l-2 border-primary/20 pl-4 pb-6">
+                                                    <h3 class="font-semibold text-foreground text-lg leading-tight">
+                                                        {session.title}
+                                                    </h3>
+                                                    {session.description && (
+                                                        <p class="text-sm text-muted-foreground mt-2 leading-relaxed whitespace-pre-wrap" set:html={session.description} />
+                                                    )}
+
+                                                    {session.speakers?.map((speaker) => (
                                                         <div class="flex items-center gap-3 mt-3">
-                                                            <Avatar className="h-10 w-10 border-2 border-muted">
-                                                                <AvatarImage
+                                                            <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-muted bg-muted">
+                                                                <img
                                                                     src={
-                                                                        speaker.avatar ||
+                                                                        speaker.imageUrl ||
                                                                         "/placeholder.svg"
                                                                     }
-                                                                    alt={
-                                                                        speaker.name
-                                                                    }
+                                                                    alt={speaker.name}
+                                                                    class="aspect-square size-full object-cover relative z-10"
+                                                                    onerror="this.style.display='none'"
                                                                 />
-                                                                <AvatarFallback>
+                                                                <div class="absolute inset-0 flex items-center justify-center rounded-full bg-muted font-medium text-muted-foreground text-xs z-0">
                                                                     {speaker.name
-                                                                        .split(
-                                                                            " ",
-                                                                        )
-                                                                        .map(
-                                                                            (
-                                                                                n,
-                                                                            ) =>
-                                                                                n[0],
-                                                                        )
-                                                                        .join(
-                                                                            "",
-                                                                        )}
-                                                                </AvatarFallback>
-                                                            </Avatar>
+                                                                        .split(" ")
+                                                                        .map((n) => n[0])
+                                                                        .join("")}
+                                                                </div>
+                                                            </div>
                                                             <div class="flex-1 min-w-0">
                                                                 <div class="flex items-center gap-2">
                                                                     <span class="font-medium text-foreground">
-                                                                        {
-                                                                            speaker.name
-                                                                        }
-                                                                    </span>
-                                                                    {speaker.linkedIn && (
-                                                                        <a
-                                                                            href={
-                                                                                speaker.linkedIn
-                                                                            }
-                                                                            target="_blank"
-                                                                            rel="noopener noreferrer"
-                                                                            class="text-sky-500 hover:text-sky-400 transition-colors"
-                                                                        >
-                                                                            <Linkedin className="h-4 w-4" />
-                                                                        </a>
-                                                                    )}
-                                                                </div>
-                                                                <div class="flex items-center gap-1.5 text-sm text-muted-foreground">
-                                                                    <span>
-                                                                        {
-                                                                            speaker.role
-                                                                        }
-                                                                    </span>
-                                                                    <span class="text-muted-foreground/50">
-                                                                        at
-                                                                    </span>
-                                                                    <span class="flex items-center gap-1">
-                                                                        <span class="text-xs">
-                                                                            {companyLogos[
-                                                                                speaker
-                                                                                    .company
-                                                                            ] ||
-                                                                                "🏢"}
-                                                                        </span>
-                                                                        <span>
-                                                                            {
-                                                                                speaker.company
-                                                                            }
-                                                                        </span>
+                                                                        {speaker.name}
                                                                     </span>
                                                                 </div>
+                                                                {speaker.organization && (
+                                                                    <div class="flex items-center gap-1.5 text-sm text-muted-foreground">
+                                                                        <span class="text-muted-foreground/50">
+                                                                            at
+                                                                        </span>
+                                                                        <span class="flex items-center gap-1">
+                                                                            <span class="text-xs">🏢</span>
+                                                                            <span>{speaker.organization}</span>
+                                                                        </span>
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                         </div>
-                                                    ),
-                                                )}
+                                                    ))}
 
-                                                <div class="flex flex-wrap items-center gap-2 mt-4">
-                                                    <div class="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/50 px-2.5 py-1.5 rounded-md">
-                                                        <MapPin className="h-3.5 w-3.5" />
-                                                        <span>
-                                                            {session.room}
-                                                        </span>
+                                                    <div class="flex flex-wrap items-center gap-2 mt-4">
+                                                        <div class="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/50 px-2.5 py-1.5 rounded-md">
+                                                            <MapPin className="h-3.5 w-3.5" />
+                                                            <span>{session.room}</span>
+                                                        </div>
+                                                        {session.formatOriginal && (
+                                                            <div class="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/50 px-2.5 py-1.5 rounded-md">
+                                                                <Icon className="h-3.5 w-3.5" />
+                                                                <span>{session.formatOriginal}</span>
+                                                            </div>
+                                                        )}
+                                                        {session.tags.map((tag: string) => (
+                                                            <Badge className="bg-primary/10 text-primary hover:bg-primary/20 border-0 text-xs">
+                                                                {tag}
+                                                            </Badge>
+                                                        ))}
                                                     </div>
-                                                    <div class="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/50 px-2.5 py-1.5 rounded-md">
-                                                        <Icon className="h-3.5 w-3.5" />
-                                                        <span>
-                                                            {
-                                                                formatLabels[
-                                                                    session
-                                                                        .format
-                                                                ]
-                                                            }
-                                                        </span>
-                                                    </div>
-                                                    {session.topic && (
-                                                        <Badge className="bg-primary text-primary-foreground text-xs">
-                                                            {session.topic}
-                                                        </Badge>
-                                                    )}
                                                 </div>
-                                            </div>
-                                        </>
-                                    )}
-                                </div>
-                            );
-                        })
-                    }
+                                            </>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        ))}
     </div>
 </div>

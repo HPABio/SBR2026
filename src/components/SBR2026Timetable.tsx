@@ -8,6 +8,43 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { MapPin, Users, Presentation, MessageCircle, Wrench, Coffee, Star } from "lucide-react"
 import scheduleData from "../data/swapcard_plannings.json"
 
+const logoModules = import.meta.glob<{ default: { src: string } }>(
+  "/src/assets/logos/*.{jpeg,jpg,png,gif,svg}",
+  { eager: true }
+);
+
+const localLogos: Record<string, string> = {};
+for (const [path, module] of Object.entries(logoModules)) {
+  const filename = path.split('/').pop() || "";
+  const name = filename.replace(/\.(jpeg|jpg|png|gif|svg)$/i, "");
+  const normalized = name.toLowerCase().replace(/[^a-z0-9]/g, "").replace(/logo$/, "").replace(/white$/, "");
+  localLogos[normalized] = module.default.src;
+}
+
+function findLocalLogo(name: string, organization?: string): string | undefined {
+  const normalize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  
+  const searchStrs = [];
+  if (organization) searchStrs.push(normalize(organization));
+  if (name) searchStrs.push(normalize(name));
+
+  for (const searchStr of searchStrs) {
+    if (!searchStr) continue;
+    
+    // Exact match
+    if (localLogos[searchStr]) return localLogos[searchStr];
+    
+    // Partial match for longer keys
+    for (const key in localLogos) {
+      if (key.length > 3 && searchStr.includes(key)) {
+         return localLogos[key];
+      }
+    }
+  }
+  
+  return undefined;
+}
+
 type SessionFormat = "keynote" | "presentation" | "workshop" | "panel" | "discussion" | "networking" | "other"
 
 interface RawSession {
@@ -192,11 +229,19 @@ function SessionCard({ session }: { session: ParsedSession }) {
             <div className="mt-4 pt-4 border-t border-border/50">
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">Speakers / Orgs</p>
               <div className="flex flex-wrap gap-4">
-                {session.speakers.map((speaker, idx) => (
+                {session.speakers.map((speaker, idx) => {
+                  const localLogo = findLocalLogo(speaker.name, speaker.organization);
+                  const displayImg = localLogo || speaker.imageUrl;
+                  
+                  return (
                   <div key={idx} className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10 border border-border">
-                      {speaker.imageUrl ? (
-                         <img src={speaker.imageUrl} alt={speaker.name} className="object-cover w-full h-full" />
+                    <Avatar className={`h-10 w-10 border border-border ${localLogo ? 'bg-white p-1' : ''}`}>
+                      {displayImg ? (
+                         <img 
+                           src={displayImg} 
+                           alt={speaker.name} 
+                           className={localLogo ? "object-contain w-full h-full" : "object-cover w-full h-full"} 
+                         />
                       ) : (
                          <AvatarFallback className="text-xs bg-muted text-muted-foreground">
                            {speaker.name.substring(0, 2).toUpperCase()}
@@ -210,7 +255,7 @@ function SessionCard({ session }: { session: ParsedSession }) {
                       )}
                     </div>
                   </div>
-                ))}
+                )})}
               </div>
             </div>
           )}

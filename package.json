@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node ./scripts/export-component-pngs.mjs",
+    "build": "astro build && bun ./scripts/export-component-pngs.mjs",
+    "start": "bun dist/server/entry.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "v0:install": "bun ../scripts/merge-v0-install.ts"

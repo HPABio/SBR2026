@@ -2,6 +2,7 @@
 import Layout from "@/layouts/main.astro";
 import Navigation from "@/components/Navigation.astro";
 import { SBR2026Timetable } from "@/components/SBR2026Timetable.tsx";
+import EventScheduleAstroComponent from "@/components/EventSchedule.astro";
 ---
 
 <Layout content={{
@@ -23,7 +24,8 @@ import { SBR2026Timetable } from "@/components/SBR2026Timetable.tsx";
 		</div>
 
 		<div class="w-full">
-			<SBR2026Timetable client:load />
+			<!-- <SBR2026Timetable client:load /> -->
+			<EventScheduleAstroComponent />
 		</div>
 	</main>
 </Layout>
