@@ -41,8 +41,8 @@
         "Nucleate"
       ],
       "imageUrls": [
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F52bfe1e55bf24217ab751252f659bb88.png&amp;q=0.8&amp;m=fit&amp;w=128",
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fb93f3d799eab4fb8bd31634a550c22b9.jpeg&amp;q=0.8&amp;m=fit&amp;w=128"
+        "src/assets/logos/partners/mainSponsors/mainSponsors_biobeyond.jpg",
+        "src/assets/logos/Nucleate_Logo.png"
       ],
       "speakers": []
     },
@@ -93,10 +93,10 @@
         "Nucleate"
       ],
       "imageUrls": [
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fdd93da40d6b44739bac5a7c78d6b1dd6.jpg&amp;q=0.8&amp;m=crop&amp;w=80",
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F52bfe1e55bf24217ab751252f659bb88.png&amp;q=0.8&amp;m=fit&amp;w=128",
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F9dd6c4cd5a1949d3902c98d76dbd6340.png&amp;q=0.8&amp;m=fit&amp;w=128",
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fb93f3d799eab4fb8bd31634a550c22b9.jpeg&amp;q=0.8&amp;m=fit&amp;w=128"
+        "",
+        "src/assets/logos/partners/mainSponsors/mainSponsors_biobeyond.jpg",
+        "src/assets/logos/partners/attendingCompanies/attendingCompanies_gasb-e-v.png",
+        "src/assets/logos/partners/partners/partners_nucleate.png"
       ],
       "speakers": [
         {
@@ -121,7 +121,7 @@
         "Nucleus Capital"
       ],
       "imageUrls": [
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fdcdf7deed6ca4d76a81a9869ccc1b4f5.png&amp;q=0.8&amp;m=fit&amp;w=128"
+        "src/assets/logos/partners/partners/partners_nucleus_capital.png"
       ],
       "speakers": []
     },
@@ -145,10 +145,10 @@
         "Nucleate"
       ],
       "imageUrls": [
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fdd93da40d6b44739bac5a7c78d6b1dd6.jpg&amp;q=0.8&amp;m=crop&amp;w=80",
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F52bfe1e55bf24217ab751252f659bb88.png&amp;q=0.8&amp;m=fit&amp;w=128",
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F9dd6c4cd5a1949d3902c98d76dbd6340.png&amp;q=0.8&amp;m=fit&amp;w=128",
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fb93f3d799eab4fb8bd31634a550c22b9.jpeg&amp;q=0.8&amp;m=fit&amp;w=128"
+        "",
+        "src/assets/logos/partners/mainSponsors/mainSponsors_biobeyond.jpg",
+        "src/assets/logos/partners/attendingCompanies/attendingCompanies_gasb-e-v.png",
+        "src/assets/logos/partners/partners/partners_nucleate.png"
       ],
       "speakers": [
         {
@@ -284,7 +284,7 @@
         "GASB - German Association for Synthetic Biology"
       ],
       "imageUrls": [
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F9dd6c4cd5a1949d3902c98d76dbd6340.png&amp;q=0.8&amp;m=fit&amp;w=128"
+        "src/assets/logos/partners/attendingCompanies/attendingCompanies_gasb-e-v.png"
       ],
       "speakers": []
     },
@@ -304,7 +304,7 @@
         "Bioweg"
       ],
       "imageUrls": [
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F4399363d3844454db07267abf4179456.png&amp;q=0.8&amp;m=fit&amp;w=128"
+        "src/assets/logos/BIOWEG_Logo.png"
       ],
       "speakers": []
     },
@@ -324,7 +324,7 @@
         "SPRIN-D"
       ],
       "imageUrls": [
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F43a469bbd8ca425e8b8cb4b6117a9aa8.png&amp;q=0.8&amp;m=fit&amp;w=128"
+        "src/assets/logos/SPRIND.jpg"
       ],
       "speakers": []
     },
@@ -344,7 +344,7 @@
         "Arsenal Bioyard"
       ],
       "imageUrls": [
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F015945dab7b14b43a3b0312c2739c35d.png&amp;q=0.8&amp;m=fit&amp;w=128"
+        "src/assets/logos/partners/attendingCompanies/attendingCompanies_arsenale-bioyards.png"
       ],
       "speakers": []
     },
@@ -462,7 +462,7 @@
         "DTU Biosustain"
       ],
       "imageUrls": [
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fd8efcd5680df4f19b99c639684c2f170.png&amp;q=0.8&amp;m=fit&amp;w=128"
+        "src/assets/logos/partners-logos/LinkedIn-Thumbnails/DTU_-_Technical_University_of_Denmark-technical-university-of-denmark.jpeg"
       ],
       "speakers": []
     },
@@ -540,7 +540,7 @@
         "GASB - German Association for Synthetic Biology"
       ],
       "imageUrls": [
-        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F9dd6c4cd5a1949d3902c98d76dbd6340.png&amp;q=0.8&amp;m=fit&amp;w=128"
+        "src/assets/logos/partners/attendingCompanies/attendingCompanies_gasb-e-v.png"
       ],
       "speakers": []
     },
