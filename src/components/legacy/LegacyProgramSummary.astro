@@ -13,13 +13,14 @@ const highlightHoverImages = [
   img2,
   img3,
 ];
+
 ---
 
 <section class="program-summary-section w-full bg-background px-4 pb-14 lg:px-8 relative overflow-hidden transition-colors duration-500">
   <!-- Background images -->
   {highlightHoverImages.map((image, index) => (
     <div 
-      class="absolute inset-0 z-0 opacity-0 transition-opacity duration-500 pointer-events-none bg-cover bg-center bg-no-repeat"
+      class={`absolute inset-0 z-0 opacity-0 transition-opacity duration-500 pointer-events-none bg-cover bg-no-repeat ${index === 1 ? 'bg-top' : 'bg-center'}`}
       style={`background-image: url('${image.src}');`}
       data-bg-idx={index}
     >
@@ -37,7 +38,7 @@ const highlightHoverImages = [
     </div>
 
     <div class="space-y-8">
-      <p class="font-quicksand text-lg font-light leading-relaxed tracking-widest text-muted-foreground">
+      <p class="summary-desc font-quicksand text-lg font-light leading-relaxed tracking-widest text-muted-foreground transition-opacity duration-200">
         SBR 2026 centered on the practical questions synthetic biology ventures face after the first breakthrough: how teams scale, finance, partner, and manufacture in a changing European landscape.
       </p>
       <div class="grid gap-4 md:grid-cols-3">
@@ -67,9 +68,12 @@ const highlightHoverImages = [
 
       const articles = section.querySelectorAll('article[data-hover-idx]');
       const backgrounds = section.querySelectorAll('div[data-bg-idx]');
+      const desc = section.querySelector('.summary-desc');
 
       articles.forEach(article => {
         article.addEventListener('mouseenter', () => {
+          if (desc) desc.classList.add('opacity-0');
+          
           const idx = article.getAttribute('data-hover-idx');
           backgrounds.forEach(bg => {
             if (bg.getAttribute('data-bg-idx') === idx) {
@@ -83,6 +87,8 @@ const highlightHoverImages = [
         });
 
         article.addEventListener('mouseleave', () => {
+          if (desc) desc.classList.remove('opacity-0');
+          
           backgrounds.forEach(bg => {
             bg.classList.remove('opacity-100');
             bg.classList.add('opacity-0');
