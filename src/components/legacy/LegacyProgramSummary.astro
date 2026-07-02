@@ -1,15 +1,35 @@
 ---
+import img1 from "../../assets/eventImages/DSC08346.jpg";
+import img2 from "../../assets/eventImages/DSC07717.jpg";
+import img3 from "../../assets/eventImages/DSC07489.jpg";
+
 const highlights = [
   "Founder and investor conversations around scaling synthetic biology ventures.",
   "Keynotes, panels, and fireside chats across biomanufacturing, resilience, and market building.",
   "Hands-on workshops and community sessions connecting startups, industry, academia, and policy.",
 ];
+const highlightHoverImages = [
+  img1,
+  img2,
+  img3,
+];
 ---
 
-<section class="w-screen bg-background px-4 pb-14 lg:px-8">
-  <div class="container mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+<section class="program-summary-section w-full bg-background px-4 pb-14 lg:px-8 relative overflow-hidden transition-colors duration-500">
+  <!-- Background images -->
+  {highlightHoverImages.map((image, index) => (
+    <div 
+      class="absolute inset-0 z-0 opacity-0 transition-opacity duration-500 pointer-events-none bg-cover bg-center bg-no-repeat"
+      style={`background-image: url('${image.src}');`}
+      data-bg-idx={index}
+    >
+      <div class="absolute inset-0 bg-linear-to-t from-black via-black/50 to-black/10"></div>
+    </div>
+  ))}
+
+  <div class="container mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start relative z-10">
     <div>
-      <p class="font-quicksand text-sm uppercase tracking-[0.35em] text-muted-foreground">Program recap</p>
+      <p class="font-quicksand text-sm uppercase tracking-[0.35em] text-muted-foreground">2026 Program</p>
       <h2 class="mt-4 font-anton text-5xl font-black uppercase leading-none tracking-tight text-foreground md:text-7xl">
         Two days of entrepreneurial
         <span class="bg-gradient-to-tr from-primary via-orange-700 to-primary-dark bg-clip-text text-3xl lg:text-[6.4rem] text-transparent momentum">momentum</span>
@@ -21,9 +41,13 @@ const highlights = [
         SBR 2026 centered on the practical questions synthetic biology ventures face after the first breakthrough: how teams scale, finance, partner, and manufacture in a changing European landscape.
       </p>
       <div class="grid gap-4 md:grid-cols-3">
-        {highlights.map((highlight) => (
-          <article class="rounded-3xl border border-white/10 bg-card/70 p-6">
-            <p class="font-quicksand text-sm font-light leading-relaxed tracking-widest text-muted-foreground">
+        {highlights.map((highlight, index) => (
+          <article 
+            class="group rounded-3xl border border-white/10 bg-card/70 p-6 transition-all hover:bg-card/90 cursor-default hover:-translate-y-1 relative overflow-hidden"
+            data-hover-idx={index}
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <p class="font-quicksand text-sm font-light leading-relaxed tracking-widest text-muted-foreground group-hover:text-foreground transition-colors relative z-10">
               {highlight}
             </p>
           </article>
@@ -32,3 +56,45 @@ const highlights = [
     </div>
   </div>
 </section>
+
+<script>
+  function initProgramSummaryHover() {
+    const sections = document.querySelectorAll('.program-summary-section');
+    sections.forEach(section => {
+      // Prevent multiple initializations on the same element
+      if (section.getAttribute('data-hover-initialized') === 'true') return;
+      section.setAttribute('data-hover-initialized', 'true');
+
+      const articles = section.querySelectorAll('article[data-hover-idx]');
+      const backgrounds = section.querySelectorAll('div[data-bg-idx]');
+
+      articles.forEach(article => {
+        article.addEventListener('mouseenter', () => {
+          const idx = article.getAttribute('data-hover-idx');
+          backgrounds.forEach(bg => {
+            if (bg.getAttribute('data-bg-idx') === idx) {
+              bg.classList.remove('opacity-0');
+              bg.classList.add('opacity-100');
+            } else {
+              bg.classList.remove('opacity-100');
+              bg.classList.add('opacity-0');
+            }
+          });
+        });
+
+        article.addEventListener('mouseleave', () => {
+          backgrounds.forEach(bg => {
+            bg.classList.remove('opacity-100');
+            bg.classList.add('opacity-0');
+          });
+        });
+      });
+    });
+  }
+
+  // Initialize on script execution
+  initProgramSummaryHover();
+
+  // Initialize after Astro view transitions
+  document.addEventListener('astro:page-load', initProgramSummaryHover);
+</script>

@@ -170,7 +170,7 @@ export default function ExpandableCards({
                 alt={card.title}
                 className="h-full w-full object-cover"
                 height={300}
-                src={card.image || "/placeholder.svg"}
+                src={card.image || "src/assets/SBR2026-Favicon-lg.png"}
                 width={200}
               />
               <div className="absolute inset-0 bg-black/20" />
