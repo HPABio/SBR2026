@@ -1,18 +1,16 @@
 ---
 import Layout from "@/layouts/main.astro";
 import Navigation from "@/components/Navigation.astro";
-import ScheduleComponent from "@/components/ScheduleV1.tsx";
-import { V0EventSchedule } from "@/components/V0event-schedule.tsx";
+import { SBR2026Timetable } from "@/components/SBR2026Timetable.tsx";
 ---
-
 
 <Layout content={{
 	title: "SBR 2026 Program Archive",
-	description: "The archived SynBioReactor Summit 2026 program with two custom timetable views prepared for review.",
+	description: "The complete SynBioReactor Summit 2026 program extracted from Swapcard.",
 }}>
 	<Navigation />
-	<main class="flex min-h-screen flex-col justify-center bg-[#121212] px-4 pt-32 md:px-14">
-		<div class="mx-auto mb-16 w-full max-w-5xl">
+	<main class="flex min-h-screen flex-col justify-center bg-[#121212] px-4 pt-32 pb-32 md:px-14">
+		<div class="mx-auto mb-16 w-full max-w-4xl">
 			<p class="font-quicksand text-sm uppercase tracking-[0.35em] text-primary">
 				Program archive
 			</p>
@@ -20,15 +18,12 @@ import { V0EventSchedule } from "@/components/V0event-schedule.tsx";
 				SBR 2026 Time Table
 			</h1>
 			<p class="mt-6 max-w-3xl font-quicksand text-base font-light leading-relaxed tracking-widest text-muted-foreground">
-				The live event platform has been unplugged. Two custom timetable versions are mounted below as hidden review options.
+				The live event platform has been unplugged. The complete program is available below.
 			</p>
 		</div>
 
-		<div class="hidden" id="schedule-v1">
-			<ScheduleComponent client:load />
-		</div>
-		<div class="hidden" id="schedule-v0">
-			<V0EventSchedule client:load />
+		<div class="w-full">
+			<SBR2026Timetable client:load />
 		</div>
 	</main>
 </Layout>
