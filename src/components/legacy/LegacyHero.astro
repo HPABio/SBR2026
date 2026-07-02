@@ -2,6 +2,7 @@
 import SBR2026HeroVideo from "@/assets/SBR2026_WebPage_Hero.mp4";
 import SBRHeroImage from "@/assets/HeroSection_GASB_Location.png";
 import SBRLogoTitle from "@/assets/SBR-LogoTitle.png";
+import InteractiveCardStack from "@/components/aicanvas/interactive-card-stack";
 ---
 
 <section class="relative min-h-screen w-screen overflow-hidden bg-black px-4 py-24 lg:px-8">
@@ -13,13 +14,13 @@ import SBRLogoTitle from "@/assets/SBR-LogoTitle.png";
     playsinline
     class="absolute inset-0 h-full w-full object-cover opacity-45"
   />
-  <div class="absolute inset-0 bg-linear-to-t from-black via-black/70 to-black/80"></div>
+  <div class="absolute inset-0 bg-linear-to-t from-black via-black/90 to-black/60"></div>
 
   <div class="container relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] max-w-6xl flex-col items-center justify-center text-center">
     <img
       src={SBRHeroImage.src}
       alt="SynBioReactor Summit venue illustration"
-      class="mb-6 h-auto w-full max-w-3xl"
+      class="mb-0 h-auto w-full max-w-sm"
     />
     <img
       src={SBRLogoTitle.src}
@@ -29,11 +30,23 @@ import SBRLogoTitle from "@/assets/SBR-LogoTitle.png";
     <p class="font-quicksand text-sm font-light uppercase tracking-[0.35em] text-primary md:text-base">
       2026 archive
     </p>
-    <h1 class="mt-4 max-w-4xl font-anton text-6xl font-black uppercase leading-none tracking-tight text-white md:text-8xl">
+    <div class="relative flex w-full justify-center flex-col items-center mt-0 mb-10">
+    <InteractiveCardStack client:load />
+    <h1 class="mt-4 max-w-4xl font-anton text-4xl font-black uppercase leading-none tracking-tight text-white md:text-6xl">
       Thank you, Berlin.
     </h1>
     <p class="mt-6 max-w-2xl font-quicksand text-base font-light leading-relaxed tracking-widest text-muted-foreground md:text-lg">
       The SynBioReactor Summit 2026 brought founders, investors, researchers, and community builders together for two days of synthetic biology conversations at Silent Green.
     </p>
+    <a 
+      href="https://apps.scrappbook.de/Sk9kHWZ8-l" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="mt-8 inline-flex items-center justify-center rounded-full border border-primary/50 bg-primary/10 px-8 py-3 font-quicksand text-sm font-bold uppercase tracking-[0.2em] text-primary transition-all hover:bg-primary hover:text-black"
+    >
+      View Photo Gallery
+    </a>
+    
+  </div>
   </div>
 </section>

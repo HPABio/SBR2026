@@ -1,5 +1,6 @@
 ---
 import LegacyHero from "./LegacyHero.astro";
+import InteractiveCardStack from "@/components/aicanvas/interactive-card-stack";
 import LegacyPhotoGallery from "./LegacyPhotoGallery.astro";
 import LegacyVideoRecap from "./LegacyVideoRecap.astro";
 import LegacyProgramSummary from "./LegacyProgramSummary.astro";
@@ -14,10 +15,12 @@ import SBWCSection from "@/components/SBWCSection.astro";
   <div class="relative flex w-full justify-center">
     <SBWCSection />
   </div>
-  <LegacyVideoRecap />
-  <LegacyPhotoGallery />
+  <!-- <LegacyVideoRecap /> -->
   <LegacyProgramSummary />
-  <LegacyPitchSummary />
+  <div class="relative mt-32">
+    <LegacyPitchSummary />
+  </div>
   <LegacyAttendeeLinks />
+  <LegacyPhotoGallery />
   <LegacyNewsletter />
 </main>

@@ -1,0 +1,271 @@
+{
+  "activeEventSlug": "synbioreactor-summit-sbr2026",
+  "application": {
+    "__typename": "Core_Application",
+    "id": "QXBwbGljYXRpb25fMQ==",
+    "name": "Swapcard",
+    "slug": "swapcard",
+    "isDefault": true,
+    "webIcon": "https://static.swapcard.com/public/images/065f75de736a4f1db27e6d9055fba53f.png",
+    "appWebDomain": "app.swapcard.com",
+    "studioWebDomain": "studio.swapcard.com",
+    "googleAnalyticsTrackingCode": null,
+    "termsOfUseUrl": null,
+    "appStoreTrackId": "879488719",
+    "privacyPolicyUrl": null,
+    "appLegalUrl": null,
+    "codeSnippets": [],
+    "themes": [
+      {
+        "__typename": "Core_ThemeLink",
+        "theme": {
+          "__typename": "Core_Theme",
+          "id": "VGhlbWVfMTY4OTU=",
+          "mode": null,
+          "primaryColor": "#262F3D",
+          "buttonsColor": "#00CC88",
+          "textColor": "#262F3D",
+          "backgroundColor": null,
+          "containerColor": null
+        }
+      }
+    ],
+    "fonts": [
+      {
+        "__typename": "Core_Font",
+        "url": "https://static.swapcard.com/public/fonts/worksans-light.ttf",
+        "family": "Work Sans",
+        "style": "",
+        "weight": "300",
+        "format": ""
+      },
+      {
+        "__typename": "Core_Font",
+        "url": "https://static.swapcard.com/public/fonts/worksans-regular.ttf",
+        "family": "Work Sans",
+        "style": "",
+        "weight": "400",
+        "format": ""
+      },
+      {
+        "__typename": "Core_Font",
+        "url": "https://static.swapcard.com/public/fonts/worksans-medium.ttf",
+        "family": "Work Sans",
+        "style": "",
+        "weight": "500",
+        "format": ""
+      },
+      {
+        "__typename": "Core_Font",
+        "url": "https://static.swapcard.com/public/fonts/worksans-semibold.ttf",
+        "family": "Work Sans",
+        "style": "",
+        "weight": "600",
+        "format": ""
+      },
+      {
+        "__typename": "Core_Font",
+        "url": "https://static.swapcard.com/public/fonts/worksans-bold.ttf",
+        "family": "Work Sans",
+        "style": "",
+        "weight": "700",
+        "format": ""
+      }
+    ],
+    "teamWebDomain": "team.swapcard.com",
+    "resourceCenterUrl": null
+  },
+  "event": {
+    "__typename": "Core_Event",
+    "community": {
+      "__typename": "Core_Community",
+      "id": "Q29tbXVuaXR5XzMwMjI2",
+      "profile": null,
+      "contents": {
+        "__typename": "Core_CommunityContents",
+        "viewsLayout": "LIST",
+        "views": [
+          {
+            "__typename": "Core_EventRedirectUrlView",
+            "id": "RXZlbnRWaWV3XzEyNDIwNzU=",
+            "name": "GASB Home",
+            "color": "#E91E63",
+            "pageBackgroundUrl": null,
+            "backgroundImageUrl": null,
+            "iconUrl": null,
+            "redirectUrl": "https://gasb.de",
+            "redirectUrlOpenAs": "NEW_TAB"
+          }
+        ]
+      },
+      "slug": "german-association-for-synthetic-biology-community",
+      "name": "German Association for Synthetic Biology",
+      "title": "Welcome to your Community",
+      "logoUrl": "https://cdn-api.swapcard.com/public/images/a13437b28c8549839d43352c8447bcfa.png",
+      "isPublic": true,
+      "bannerImageUrl": "https://cdn-api.swapcard.com/public/images/0628dc3821be4ac4a97e462a1b3beda7.png",
+      "themes": [
+        {
+          "__typename": "Core_ThemeLink",
+          "theme": {
+            "__typename": "Core_Theme",
+            "id": "VGhlbWVfNTcxOTg=",
+            "mode": "DARK",
+            "textColor": "#262f3d",
+            "primaryColor": "#262F3D",
+            "buttonsColor": "#E91E63",
+            "backgroundColor": null,
+            "containerColor": null,
+            "backgroundImageUrl": null
+          }
+        }
+      ]
+    },
+    "id": "RXZlbnRfNDI0NzQyMg==",
+    "slug": "synbioreactor-summit-sbr2026",
+    "title": "SynBioReactor Summit - SBR2026",
+    "bannerUrl": "https://static.swapcard.com/public/images/8b2ae7813c314095a991bac89af0296a.png",
+    "registrationSettings": {
+      "__typename": "Core_RegistrationSettings",
+      "type": "EXTERNAL",
+      "url": "https://www.synbioreactor.de/registration",
+      "registrationRedirectUrl": null
+    },
+    "beginsAt": "2026-01-19T09:00:00+01:00",
+    "endsAt": "2026-01-20T19:00:00+01:00",
+    "isLive": true,
+    "organizerSupportEmail": "SBR@ga-sb.de",
+    "description": "SynBio Reactor is the premier European Synthetic Biology industry event. This exclusive summit will bring together those ideating the future of synthetic biology with those funding it, to meet, discuss, network and ultimately build this new economy.Our focus on networking is represented in our diverse formats, covering every perspective from cozy fireside chats to efficient speed-networking sessions. Join us to create the future of synthetic biology.",
+    "isPublic": true,
+    "codeLabel": null,
+    "codeDescription": null,
+    "codeExpanded": false,
+    "themes": [
+      {
+        "__typename": "Core_ThemeLink",
+        "theme": {
+          "__typename": "Core_Theme",
+          "id": "VGhlbWVfMTIzMjEy",
+          "mode": "DARK",
+          "primaryColor": "#F9A70C",
+          "backgroundColor": null,
+          "containerColor": null,
+          "textColor": "#262f3d",
+          "buttonsColor": "#EB9941",
+          "backgroundImageUrl": ""
+        }
+      }
+    ],
+    "userStatus": {
+      "__typename": "Core_UserStatus",
+      "isAdmin": false,
+      "isAttending": false
+    },
+    "application": null,
+    "userRole": null,
+    "ticketTypes": [],
+    "isPromoCodeActive": false,
+    "registrationTerms": [],
+    "supportTimeSlots": [],
+    "homePage": null,
+    "formConfirmationPage": null,
+    "type": "PHYSICAL",
+    "timezone": "Europe/Berlin",
+    "codeSnippets": [],
+    "contents": {
+      "__typename": "Core_EventContents",
+      "views": [
+        {
+          "__typename": "Core_EventRedirectUrlView",
+          "id": "RXZlbnRWaWV3XzEyNDIwNjU=",
+          "name": "SynBioReactor Home Page",
+          "color": "#424242",
+          "pageBackgroundUrl": null,
+          "backgroundImageUrl": "https://static.swapcard.com/public/images/f6f5b5a58d214e7e94bd43804df82309.png",
+          "iconUrl": "https://static.swapcard.com/public/images/09a08a63171548919a8279d2aac0d316.png",
+          "group": null,
+          "redirectUrl": "https://www.synbioreactor.de/",
+          "redirectUrlOpenAs": "IFRAME"
+        },
+        {
+          "__typename": "Core_EventPlanningListView",
+          "id": "RXZlbnRWaWV3XzEyNDIwNTM=",
+          "name": "Time Table",
+          "color": "#F9A70C",
+          "pageBackgroundUrl": null,
+          "backgroundImageUrl": null,
+          "iconUrl": "https://static.swapcard.com/public/pictos/speaker.png",
+          "group": null,
+          "displayMode": "LIST"
+        }
+      ]
+    },
+    "language": "en_US",
+    "translationLanguages": [
+      "en_US"
+    ],
+    "eventPerson": null,
+    "hasValidMeetingRules": false,
+    "paymentSettings": {
+      "__typename": "Core_EventPaymentSettings",
+      "paymentProviders": [
+        {
+          "__typename": "Core_StripePaymentProvider",
+          "stripeAccountId": "acct_1SZbjGC4WbJH0w6r",
+          "stripePublishableKey": "pk_live_QJIkUNg9h8XS1KL5uCddeuto"
+        }
+      ],
+      "currency": "EUR",
+      "vatRate": 0,
+      "vatLabel": ""
+    },
+    "userTerms": [],
+    "hasAmountDue": false
+  },
+  "community": {
+    "__typename": "Core_Community",
+    "id": "Q29tbXVuaXR5XzMwMjI2",
+    "profile": null,
+    "contents": {
+      "__typename": "Core_CommunityContents",
+      "viewsLayout": "LIST",
+      "views": [
+        {
+          "__typename": "Core_EventRedirectUrlView",
+          "id": "RXZlbnRWaWV3XzEyNDIwNzU=",
+          "name": "GASB Home",
+          "color": "#E91E63",
+          "pageBackgroundUrl": null,
+          "backgroundImageUrl": null,
+          "iconUrl": null,
+          "redirectUrl": "https://gasb.de",
+          "redirectUrlOpenAs": "NEW_TAB"
+        }
+      ]
+    },
+    "slug": "german-association-for-synthetic-biology-community",
+    "name": "German Association for Synthetic Biology",
+    "title": "Welcome to your Community",
+    "logoUrl": "https://cdn-api.swapcard.com/public/images/a13437b28c8549839d43352c8447bcfa.png",
+    "isPublic": true,
+    "bannerImageUrl": "https://cdn-api.swapcard.com/public/images/0628dc3821be4ac4a97e462a1b3beda7.png",
+    "themes": [
+      {
+        "__typename": "Core_ThemeLink",
+        "theme": {
+          "__typename": "Core_Theme",
+          "id": "VGhlbWVfNTcxOTg=",
+          "mode": "DARK",
+          "textColor": "#262f3d",
+          "primaryColor": "#262F3D",
+          "buttonsColor": "#E91E63",
+          "backgroundColor": null,
+          "containerColor": null,
+          "backgroundImageUrl": null
+        }
+      }
+    ]
+  },
+  "backgroundUrl": "",
+  "hideMobileNav": true
+}

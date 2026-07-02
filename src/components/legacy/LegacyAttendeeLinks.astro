@@ -1,29 +1,36 @@
 ---
+import { Images, Users, Calendar, UserPlus, Mail, ArrowUpRight } from "lucide-react";
+
 const links = [
   {
     title: "Picture depot",
     href: "https://apps.scrappbook.de/Sk9kHWZ8-l",
     description: "A placeholder for the shared photo collection once the final depot link is ready.",
+    Icon: Images,
   },
   {
     title: "Speakers list",
     href: "/speakers",
     description: "Revisit the people and organizations featured across the 2026 program.",
+    Icon: Users,
   },
   {
     title: "SBR 2027",
     href: "https://synbioreactor.de",
     description: "Follow the next SynBioReactor iteration on the main summit site.",
+    Icon: Calendar,
   },
   {
     title: "Become a member",
     href: "https://gasb.de",
     description: "Join the German Association for Synthetic Biology community.",
+    Icon: UserPlus,
   },
   {
     title: "Newsletter registration",
     href: "#newsletter",
     description: "Leave your email for future summit and community updates.",
+    Icon: Mail,
   },
 ];
 ---
@@ -31,7 +38,7 @@ const links = [
 <section class="w-screen bg-background px-4 py-24 lg:px-8">
   <div class="container mx-auto max-w-7xl">
     <div class="mb-10 max-w-3xl">
-      <p class="font-quicksand text-sm uppercase tracking-[0.35em] text-primary">For attendees</p>
+      <p class="font-quicksand text-sm uppercase tracking-[0.35em] text-muted-foreground">For attendees</p>
       <h2 class="mt-4 font-anton text-5xl font-black uppercase leading-none tracking-tight text-foreground md:text-7xl">
         Useful archive links
       </h2>
@@ -51,9 +58,14 @@ const links = [
               {link.description}
             </p>
           </div>
-          <span class="mt-8 font-quicksand text-xs uppercase tracking-[0.25em] text-primary">
-            Open
-          </span>
+          <div class="mt-8 flex items-end justify-between">
+            <div class="inline-flex rounded-xl bg-white/5 p-3 text-muted-foreground transition-colors group-hover:bg-primary/10 group-hover:text-primary">
+              <link.Icon className="h-6 w-6" />
+            </div>
+            <span class="flex items-center font-quicksand text-xs uppercase tracking-[0.25em] text-primary my-auto mr-2">
+              Open <ArrowUpRight className="ml-1 h-3 w-3" />
+            </span>
+          </div>
         </a>
       ))}
     </div>

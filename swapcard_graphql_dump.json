@@ -1,0 +1,242 @@
+[
+  {
+    "url": "https://app.swapcard.com/flags/api/frontend?environment=production&appName=webapp-user&properties%5BeventId%5D=RXZlbnRfNDI0NzQyMg%3D%3D&properties%5BcommunityId%5D=Q29tbXVuaXR5XzMwMjI2&properties%5BapplicationId%5D=QXBwbGljYXRpb25fMQ%3D%3D&properties%5BuserType%5D=anonymous",
+    "data": {
+      "toggles": [
+        {
+          "name": "page-builder-color-customizations",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "promo-code-registration",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "app-v5-menu",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "editable-profile-fields",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "events-to-hide-from-community-home-page",
+          "enabled": true,
+          "variant": {
+            "name": "event-ids",
+            "enabled": true,
+            "payload": {
+              "type": "json",
+              "value": "[\n  \"RXZlbnRfMTAyMDM5NA==\",\n  \"RXZlbnRfMTc1MTYyMg==\",\n  \"RXZlbnRfMTc0MzcwMA==\",\n  \"RXZlbnRfMTc1MTYyMg==\",\n  \"RXZlbnRfMTA1NzY5Ng==\",\n  \"RXZlbnRfMTcyOTkwNw==\",\n  \"RXZlbnRfMTg4MjUzNQ==\",\n  \"RXZlbnRfMjE5NTc1Nw==\",\n  \"RXZlbnRfMjQ2NTk4Ng==\"\n]"
+            }
+          },
+          "impressionData": false
+        },
+        {
+          "name": "page-builder-design-settings",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "load-refiner",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "calendar-sync",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "after-meeting-flow",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "page-builder-visibility-settings",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://app.swapcard.com/flags/api/frontend?environment=production&appName=webapp-user&properties%5BeventId%5D=RXZlbnRfNDI0NzQyMg%3D%3D&properties%5BcommunityId%5D=Q29tbXVuaXR5XzMwMjI2&properties%5BapplicationId%5D=QXBwbGljYXRpb25fMQ%3D%3D&properties%5BuserType%5D=anonymous",
+    "data": {
+      "toggles": [
+        {
+          "name": "page-builder-visibility-settings",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "calendar-sync",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "promo-code-registration",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "load-refiner",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "page-builder-design-settings",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "app-v5-menu",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "editable-profile-fields",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "after-meeting-flow",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "page-builder-color-customizations",
+          "enabled": true,
+          "variant": {
+            "name": "disabled",
+            "enabled": false,
+            "payload": null
+          },
+          "impressionData": false
+        },
+        {
+          "name": "events-to-hide-from-community-home-page",
+          "enabled": true,
+          "variant": {
+            "name": "event-ids",
+            "enabled": true,
+            "payload": {
+              "type": "json",
+              "value": "[\n  \"RXZlbnRfMTAyMDM5NA==\",\n  \"RXZlbnRfMTc1MTYyMg==\",\n  \"RXZlbnRfMTc0MzcwMA==\",\n  \"RXZlbnRfMTc1MTYyMg==\",\n  \"RXZlbnRfMTA1NzY5Ng==\",\n  \"RXZlbnRfMTcyOTkwNw==\",\n  \"RXZlbnRfMTg4MjUzNQ==\",\n  \"RXZlbnRfMjE5NTc1Nw==\",\n  \"RXZlbnRfMjQ2NTk4Ng==\"\n]"
+            }
+          },
+          "impressionData": false
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://o452048.ingest.sentry.io/api/4505209673940992/envelope/?sentry_version=7&sentry_key=5c425526cd304f86bad57c3a580be509&sentry_client=sentry.javascript.react%2F9.30.0",
+    "data": {
+      "id": "779bb095a48c4c1b8e5cc73b6efaee2b"
+    }
+  },
+  {
+    "url": "https://o452048.ingest.sentry.io/api/4505209673940992/envelope/?sentry_version=7&sentry_key=5c425526cd304f86bad57c3a580be509&sentry_client=sentry.javascript.react%2F9.30.0",
+    "data": {
+      "id": "d43478dca16947c78d319eca47948c65"
+    }
+  },
+  {
+    "url": "https://api.refiner.io/js-client/v1/c1916100-a77c-11eb-ac6b-ed38a7a569c2/ping",
+    "data": {
+      "message": "There are no published surveys. Try again later.",
+      "ping_again_in": 86400,
+      "ping_on_next_page_visit": true
+    }
+  }
+]

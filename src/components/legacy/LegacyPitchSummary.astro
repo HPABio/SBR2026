@@ -1,14 +1,33 @@
 ---
+import WinnerLaurel from "../ui/winner-laurel.astro";
+
+const awardLevel = "2026";
+const awardSubheader = "WINNER";
+const title = "RESULTS";
+const winnerName = "Pitching Contest";
+
+const defaultTitle = `EndostiX,
+Bfab,
+Colipi`;
 ---
 
-<section class="w-screen bg-black px-4 py-20 lg:px-8">
+<section class="w-screen px-4 py-20 lg:px-8 relative">
   <div class="container mx-auto max-w-5xl rounded-[2rem] border border-primary/30 bg-primary/10 p-8 md:p-12">
     <p class="font-quicksand text-sm uppercase tracking-[0.35em] text-primary">Pitching contest</p>
     <h2 class="mt-4 font-anton text-4xl font-black uppercase leading-none tracking-tight text-white md:text-6xl">
-      Ideas met capital, feedback, and community.
+      Deserved validation & Trial by  Fire
+      
     </h2>
     <p class="mt-6 font-quicksand text-base font-light leading-relaxed tracking-widest text-muted-foreground md:text-lg">
-      The SBR 2026 pitching contest gave early-stage synthetic biology teams a focused stage in front of investors, operators, and peers. A fuller Pitch Perfect recap will follow separately; this archive keeps the main story compact for past attendees.
+      The SBR 2026 pitching contest gave early-stage synthetic biology teams a focused stage in front of investors, operators, and peers. A fuller Pitch Perfect recap will follow separately; this archive keeps the main story compact for easy retention.
     </p>
+    <!-- <a
+    href="/pages/pitchperfect-2026"
+    class="mt-8 inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-bold uppercase tracking-widest text-white backdrop-blur-md transition hover:bg-white hover:text-black"
+    >Read the full recap</a
+    > -->
+  </div>
+  <div class="absolute  -top-4 right-1/2 translate-x-[200%] scale-[65%] w-72 rotate-20">
+    <WinnerLaurel classes="w-full" awardLevel={awardLevel} date="" defaultTitle={defaultTitle} awardSubheader={awardSubheader} title={title} winnerName={winnerName}/>
   </div>
 </section>
