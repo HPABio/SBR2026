@@ -18,6 +18,14 @@ interface RawSession {
   metadata: string[]
   tags: string[]
   images: string[]
+  imageUrls?: string[]
+  speakers?: { name: string; organization?: string }[]
+}
+
+interface ParsedSpeaker {
+  name: string
+  organization?: string
+  imageUrl?: string
 }
 
 interface ParsedSession {
@@ -30,7 +38,7 @@ interface ParsedSession {
   format: SessionFormat
   formatOriginal?: string
   tags: string[]
-  speakers: string[]
+  speakers: ParsedSpeaker[]
   isBreak?: boolean
 }
 
@@ -70,6 +78,24 @@ function processData(dayData: RawSession[]): ParsedSession[] {
 
     const isBreak = raw.title.toLowerCase().includes("break") || raw.title.toLowerCase().includes("afterparty") || raw.title.toLowerCase().includes("coffee")
 
+    const parsedSpeakers: ParsedSpeaker[] = []
+    
+    if (raw.speakers && raw.speakers.length > 0) {
+      raw.speakers.forEach(s => parsedSpeakers.push({ name: s.name, organization: s.organization }))
+    }
+    
+    if (raw.images && raw.images.length > 0) {
+      raw.images.forEach((imgName, i) => {
+        // avoid duplicating if the speaker array already has this name
+        if (!parsedSpeakers.find(s => s.name === imgName)) {
+           parsedSpeakers.push({
+              name: imgName,
+              imageUrl: raw.imageUrls ? raw.imageUrls[i] : undefined
+           })
+        }
+      })
+    }
+
     return {
       id: `session-${idx}`,
       startTime: raw.beginsAt || "TBA",
@@ -80,7 +106,7 @@ function processData(dayData: RawSession[]): ParsedSession[] {
       format: parseFormat(formatStr),
       formatOriginal: formatStr || (isBreak ? "Networking" : undefined),
       tags: raw.tags || [],
-      speakers: raw.images || [],
+      speakers: parsedSpeakers,
       isBreak,
     }
   })
@@ -167,13 +193,22 @@ function SessionCard({ session }: { session: ParsedSession }) {
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">Speakers / Orgs</p>
               <div className="flex flex-wrap gap-4">
                 {session.speakers.map((speaker, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
-                    <Avatar className="h-8 w-8 border border-border">
-                      <AvatarFallback className="text-xs bg-muted text-muted-foreground">
-                        {speaker.substring(0, 2).toUpperCase()}
-                      </AvatarFallback>
+                  <div key={idx} className="flex items-center gap-3">
+                    <Avatar className="h-10 w-10 border border-border">
+                      {speaker.imageUrl ? (
+                         <img src={speaker.imageUrl} alt={speaker.name} className="object-cover w-full h-full" />
+                      ) : (
+                         <AvatarFallback className="text-xs bg-muted text-muted-foreground">
+                           {speaker.name.substring(0, 2).toUpperCase()}
+                         </AvatarFallback>
+                      )}
                     </Avatar>
-                    <span className="text-sm font-medium">{speaker}</span>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-medium">{speaker.name}</span>
+                      {speaker.organization && (
+                        <span className="text-xs text-muted-foreground">{speaker.organization}</span>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>

@@ -1,0 +1,307 @@
+[
+  {
+    "title": "Opening",
+    "beginsAt": "11:00",
+    "endsAt": "11:15",
+    "description": null,
+    "metadata": [
+      "Betonhalle (main hall)"
+    ],
+    "tags": [],
+    "images": [
+      "GASB - German Association for Synthetic Biology"
+    ],
+    "imageUrls": [
+      "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F9dd6c4cd5a1949d3902c98d76dbd6340.png&amp;q=0.8&amp;m=fit&amp;w=128"
+    ],
+    "speakers": []
+  },
+  {
+    "title": "Lighthouse Keynote",
+    "beginsAt": "11:15",
+    "endsAt": "11:35",
+    "description": "P1",
+    "metadata": [
+      "Betonhalle (main hall)",
+      "KEYNOTE"
+    ],
+    "tags": [
+      "Upscaling Challenges"
+    ],
+    "images": [
+      "Bioweg"
+    ],
+    "imageUrls": [
+      "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F4399363d3844454db07267abf4179456.png&amp;q=0.8&amp;m=fit&amp;w=128"
+    ],
+    "speakers": []
+  },
+  {
+    "title": "Biomanufacturing in Times of Uncertainty: Building Resiliency not Sustainability",
+    "beginsAt": "11:45",
+    "endsAt": "12:30",
+    "description": "R1",
+    "metadata": [
+      "Betonhalle (main hall)",
+      "Panel Discussion"
+    ],
+    "tags": [
+      "Resilient Supply Chains"
+    ],
+    "images": [
+      "SPRIN-D"
+    ],
+    "imageUrls": [
+      "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F43a469bbd8ca425e8b8cb4b6117a9aa8.png&amp;q=0.8&amp;m=fit&amp;w=128"
+    ],
+    "speakers": []
+  },
+  {
+    "title": "Scaling x AI",
+    "beginsAt": "12:30",
+    "endsAt": "13:00",
+    "description": "A4",
+    "metadata": [
+      "Betonhalle (main hall)",
+      "Fire Side Chat"
+    ],
+    "tags": [
+      "AI &amp; SynBio"
+    ],
+    "images": [
+      "Arsenal Bioyard"
+    ],
+    "imageUrls": [
+      "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F015945dab7b14b43a3b0312c2739c35d.png&amp;q=0.8&amp;m=fit&amp;w=128"
+    ],
+    "speakers": []
+  },
+  {
+    "title": "Defense Technologies",
+    "beginsAt": "14:00",
+    "endsAt": "14:45",
+    "description": "D3",
+    "metadata": [
+      "Betonhalle (main hall)",
+      "Panel Discussion"
+    ],
+    "tags": [
+      "Biodefense"
+    ],
+    "images": [],
+    "imageUrls": [],
+    "speakers": []
+  },
+  {
+    "title": "Enabling Scale-Up: Research and Pilot Facilities for Bioenergy Production",
+    "beginsAt": "14:00",
+    "endsAt": "15:00",
+    "description": "S1",
+    "metadata": [
+      "Cinema",
+      "Workshop"
+    ],
+    "tags": [
+      "Upscaling Challenges"
+    ],
+    "images": [],
+    "imageUrls": [],
+    "speakers": [
+      {
+        "name": "Karen Deprie",
+        "organization": "Deutsches Biomasse Forschungszentrumm"
+      }
+    ]
+  },
+  {
+    "title": "From Data to Decisions: How AI Agents Democratize Bioinformatics and Accelerate R&amp;D",
+    "beginsAt": "14:00",
+    "endsAt": "14:45",
+    "description": "A3",
+    "metadata": [
+      "Fireside Room",
+      "Fire Side Chat"
+    ],
+    "tags": [
+      "AI &amp; SynBio"
+    ],
+    "images": [
+      "Biocompile"
+    ],
+    "imageUrls": [
+      "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F966351ccd701436ca74f5b3bf9fcffa5.png&amp;q=0.8&amp;m=fit&amp;w=128"
+    ],
+    "speakers": []
+  },
+  {
+    "title": "The Unscripted Path: Navigating Innovation, Impact and Ecosystems",
+    "beginsAt": "15:00",
+    "endsAt": "16:00",
+    "description": null,
+    "metadata": [
+      "Atelier",
+      "Workshop"
+    ],
+    "tags": [],
+    "images": [
+      "Garima Bhardwaj"
+    ],
+    "imageUrls": [
+      "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fbfb95bf48f33495389f61beb94527331.jpeg&amp;q=0.8&amp;m=crop&amp;w=80"
+    ],
+    "speakers": [
+      {
+        "name": "Garima Bhardwaj",
+        "organization": "BIH &amp; BioLabs Clinical Incubator"
+      }
+    ]
+  },
+  {
+    "title": "TransBIB: Scale-Up Support in Germany",
+    "beginsAt": "15:00",
+    "endsAt": "15:05",
+    "description": null,
+    "metadata": [
+      "Cinema"
+    ],
+    "tags": [],
+    "images": [],
+    "imageUrls": [],
+    "speakers": [
+      {
+        "name": "Matthias Scholz",
+        "organization": "TransBib"
+      }
+    ]
+  },
+  {
+    "title": "Green Chemistry: its approach and recent development",
+    "beginsAt": "15:15",
+    "endsAt": "16:00",
+    "description": "G1",
+    "metadata": [
+      "Betonhalle (main hall)",
+      "Talks"
+    ],
+    "tags": [
+      "Green Chemistry vs. SynBio"
+    ],
+    "images": [
+      "DTU Biosustain"
+    ],
+    "imageUrls": [
+      "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fd8efcd5680df4f19b99c639684c2f170.png&amp;q=0.8&amp;m=fit&amp;w=128"
+    ],
+    "speakers": []
+  },
+  {
+    "title": "More Than Just Genes: Accelerating Discovery Through Synthetic Biology",
+    "beginsAt": "15:15",
+    "endsAt": "15:55",
+    "description": null,
+    "metadata": [
+      "Fireside Room"
+    ],
+    "tags": [],
+    "images": [],
+    "imageUrls": [],
+    "speakers": []
+  },
+  {
+    "title": "Financing Hardware",
+    "beginsAt": "16:30",
+    "endsAt": "17:15",
+    "description": "S6",
+    "metadata": [
+      "Betonhalle (main hall)",
+      "Other"
+    ],
+    "tags": [
+      "Upscaling Challenges"
+    ],
+    "images": [],
+    "imageUrls": [],
+    "speakers": []
+  },
+  {
+    "title": "Invention to Patent: How to File IP",
+    "beginsAt": "16:30",
+    "endsAt": "17:15",
+    "description": null,
+    "metadata": [
+      "Cinema",
+      "Workshop"
+    ],
+    "tags": [],
+    "images": [],
+    "imageUrls": [],
+    "speakers": []
+  },
+  {
+    "title": "Mastering Your Message: How to Craft a Compelling Narrative for Your Startup",
+    "beginsAt": "16:30",
+    "endsAt": "17:30",
+    "description": "E2",
+    "metadata": [
+      "Atelier",
+      "Workshop"
+    ],
+    "tags": [],
+    "images": [
+      "GASB - German Association for Synthetic Biology"
+    ],
+    "imageUrls": [
+      "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F9dd6c4cd5a1949d3902c98d76dbd6340.png&amp;q=0.8&amp;m=fit&amp;w=128"
+    ],
+    "speakers": []
+  },
+  {
+    "title": "The Biodefense Imperative: Securing the Biological Frontier",
+    "beginsAt": "16:30",
+    "endsAt": "18:00",
+    "description": "D2",
+    "metadata": [
+      "Fireside Room"
+    ],
+    "tags": [
+      "Biodefense"
+    ],
+    "images": [],
+    "imageUrls": [],
+    "speakers": [
+      {
+        "name": "Jess Rogers",
+        "organization": "The Counsil on Strategic Risks"
+      }
+    ]
+  },
+  {
+    "title": "Green Chemistry and Synbio: Finding opportunities for collaboration and synergies",
+    "beginsAt": "17:15",
+    "endsAt": "18:00",
+    "description": "G3",
+    "metadata": [
+      "Betonhalle (main hall)",
+      "Panel Discussion"
+    ],
+    "tags": [
+      "Green Chemistry vs. SynBio"
+    ],
+    "images": [],
+    "imageUrls": [],
+    "speakers": []
+  },
+  {
+    "title": "Plants and their chloroplasts: a scalable production platform",
+    "beginsAt": "17:15",
+    "endsAt": "18:00",
+    "description": "S5",
+    "metadata": [
+      "Cinema"
+    ],
+    "tags": [],
+    "images": [],
+    "imageUrls": [],
+    "speakers": []
+  }
+]

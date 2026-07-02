@@ -1,259 +1,6 @@
 {
   "day1": [
     {
-      "title": "Opening",
-      "beginsAt": "11:00",
-      "endsAt": "11:15",
-      "description": null,
-      "metadata": [
-        "Betonhalle (main hall)"
-      ],
-      "tags": [],
-      "images": [
-        "GASB - German Association for Synthetic Biology"
-      ]
-    },
-    {
-      "title": "Lighthouse Keynote",
-      "beginsAt": "11:15",
-      "endsAt": "11:35",
-      "description": "P1",
-      "metadata": [
-        "Betonhalle (main hall)",
-        "KEYNOTE"
-      ],
-      "tags": [
-        "Upscaling Challenges"
-      ],
-      "images": [
-        "Bioweg"
-      ]
-    },
-    {
-      "title": "Biomanufacturing in Times of Uncertainty: Building Resiliency not Sustainability",
-      "beginsAt": "11:45",
-      "endsAt": "12:30",
-      "description": "R1",
-      "metadata": [
-        "Betonhalle (main hall)",
-        "Panel Discussion"
-      ],
-      "tags": [
-        "Resilient Supply Chains"
-      ],
-      "images": [
-        "SPRIN-D"
-      ]
-    },
-    {
-      "title": "Scaling x AI",
-      "beginsAt": "12:30",
-      "endsAt": "13:00",
-      "description": "A4",
-      "metadata": [
-        "Betonhalle (main hall)",
-        "Fire Side Chat"
-      ],
-      "tags": [
-        "AI & SynBio"
-      ],
-      "images": [
-        "Arsenal Bioyard"
-      ]
-    },
-    {
-      "title": "Defense Technologies",
-      "beginsAt": "14:00",
-      "endsAt": "14:45",
-      "description": "D3",
-      "metadata": [
-        "Betonhalle (main hall)",
-        "Panel Discussion"
-      ],
-      "tags": [
-        "Biodefense"
-      ],
-      "images": []
-    },
-    {
-      "title": "Enabling Scale-Up: Research and Pilot Facilities for Bioenergy Production",
-      "beginsAt": "14:00",
-      "endsAt": "15:00",
-      "description": "S1",
-      "metadata": [
-        "Cinema",
-        "Workshop"
-      ],
-      "tags": [
-        "Upscaling Challenges"
-      ],
-      "images": []
-    },
-    {
-      "title": "From Data to Decisions: How AI Agents Democratize Bioinformatics and Accelerate R&D",
-      "beginsAt": "14:00",
-      "endsAt": "14:45",
-      "description": "A3",
-      "metadata": [
-        "Fireside Room",
-        "Fire Side Chat"
-      ],
-      "tags": [
-        "AI & SynBio"
-      ],
-      "images": [
-        "Biocompile"
-      ]
-    },
-    {
-      "title": "The Unscripted Path: Navigating Innovation, Impact and Ecosystems",
-      "beginsAt": "15:00",
-      "endsAt": "16:00",
-      "description": null,
-      "metadata": [
-        "Atelier",
-        "Workshop"
-      ],
-      "tags": [],
-      "images": [
-        "Garima Bhardwaj"
-      ]
-    },
-    {
-      "title": "TransBIB: Scale-Up Support in Germany",
-      "beginsAt": "15:00",
-      "endsAt": "15:05",
-      "description": null,
-      "metadata": [
-        "Cinema"
-      ],
-      "tags": [],
-      "images": []
-    },
-    {
-      "title": "Green Chemistry: its approach and recent development",
-      "beginsAt": "15:15",
-      "endsAt": "16:00",
-      "description": "G1",
-      "metadata": [
-        "Betonhalle (main hall)",
-        "Talks"
-      ],
-      "tags": [
-        "Green Chemistry vs. SynBio"
-      ],
-      "images": [
-        "DTU Biosustain"
-      ]
-    },
-    {
-      "title": "More Than Just Genes: Accelerating Discovery Through Synthetic Biology",
-      "beginsAt": "15:15",
-      "endsAt": "15:55",
-      "description": null,
-      "metadata": [
-        "Fireside Room"
-      ],
-      "tags": [],
-      "images": []
-    },
-    {
-      "title": "Financing Hardware",
-      "beginsAt": "16:30",
-      "endsAt": "17:15",
-      "description": "S6",
-      "metadata": [
-        "Betonhalle (main hall)",
-        "Other"
-      ],
-      "tags": [
-        "Upscaling Challenges"
-      ],
-      "images": []
-    },
-    {
-      "title": "Invention to Patent: How to File IP",
-      "beginsAt": "16:30",
-      "endsAt": "17:15",
-      "description": null,
-      "metadata": [
-        "Cinema",
-        "Workshop"
-      ],
-      "tags": [],
-      "images": []
-    },
-    {
-      "title": "Mastering Your Message: How to Craft a Compelling Narrative for Your Startup",
-      "beginsAt": "16:30",
-      "endsAt": "17:30",
-      "description": "E2",
-      "metadata": [
-        "Atelier",
-        "Workshop"
-      ],
-      "tags": [],
-      "images": [
-        "GASB - German Association for Synthetic Biology"
-      ]
-    },
-    {
-      "title": "The Biodefense Imperative: Securing the Biological Frontier",
-      "beginsAt": "16:30",
-      "endsAt": "18:00",
-      "description": "D2",
-      "metadata": [
-        "Fireside Room"
-      ],
-      "tags": [
-        "Biodefense"
-      ],
-      "images": []
-    },
-    {
-      "title": "Green Chemistry and Synbio: Finding opportunities for collaboration and synergies",
-      "beginsAt": "17:15",
-      "endsAt": "18:00",
-      "description": "G3",
-      "metadata": [
-        "Betonhalle (main hall)",
-        "Panel Discussion"
-      ],
-      "tags": [
-        "Green Chemistry vs. SynBio"
-      ],
-      "images": []
-    },
-    {
-      "title": "Plants and their chloroplasts: a scalable production platform",
-      "beginsAt": "17:15",
-      "endsAt": "18:00",
-      "description": "S5",
-      "metadata": [
-        "Cinema",
-        "Fire Side Chat"
-      ],
-      "tags": [
-        "Upscaling Challenges"
-      ],
-      "images": [
-        "Bright Biotech"
-      ]
-    },
-    {
-      "title": "Afterparty",
-      "beginsAt": "18:00",
-      "endsAt": "22:00",
-      "description": "Join us for the exciting Afterparty at our event! Enjoy a variety of drinks and snacks available for purchase while dancing to the tunes of our live DJ. Don't miss out on the fun after the main event.",
-      "metadata": [
-        "Betonhalle (main hall)"
-      ],
-      "tags": [],
-      "images": []
-    }
-  ],
-  "day2": [
-    {
       "title": "Pitching Competition TRL 1-4",
       "beginsAt": "09:00",
       "endsAt": "10:00",
@@ -262,7 +9,9 @@
         "Betonhalle (main hall)"
       ],
       "tags": [],
-      "images": []
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
     },
     {
       "title": "Pitching Competition TRL 5-9",
@@ -271,13 +20,15 @@
       "description": null,
       "metadata": [],
       "tags": [],
-      "images": []
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
     },
     {
       "title": "SynBio World Cafe - Session 1",
       "beginsAt": "10:30",
       "endsAt": "11:20",
-      "description": "The SynBio World Café makes a special guest appearance at the SynBioReactor. Inserting its signature, group discussion-driven format directly into the program. Mirroring this year’s Reactor topics, the World Café offers attendees a hands-on opportunity to join the conversation, on: the founders journey artificial intelligence bio-scale up green chemistry bio-defense & supply chain resilience Share your perspectives, and engage directly with experts on site. Instead of lectures, this session creates space for open, moderated table discussions where participants from science, startups, industry, policy, and investment exchange ideas on real challenges and future opportunities in synthetic biology. Chose your session, contribute to the conversation and help shape collective thinking around innovation, sustainability, regulation, and commercialization.",
+      "description": "The SynBio World Café makes a special guest appearance at the SynBioReactor. Inserting its signature, group discussion-driven format directly into the program.\nMirroring this year’s Reactor topics, the World Café offers attendees a hands-on opportunity to join the conversation, on:\nthe founders journey \nartificial intelligence \nbio-scale up \ngreen chemistry \nbio-defense &amp; supply chain resilience \n\nShare your perspectives, and engage directly with experts on site. Instead of lectures, this session creates space for open, moderated table discussions where participants from science, startups, industry, policy, and investment exchange ideas on real challenges and future opportunities in synthetic biology. Chose your session, contribute to the conversation and help shape collective thinking around innovation, sustainability, regulation, and commercialization.",
       "metadata": [
         "Atelier",
         "Workshop"
@@ -288,7 +39,12 @@
       "images": [
         "biobeyond",
         "Nucleate"
-      ]
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F52bfe1e55bf24217ab751252f659bb88.png&amp;q=0.8&amp;m=fit&amp;w=128",
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fb93f3d799eab4fb8bd31634a550c22b9.jpeg&amp;q=0.8&amp;m=fit&amp;w=128"
+      ],
+      "speakers": []
     },
     {
       "title": "From Materials to Biochips: Turning Magneto-responsive Optically Active Proteins into Quantum Biosensors",
@@ -300,7 +56,9 @@
         "Fire Side Chat"
       ],
       "tags": [],
-      "images": []
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
     },
     {
       "title": "The slow revolution of Biomanufacturing - Insights and perspectives from BCG",
@@ -312,13 +70,15 @@
         "Fire Side Chat"
       ],
       "tags": [],
-      "images": []
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
     },
     {
       "title": "SynBio World Cafe - Session 2",
       "beginsAt": "11:20",
       "endsAt": "12:10",
-      "description": "The SynBio World Café makes a special guest appearance at the SynBioReactor. Inserting its signature, group discussion-driven format directly into the program. Mirroring this year’s Reactor topics, the World Café offers attendees a hands-on opportunity to join the conversation, on: the founders journey artificial intelligence bio-scale up green chemistry bio-defense & supply chain resilience Share your perspectives, and engage directly with experts on site. Instead of lectures, this session creates space for open, moderated table discussions where participants from science, startups, industry, policy, and investment exchange ideas on real challenges and future opportunities in synthetic biology. Chose your session, contribute to the conversation and help shape collective thinking around innovation, sustainability, regulation, and commercialization.",
+      "description": "The SynBio World Café makes a special guest appearance at the SynBioReactor. Inserting its signature, group discussion-driven format directly into the program.\nMirroring this year’s Reactor topics, the World Café offers attendees a hands-on opportunity to join the conversation, on:\nthe founders journey \nartificial intelligence \nbio-scale up \ngreen chemistry \nbio-defense &amp; supply chain resilience \n\nShare your perspectives, and engage directly with experts on site. Instead of lectures, this session creates space for open, moderated table discussions where participants from science, startups, industry, policy, and investment exchange ideas on real challenges and future opportunities in synthetic biology. Chose your session, contribute to the conversation and help shape collective thinking around innovation, sustainability, regulation, and commercialization.",
       "metadata": [
         "Atelier",
         "Workshop"
@@ -331,6 +91,18 @@
         "biobeyond",
         "GASB - German Association for Synthetic Biology",
         "Nucleate"
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fdd93da40d6b44739bac5a7c78d6b1dd6.jpg&amp;q=0.8&amp;m=crop&amp;w=80",
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F52bfe1e55bf24217ab751252f659bb88.png&amp;q=0.8&amp;m=fit&amp;w=128",
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F9dd6c4cd5a1949d3902c98d76dbd6340.png&amp;q=0.8&amp;m=fit&amp;w=128",
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fb93f3d799eab4fb8bd31634a550c22b9.jpeg&amp;q=0.8&amp;m=fit&amp;w=128"
+      ],
+      "speakers": [
+        {
+          "name": "Divij Kinger",
+          "organization": "Startup Colors UG"
+        }
       ]
     },
     {
@@ -347,7 +119,11 @@
       ],
       "images": [
         "Nucleus Capital"
-      ]
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fdcdf7deed6ca4d76a81a9869ccc1b4f5.png&amp;q=0.8&amp;m=fit&amp;w=128"
+      ],
+      "speakers": []
     },
     {
       "title": "SynBio World Cafe - Session 3",
@@ -367,6 +143,18 @@
         "biobeyond",
         "GASB - German Association for Synthetic Biology",
         "Nucleate"
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fdd93da40d6b44739bac5a7c78d6b1dd6.jpg&amp;q=0.8&amp;m=crop&amp;w=80",
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F52bfe1e55bf24217ab751252f659bb88.png&amp;q=0.8&amp;m=fit&amp;w=128",
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F9dd6c4cd5a1949d3902c98d76dbd6340.png&amp;q=0.8&amp;m=fit&amp;w=128",
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fb93f3d799eab4fb8bd31634a550c22b9.jpeg&amp;q=0.8&amp;m=fit&amp;w=128"
+      ],
+      "speakers": [
+        {
+          "name": "Divij Kinger",
+          "organization": "Startup Colors UG"
+        }
       ]
     },
     {
@@ -374,97 +162,56 @@
       "beginsAt": "12:15",
       "endsAt": "13:00",
       "description": "S2",
-      "metadata": [
-        "Fireside Room",
-        "Fire Side Chat"
-      ],
-      "tags": [
-        "Upscaling Challenges"
-      ],
-      "images": [
-        "Colipy"
-      ]
-    },
+      "metadata": [],
+      "tags": [],
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
+    }
+  ],
+  "day2": [
     {
-      "title": "Self Driving Labs",
-      "beginsAt": "12:15",
-      "endsAt": "13:00",
+      "title": "Opening",
+      "beginsAt": "11:00",
+      "endsAt": "11:15",
       "description": null,
       "metadata": [
+        "Betonhalle (main hall)"
+      ],
+      "tags": [],
+      "images": [
+        "GASB - German Association for Synthetic Biology"
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F9dd6c4cd5a1949d3902c98d76dbd6340.png&amp;q=0.8&amp;m=fit&amp;w=128"
+      ],
+      "speakers": []
+    },
+    {
+      "title": "Lighthouse Keynote",
+      "beginsAt": "11:15",
+      "endsAt": "11:35",
+      "description": "P1",
+      "metadata": [
         "Betonhalle (main hall)",
-        "Panel Discussion"
-      ],
-      "tags": [
-        "AI x SynBio"
-      ],
-      "images": []
-    },
-    {
-      "title": "Economic and Environmental Evaluation Supporting Sustainability Certification",
-      "beginsAt": "14:00",
-      "endsAt": "15:00",
-      "description": "W2",
-      "metadata": [
-        "Cinema",
-        "Workshop"
-      ],
-      "tags": [
-        "Wildcard"
-      ],
-      "images": []
-    },
-    {
-      "title": "Scaling product to market",
-      "beginsAt": "14:00",
-      "endsAt": "14:45",
-      "description": "S4",
-      "metadata": [
-        "Fireside Room",
-        "Fire Side Chat"
+        "KEYNOTE"
       ],
       "tags": [
         "Upscaling Challenges"
       ],
-      "images": []
-    },
-    {
-      "title": "SynBio World Cafe - Session 4",
-      "beginsAt": "14:00",
-      "endsAt": "14:50",
-      "description": "The SynBio World Café makes a special guest appearance at the SynBioReactor. Inserting its signature, group discussion-driven format directly into the program. Mirroring this year’s Reactor topics, the World Café offers attendees a hands-on opportunity to join the conversation, on: the founders journey artificial intelligence bio-scale up green chemistry bio-defense & supply chain resilience Share your perspectives, and engage directly with experts on site. Instead of lectures, this session creates space for open, moderated table discussions where participants from science, startups, industry, policy, and investment exchange ideas on real challenges and future opportunities in synthetic biology. Chose your session, contribute to the conversation and help shape collective thinking around innovation, sustainability, regulation, and commercialization.",
-      "metadata": [
-        "Atelier",
-        "Workshop"
-      ],
-      "tags": [
-        "Biodefense",
-        "Founders Journey"
-      ],
       "images": [
-        "biobeyond",
-        "GASB - German Association for Synthetic Biology",
-        "Nucleate"
-      ]
+        "Bioweg"
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F4399363d3844454db07267abf4179456.png&amp;q=0.8&amp;m=fit&amp;w=128"
+      ],
+      "speakers": []
     },
     {
-      "title": "\"Networking Isn’t the Point!\" - Visibility for Life Scientists, Not Influencers",
-      "beginsAt": "14:45",
-      "endsAt": "15:30",
-      "description": "The life sciences job market is increasingly volatile, yet many highly qualified professionals struggle to connect with the right opportunities. One reason is not a lack of expertise, but a lack of visibility. This fireside chat is for life scientists who are not natural networkers and have no interest in becoming influencers. It explores how to build professional visibility through substance rather than noise, using simple systems and habits instead of motivation or self-promotion. The session shows how thoughtful presence, consistent communication, and community engagement can create career resilience and meaningful connections—without playing the traditional networking game.",
-      "metadata": [
-        "Atelier",
-        "Fire Side Chat"
-      ],
-      "tags": [
-        "Break Out Session"
-      ],
-      "images": []
-    },
-    {
-      "title": "The new Resilience Premium?",
-      "beginsAt": "14:50",
-      "endsAt": "15:35",
-      "description": "R2",
+      "title": "Biomanufacturing in Times of Uncertainty: Building Resiliency not Sustainability",
+      "beginsAt": "11:45",
+      "endsAt": "12:30",
+      "description": "R1",
       "metadata": [
         "Betonhalle (main hall)",
         "Panel Discussion"
@@ -473,19 +220,277 @@
         "Resilient Supply Chains"
       ],
       "images": [
-        "Amino Collective"
+        "SPRIN-D"
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F43a469bbd8ca425e8b8cb4b6117a9aa8.png&amp;q=0.8&amp;m=fit&amp;w=128"
+      ],
+      "speakers": []
+    },
+    {
+      "title": "Scaling x AI",
+      "beginsAt": "12:30",
+      "endsAt": "13:00",
+      "description": "A4",
+      "metadata": [
+        "Betonhalle (main hall)",
+        "Fire Side Chat"
+      ],
+      "tags": [
+        "AI &amp; SynBio"
+      ],
+      "images": [
+        "Arsenal Bioyard"
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F015945dab7b14b43a3b0312c2739c35d.png&amp;q=0.8&amp;m=fit&amp;w=128"
+      ],
+      "speakers": []
+    },
+    {
+      "title": "Defense Technologies",
+      "beginsAt": "14:00",
+      "endsAt": "14:45",
+      "description": "D3",
+      "metadata": [
+        "Betonhalle (main hall)",
+        "Panel Discussion"
+      ],
+      "tags": [
+        "Biodefense"
+      ],
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
+    },
+    {
+      "title": "Enabling Scale-Up: Research and Pilot Facilities for Bioenergy Production",
+      "beginsAt": "14:00",
+      "endsAt": "15:00",
+      "description": "S1",
+      "metadata": [
+        "Cinema",
+        "Workshop"
+      ],
+      "tags": [
+        "Upscaling Challenges"
+      ],
+      "images": [],
+      "imageUrls": [],
+      "speakers": [
+        {
+          "name": "Karen Deprie",
+          "organization": "Deutsches Biomasse Forschungszentrumm"
+        }
       ]
     },
     {
-      "title": "Award Ceremony and Closing",
-      "beginsAt": "15:40",
+      "title": "From Data to Decisions: How AI Agents Democratize Bioinformatics and Accelerate R&amp;D",
+      "beginsAt": "14:00",
+      "endsAt": "14:45",
+      "description": "A3",
+      "metadata": [
+        "Fireside Room",
+        "Fire Side Chat"
+      ],
+      "tags": [
+        "AI &amp; SynBio"
+      ],
+      "images": [
+        "Biocompile"
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F966351ccd701436ca74f5b3bf9fcffa5.png&amp;q=0.8&amp;m=fit&amp;w=128"
+      ],
+      "speakers": []
+    },
+    {
+      "title": "The Unscripted Path: Navigating Innovation, Impact and Ecosystems",
+      "beginsAt": "15:00",
       "endsAt": "16:00",
       "description": null,
       "metadata": [
-        "Betonhalle (main hall)"
+        "Atelier",
+        "Workshop"
       ],
       "tags": [],
-      "images": []
+      "images": [
+        "Garima Bhardwaj"
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fbfb95bf48f33495389f61beb94527331.jpeg&amp;q=0.8&amp;m=crop&amp;w=80"
+      ],
+      "speakers": [
+        {
+          "name": "Garima Bhardwaj",
+          "organization": "BIH &amp; BioLabs Clinical Incubator"
+        }
+      ]
+    },
+    {
+      "title": "TransBIB: Scale-Up Support in Germany",
+      "beginsAt": "15:00",
+      "endsAt": "15:05",
+      "description": null,
+      "metadata": [
+        "Cinema"
+      ],
+      "tags": [],
+      "images": [],
+      "imageUrls": [],
+      "speakers": [
+        {
+          "name": "Matthias Scholz",
+          "organization": "TransBib"
+        }
+      ]
+    },
+    {
+      "title": "Green Chemistry: its approach and recent development",
+      "beginsAt": "15:15",
+      "endsAt": "16:00",
+      "description": "G1",
+      "metadata": [
+        "Betonhalle (main hall)",
+        "Talks"
+      ],
+      "tags": [
+        "Green Chemistry vs. SynBio"
+      ],
+      "images": [
+        "DTU Biosustain"
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2Fd8efcd5680df4f19b99c639684c2f170.png&amp;q=0.8&amp;m=fit&amp;w=128"
+      ],
+      "speakers": []
+    },
+    {
+      "title": "More Than Just Genes: Accelerating Discovery Through Synthetic Biology",
+      "beginsAt": "15:15",
+      "endsAt": "15:55",
+      "description": null,
+      "metadata": [
+        "Fireside Room"
+      ],
+      "tags": [],
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
+    },
+    {
+      "title": "Financing Hardware",
+      "beginsAt": "16:30",
+      "endsAt": "17:15",
+      "description": "S6",
+      "metadata": [
+        "Betonhalle (main hall)",
+        "Other"
+      ],
+      "tags": [
+        "Upscaling Challenges"
+      ],
+      "images": [],
+      "imageUrls": [],
+      "speakers": [
+        {
+          "name": "Alex Hoffmann",
+          "organization": "Forbion"
+        },
+        {
+          "name": "Daniele Parisi",
+          "organization": "C3 Biotech"
+        },
+        {
+          "name": "Max Lebeau",
+          "organization": ""
+        },
+        {
+          "name": "Maximilian Schwarz",
+          "organization": "Nucleus Capital"
+        }
+      ]
+    },
+    {
+      "title": "Invention to Patent: How to File IP",
+      "beginsAt": "16:30",
+      "endsAt": "17:15",
+      "description": null,
+      "metadata": [
+        "Cinema",
+        "Workshop"
+      ],
+      "tags": [],
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
+    },
+    {
+      "title": "Mastering Your Message: How to Craft a Compelling Narrative for Your Startup",
+      "beginsAt": "16:30",
+      "endsAt": "17:30",
+      "description": "E2",
+      "metadata": [
+        "Atelier",
+        "Workshop"
+      ],
+      "tags": [],
+      "images": [
+        "GASB - German Association for Synthetic Biology"
+      ],
+      "imageUrls": [
+        "https://img.swapcard.com/?o=webp&amp;u=https%3A%2F%2Fstatic.swapcard.com%2Fpublic%2Fimages%2F9dd6c4cd5a1949d3902c98d76dbd6340.png&amp;q=0.8&amp;m=fit&amp;w=128"
+      ],
+      "speakers": []
+    },
+    {
+      "title": "The Biodefense Imperative: Securing the Biological Frontier",
+      "beginsAt": "16:30",
+      "endsAt": "18:00",
+      "description": "D2",
+      "metadata": [
+        "Fireside Room"
+      ],
+      "tags": [
+        "Biodefense"
+      ],
+      "images": [],
+      "imageUrls": [],
+      "speakers": [
+        {
+          "name": "Jess Rogers",
+          "organization": "The Counsil on Strategic Risks"
+        }
+      ]
+    },
+    {
+      "title": "Green Chemistry and Synbio: Finding opportunities for collaboration and synergies",
+      "beginsAt": "17:15",
+      "endsAt": "18:00",
+      "description": "G3",
+      "metadata": [
+        "Betonhalle (main hall)",
+        "Panel Discussion"
+      ],
+      "tags": [
+        "Green Chemistry vs. SynBio"
+      ],
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
+    },
+    {
+      "title": "Plants and their chloroplasts: a scalable production platform",
+      "beginsAt": "17:15",
+      "endsAt": "18:00",
+      "description": "S5",
+      "metadata": [
+        "Cinema"
+      ],
+      "tags": [],
+      "images": [],
+      "imageUrls": [],
+      "speakers": []
     }
   ]
 }
